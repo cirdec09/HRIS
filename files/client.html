@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>HRIS MABINI</title>
+
+  <!-- CSS  -->
+        <link rel="icon" href="assets/images/hrlogoicon.ico" sizes="32x32">
+        <meta name="msapplication-TileColor" content="#00bcd4">
+        <link href="assets/css/materialize.mins.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/perfect-scrollbar.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/cropper.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/font-awesome.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/codemirror.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/froala_editor.pkgd.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/froala_style.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/mdl.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/custom.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/animate.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/plugins/dataTables/dataTables.responsive.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/plugins/dataTables/dataTables.tableTools.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+        <link href="assets/css/plugins/dataTables/dataTables.material.min.css" type="text/css" rel="stylesheet" media="screen,projection">
+
+</head>
+    <body class="bodyg">
+    <div class="overlap-gradient" id='scroll' style="overflow: hidden;">
+        <nav class="blue lighten-1" role="navigation">
+            <div class="nav-wrapper container"><img src="assets/images/Mabini_Pangasinan.png" style='width: 55px;'>
+            </div>
+        </nav>
+        <div class="section no-pad-bot" id="index-banner">
+            <div class="container">
+              <br><br>
+                    <h1 class="header center blue-text bounce">HUMAN RESOURCES INFORMATION SYSTEM</h1>
+                    <div class="row center">
+                        <h3 class="header col s12 light">Municipality Of Mabini</h3>
+                    </div>
+                    <div class="row center">
+                        <a id="get-started" class="btn-large waves-effect waves-light orange">Get Started</a>
+                    </div>
+                    <br><br>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section">
+          <!--   Icon Section   -->
+                <div class="row">
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h2 class="center light-blue-text"><i class="mdi-action-restore
+"></i></h2>
+                            <h5 class="center">History</h5>
+
+                            <p class="light">The municipality of Mabini used to be a part of the Province of Zambales and was surrounded by mountains, forests, and valleys. It was originally called "Balincaguin" that was derived from the Zambal phrase "Bali Lan Caguin" which means "adobe of bats".The place may have been founded in 1610 by Spanish missionaries who were Augustinian Recollects, although this is uncertain.</p>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h2 class="center light-blue-text"><i class="mdi-social-public
+"></i></h2>
+                            <h5 class="center">LGU Mission</h5>
+
+                            <p class="light">Its mission is to accelerate the quality of life of all residents in the municipality through the improved economic, social, and infrastructure facilities, increased agricultural production, sound environmental management and effective local administration.</p>
+                        </div>
+                    </div>
+
+                    <div class="col s12 m4">
+                        <div class="icon-block">
+                            <h2 class="center light-blue-text"><i class="mdi-action-visibility"></i></h2>
+                            <h5 class="center">LGU Vision</h5>
+
+                            <p class="light">The Municipality of Mabini is envisioned to be a self-reliant and progressive community with sustainable tourism and agri-industrial based economy, adequate infrastructure support facilities, healthy, peace-loving and empowered; under people-oriented, accountable and effective local leaders.</p>
+                      </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div id="modal" class="over-gradient modal bottom-sheet" style="bottom:none;min-height: 650px;">
+                <div class="modal-content"></div>
+                <div class="modal-footer"></div>
+            </div>
+    </div>
+    
+
+      <!--  Scripts-->
+        <script type="text/javascript" src="assets/js/jquery.js"></script>
+        <script type="text/javascript" src="assets/js/materialize.min.js"></script>
+        <script type="text/javascript" src="assets/js/perfect-scrollbar.min.js"></script>
+        <script type="text/javascript" src="assets/js/plugins.js"></script>
+        <script type="text/javascript" src="assets/js/validation/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="assets/js/validation/additional-methods.min.js"></script>
+        <script type="text/javascript" src="assets/js/process.js"></script>
+        <script type="text/javascript" src="assets/js/client.js"></script>
+      
+      <script type="text/javascript">
+        var h = 650;
+        $("#scroll").height(h).perfectScrollbar({
+          suppressScrollX: true,
+          wheelPropagation:true
+        });
+
+        $(".dropdown-button").dropdown();
+        $('.tooltipped').tooltip({delay: 50});
+        
+        client.ini();
+        system.ini();
+      </script>
+
+    </body>
+</html>

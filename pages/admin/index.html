@@ -1,0 +1,86 @@
+<div class="page-topbar">
+    <div class="navbar-fixed">
+        <nav class="navbar-color blue darken-3">
+            <div class="nav-wrapper row" style="background-color: #3bbf1e ! important;">
+                <ul class="left">
+                    <li>
+                        <a id='showMenu' class="waves-effect white-text no-shadow right hide-on-large-only">
+                            <i class="mdi-navigation-menu"></i>
+                        </a>
+                    <li>
+                </ul>
+              <!--   <a class=" waves-effect white-text no-shadow left" href="" style="margin-left:10px;">Human Resource Information Employee System of Municipality Mabini</a> -->
+                <div>
+                    <img src="../assets/images/logo1.png" alt="" style="width:70px;padding-left: 2%;">
+                    <span style="margin-top: -3%;padding-left: 1%;font-size: 15px;">Human Resource Information Employee System of Municipality Mabini</span> 
+                </div>
+                
+                <div class="progress hide">
+                    <div class="indeterminate white"></div>
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+<div id="main">
+    <div class="wrapper">
+        <aside id="left-sidebar-nav text-red">
+            <ul id="slide-out" class="side-nav fixed leftside-navigation ps-container ps-active-y animated" style="width: 240px; ">
+                <li class="blue darken-1" id='user-account' style='padding-top: 10px;padding-bottom: 10px;'>
+                    <div class="row" style='margin-bottom: 0px !important;'>
+                        <div class="col col s4 m4 l4">
+                            <img src="../assets/images/avatar.jpg" id='picture' alt="" class="circle responsive-img valign profile-image">
+                        </div>
+                        <div class="col col s8 m8 l8">
+                            <a class='btn-flat dropdown-button waves-effect waves-light white-text profile-btn'  data-activates='account'>
+                                <span id="name-admin"></span>
+                                <i class='mdi-navigation-arrow-drop-down right'></i>
+                            </a>
+                            <ul id='account' class='dropdown-content'>
+                                <li><a id='log-out' style="line-height: 42px;"><i class="mdi-hardware-keyboard-tab"></i> Logout</a></li>
+                            </ul>
+                            <p class="user-roal" id="admin"></p>
+                        </div>
+                    </div>
+                </li>
+                <li class="no-padding" id='navigation'>
+                </li>
+            </ul>
+            
+        </aside>
+        <section id="subcontent" class='row'></section>
+    </div>
+</div>
+<script type="text/javascript" src="../assets/js/admin.js"></script>
+<script>
+    login.ini();
+    var count = 0;
+    $("#showMenu").on("click",function(){
+        count++;
+        $("#slide-out").attr({"style":"width: 240px; left: 0px;top: 64px !important;"});
+        if((count%2)==1){
+            $("#slide-out").removeClass('slideOutLeft').addClass('slideInLeft');
+        }
+        else{
+            $("#slide-out").removeClass('slideInLeft').addClass('slideOutLeft');
+        }
+    });
+
+    $("#log-out").on("click",function(){
+        login.kill();
+    })
+            
+    var documentHeight = $(window).height();
+    $("#subcontent").attr({"style":"min-height:"+documentHeight+"px;"});
+    $(".dropdown-button").dropdown();
+
+    var data = system.html('../assets/harmony/process.php?get-admin');
+    data.done(function(data){
+        data = JSON.parse(data);
+        var profile = (data[0][8] == "")?'avatar.jpg':data[0][8];
+        $("#picture").attr("src",'../assets/images/profile/'+data[0][8]);
+
+        $("#name-admin").html(data[0][1]);
+        $("#admin").html(data[0][4]);   
+    });
+</script>

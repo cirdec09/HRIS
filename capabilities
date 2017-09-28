@@ -1,0 +1,26 @@
+Administrator
+	- add sublevel admin account
+	- update admin account
+	- activate / deactivate admin
+	- add client
+	- activate / deactivate client account
+	- add / update product
+	- add points
+	- remove points
+	- add bulk points
+	- add bulk employees
+
+Employer
+	- add employee maunally
+	- activate / deactivate employee
+	- add points manually
+	- oversee employees activities
+	- receive thank you card form employee
+
+Employee
+	- update account
+	- purchase product
+	- view products
+	- add to wishlist a product
+	- send a thank you card to employer
+	- view activities
