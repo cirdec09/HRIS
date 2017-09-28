@@ -71,6 +71,32 @@ account = {
 		});
 	},
 	details:function(){
+				var content="";
+				var data = system.ajax('../assets/harmony/Process.php?get-departments');
+				data.done(function(data){
+					data = JSON.parse(data);
+						$(data).each(function(index,value){
+		            		data.length;
+		            		console.log(value[1]);
+						
+						content +="<option>"+value[1]+"</option>";
+					
+									
+		        		});
+		        		$("#department").html(content);
+						
+
+					});					
+
+
+
+
+
+
+
+
+
+
 		var content = "";
 		var bago = "";
 		var id = localStorage.getItem('myId');
@@ -275,6 +301,8 @@ account = {
 				// employee.activate();
 				// employee.update();
 				// employee.updatePicture();
+
+
 				var content="";
 				var data = system.ajax('../assets/harmony/Process.php?get-family',id);
 				data.done(function(data){

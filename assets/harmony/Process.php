@@ -217,6 +217,11 @@ $function = new DatabaseClasses;
 			print_r(json_encode($query));
 		}
 
+		if(isset($_GET['get-departments'])){
+			$query = $function->PDO(true,"SELECT * FROM tbl_department");
+			print_r(json_encode($query));
+		}
+
 		if(isset($_GET['get-clientDetails'])){
 			$data = $_POST['data'];
 			$query = $function->PDO(true,"SELECT * FROM tbl_department WHERE id = '{$data}'");

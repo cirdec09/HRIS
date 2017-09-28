@@ -605,10 +605,8 @@
 						</div>
 						<div class='input-field col s6'>
 							<label for='field_cstatus' class='active'>Select Department: </label>
-							<select name='field_cstatus'>
-								<option selected>Department Of Agriculture</option>
-								<option>Accounting Department</option>
-								<option>Department Of Treasury</option>
+							<select id='department' name='field_cstatus'>
+								<option></option>
 							</select>
 						</div>
 					</div>
