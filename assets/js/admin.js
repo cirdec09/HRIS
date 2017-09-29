@@ -2089,6 +2089,7 @@ employee = {
 	list:function(id){
 		var data = system.ajax('../assets/harmony/Process.php?get-employeeByID',id);
 		data = JSON.parse(data.responseText);
+		console.log(data);
 		var content = "", actions = "";
 		$.each(data,function(i,v){
 			var profile = ((v[10] == "") || (v[10] == null))?'avatar.jpg':v[10];
@@ -2162,7 +2163,7 @@ employee = {
 								  "</a>";	
 				}
 
-				var profile = ((data[0][10] == "") || (data[0][10] == null))?"avatar.jpg":data[0][10];
+				var profile = ((data[10] == "") || (data[10] == null))?"avatar.jpg":data[10];
 				content = "<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
 						"        <img class='activator' src='../assets/images/s5.png' alt='user background'>"+
@@ -5098,18 +5099,18 @@ employee = {
 employee_Account = {
 	ini:function(){
 		this.add();
-		this.list();
+		this.departmentList();
 	},
 	get:function(){
 		var data = system.html('../assets/harmony/Process.php?get-employeeAccount');
 		return data;
 	},
-	list:function(){
+	accounts:function(id){
 		var content = "", chips = [],chipsContent = "";
-		var data = employee_Account.get();
+		var data = system.ajax('../assets/harmony/Process.php?get-listEmployeeAccount',id);
 		data = JSON.parse(data.responseText);
 		$.each(data,function(i,v){
-			if(Number(v[4]) == 1){
+			if(Number(v[5]) == 1){
 					status = "Active";
 					var actions = "<a data-cmd='deactivateAdmin' data-name='"+v[1]+"' data-node='"+v[0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow grey lighten-5 right' data-position='left' data-delay='50' data-tooltip='Deactivate account' data-cmd='update'>"+
 								  "	<i class='mdi-action-lock-open right black-text'></i>"+
@@ -5123,8 +5124,8 @@ employee_Account = {
 				}
 			content += "<tr>"+
 						"	<td width='1px'>"+(i+1)+". </td>"+
-						"	<td>"+v[1]+"</td>"+
 						"	<td>"+v[2]+"</td>"+
+						"	<td>"+v[3]+"</td>"+
 						"	<td>"+status+"</td>"+
 						"	<td width='1px'>"+
 						"		<a href='#cmd=index;content=focusEmployeeAccount;"+v[0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow grey lighten-5 right' data-position='left' data-delay='0' data-tooltip='Show Details' data-cmd='update'>"+
@@ -5154,6 +5155,65 @@ employee_Account = {
 	            var last=null;
 	        }
 	    });
+	},
+	departmentList:function(){
+		var content = "", search;
+		var data = client.get();
+		data = JSON.parse(data.responseText);
+		if(data.length>0){			
+			var getEmployee = system.ajax('../assets/harmony/Process.php?get-allAccountCount',"");
+			getEmployee = JSON.parse(getEmployee.responseText);
+			$.each(data,function(i,v){
+				search = system.searchJSON(getEmployee,1,v[0]);
+				search = (search.length > 0)?search[0][0]:0;
+				// var logo = (v[7] == "")?'avatar.jpg':v[7];
+				content += "<tr>"+
+							"	<td width='1px'>"+(i+1)+". </td>"+
+							"	<td width='400px'>"+v[1]+"</td>"+
+							"	<td>"+search+"</td>"+
+							"	<td width='10px'>Active</td>"+
+							"	<td width='1px'>"+
+							"		<a data-cmd='update' data-node='"+v[0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow grey lighten-5 right' data-position='left' data-delay='50' data-tooltip='Show'>"+
+							"			<i class='mdi-navigation-more-vert right black-text'></i>"+
+							"		</a>"+
+							"	</td>"+
+							"</tr>";
+			})	
+
+			content = "<table class='table bordered' id='products'>"+
+						"<thead>"+
+						"	<tr>"+
+						"		<th>#</th><th>Department</th><th>Employee Account</th><th>Status</th><th></th>"+
+						"	</tr>"+
+						"</thead>"+
+						"</tbody>"+
+							content+
+						"</tbody>"+
+						"</table>";
+			$("#display_clientList").html(content);
+
+			var table = $('#products').DataTable({
+		        "order": [[ 0, 'asc' ]],
+		        bLengthChange: false,
+		        iDisplayLength: -1,
+		        "drawCallback": function ( settings ) {
+		            var api = this.api();
+		            var rows = api.rows( {page:'current'} ).nodes();
+		            var last=null;
+		        }
+		    });
+
+			$('.dataTable').on('click', 'tbody tr', function() {
+				var data = table.row(this).data();
+				data = $.parseHTML(data[4]);
+				// console.log(data[0].dataset.node);
+				data = data[0].dataset.node;
+		    	$(location).attr('href','#cmd=index;content=focus_account;'+data);			
+			});
+		}
+		else{
+			$("#display_clientList").html("<h5 class='center'>No Departments to show.</h5>");
+		}
 	},
 	add:function(){
 		$("#add_account").on('click',function(){
@@ -5216,23 +5276,23 @@ employee_Account = {
 				$("#display_employeeDetails").removeClass('hidden');
 				$("#display_error").addClass('hidden');
 			
-				if(Number(data[0][4]) == 1){
+				if(Number(data[0][5]) == 1){
 					status = "Active";
-					var actions = "<a data-cmd='deactivateEmployee' data-name='"+data[0][4]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Deactivate account' data-cmd='update'>"+
+					var actions = "<a data-cmd='deactivateEmployee' data-name='"+data[0][2]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Deactivate account' data-cmd='update'>"+
 								  "	<i class='mdi-action-lock-open right black-text'></i>"+
 								  "</a>";	
 				}
 				else{
 					status = "Deactivated";
-					var actions = "<a data-cmd='activateEmployee' data-name='"+data[0][4]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Activate account' data-cmd='update'>"+
+					var actions = "<a data-cmd='activateEmployee' data-name='"+data[0][2]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Activate account' data-cmd='update'>"+
 								  "	<i class='mdi-action-lock right black-text'></i>"+
 								  "</a>";	
 				}
 
 				content =  "<div id='profile-card' class='card'>"+
 						"    <div class='card-content'>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Name: "+data[0][1]+"</span>"+
-						"			<a data-cmd='updateEmployeeAccount' data-value='"+data[0][1]+"' data-name='"+data[0][1]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update email'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Name: "+data[0][2]+"</span>"+
+						"			<a data-cmd='updateEmployeeAccount' data-value='"+data[0][2]+"' data-name='"+data[0][1]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update email'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
@@ -5240,8 +5300,8 @@ employee_Account = {
 						"        <p><i class='mdi-action-info-outline cyan-text text-darken-2'></i> Status: "+status+actions+"</p>"+
 
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Username: "+data[0][2]+"</span>"+
-						"			<a data-cmd='updateEmployeeAccount' data-value='"+data[0][2]+"' data-name='"+data[0][1]+"' data-node='"+data[0][0]+"' data-prop='Username' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update uaername'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Username: "+data[0][3]+"</span>"+
+						"			<a data-cmd='updateEmployeeAccount' data-value='"+data[0][3]+"' data-name='"+data[0][1]+"' data-node='"+data[0][0]+"' data-prop='Username' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update uaername'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
@@ -5254,7 +5314,7 @@ employee_Account = {
 						"    </div>"+
 						"</div>";
 
-				$("#product").html(content);
+				$("#details").html(content);
 				employee_Account.deactivate();
 				employee_Account.activate();
 				employee_Account.update();

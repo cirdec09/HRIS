@@ -50,7 +50,7 @@ $function = new DatabaseClasses;
 		else{
 			$query = $function->PDO(true,"SELECT * FROM tbl_employee WHERE username = '{$username}' AND password = '{$password}'");
 			if(count($query)>0){
-				if($query[0][4] == 1){
+				if($query[0][5] == 1){
 					$_SESSION["kaboom"] = [$username,$password,$hash];
 					print_r(json_encode(["Active","employee"]));
 				}
@@ -132,7 +132,9 @@ $function = new DatabaseClasses;
 		}
 
 		if(isset($_GET['get-listEmployeeAccount'])){
-			$query = $function->PDO(true,"SELECT * FROM tbl_employee WHERE status = 1 ORDER BY `date` DESC");
+			$data = $_POST['data'];
+			$query = $function->PDO(true,"SELECT * FROM tbl_employee WHERE company_id = '{$data}'");
+
 			print_r(json_encode($query));
 		}
 
@@ -328,6 +330,11 @@ $function = new DatabaseClasses;
 			print_r(json_encode($query));
 		}
 
+		if(isset($_GET['get-allAccountCount'])){
+			$query = $function->PDO(true,"SELECT COUNT(*),company_id FROM tbl_employee GROUP BY company_id");
+			print_r(json_encode($query));
+		}
+
 		if(isset($_GET['get-employerByID'])){
 			$data = $_POST['data'];
 			$query = $function->PDO(true,"SELECT * FROM tbl_employer WHERE company_id = '{$data}' ORDER BY `date` DESC");
@@ -363,6 +370,12 @@ $function = new DatabaseClasses;
 		if(isset($_GET['get-employeeByID'])){
 			$data = $_POST['data'];
 			$query = $function->PDO(true,"SELECT * FROM tbl_employees WHERE company_id = '{$data}' ORDER BY company_id");
+			print_r(json_encode($query));
+		}
+
+		if(isset($_GET['get-accountByID'])){
+			$data = $_POST['data'];
+			$query = $function->PDO(true,"SELECT * FROM tbl_employee WHERE company_id = '{$data}' ORDER BY company_id");
 			print_r(json_encode($query));
 		}
 
@@ -656,36 +669,37 @@ $function = new DatabaseClasses;
 			$data = $_POST['data'];
 			print_r($data);
 			$date = $function->PDO_DateAndTime();
-			$user = 'data';
-	        $id = $function->PDO_IDGenerator('tbl_employees','id');
+			$user = $data[2];
+	        $id = $data[1];
 			
 			
 			$query = $function->PDO(false,"INSERT INTO tbl_employees(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number
-				,picture,position,status,`date`,cstatus,citizenship,height,weight,btype,gsis,pagibig,philhealth,sss,r_address,r_zipcode,r_tele,p_address,p_zipcode,p_tele,email_address,agency_num,tin) VALUES ('{$id}','{$data[26]['value']}','{$data[27]['value']}','{$data[0]['value']}','{$data[1]['value']}','{$data[2]['value']}','{$data[3]['value']}','{$data[5]['value']}','{$data[4]['value']}','{$data[6]['value']}','avatar.png','{$data[25]['value']}','1','{$date}','{$data[7]['value']}','{$data[8]['value']}','{$data[9]['value']}','{$data[10]['value']}','{$data[11]['value']}','{$data[12]['value']}','{$data[13]['value']}','{$data[14]['value']}','{$data[15]['value']}','{$data[16]['value']}','{$data[17]['value']}','{$data[18]['value']}','{$data[19]['value']}','{$data[20]['value']}','{$data[21]['value']}','{$data[22]['value']}','{$data[23]['value']}','{$data[24]['value']}')");
+				,picture,position,status,`date`,cstatus,citizenship,height,weight,btype,gsis,pagibig,philhealth,sss,r_address,r_zipcode,r_tele,p_address,p_zipcode,p_tele,email_address,agency_num,tin) VALUES ('{$id}','{$data[0][26]['value']}','{$user}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][5]['value']}','{$data[0][4]['value']}','{$data[0][6]['value']}','avatar.jpg','{$data[0][25]['value']}','1','{$date}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','{$data[0][13]['value']}','{$data[0][14]['value']}','{$data[0][15]['value']}','{$data[0][16]['value']}','{$data[0][17]['value']}','{$data[0][18]['value']}','{$data[0][19]['value']}','{$data[0][20]['value']}','{$data[0][21]['value']}','{$data[0][22]['value']}','{$data[0][23]['value']}','{$data[0][24]['value']}')");
 			if($query->execute()){
-					echo $id;
+					echo 1;
 			}
 			else{
 				$Data = $query->errorInfo();
-				echo 0;
+				print_r($data);
 			}
 		}
 
 		if(isset($_GET['set-newEmployee'])){
 			$data = $_POST['data'];
 			$date = $function->PDO_DateAndTime();
-			$user = $data[1];
-	        $id = $function->PDO_IDGenerator('tbl_employees','id');
+			$user = $data[2];
+	        $id = $data[1];
+	        // print_r($data);
 			// $password = sha1($data[0][27]['value']);
 			
 			$query = $function->PDO(false,"INSERT INTO tbl_employees(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number
 				,picture,position,status,`date`,cstatus,citizenship,height,weight,btype,gsis,pagibig,philhealth,sss,r_address,r_zipcode,r_tele,p_address,p_zipcode,p_tele,email_address,agency_num,tin) VALUES ('{$id}','{$data[0][26]['value']}','{$user}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][5]['value']}','{$data[0][4]['value']}','{$data[0][6]['value']}','avatar.jpg','{$data[0][25]['value']}','1','{$date}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','{$data[0][13]['value']}','{$data[0][14]['value']}','{$data[0][15]['value']}','{$data[0][16]['value']}','{$data[0][17]['value']}','{$data[0][18]['value']}','{$data[0][19]['value']}','{$data[0][20]['value']}','{$data[0][21]['value']}','{$data[0][22]['value']}','{$data[0][23]['value']}','{$data[0][24]['value']}']}')");
 			if($query->execute()){
-					echo $id;
+					echo 1;
 			}
 			else{
 				$Data = $query->errorInfo();
-				echo 0;
+				print_r($data);
 			}
 		}	
 

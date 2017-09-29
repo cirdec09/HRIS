@@ -24,23 +24,23 @@ account = {
 				$("#display_employeeDetails").removeClass('hidden');
 				$("#display_error").addClass('hidden');
 			
-				if(Number(data[0][4]) == 1){
+				if(Number(data[0][5]) == 1){
 					status = "Active";
-					var actions = "<a data-cmd='deactivateEmployee' data-name='"+data[0][4]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Deactivate account' data-cmd='update'>"+
+					var actions = "<a data-cmd='deactivateEmployee' data-name='"+data[0][2]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Deactivate account' data-cmd='update'>"+
 								  "	<i class='mdi-action-lock-open right black-text'></i>"+
 								  "</a>";	
 				}
 				else{
 					status = "Deactivated";
-					var actions = "<a data-cmd='activateEmployee' data-name='"+data[0][4]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Activate account' data-cmd='update'>"+
+					var actions = "<a data-cmd='activateEmployee' data-name='"+data[0][2]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Activate account' data-cmd='update'>"+
 								  "	<i class='mdi-action-lock right black-text'></i>"+
 								  "</a>";	
 				}
 
 				content =  "<div id='profile-card' class='card'>"+
 						"    <div class='card-content'>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Name: "+data[0][1]+"</span>"+
-						"			<a data-cmd='updateEmployeeAccount' data-value='"+data[0][1]+"' data-name='"+data[0][1]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update email'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Name: "+data[0][2]+"</span>"+
+						"			<a data-cmd='updateEmployeeAccount' data-value='"+data[0][2]+"' data-name='"+data[0][1]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update email'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
@@ -48,8 +48,8 @@ account = {
 						"        <p><i class='mdi-action-info-outline cyan-text text-darken-2'></i> Status: "+status+actions+"</p>"+
 
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Username: "+data[0][2]+"</span>"+
-						"			<a data-cmd='updateEmployeeAccount' data-value='"+data[0][2]+"' data-name='"+data[0][1]+"' data-node='"+data[0][0]+"' data-prop='Username' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update uaername'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Username: "+data[0][3]+"</span>"+
+						"			<a data-cmd='updateEmployeeAccount' data-value='"+data[0][3]+"' data-name='"+data[0][1]+"' data-node='"+data[0][0]+"' data-prop='Username' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update uaername'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
@@ -71,39 +71,13 @@ account = {
 		});
 	},
 	details:function(){
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-departments');
-				data.done(function(data){
-					data = JSON.parse(data);
-						$(data).each(function(index,value){
-		            		data.length;
-		            		console.log(value[1]);
-						
-						content +="<option>"+value[1]+"</option>";
-					
-									
-		        		});
-		        		$("#department").html(content);
-						
-
-					});					
-
-
-
-
-
-
-
-
-
-
 		var content = "";
 		var bago = "";
 		var id = localStorage.getItem('myId');
 		var data = system.ajax('../assets/harmony/Process.php?get-employeeDetails',id);
 		data.done(function(data){
 			data = JSON.parse(data);
-			// console.log(data);
+			console.log(data);
 			if(data.length<=0){
 					bago = 	"<div class='col s12 m4 l4 input-field right'>"+
 							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
@@ -128,7 +102,7 @@ account = {
 								  "</a>";	
 				}
 
-				var profile = ((data[0][10] == "") || (data[0][10] == null))?"avatar.jpg":data[0][10];
+				var profile = ((data[10] == "") || (data[10] == null))?"avatar.jpg":data[10];
 				content = "<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
 						"        <img class='activator' src='../assets/images/s5.png' alt='user background'>"+
@@ -301,770 +275,909 @@ account = {
 				// employee.activate();
 				// employee.update();
 				// employee.updatePicture();
+			}
+		});
 
-
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-family',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
-
-						content = "<div id='profile-card' class='card'>"+
-								"    <div class='card-content'>"+
-								"		<h5>Family Background</h5>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-account-circle cyan-text text-darken-2'></i> Spouse's Surename: "+data[0][1]+"</span>"+
-								"			<a data-value='"+data[0][1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i> First Name: "+data[0][2]+"</span>"+
-								"			<a data-value='"+data[0][2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i> Middle Name: "+data[0][3]+"</span>"+
-								"			<a data-value='"+data[0][3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-work cyan-text text-darken-2'></i> Occupation: "+data[0][4]+"</span>"+
-								"			<a data-value='"+data[0][4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Occupation' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Occupation'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Employer/Bus Name: "+data[0][5]+"</span>"+
-								"			<a data-value='"+data[0][5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Employer/Bus Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-store cyan-text text-darken-2'></i> Business Address: "+data[0][6]+"</span>"+
-								"			<a data-value='"+data[0][6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Business Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Business Address'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Telephone Number: "+data[0][7]+"</span>"+
-								"			<a data-value='"+data[0][7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Telephone Number'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Father's surname: "+data[0][8]+"</span>"+
-								"			<a data-value='"+data[0][8]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> First Name: "+data[0][9]+"</span>"+
-								"			<a data-value='"+data[0][9]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Middle Name: "+data[0][10]+"</span>"+
-								"			<a data-value='"+data[0][10]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Mother's surename: "+data[0][11]+"</span>"+
-								"			<a data-value='"+data[0][11]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> First Name: "+data[0][12]+"</span>"+
-								"			<a data-value='"+data[0][12]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Middle Name: "+data[0][13]+"</span>"+
-								"			<a data-value='"+data[0][13]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"    </div>"+
-								"</div>";
-						$("#family_background").html(content);
-				});
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-family',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
 				
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-child',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
 
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
+				content = "<div id='profile-card' class='card'>"+
+						"    <div class='card-content'>"+
+						"		<h5>Family Background</h5>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-account-circle cyan-text text-darken-2'></i> Spouse's Surename: "+data[0][1]+"</span>"+
+						"			<a data-value='"+data[0][1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i> First Name: "+data[0][2]+"</span>"+
+						"			<a data-value='"+data[0][2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i> Middle Name: "+data[0][3]+"</span>"+
+						"			<a data-value='"+data[0][3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-work cyan-text text-darken-2'></i> Occupation: "+data[0][4]+"</span>"+
+						"			<a data-value='"+data[0][4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Occupation' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Occupation'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Employer/Bus Name: "+data[0][5]+"</span>"+
+						"			<a data-value='"+data[0][5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Employer/Bus Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-store cyan-text text-darken-2'></i> Business Address: "+data[0][6]+"</span>"+
+						"			<a data-value='"+data[0][6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Business Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Business Address'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Telephone Number: "+data[0][7]+"</span>"+
+						"			<a data-value='"+data[0][7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Telephone Number'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Father's surname: "+data[0][8]+"</span>"+
+						"			<a data-value='"+data[0][8]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> First Name: "+data[0][9]+"</span>"+
+						"			<a data-value='"+data[0][9]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Middle Name: "+data[0][10]+"</span>"+
+						"			<a data-value='"+data[0][10]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Mother's surename: "+data[0][11]+"</span>"+
+						"			<a data-value='"+data[0][11]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> First Name: "+data[0][12]+"</span>"+
+						"			<a data-value='"+data[0][12]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Middle Name: "+data[0][13]+"</span>"+
+						"			<a data-value='"+data[0][13]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"    </div>"+
+						"</div>";
+				$("#family_background").html(content);
 
-						content += "<div id='profile-card' class='card'>"+
-									"   <div class='card-content'>"+
-									"		<h5>Child</h5>";
-
-						$(data).each(function(index,value){
-		            		data.length;
-		            		// console.log(value);
-						
-						content +=	"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Name Of Child: "+value[2]+"</span>"+
-									"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name Of Child' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text' data-cmd='value'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-cake cyan-text text-darken-2'></i> Date Of Birth: "+value[3]+"</span>"+
-									"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Birthday' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div></br>";
-									
-		        		});
-
-		        		content += "<a class='btn waves-effect waves-light orange left' data-cmd='add_child'>New</a></br></br>"+
-									"</div>"+
-									"</div>";
-		        		
-						$("#childs").html(content);
-
-						// employee.deactivate();
-						// employee.activate();
-						// employee.update();
-						// employee.updatePicture();
-
-					$("a[data-cmd='add_child']").on('click',function(){
-						var data = system.xml("pages.xml");
-						$(data.responseText).find("addChild").each(function(i,content){
-							console.log("Child_Background");
-							$("#modal .modal-content").html(content);
-							$('#modal').openModal('show');		
-						    $("select").material_select();
-
-							$("#form_addAnak").validate({
-							    rules: {
-							    	field_child: {maxlength: 50},
-							    	field_child_dob: {maxlength: 50,checkDate:true},
-							    },
-							    errorElement : 'div',
-							    errorPlacement: function(error, element) {
-									var placement = $(element).data('error');
-									if(placement){
-										$(placement).append(error)
-									} 
-									else{
-										error.insertAfter(element);
-									}
-								},
-								submitHandler: function (form) {
-									var _form = $(form).serializeArray();
-									var data = system.ajax('../assets/harmony/Process.php?set-newChild',[_form,id]);
-									data.done(function(data){
-										console.log(_form);
-										console.log(data);
-										if(data == 1){
-											if(data.responseText != ""){
-												Materialize.toast('Saved.',4000);
-												system.clearForm();
-										    	// $(location).attr('href',"#cmd=index;content=focusClient");
-										    	App.handleLoadPage("#cmd=index;content=focusClient;"+id);			
-											}
-										}
-										else{
-											Materialize.toast('Cannot process request.',4000);
-										}
-									});
-							    }
-							});
-						});
-						$("i[data-cmd='exit_personal']").on('click',function(){
-							$('#modal').closeModal();
-							$("#modal .modal-content").html("");
-							$('.lean-overlay').remove();
-						});
-					});
-				});
-
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-education',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
-			
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
-
-						content = "<div id='profile-card' class='card'>"+
-								"    <div class='card-content'>"+
-								"		<h5>Educational Background</h5>"+
-								"		 <div class='divider'></div></br>"+
-								"		<h5>Elementary Level</h5>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][1]+"</span>"+
-								"			<a data-value='"+data[0][1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][2]+"</span>"+
-								"			<a data-value='"+data[0][2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Gender' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][3]+"</span>"+
-								"			<a data-value='"+data[0][3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][4]+"</span>"+
-								"			<a data-value='"+data[0][4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Occupation'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][5]+"</span>"+
-								"			<a data-value='"+data[0][5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][6]+"</span>"+
-								"			<a data-value='"+data[0][6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div></br>"+
-								"		<h5>Secondary Level</h5>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][7]+"</span>"+
-								"			<a data-value='"+data[0][7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][8]+"</span>"+
-								"			<a data-value='"+data[0][8]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][9]+"</span>"+
-								"			<a data-value='"+data[0][9]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][10]+"</span>"+
-								"			<a data-value='"+data[0][10]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][11]+"</span>"+
-								"			<a data-value='"+data[0][11]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][12]+"</span>"+
-								"			<a data-value='"+data[0][12]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div></br>"+
-								"		<h5>Vocational/Trade Course</h5>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][13]+"</span>"+
-								"			<a data-value='"+data[0][13]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i>Degree Course: "+data[0][14]+"</span>"+
-								"			<a data-value='"+data[0][14]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i>Year Graduated: "+data[0][15]+"</span>"+
-								"			<a data-value='"+data[0][15]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][16]+"</span>"+
-								"			<a data-value='"+data[0][16]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][17]+"</span>"+
-								"			<a data-value='"+data[0][17]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"		 <div class='divider'></div>"+
-								"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][18]+"</span>"+
-								"			<a data-value='"+data[0][18]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-								"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-								"			</a>"+
-								"		 </p>"+
-								"    </div>"+
-								"</div>";
-						$("#educational_background").html(content);
-
-						// employee.deactivate();
-						// employee.activate();
-						// employee.update();
-						// employee.updatePicture();
-				});
-
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-college',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
-					
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
-
-						content += "<div id='profile-card' class='card'>"+
-									"   <div class='card-content'>"+
-									"		<h5>College Level</h5>";
-
-						$(data).each(function(index,value){
-		            		data.length;
-		            		// console.log(value);
-						
-						content +=	"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+value[1]+"</span>"+
-									"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+value[2]+"</span>"+
-									"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+value[3]+"</span>"+
-									"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+value[4]+"</span>"+
-									"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[5]+"</span>"+
-									"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[6]+"</span>"+
-									"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div></br></br>";
-									"</div>"+
-									"</div>";
-		        		});
-		        		
-						$("#college_level").html(content);
-
-						// employee.deactivate();
-						// employee.activate();
-						// employee.update();
-						// employee.updatePicture();
-				});
-
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-graduate',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
-
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
-
-						content += "<div id='profile-card' class='card'>"+
-									"   <div class='card-content'>"+
-									"		<h5>Graduate Studies</h5>";
-
-						$(data).each(function(index,value){
-		            		data.length;
-		            		// console.log(value);
-						
-						content +=	"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+value[1]+"</span>"+
-									"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+value[2]+"</span>"+
-									"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+value[3]+"</span>"+
-									"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+value[4]+"</span>"+
-									"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[5]+"</span>"+
-									"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[6]+"</span>"+
-									"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div></br></br>";
-									"</div>"+
-									"</div>";
-		        		});
-		        		
-						$("#vocational").html(content);
-
-						// employee.deactivate();
-						// employee.activate();
-						// employee.update();
-						// employee.updatePicture();
-				});
-
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-civil',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
-			
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
-
-						content += "<div id='profile-card' class='card'>"+
-									"   <div class='card-content'>"+
-									"		<h5>Civil Service Eligibility</h5>";
-
-						$(data).each(function(index,value){
-		            		data.length;
-		            		// console.log(value);
-						
-						content +=	"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Career Service: "+value[1]+"</span>"+
-									"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Rating: "+value[2]+"</span>"+
-									"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Date Of Examinantion: "+value[3]+"</span>"+
-									"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Place Of Examination: "+value[4]+"</span>"+
-									"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Number: "+value[5]+"</span>"+
-									"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Date Of Release: "+value[6]+"</span>"+
-									"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div></br></br>";
-									"</div>"+
-									"</div>";
-		        		});
-		        		
-						$("#vocational").html(content);
-
-						// employee.deactivate();
-						// employee.activate();
-						// employee.update();
-						// employee.updatePicture();
-				});
-
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-work',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
-			
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
-
-						content += "<div id='profile-card' class='card'>"+
-									"   <div class='card-content'>"+
-									"		<h5>Work Experience</h5>";
-
-						$(data).each(function(index,value){
-		            		data.length;
-		            		// console.log(value);
-						
-						content +=	"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
-									"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[2]+"</span>"+
-									"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[3]+"</span>"+
-									"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[4]+"</span>"+
-									"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Salary Grade: "+value[5]+"</span>"+
-									"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Status Of Appointment: "+value[6]+"</span>"+
-									"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Gov't Service: "+value[7]+"</span>"+
-									"			<a data-value='"+value[7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div></br></br>";
-		        		});
-
-						content += "<a class='btn waves-effect waves-light orange left' data-cmd=''>New</a></br></br>"+
-									"</div>"+
-									"</div>";
-		        		
-						$("#work").html(content);
-
-						// employee.deactivate();
-						// employee.activate();
-						// employee.update();
-						// employee.updatePicture();
-				});
-
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-voluntary',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
+			}
+		});
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-child',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
 				
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
 
-						content += "<div id='profile-card' class='card'>"+
-									"   <div class='card-content'>"+
-									"		<h5>Voluntary Work</h5>";
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Child</h5>";
 
-						$(data).each(function(index,value){
-		            		data.length;
-		            		// console.log(value);
-						
-						content +=	"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
-									"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[2]+"</span>"+
-									"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[3]+"</span>"+
-									"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[4]+"</span>"+
-									"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div></br></br>";
-		        		});
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Name Of Child: "+value[2]+"</span>"+
+							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name Of Child' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text' data-cmd='value'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-cake cyan-text text-darken-2'></i> Date Of Birth: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Birthday' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div></br>";
+							
+        		});
 
-		        		content += "<a class='btn waves-effect waves-light orange left' data-cmd=''>New</a></br></br>"+
-									"</div>"+
-									"</div>";
+        		content += "<a class='btn waves-effect waves-light orange left' data-cmd='add_child'>New</a></br></br>"+
+							"</div>"+
+							"</div>";
+        		
+				$("#childs").html(content);
 
-		        		
-						$("#voluntary").html(content);
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
 
-						// employee.deactivate();
-						// employee.activate();
-						// employee.update();
-						// employee.updatePicture();
-				});
+		$("a[data-cmd='add_child']").on('click',function(){
+					// var data = system.xml("pages.xml");
+					// $(data.responseText).find("addChild").each(function(i,content){
+					// 	console.log("Child_Background");
+					// 	$("#modal .modal-content").html(content);
+					// 	$('#modal').openModal('show');		
+					//     $("select").material_select();
 
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-training',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
-					
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
-
-						content += "<div id='profile-card' class='card'>"+
-									"   <div class='card-content'>"+
-									"		<h5>Training Programs</h5>";
-
-						$(data).each(function(index,value){
-		            		data.length;
-		            		// console.log(value);
-						
-						content +=	"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
-									"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[2]+"</span>"+
-									"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[3]+"</span>"+
-									"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[4]+"</span>"+
-									"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div></br></br>";
-									"</div>"+
-									"</div>";
-		        		});
-		        		
-						$("#training").html(content);
-
-						// employee.deactivate();
-						// employee.activate();
-						// employee.update();
-						// employee.updatePicture();
-				});
-
-				var content="";
-				var data = system.ajax('../assets/harmony/Process.php?get-other',id);
-				data.done(function(data){
-					data = JSON.parse(data);
-					// console.log(data);
-
-						$("#display_employeeDetails").removeClass('hidden');
-						$("#display_error").addClass('hidden');
-
-						content += "<div id='profile-card' class='card'>"+
-									"   <div class='card-content'>"+
-									"		<h5>Other Information</h5>";
-
-						$(data).each(function(index,value){
-		            		data.length;
-		            		// console.log(value);
-						
-						content +=	"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Special Skills/Hobbies: "+value[1]+"</span>"+
-									"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Non-Academic Distinctions/Recognition: "+value[2]+"</span>"+
-									"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div>"+
-									"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Membership in Association/Organization: "+value[3]+"</span>"+
-									"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-									"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-									"			</a>"+
-									"		 </p>"+
-									"		 <div class='divider'></div></br></br>";
-									"</div>"+
-									"</div>";
-		        		});
-		        		
-						$("#other").html(content);
-
-						// employee.deactivate();
-						// employee.activate();
-						// employee.update();
-						// employee.updatePicture();
+					// 	$("#form_addAnak").validate({
+					// 	    rules: {
+					// 	    	field_child: {maxlength: 50},
+					// 	    	field_child_dob: {maxlength: 50,checkDate:true},
+					// 	    },
+					// 	    errorElement : 'div',
+					// 	    errorPlacement: function(error, element) {
+					// 			var placement = $(element).data('error');
+					// 			if(placement){
+					// 				$(placement).append(error)
+					// 			} 
+					// 			else{
+					// 				error.insertAfter(element);
+					// 			}
+					// 		},
+					// 		submitHandler: function (form) {
+					// 			var _form = $(form).serializeArray();
+					// 			var data = system.ajax('../assets/harmony/Process.php?set-newChild',[_form,id]);
+					// 			data.done(function(data){
+					// 				console.log(_form);
+					// 				console.log(data);
+					// 				if(data == 1){
+					// 					if(data.responseText != ""){
+					// 						Materialize.toast('Saved.',4000);
+					// 						system.clearForm();
+					// 				    	// $(location).attr('href',"#cmd=index;content=focusClient");
+					// 				    	App.handleLoadPage("#cmd=index;content=focusClient;"+id);			
+					// 					}
+					// 				}
+					// 				else{
+					// 					Materialize.toast('Cannot process request.',4000);
+					// 				}
+					// 			});
+					// 	    }
+					// 	});
+					// });
+					// $("i[data-cmd='exit_personal']").on('click',function(){
+					// 	$('#modal').closeModal();
+					// 	$("#modal .modal-content").html("");
+					// 	$('.lean-overlay').remove();
+					// });
 				});
 			}
-			$("a[data-cmd='add_pds']").on('click',function(){
-				var data = system.xml("pages.xml");
+		});
+
+		// var content="";
+		// var data = system.ajax('../assets/harmony/Process.php?get-child',id);
+		// data.done(function(data){
+		// 	data = JSON.parse(data);
+		// 	// console.log(data);
+		// 	if(data.length<=0){
+		// 		var data = system.xml("pages.xml");
+		// 		$(data.responseText).find("errorContent").each(function(i,content){
+		// 			$("#display_error").html(content);
+		// 		});
+		// 	}
+		// 	else{
+		// 		$("#display_employeeDetails").removeClass('hidden');
+		// 		$("#display_error").addClass('hidden');
+
+		// 		content += "<div id='profile-card' class='card'>"+
+		// 					"   <div class='card-content'>"+
+		// 					"		<h3><b><center>PERSONAL DATA SHEET</center></b></h3>"+
+		// 					"		<h5 class='left'>Print legibly. Mark appropriate boxes with '/' <span style='padding-left:30%;'>1. CS ID No.<input /></span></h5>"+
+		// 					"		<h5 class='left'>l. PERSONAL INFORMATION</h5>"+
+		// 					"</div>"+
+		// 					"</div>";
+        		
+		// 		$("#printme").html(content);
+
+		// 		employee.deactivate();
+		// 		employee.activate();
+		// 		employee.update();
+		// 		employee.updatePicture();
+
+		// 		$("a[data-cmd='print']").on('click',function(){
+		// 			$("#printme").print();
+		// 		});
+		// 		// $("i[data-cmd='value']").on('click',function(){
+		// 		// 	console.log(data);
+		// 		// });
+		// 	}
+		// });
+
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-education',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
+				
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content = "<div id='profile-card' class='card'>"+
+						"    <div class='card-content'>"+
+						"		<h5>Educational Background</h5>"+
+						"		 <div class='divider'></div></br>"+
+						"		<h5>Elementary Level</h5>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][1]+"</span>"+
+						"			<a data-value='"+data[0][1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][2]+"</span>"+
+						"			<a data-value='"+data[0][2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Gender' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][3]+"</span>"+
+						"			<a data-value='"+data[0][3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][4]+"</span>"+
+						"			<a data-value='"+data[0][4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Occupation'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][5]+"</span>"+
+						"			<a data-value='"+data[0][5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][6]+"</span>"+
+						"			<a data-value='"+data[0][6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div></br>"+
+						"		<h5>Secondary Level</h5>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][7]+"</span>"+
+						"			<a data-value='"+data[0][7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][8]+"</span>"+
+						"			<a data-value='"+data[0][8]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][9]+"</span>"+
+						"			<a data-value='"+data[0][9]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][10]+"</span>"+
+						"			<a data-value='"+data[0][10]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][11]+"</span>"+
+						"			<a data-value='"+data[0][11]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][12]+"</span>"+
+						"			<a data-value='"+data[0][12]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div></br>"+
+						"		<h5>Vocational/Trade Course</h5>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][13]+"</span>"+
+						"			<a data-value='"+data[0][13]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i>Degree Course: "+data[0][14]+"</span>"+
+						"			<a data-value='"+data[0][14]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i>Year Graduated: "+data[0][15]+"</span>"+
+						"			<a data-value='"+data[0][15]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][16]+"</span>"+
+						"			<a data-value='"+data[0][16]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][17]+"</span>"+
+						"			<a data-value='"+data[0][17]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][18]+"</span>"+
+						"			<a data-value='"+data[0][18]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"    </div>"+
+						"</div>";
+				$("#educational_background").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
+			}
+		});
+		
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-college',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
+				
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>College Level</h5>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+value[1]+"</span>"+
+							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+value[2]+"</span>"+
+							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+value[4]+"</span>"+
+							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[5]+"</span>"+
+							"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div></br></br>";
+							"</div>"+
+							"</div>";
+        		});
+        		
+				$("#college_level").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
+			}
+		});
+
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-graduate',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
+				
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Graduate Studies</h5>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+value[1]+"</span>"+
+							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+value[2]+"</span>"+
+							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+value[4]+"</span>"+
+							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[5]+"</span>"+
+							"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div></br></br>";
+							"</div>"+
+							"</div>";
+        		});
+        		
+				$("#vocational").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
+			}
+		});
+
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-civil',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
+				
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Civil Service Eligibility</h5>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Career Service: "+value[1]+"</span>"+
+							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Rating: "+value[2]+"</span>"+
+							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Date Of Examinantion: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Place Of Examination: "+value[4]+"</span>"+
+							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Number: "+value[5]+"</span>"+
+							"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Date Of Release: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div></br></br>";
+							"</div>"+
+							"</div>";
+        		});
+        		
+				$("#vocational").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
+			}
+		});
+
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-work',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
+				
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Work Experience</h5>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
+							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[2]+"</span>"+
+							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[4]+"</span>"+
+							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Salary Grade: "+value[5]+"</span>"+
+							"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Status Of Appointment: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Gov't Service: "+value[7]+"</span>"+
+							"			<a data-value='"+value[7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div></br></br>";
+        		});
+
+				content += "<a class='btn waves-effect waves-light orange left' data-cmd=''>New</a></br></br>"+
+							"</div>"+
+							"</div>";
+        		
+				$("#work").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
+			}
+		});
+
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-voluntary',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
+				
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Voluntary Work</h5>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
+							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[2]+"</span>"+
+							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[4]+"</span>"+
+							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div></br></br>";
+        		});
+
+        		content += "<a class='btn waves-effect waves-light orange left' data-cmd=''>New</a></br></br>"+
+							"</div>"+
+							"</div>";
+
+        		
+				$("#voluntary").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
+			}
+		});
+
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-training',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
+				
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Training Programs</h5>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
+							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[2]+"</span>"+
+							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[4]+"</span>"+
+							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div></br></br>";
+							"</div>"+
+							"</div>";
+        		});
+        		
+				$("#training").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
+			}
+		});
+
+		var content="";
+		var bago="";
+		var data = system.ajax('../assets/harmony/Process.php?get-other',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_pds'>Add</a>"+
+							"</div>";
+				
+					$("#display_error").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Other Information</h5>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Special Skills/Hobbies: "+value[1]+"</span>"+
+							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Non-Academic Distinctions/Recognition: "+value[2]+"</span>"+
+							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Membership in Association/Organization: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div></br></br>";
+							"</div>"+
+							"</div>";
+        		});
+        		
+				$("#other").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				// employee.update();
+				// employee.updatePicture();
+			}
+		});
+
+		$("a[data-cmd='add_pds']").on('click',function(){
+				account.addPersonalinfo();
+			});   		
+	},
+	addPersonalinfo:function(){
+		var data = system.xml("pages.xml");
 				$(data.responseText).find("addEmployees").each(function(i,content){
 					$("#modal .modal-content").html(content);
 					$('#modal').openModal('show');		
 				    $("select").material_select();
 
-					$("#form_addEmployee").validate({
+					$("#form_addEmployees").validate({
 					    rules: {
 					  //   	field_fname: {required: true,maxlength: 50},
 					  //       field_gname: {required: true,maxlength: 50},
@@ -1105,21 +1218,24 @@ account = {
 						submitHandler: function (form) {
 							var _form = $(form).serializeArray();
 							var id = localStorage.getItem('myId');
-							var data = system.ajax('../assets/harmony/Process.php?set-newEmployees',[_form,id]);
+							var company_id = localStorage.getItem('company_id');
+							var data = system.ajax('../assets/harmony/Process.php?set-newEmployees',[_form,id,company_id]);
 							data.done(function(data){
-								console.log(data);
+								// console.log(data);
+
 								if(data == 0){
-									console.log(data);
+									// console.log(data);
 									Materialize.toast('Cannot process request.',4000);
 								}
 								else{
 									if(data.responseText != ""){
 										Materialize.toast('Saved.',4000);
+										console.log(data);
 										system.clearForm();
-										localStorage.setItem('id',data);
-								    	// $(location).attr('href',"#cmd=index;content=focusClient");
+										// localStorage.setItem('id',);
+								    	// $(location).attr(s'href',"#cmd=index;content=focusClient");
 								    	App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-								    	employee.addFamily(id);			
+								    	account.addFamily();			
 									}
 								}
 							});
@@ -1130,7 +1246,60 @@ account = {
 					$('#modal').closeModal();
 					$("#modal .modal-content").html("");
 				});
+	},
+	addFamily:function(){
+		var data = system.xml("pages.xml");
+		$(data.responseText).find("addFamily").each(function(i,content){
+			console.log("Family_Background");
+			$("#modal .modal-content").html(content);
+			$('#modal').openModal('show');		
+		    $("select").material_select();
+
+			$("#form_addFamily").validate({
+			    rules: {
+			    	field_f_surename: {required: true,maxlength: 50},
+			    	field_f_firstname: {required: true,maxlength: 50},
+			    	field_f_middlename: {required: true,maxlength: 50},
+			    	field_m_surename: {required: true,maxlength: 50},
+			    	field_m_firstname: {required: true,maxlength: 50},
+			    	field_m_middlename: {required: true,maxlength: 50},
+			    },
+			    errorElement : 'div',
+			    errorPlacement: function(error, element) {
+					var placement = $(element).data('error');
+					if(placement){
+						$(placement).append(error)
+					} 
+					else{
+						error.insertAfter(element);
+					}
+				},
+				submitHandler: function (form) {
+					var _form = $(form).serializeArray();
+					var id = localStorage.getItem('myId');
+					var data = system.ajax('../assets/harmony/Process.php?set-newFamily',[_form,id]);
+					data.done(function(data){
+						console.log(data);
+						if(data == 1){
+							if(data.responseText != ""){
+								Materialize.toast('Saved.',4000);
+								system.clearForm();
+								// employee.addChild(id);
+						    	// $(location).attr('href',"#cmd=index;content=focusClient");
+						    	App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);			
+							}
+						}
+						else{
+							Materialize.toast('Cannot process request.',4000);
+						}
+					});
+			    }
 			});
+		});
+		$("i[data-cmd='exit_personal']").on('click',function(){
+			$('#modal').closeModal();
+			$("#modal .modal-content").html("");
+			$('.lean-overlay').remove();
 		});
 	},
 	deactivate:function(){

@@ -2,10 +2,8 @@
 	<div class="container">
 		<div class="row">
 			<div class="col s12 m8 l8">
-				<h5 class="breadcrumbs-title">Departments</h5>
+				<h5 class="breadcrumbs-title">Administrator Accounts</h5>
 				<ol class="breadcrumbs">
-					<!-- <li><a href="../account/">Dashboard</a></li>
-					<li class="active">Departments</li> -->
 				</ol>
 			</div>
 		</div>
@@ -14,7 +12,9 @@
     <div class="container" id='scroll' style="overflow: hidden;">
         <div class="section">
 			<div class="row margin">
-				<div class='col s12 m12 l12' id="display_clientList"></div>
+				<div class='col s6 m6 l12'>
+					<div id='display_account'></div>
+				</div>
 			</div>
         </div>
     </div>
@@ -25,7 +25,13 @@
 		suppressScrollX: true,
 		wheelPropagation:true
 	});
-	
-	employee_Account.ini();
+
+    $("select").material_select();
+    $(".dropdown-button").dropdown();
     $('.tooltipped').tooltip({delay: 50});
+
+    var hash = window.location.hash;
+    var hash = hash.split(';');
+    var id = hash[2];
+	employee_Account.accounts(id);
 </script>

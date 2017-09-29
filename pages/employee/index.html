@@ -72,8 +72,8 @@
     var myId = account.get();
     myId.done(function(myId){
         myId = JSON.parse(myId);
-        console.log(myId[0][0]);
         localStorage.setItem('myId',myId[0][0]);
+        localStorage.setItem('company_id',myId[0][1]);
     });
         
 </script>
