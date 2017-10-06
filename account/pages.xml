@@ -593,7 +593,7 @@
 							<p>Account Information</p>
 							<div class='divider'></div><br/>
 						</div>
-						<div class='input-field col s12'>
+						<div class='input-field col s6'>
 							<label for='field_position'>Position: </label>
 				            <input id='field_position' type='text' name='field_position' data-error='.error_position'>
 							<div class='error_position'></div>	
@@ -871,47 +871,6 @@
 								<div class='error_s_scholar'></div>	
 							</div>
 						</div>
-						<div class='divider'></div></br>
-						<div class='input-field col s12'>
-							<p>Vocational/Trade Course Level</p>
-							<div class='divider'></div>
-						</div>
-						<div class='row'>
-							<div class='input-field col s6'>
-								<label for='field_v_name'>Name Of School(Write in full): </label>
-					            <input id='field_v_name' type='text' name='field_v_name' data-error='.error_v_name'>
-								<div class='error_v_name'></div>	
-							</div>
-							<div class='input-field col s6'>
-								<label for='field_v_degree'>Degree Course(Write in full): </label>
-					            <input id='field_v_degree' type='text' name='field_v_degree' data-error='.error_v_degree'>
-								<div class='error_v_degree'></div>	
-							</div>
-						</div>
-						<div class='row'>
-							<div class='input-field col s5'>
-								<label for='field_v_year'>Year Graduated(If graduated): </label>
-					            <input id='field_v_year' type='text' name='field_v_year' data-error='.error_v_year'>
-								<div class='error_v_year'></div>	
-							</div>
-							<div class='input-field col s7'>
-								<label for='field_v_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
-					            <input id='field_v_grade' type='text' name='field_v_grade' data-error='.error_v_grade'>
-								<div class='error_v_grade'></div>	
-							</div>
-						</div>
-						<div class='row'>
-							<div class='input-field col s6'>
-								<label for='field_v_dates'>Inclusive Dates Of Attendance(From-To): </label>
-					            <input id='field_v_dates' type='text' name='field_v_dates' data-error='.error_v_dates'>
-								<div class='error_v_dates'></div>	
-							</div>
-							<div class='input-field col s6'>
-								<label for='field_v_scholar'>Scholarship/Academic Honors Recieved: </label>
-					            <input id='field_v_scholar' type='text' name='field_v_scholar' data-error='.error_v_scholar'>
-								<div class='error_v_scholar'></div>	
-							</div>
-						</div>
 					</div>
 					<div class='row left'>
 						<div class='input-field col s12'>
@@ -985,9 +944,190 @@
 		</form>
 		<div class='divider'></div>
 		<div class='col s12 m4 l4 input-field right'>
-			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_graduate'>Next</a></p>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_vocational'>Next</a></p>
 		</div>
 	</addCollege>
+
+	<addColleges>
+		<form id='form_addColleges' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>College Level<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_name'>Name Of School(Write in full): </label>
+					            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
+								<div class='error_name'></div>	
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_degree'>Degree Course(Write in full): </label>
+					            <input id='field_degree' type='text' name='field_degree' data-error='.error_degree'>
+								<div class='error_degree'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s5'>
+								<label for='field_year'>Year Graduated(If graduated): </label>
+					            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+								<div class='error_year'></div>	
+							</div>
+							<div class='input-field col s7'>
+								<label for='field_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
+					            <input id='field_grade' type='text' name='field_grade' data-error='.error_grade'>
+								<div class='error_grade'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
+					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
+								<div class='error_dates'></div>	
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
+					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
+								<div class='error_scholar'></div>	
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addColleges>
+
+	<addVocational>
+		<form id='form_addVocational' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Educational Background<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='input-field col s12'>
+							<p>Vocational/Trade Course Level</p>
+							<div class='divider'></div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_name'>Name Of School(Write in full): </label>
+					            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
+								<div class='error_name'></div>	
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_degree'>Degree Course(Write in full): </label>
+					            <input id='field_degree' type='text' name='field_degree' data-error='.error_degree'>
+								<div class='error_degree'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s5'>
+								<label for='field_year'>Year Graduated(If graduated): </label>
+					            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+								<div class='error_year'></div>	
+							</div>
+							<div class='input-field col s7'>
+								<label for='field_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
+					            <input id='field_grade' type='text' name='field_grade' data-error='.error_grade'>
+								<div class='error_grade'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
+					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
+								<div class='error_dates'></div>	
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
+					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
+								<div class='error_scholar'></div>	
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_graduate'>Next</a></p>
+		</div>
+	</addVocational>
+
+	<addVocationals>
+		<form id='form_addVocationals' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Vocational/Trade Course Level<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_name'>Name Of School(Write in full): </label>
+					            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
+								<div class='error_name'></div>	
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_degree'>Degree Course(Write in full): </label>
+					            <input id='field_degree' type='text' name='field_degree' data-error='.error_degree'>
+								<div class='error_degree'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s5'>
+								<label for='field_year'>Year Graduated(If graduated): </label>
+					            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+								<div class='error_year'></div>	
+							</div>
+							<div class='input-field col s7'>
+								<label for='field_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
+					            <input id='field_grade' type='text' name='field_grade' data-error='.error_grade'>
+								<div class='error_grade'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
+					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
+								<div class='error_dates'></div>	
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
+					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
+								<div class='error_scholar'></div>	
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addVocationals>
 
 	<addGraduate>
 		<form id='form_addGraduate' class='formValidate' method='get' action='' novalidate='novalidate'>
@@ -1055,6 +1195,64 @@
 		</div>
 	</addGraduate>
 
+	<addGraduates>
+		<form id='form_addGraduates' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Graduate Studies<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_name'>Name Of School(Write in full): </label>
+					            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
+								<div class='error_name'></div>	
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_degree'>Degree Course(Write in full): </label>
+					            <input id='field_degree' type='text' name='field_degree' data-error='.error_degree'>
+								<div class='error_degree'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s5'>
+								<label for='field_year'>Year Graduated(If graduated): </label>
+					            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+								<div class='error_year'></div>	
+							</div>
+							<div class='input-field col s7'>
+								<label for='field_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
+					            <input id='field_grade' type='text' name='field_grade' data-error='.error_grade'>
+								<div class='error_grade'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
+					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
+								<div class='error_dates'></div>	
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
+					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
+								<div class='error_scholar'></div>	
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addGraduates>
+
 	<addCivilService>
 		<form id='form_addCivil' class='formValidate' method='get' action='' novalidate='novalidate'>
 			<div class='row'>
@@ -1099,11 +1297,13 @@
 						            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
 									<div class='error_date'></div>	
 								</div>
-								<div class='input-field col s4 left'>
-									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
-								</div>
 							</div>
-							
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 						</div>
 					</div>
 				</div>
@@ -1114,6 +1314,65 @@
 			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_work'>Next</a></p>
 		</div>
 	</addCivilService>
+
+	<addCivilServices>
+		<form id='form_addCivils' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Civil Service Eligibility<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_career'>Career Service/RA 1080(Board/Bar) Under Special Laws/CES/CSEE: </label>
+						            <input id='field_career' type='text' name='field_career' data-error='.error_career'>
+									<div class='error_career'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_rating'>Rating: </label>
+						            <input id='field_rating' type='text' name='field_rating' data-error='.error_rating'>
+									<div class='error_rating'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_doe'>Date Of Examination/Conferment: </label>
+						            <input id='field_doe' type='text' name='field_doe' data-error='.error_doe'>
+									<div class='error_doe'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_place'>Place of Exmination: </label>
+						            <input id='field_place' type='text' name='field_place' data-error='.error_place'>
+									<div class='error_place'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_licence'>Licence Number(if applicable): </label>
+						            <input id='field_licence' type='text' name='field_licence' data-error='.error_licence'>
+									<div class='error_licence'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_date'>Date Of Release Of Licence: </label>
+						            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
+									<div class='error_date'></div>	
+								</div>
+								<div class='divider'></div></br>
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addCivilServices>
 
 	<addWork>
 		<form id='form_addWork' class='formValidate' method='get' action='' novalidate='novalidate'>
@@ -1167,9 +1426,12 @@
 									<div class='error_govt'></div>	
 								</div>
 							</div>
-							<div class='input-field col s4 left'>
-								<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
-							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 						</div>
 					</div>
 				</div>
@@ -1181,8 +1443,125 @@
 		</div>
 	</addWork>
 
+	<addWorks>
+		<form id='form_addWorks' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Work Experience(Include private employment. Start from your current work)<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_to'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
+						            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+									<div class='error_to'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_position'>Position Title(Write in full): </label>
+						            <input id='field_position' type='text' name='field_position' data-error='.error_position'>
+									<div class='error_position'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_department'>Department/Agency/Office/Company: </label>
+						            <input id='field_department' type='text' name='field_department' data-error='.error_department'>
+									<div class='error_department'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_salary'>Monthly Salary: </label>
+						            <input id='field_salary' type='text' name='field_salary' data-error='.error_salary'>
+									<div class='error_salary'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s3'>
+									<label for='field_salary_grade'>Salary Grade and Step Step Increment(Format "00-0"): </label>
+						            <input id='field_salary_grade' type='text' name='field_salary_grade' data-error='.error_salary_grade'>
+									<div class='error_salary_grade'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_status'>Status Of Appointment: </label>
+						            <input id='field_status' type='text' name='field_status' data-error='.error_status'>
+									<div class='error_status'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_govt'>Gov't Service(Yes/No): </label>
+						            <input id='field_govt' type='text' name='field_govt' data-error='.error_govt'>
+									<div class='error_govt'></div>	
+								</div>
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addWorks>
+
 	<addVoluntary>
 		<form id='form_addVoluntary' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Voluntary Work Or Involvement In Civic/Non-Government/People/Voluntary Organization/s<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_name'>Name and Address of Organization: </label>
+						            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
+									<div class='error_name'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_from'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
+						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+									<div class='error_from'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_number'>Number Of Hours: </label>
+						            <input id='field_number' type='text' name='field_number' data-error='.error_number'>
+									<div class='error_number'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_position'>Position/Nature Of Work: </label>
+						            <input id='field_position' type='text' name='field_position' data-error='.error_position'>
+									<div class='error_position'></div>	
+								</div>
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_training'>Next</a></p>
+		</div>
+	</addVoluntary>
+
+	<addVoluntarys>
+		<form id='form_addVoluntarys' class='formValidate' method='get' action='' novalidate='novalidate'>
 			<div class='row'>
 				<div class='col offset-m1 offset-l1 s12 m10 l10'>
 					<!-- <h4 class="">New Employee</h4> -->
@@ -1220,18 +1599,73 @@
 								<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 							</div>
 						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addVoluntarys>
+
+	<addTraining>
+		<form id='form_addTraining' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Training Programs(Start from the most recent training.)<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_title'>Title Of Seminar/Conference/Workshop/Short Courses(write in full): </label>
+						            <input id='field_title' type='text' name='field_title' data-error='.error_title'>
+									<div class='error_title'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_from'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
+						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+									<div class='error_from'></div>	
+								</div>
+								
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_number'>Number Of Hours: </label>
+						            <input id='field_number' type='text' name='field_number' data-error='.error_number'>
+									<div class='error_number'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_conducted'>Conducted/Sponsored By(write  in full): </label>
+						            <input id='field_conducted' type='text' name='field_conducted' data-error='.error_conducted'>
+									<div class='error_conducted'></div>	
+								</div>
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</form>
 		<div class='divider'></div>
 		<div class='col s12 m4 l4 input-field right'>
-			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_training'>Next</a></p>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_skills'>Next</a></p>
 		</div>
-	</addVoluntary>
+	</addTraining>
 
-	<addTraining>
-		<form id='form_addTraining' class='formValidate' method='get' action='' novalidate='novalidate'>
+	<addTrainings>
+		<form id='form_addTrainings' class='formValidate' method='get' action='' novalidate='novalidate'>
 			<div class='row'>
 				<div class='col offset-m1 offset-l1 s12 m10 l10'>
 					<!-- <h4 class="">New Employee</h4> -->
@@ -1270,18 +1704,20 @@
 								<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 							</div>
 						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</form>
-		<div class='divider'></div>
-		<div class='col s12 m4 l4 input-field right'>
-			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_other'>Next</a></p>
-		</div>
-	</addTraining>
+	</addTrainings>
 
-	<addOther>
-		<form id='form_addOther' class='formValidate' method='get' action='' novalidate='novalidate'>
+	<addSkills>
+		<form id='form_addSkills' class='formValidate' method='get' action='' novalidate='novalidate'>
 			<div class='row'>
 				<div class='col offset-m1 offset-l1 s12 m10 l10'>
 					<!-- <h4 class="">New Employee</h4> -->
@@ -1292,36 +1728,145 @@
 						</div>
 						<div class='row'>
 							<div class='row'>
-								<div class='input-field col s12'>
+								<div class='input-field col s8'>
 									<label for='field_skills'>Special Skills/Hobbies: </label>
 						            <input id='field_skills' type='text' name='field_skills' data-error='.error_skills'>
 									<div class='error_skills'></div>	
 								</div>
-							</div>
-							<div class='row'>
-								<div class='input-field col s12'>
-									<label for='field_academic'>Non-Academic Distinctions/Recognition(write in full): </label>
-						            <input id='field_academic' type='text' name='field_academic' data-error='.error_academic'>
-									<div class='error_academic'></div>	
+								<div class='input-field col s4 left'>
+									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 								</div>
-							</div>
-							<div class='row'>
-								<div class='input-field col s12'>
-									<label for='field_membership'>Membership in Association/Organization(write in full): </label>
-						            <input id='field_membership' type='text' name='field_membership' data-error='.error_membership'>
-									<div class='error_membership'></div>	
-								</div>
-								
-							</div>
-							<div class='input-field col s4 left'>
-								<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</form>
-	</addOther>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_NonAcademic'>Next</a></p>
+		</div>
+	</addSkills>
+
+	<addSkillss>
+		<form id='form_addSkillss' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Other Information<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s10'>
+									<label for='field_skills'>Special Skills/Hobbies: </label>
+						            <input id='field_skills' type='text' name='field_skills' data-error='.error_skills'>
+									<div class='error_skills'></div>	
+								</div>
+								<div class='input-field col s2 left'>
+									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addSkillss>
+
+	<addNonAcademic>
+		<form id='form_addNonAcademic' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Other Information<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s10'>
+									<label for='field_non_academic'>Non-Academic Distinction/Recognition: </label>
+						            <input id='field_non_academic' type='text' name='field_non_academic' data-error='.error_non_academic'>
+									<div class='error_non_academic'></div>	
+								</div>
+								<div class='input-field col s2 left'>
+									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_Membership'>Next</a></p>
+		</div>
+	</addNonAcademic>
+
+	<addNonAcademics>
+		<form id='form_addNonAcademics' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Other Information<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s10'>
+									<label for='field_non_academic'>Non-Academic Distinction/Recognition: </label>
+						            <input id='field_non_academic' type='text' name='field_non_academic' data-error='.error_non_academic'>
+									<div class='error_non_academic'></div>	
+								</div>
+								<div class='input-field col s2 left'>
+									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+	</addNonAcademics>
+
+	<addMembership>
+		<form id='form_addMembership' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Other Information<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s10'>
+									<label for='field_association'>Membership in Association/Organization: </label>
+						            <input id='field_association' type='text' name='field_association' data-error='.error_association'>
+									<div class='error_association'></div>	
+								</div>
+								<div class='input-field col s2 left'>
+									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addMembership>
 
 	<addPoint>
 		<form id='form_addPoints' class='formValidate' method='get' action='' novalidate='novalidate'>

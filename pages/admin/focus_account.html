@@ -12,6 +12,9 @@
     <div class="container" id='scroll' style="overflow: hidden;">
         <div class="section">
 			<div class="row margin">
+				<div class='col s12 m4 l12 input-field right'>
+					<p><a class="btn waves-effect waves-light orange right" id="add_account">Add Account</a></p>
+				</div>	
 				<div class='col s6 m6 l12'>
 					<div id='display_account'></div>
 				</div>
@@ -34,4 +37,5 @@
     var hash = hash.split(';');
     var id = hash[2];
 	employee_Account.accounts(id);
+	employee_Account.add(id);
 </script>

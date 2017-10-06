@@ -198,7 +198,6 @@ $function = new DatabaseClasses;
 		if(isset($_GET['get-productDetails'])){
 			$data = $_POST['data'];
 			$query = $function->PDO(true,"SELECT * FROM tbl_product WHERE id = '{$data}'");
-
 			print_r(json_encode($query));
 		}
 
@@ -272,6 +271,12 @@ $function = new DatabaseClasses;
 			print_r(json_encode($query));
 		}
 
+		if(isset($_GET['get-vocational'])){
+			$data = $_POST['data'];
+			$query = $function->PDO(true,"SELECT * FROM tbl_vocational WHERE id = '{$data}'");
+			print_r(json_encode($query));
+		}
+
 		if(isset($_GET['get-college'])){
 			$data = $_POST['data'];
 			$query = $function->PDO(true,"SELECT * FROM tbl_college WHERE id = '{$data}'");
@@ -308,9 +313,21 @@ $function = new DatabaseClasses;
 			print_r(json_encode($query));
 		}
 
-		if(isset($_GET['get-other'])){
+		if(isset($_GET['get-skills'])){
 			$data = $_POST['data'];
-			$query = $function->PDO(true,"SELECT * FROM tbl_other WHERE id = '{$data}'");
+			$query = $function->PDO(true,"SELECT * FROM tbl_skills WHERE id = '{$data}'");
+			print_r(json_encode($query));
+		}
+
+		if(isset($_GET['get-nonAcademic'])){
+			$data = $_POST['data'];
+			$query = $function->PDO(true,"SELECT * FROM tbl_non_academic WHERE id = '{$data}'");
+			print_r(json_encode($query));
+		}
+
+		if(isset($_GET['get-membership'])){
+			$data = $_POST['data'];
+			$query = $function->PDO(true,"SELECT * FROM tbl_membership WHERE id = '{$data}'");
 			print_r(json_encode($query));
 		}
 
@@ -450,9 +467,10 @@ $function = new DatabaseClasses;
 	        $id = $function->PDO_IDGenerator('tbl_employee','id');
 			$date = $function->PDO_DateAndTime();
 			$data = $_POST['data'];
+			$department = $data[0];
 
-			$password = sha1($data[2]['value']);
-			$query = $function->PDO(false,"INSERT INTO tbl_employee(id,name,username,password,status,`date`) VALUES ('{$id}','{$data[0]['value']}','{$data[1]['value']}','{$password}','1','{$date}')");
+			$password = sha1($data[1][2]['value']);
+			$query = $function->PDO(false,"INSERT INTO tbl_employee(id,company_id,name,username,password,status,`date`) VALUES ('{$id}','{$department}','{$data[1][0]['value']}','{$data[1][1]['value']}','{$password}','1','{$date}')");
 			if($query->execute()){
 				$log = $function->log("add","employee account","Added employee account with an ID of ".$id);
 				echo 1;
@@ -535,7 +553,22 @@ $function = new DatabaseClasses;
 			$date = $function->PDO_DateAndTime();
 			$id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_education(id,e_name,e_degree,e_year,e_grade,e_dates,e_scholar,s_name,s_degree,s_year,s_grade,s_dates,s_scholar,v_name,v_degree,v_year,v_grade,v_dates,v_scholar) VALUES ('{$id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','{$data[0][13]['value']}','{$data[0][14]['value']}','{$data[0][15]['value']}','{$data[0][16]['value']}','{$data[0][17]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_education(id,e_name,e_degree,e_year,e_grade,e_dates,e_scholar,s_name,s_degree,s_year,s_grade,s_dates,s_scholar) VALUES ('{$id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}')");
+			if($query->execute()){
+					echo 1;
+			}
+			else{
+				$Data = $query->errorInfo();
+				print_r($Data);
+			}
+		}
+
+		if(isset($_GET['set-newVocational'])){
+			$data = $_POST['data'];
+			$date = $function->PDO_DateAndTime();
+			$id = $data[1];
+			
+			$query = $function->PDO(false,"INSERT INTO tbl_vocational(id,name,degree,year,grade,dates,scholar) VALUES ('{$id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -650,12 +683,42 @@ $function = new DatabaseClasses;
 			}
 		}
 
-		if(isset($_GET['set-newOther'])){
+		if(isset($_GET['set-newSkills'])){
 			$data = $_POST['data'];
 			$date = $function->PDO_DateAndTime();
 			$id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_other(id,skills,academic,membership) VALUES ('{$id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_skills(id,skills) VALUES ('{$id}','{$data[0][0]['value']}')");
+			if($query->execute()){
+					echo 1;
+			}
+			else{
+				$Data = $query->errorInfo();
+				print_r($Data);
+			}
+		}
+
+		if(isset($_GET['set-newNonAcademic'])){
+			$data = $_POST['data'];
+			$date = $function->PDO_DateAndTime();
+			$id = $data[1];
+			
+			$query = $function->PDO(false,"INSERT INTO tbl_non_academic(id,non_academic) VALUES ('{$id}','{$data[0][0]['value']}')");
+			if($query->execute()){
+					echo 1;
+			}
+			else{
+				$Data = $query->errorInfo();
+				print_r($Data);
+			}
+		}
+
+		if(isset($_GET['set-newMembership'])){
+			$data = $_POST['data'];
+			$date = $function->PDO_DateAndTime();
+			$id = $data[1];
+			
+			$query = $function->PDO(false,"INSERT INTO tbl_membership(id,membership) VALUES ('{$id}','{$data[0][0]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -667,7 +730,7 @@ $function = new DatabaseClasses;
 		
 		if(isset($_GET['set-newEmployees'])){
 			$data = $_POST['data'];
-			print_r($data);
+			// print_r($data);
 			$date = $function->PDO_DateAndTime();
 			$user = $data[2];
 	        $id = $data[1];
@@ -1360,25 +1423,6 @@ $function = new DatabaseClasses;
 			}
 		}
 
-		if(isset($_GET['update-employes'])){
-			$data = $_POST['data'];
-			$num = $data[0];
-
-			if($data[1][0]['name'] == "field_Name Of Child"){
-				$child = $data[1][0]['value'];
-				print_r($data);
-				$query = $function->PDO(false,"UPDATE tbl_employees SET child = '{$child}' WHERE id = '{$num}';");
-				if($query->execute()){
-					$log = $function->log2($user,"child is updated to {$child}.","Update");
-					echo 1;
-				}
-				else{
-					$Data = $query->errorInfo();
-					print_r($Data);
-				}
-			}
-		}
-
 		if(isset($_GET['update-employee'])){
 			$data = $_POST['data'];
 			$user = $data[0];
@@ -1659,7 +1703,25 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
-			else if($data[1][0]['name'] == "field_Spouse Surename"){
+			else if($data[1][0]['name'] == "field_dob"){
+				$date_of_birth = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_employees SET date_of_birth = '{$date_of_birth}' WHERE id = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"Gender is updated to {$date_of_birth}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-family'])){
+			$data = $_POST['data'];
+			$user = $data[0];
+			
+			if($data[1][0]['name'] == "field_Spouse Surename"){
 				$s_surename = $data[1][0]['value'];
 				$query = $function->PDO(false,"UPDATE tbl_family SET s_surename = '{$s_surename}' WHERE id = '{$user}';");
 				if($query->execute()){
@@ -1815,13 +1877,17 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
-			//child
-			else if($data[1][0]['name'] == "field_Name Of Child"){
-				$child = $data[1][0]['value'];
-				print_r($data);
-				$query = $function->PDO(false,"UPDATE tbl_child SET child = '{$child}' WHERE id = '{$num}';");
+		}
+
+		if(isset($_GET['update-child'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Name Of Child"){
+				$name = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_child SET child = '{$name}' WHERE child = '{$ref}';");
 				if($query->execute()){
-					$log = $function->log2($user,"Surename is updated to {$child}.","Update");
+					$log = $function->log2($ref,"Name is updated to {$name}.","Update");
 					echo 1;
 				}
 				else{
@@ -1829,23 +1895,647 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
-			// else if($data[1][0]['name'] == "field_Birthday"){
-			// 	$dob = $data[1][0]['value'];
-			// 	$query = $function->PDO(false,"UPDATE tbl_child SET dob = '{$dob}' WHERE id = '{$user}';");
-			// 	if($query->execute()){
-			// 		$log = $function->log2($user,"Surename is updated to {$dob}.","Update");
-			// 		echo 1;
-			// 	}
-			// 	else{
-			// 		$Data = $query->errorInfo();
-			// 		print_r($Data);
-			// 	}
-			// }
-			else if($data[1][0]['name'] == "field_dob"){
-				$date_of_birth = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET date_of_birth = '{$date_of_birth}' WHERE id = '{$user}';");
+			elseif($data[1][0]['name'] == "field_Birthday"){
+				$dob = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_child SET dob = '{$dob}' WHERE dob = '{$ref}';");
 				if($query->execute()){
-					$log = $function->log2($user,"Gender is updated to {$date_of_birth}.","Update");
+					$log = $function->log2($ref,"Birthdate is updated to {$dob}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-education'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Name Of School"){
+				$name = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET e_name = '{$name}' WHERE e_name = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Name of School is updated to {$name}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Degree Course"){
+				$degree = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET e_degree = '{$degree}' WHERE e_degree = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Degree Course is updated to {$degree}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Year Graduated"){
+				$year = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET e_year = '{$year}' WHERE e_year = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Year Graduated is updated to {$year}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Highest Grade"){
+				$grade = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET e_grade = '{$grade}' WHERE e_grade = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Highest Grade is updated to {$grade}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET e_dates = '{$dates}' WHERE e_dates = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Scholarship/Non Academics Honor Recieved"){
+				$scholar = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET e_scholar = '{$scholar}' WHERE e_scholar = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Scholarship/Non Academics Honor Recieved is updated to {$scholar}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Name"){
+				$name = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET s_name = '{$name}' WHERE s_name = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Name of School is updated to {$name}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Degree"){
+				$degree = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET s_degree = '{$degree}' WHERE s_degree = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Degree Course is updated to {$degree}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Year"){
+				$year = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET s_year = '{$year}' WHERE s_year = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Year Graduated is updated to {$year}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Grade"){
+				$grade = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET s_grade = '{$grade}' WHERE s_grade = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Highest Grade is updated to {$grade}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Dates"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET s_dates = '{$dates}' WHERE s_dates = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Scholarship"){
+				$scholar = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET s_scholar = '{$scholar}' WHERE s_scholar = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Scholarship/Non Academics Honor Recieved is updated to {$scholar}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-college'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Name Of School"){
+				$name = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_college SET name = '{$name}' WHERE name = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Name of School is updated to {$name}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Degree Course"){
+				$degree = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_college SET degree = '{$degree}' WHERE degree = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Degree Course is updated to {$degree}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Year Graduated"){
+				$year = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_college SET year = '{$year}' WHERE year = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Year Graduated is updated to {$year}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Highest Grade"){
+				$grade = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_college SET grade = '{$grade}' WHERE grade = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Highest Grade is updated to {$grade}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_college SET dates = '{$dates}' WHERE dates = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Scholarship/Non Academics Honor Recieved"){
+				$scholar = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_college SET scholar = '{$scholar}' WHERE scholar = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Scholarship/Non Academics Honor Recieved is updated to {$scholar}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-vocational'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Name Of School"){
+				$name = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_vocational SET name = '{$name}' WHERE name = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Name of School is updated to {$name}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Degree Course"){
+				$degree = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_vocational SET degree = '{$degree}' WHERE degree = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Degree Course is updated to {$degree}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Year Graduated"){
+				$year = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_vocational SET year = '{$year}' WHERE year = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Year Graduated is updated to {$year}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Highest Grade"){
+				$grade = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_vocational SET grade = '{$grade}' WHERE grade = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Highest Grade is updated to {$grade}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_vocational SET dates = '{$dates}' WHERE dates = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Scholarship/Non Academics Honor Recieved"){
+				$scholar = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_vocational SET scholar = '{$scholar}' WHERE scholar = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Scholarship/Non Academics Honor Recieved is updated to {$scholar}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-civil'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Career Service"){
+				$career = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_college SET career = '{$career}' WHERE career = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Career Service is updated to {$career}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Rating"){
+				$rating = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_civil SET rating = '{$rating}' WHERE rating = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Rating is updated to {$rating}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Date Of Examination"){
+				$doe = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_civil SET doe = '{$doe}' WHERE doe = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Date Of Examination is updated to {$doe}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Place Of Examination"){
+				$place = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_civil SET place = '{$place}' WHERE place = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Place Of Examination is updated to {$place}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Number"){
+				$l_number = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_civil SET l_number = '{$l_number}' WHERE l_number = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Number is updated to {$l_number}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Date Of Release"){
+				$dor = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_civil SET dor = '{$dor}' WHERE dor = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Date Of Release is updated to {$dor}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-work'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Inclusive Dates"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_work SET inclusive_date = '{$dates}' WHERE inclusive_date = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Position Title"){
+				$position = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_work SET position = '{$position}' WHERE position = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Position Title is updated to {$position}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Department"){
+				$department = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_work SET department = '{$department}' WHERE department = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Department is updated to {$department}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Monthly Salary"){
+				$monthly = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_work SET monthly_salary = '{$monthly}' WHERE monthly_salary = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Monthly Salary is updated to {$monthly}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Salary Grade"){
+				$salary = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_work SET salary_grade = '{$salary}' WHERE salary_grade = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Salary Grade is updated to {$salary}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Status Of Appointment"){
+				$appointment = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_work SET appointment = '{$appointment}' WHERE appointment = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Status Of Appointment is updated to {$appointment}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Government Service"){
+				$service = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_work SET service = '{$service}' WHERE service = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Government Service is updated to {$service}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-voluntary'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Name"){
+				$name = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_voluntary SET name = '{$name}' WHERE name = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Name is updated to {$name}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
+				$date = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_voluntary SET inclusive_date = '{$date}' WHERE inclusive_date = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates are updated to {$date}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Number of hours"){
+				$hours = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_voluntary SET hours = '{$hours}' WHERE hours = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Number of hour is updated to {$hours}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Position"){
+				$position = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_voluntary SET position = '{$position}' WHERE position = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Position is updated to {$position}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-training'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Title of seminar"){
+				$title = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_training SET title = '{$title}' WHERE title = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Title of seminar is updated to {$title}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
+				$date = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_training SET inclusive_date = '{$date}' WHERE inclusive_date = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates are updated to {$date}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Number of hours"){
+				$hours = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_training SET hours = '{$hours}' WHERE hours = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Number of hour is updated to {$hours}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Conducted/Sponsored by"){
+				$conducted = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_training SET conducted = '{$conducted}' WHERE conducted = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Conducted/Sponsored is updated to {$conducted}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-skills'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Special skills/Hobbies"){
+				$skill = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_skills SET skills = '{$skill}' WHERE skills = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Special Skill is updated to {$skill}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-nonAcademic'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Non-Academic distinctions/Organization"){
+				$non_academic = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_non_academic SET non_academic = '{$non_academic}' WHERE non_academic = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Non-Academic Distinction is updated to {$non_academic}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
+		if(isset($_GET['update-membership'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Membership in organization/Association"){
+				$membership = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_membership SET membership = '{$membership}' WHERE membership = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Membership in organization/Association is updated to {$membership}.","Update");
 					echo 1;
 				}
 				else{

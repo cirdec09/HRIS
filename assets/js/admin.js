@@ -1625,7 +1625,6 @@ employee = {
 					console.log(me);
 					var data = system.ajax('../assets/harmony/Process.php?set-newChild',[_form,me]);
 					data.done(function(data){
-						console.log(_form);
 						console.log(data);
 						if(data == 1){
 							if(data.responseText != ""){
@@ -2033,7 +2032,60 @@ employee = {
 			employee.addOther(id);
 		});
 	},
-	addOther:function(id){
+	addSkills:function(id){
+		var data = system.xml("pages.xml");
+		$(data.responseText).find("addSkills").each(function(i,content){
+			console.log("Skills");
+			$("#modal .modal-content").html(content);
+			$('#modal').openModal('show');		
+		    $("select").material_select();
+
+			$("#form_addSkills").validate({
+			    rules: {
+			    	field_e_name: {maxlength: 50},
+			    	field_e_grades: {maxlength: 50},
+			    },
+			    errorElement : 'div',
+			    errorPlacement: function(error, element) {
+					var placement = $(element).data('error');
+					if(placement){
+						$(placement).append(error)
+					} 
+					else{
+						error.insertAfter(element);
+					}
+				},
+				submitHandler: function (form) {
+					var _form = $(form).serializeArray();
+					var me = localStorage.getItem('id');
+					console.log(me);
+					var data = system.ajax('../assets/harmony/Process.php?set-newOther',[_form,me]);
+					data.done(function(data){
+						console.log(_form);
+						console.log(data);
+						if(data == 1){
+							if(data.responseText != ""){
+								Materialize.toast('Saved.',4000);
+								system.clearForm();
+						    	// $(location).attr('href',"#cmd=index;content=focusClient");
+						    	App.handleLoadPage("#cmd=index;content=focusClient;"+id);			
+							}
+						}
+						else{
+							Materialize.toast('Cannot process request.',4000);
+						}
+					});
+			    }
+			});
+		});
+		$("i[data-cmd='exit_personal']").on('click',function(){
+			localStorage.removeItem('id');
+			$('#modal').closeModal();
+			$("#modal .modal-content").html("");
+			$('.lean-overlay').remove();
+		});
+	},
+	addNonAcademic:function(id){
 		var data = system.xml("pages.xml");
 		$(data.responseText).find("addOther").each(function(i,content){
 			console.log("Other Skills");
@@ -2086,6 +2138,60 @@ employee = {
 			$('.lean-overlay').remove();
 		});
 	},
+	addMembership:function(id){
+		var data = system.xml("pages.xml");
+		$(data.responseText).find("addOther").each(function(i,content){
+			console.log("Other Skills");
+			$("#modal .modal-content").html(content);
+			$('#modal').openModal('show');		
+		    $("select").material_select();
+
+			$("#form_addOther").validate({
+			    rules: {
+			    	field_e_name: {maxlength: 50},
+			    	field_e_grades: {maxlength: 50},
+			    },
+			    errorElement : 'div',
+			    errorPlacement: function(error, element) {
+					var placement = $(element).data('error');
+					if(placement){
+						$(placement).append(error)
+					} 
+					else{
+						error.insertAfter(element);
+					}
+				},
+				submitHandler: function (form) {
+					var _form = $(form).serializeArray();
+					var me = localStorage.getItem('id');
+					console.log(me);
+					var data = system.ajax('../assets/harmony/Process.php?set-newOther',[_form,me]);
+					data.done(function(data){
+						console.log(_form);
+						console.log(data);
+						if(data == 1){
+							if(data.responseText != ""){
+								Materialize.toast('Saved.',4000);
+								system.clearForm();
+						    	// $(location).attr('href',"#cmd=index;content=focusClient");
+						    	App.handleLoadPage("#cmd=index;content=focusClient;"+id);			
+							}
+						}
+						else{
+							Materialize.toast('Cannot process request.',4000);
+						}
+					});
+			    }
+			});
+		});
+		$("i[data-cmd='exit_personal']").on('click',function(){
+			localStorage.removeItem('id');
+			$('#modal').closeModal();
+			$("#modal .modal-content").html("");
+			$('.lean-overlay').remove();
+		});
+	},
+	//missing 3 others
 	list:function(id){
 		var data = system.ajax('../assets/harmony/Process.php?get-employeeByID',id);
 		data = JSON.parse(data.responseText);
@@ -2131,10 +2237,6 @@ employee = {
 		});
 	},
 	details:function(id){
-		// points.add(id);
-		// employee.getPoints(id);
-		// employee.getPointsActivity(id);
-		// employee.getBuysActivity(id);
 		var content = "";
 		var data = system.ajax('../assets/harmony/Process.php?get-employeeDetails',id);
 		data.done(function(data){
@@ -2163,7 +2265,7 @@ employee = {
 								  "</a>";	
 				}
 
-				var profile = ((data[10] == "") || (data[10] == null))?"avatar.jpg":data[10];
+				var profile = ((data[0][10] == "") || (data[0][10] == null))?"avatar.jpg":data[0][10];
 				content = "<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
 						"        <img class='activator' src='../assets/images/s5.png' alt='user background'>"+
@@ -2171,145 +2273,145 @@ employee = {
 						"    <div class='card-content'>"+
 						"        <div class=' responsive-img activator card-profile-image circle'>"+
 						"        	<img src='../assets/images/profile/"+profile+"' alt='' class='circle'>"+
-						"        	<a data-value='"+profile+"' data-cmd='updateEmployeePicture' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-prop='Picture' class='btn waves-effect white-text no-shadow black' style='font-size: 10px;z-index: 1;padding: 0 52px;top:114px;'>Change</a>"+
+						// "        	<a data-value='"+profile+"' data-cmd='updateEmployeePicture' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-prop='Picture' class='btn waves-effect white-text no-shadow black' style='font-size: 10px;z-index: 1;padding: 0 52px;top:114px;'>Change</a>"+
 						"		 </div></br>"+
 						"        <span class='card-title activator grey-text text-darken-4'>"+data[0][4]+" "+data[0][5]+" "+data[0][3]+" </span>"+
-						"			<a data-value='"+JSON.stringify([data[0][4],data[0][5],data[0][3]])+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Account'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+JSON.stringify([data[0][4],data[0][5],data[0][3]])+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Account'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 <div class='divider'></div>"+
 						"        <p><i class='mdi-action-info-outline cyan-text text-darken-2'></i> Status: "+status+actions+"</p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Place Of Birth: "+data[0][6]+"</span>"+
-						"			<a data-value='"+data[0][6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Place Of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Nickname'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Place Of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Nickname'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Phone: "+data[0][9]+"</span>"+
-						"			<a data-value='"+data[0][9]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Phone'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][9]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Phone'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-cached cyan-text text-darken-2'></i> Gender: "+data[0][7]+"</span>"+
-						"			<a data-value='"+data[0][7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Gender' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Gender'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Gender' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Gender'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-event cyan-text text-darken-2'></i> Date of Birth: "+data[0][8]+"</span>"+
-						"			<a data-value='"+data[0][8]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Date Of Birth'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][8]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Date Of Birth'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Civil Status: "+data[0][14]+"</span>"+
-						"			<a data-value='"+data[0][14]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Civil Status' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Civil Status'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][14]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Civil Status' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Civil Status'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Citizenship: "+data[0][15]+"</span>"+
-						"			<a data-value='"+data[0][15]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Citizenship' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Citizenship'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][15]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Citizenship' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Citizenship'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-accessibility cyan-text text-darken-2'></i> Height: "+data[0][16]+"</span>"+
-						"			<a data-value='"+data[0][16]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Height' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Height'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][16]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Height' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Height'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-accessibility cyan-text text-darken-2'></i> Weight: "+data[0][17]+"</span>"+
-						"			<a data-value='"+data[0][17]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Weight' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Weight'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][17]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Weight' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Weight'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-cached cyan-text text-darken-2'></i> Blood Type: "+data[0][18]+"</span>"+
-						"			<a data-value='"+data[0][18]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Blood Type' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Blood Type'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][18]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Blood Type' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Blood Type'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-portrait cyan-text text-darken-2'></i> GSIS ID Number: "+data[0][19]+"</span>"+
-						"			<a data-value='"+data[0][19]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='GSIS Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update GSIS ID Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][19]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='GSIS Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update GSIS ID Number'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-portrait cyan-text text-darken-2'></i> Pag-Ibig ID Number: "+data[0][20]+"</span>"+
-						"			<a data-value='"+data[0][20]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Pag-Ibig ID Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Pag-Ibig ID Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][20]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Pag-Ibig ID Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Pag-Ibig ID Number'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-portrait cyan-text text-darken-2'></i> Philhealth Number: "+data[0][21]+"</span>"+
-						"			<a data-value='"+data[0][21]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Philhealth Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Philhealth Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][21]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Philhealth Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Philhealth Number'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-portrait cyan-text text-darken-2'></i> SSS Number: "+data[0][22]+"</span>"+
-						"			<a data-value='"+data[0][22]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='SSS Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update GSIS SSS Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][22]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='SSS Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update GSIS SSS Number'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-home cyan-text text-darken-2'></i> Rsisdential Address: "+data[0][23]+"</span>"+
-						"			<a data-value='"+data[0][23]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Residential Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Residential Address'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][23]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Residential Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Residential Address'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-assignment-ind cyan-text text-darken-2'></i> Zip Code: "+data[0][24]+"</span>"+
-						"			<a data-value='"+data[0][24]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Residential Zipcode' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update GSIS SSS Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][24]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Residential Zipcode' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Zip Code'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Telephone Number: "+data[0][25]+"</span>"+
-						"			<a data-value='"+data[0][25]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Residential Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update GSIS SSS Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][25]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Residential Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Telephone Number'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-home cyan-text text-darken-2'></i> Permanent Address: "+data[0][26]+"</span>"+
-						"			<a data-value='"+data[0][26]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Permanent Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update GSIS SSS Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][26]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Permanent Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Permanent Address'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-assignment-ind cyan-text text-darken-2'></i> Zip Code: "+data[0][27]+"</span>"+
-						"			<a data-value='"+data[0][27]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Permanent Zipcode' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update GSIS SSS Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][27]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Permanent Zipcode' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Zip Code'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Telephone Number: "+data[0][28]+"</span>"+
-						"			<a data-value='"+data[0][28]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Permanent Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update GSIS SSS Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][28]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Permanent Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Telephone Number'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-communication-email cyan-text text-darken-2'></i> Email Address: "+data[0][29]+"</span>"+
-						"			<a data-value='"+data[0][29]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Email' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Email Address'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][29]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Email' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Email Address'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-portrait cyan-text text-darken-2'></i> Agency Employee Number: "+data[0][30]+"</span>"+
-						"			<a data-value='"+data[0][30]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Employee Agency Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employee Agency Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][30]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Employee Agency Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employee Agency Number'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-picture-in-picture cyan-text text-darken-2'></i> Tin: "+data[0][31]+"</span>"+
-						"			<a data-value='"+data[0][31]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Tin' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Tin'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][31]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Tin' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Tin'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div><br/>"+
 						"		<div class='input-field col s12'>"+
@@ -2318,24 +2420,24 @@ employee = {
 						"		</div>"+
 						"		<div class='input-field col s12'>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-work cyan-text text-darken-2'></i> Position: "+data[0][11]+"</span>"+
-						"			<a data-value='"+data[0][11]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][11]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-box cyan-text text-darken-2'></i> Employee ID: "+data[0][1]+"</span>"+
-						"			<button disabled data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Employee ID' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employee ID'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
+						// "			<button disabled data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Employee ID' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employee ID'>"+
+						// "				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						// "			</button>"+
 						"		 </p>"+
 						"    </div>"+
 						"</div>";
 				$("#personal_information").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
+				// employee.deactivate();
+				// employee.activate();
+				// employee.updatePersonalInfo();
+				// employee.updatePicture();
 			}
 		});
 		var content="";
@@ -2358,90 +2460,90 @@ employee = {
 						"		<h5>Family Background</h5>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-account-circle cyan-text text-darken-2'></i> Spouse's Surename: "+data[0][1]+"</span>"+
-						"			<a data-value='"+data[0][1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][1]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i> First Name: "+data[0][2]+"</span>"+
-						"			<a data-value='"+data[0][2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][2]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i> Middle Name: "+data[0][3]+"</span>"+
-						"			<a data-value='"+data[0][3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][3]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-work cyan-text text-darken-2'></i> Occupation: "+data[0][4]+"</span>"+
-						"			<a data-value='"+data[0][4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Occupation' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Occupation'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][4]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Occupation' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Occupation'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Employer/Bus Name: "+data[0][5]+"</span>"+
-						"			<a data-value='"+data[0][5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Employer/Bus Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][5]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Employer/Bus Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-store cyan-text text-darken-2'></i> Business Address: "+data[0][6]+"</span>"+
-						"			<a data-value='"+data[0][6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Business Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Business Address'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][6]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Business Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Business Address'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Telephone Number: "+data[0][7]+"</span>"+
-						"			<a data-value='"+data[0][7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Telephone Number'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][7]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Telephone Number'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Father's surname: "+data[0][8]+"</span>"+
-						"			<a data-value='"+data[0][8]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][8]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> First Name: "+data[0][9]+"</span>"+
-						"			<a data-value='"+data[0][9]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][9]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Middle Name: "+data[0][10]+"</span>"+
-						"			<a data-value='"+data[0][10]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][10]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Mother's surename: "+data[0][11]+"</span>"+
-						"			<a data-value='"+data[0][11]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][11]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> First Name: "+data[0][12]+"</span>"+
-						"			<a data-value='"+data[0][12]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][12]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Middle Name: "+data[0][13]+"</span>"+
-						"			<a data-value='"+data[0][13]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][13]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"    </div>"+
 						"</div>";
 				$("#family_background").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
+				// employee.deactivate();
+				// employee.activate();
+				// employee.updateFamily();
+				// employee.updatePicture();
 			}
 		});
 		var content="";
@@ -2469,122 +2571,30 @@ employee = {
 				
 				content +=	"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Name Of Child: "+value[2]+"</span>"+
-							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name Of Child' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text' data-cmd='value'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[2]+"' data-cmd='updateChild' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name Of Child' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name of child'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text' data-cmd='value'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-cake cyan-text text-darken-2'></i> Date Of Birth: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Birthday' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[3]+"' data-cmd='updateChild' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Birthday' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Date Of Birth'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div></br>";
-							
         		});
 
-        		content += "<a class='btn waves-effect waves-light orange left' data-cmd='add_child'>New</a></br></br>"+
-							"</div>"+
+        		content += 	"</div>"+
 							"</div>";
         		
 				$("#childs").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
-
-		$("a[data-cmd='add_child']").on('click',function(){
-					// var data = system.xml("pages.xml");
-					// $(data.responseText).find("addChild").each(function(i,content){
-					// 	console.log("Child_Background");
-					// 	$("#modal .modal-content").html(content);
-					// 	$('#modal').openModal('show');		
-					//     $("select").material_select();
-
-					// 	$("#form_addAnak").validate({
-					// 	    rules: {
-					// 	    	field_child: {maxlength: 50},
-					// 	    	field_child_dob: {maxlength: 50,checkDate:true},
-					// 	    },
-					// 	    errorElement : 'div',
-					// 	    errorPlacement: function(error, element) {
-					// 			var placement = $(element).data('error');
-					// 			if(placement){
-					// 				$(placement).append(error)
-					// 			} 
-					// 			else{
-					// 				error.insertAfter(element);
-					// 			}
-					// 		},
-					// 		submitHandler: function (form) {
-					// 			var _form = $(form).serializeArray();
-					// 			var data = system.ajax('../assets/harmony/Process.php?set-newChild',[_form,id]);
-					// 			data.done(function(data){
-					// 				console.log(_form);
-					// 				console.log(data);
-					// 				if(data == 1){
-					// 					if(data.responseText != ""){
-					// 						Materialize.toast('Saved.',4000);
-					// 						system.clearForm();
-					// 				    	// $(location).attr('href',"#cmd=index;content=focusClient");
-					// 				    	App.handleLoadPage("#cmd=index;content=focusClient;"+id);			
-					// 					}
-					// 				}
-					// 				else{
-					// 					Materialize.toast('Cannot process request.',4000);
-					// 				}
-					// 			});
-					// 	    }
-					// 	});
-					// });
-					// $("i[data-cmd='exit_personal']").on('click',function(){
-					// 	$('#modal').closeModal();
-					// 	$("#modal .modal-content").html("");
-					// 	$('.lean-overlay').remove();
-					// });
-				});
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateChild();
+				// employee.updatePicture();
 			}
 		});
-
-		// var content="";
-		// var data = system.ajax('../assets/harmony/Process.php?get-child',id);
-		// data.done(function(data){
-		// 	data = JSON.parse(data);
-		// 	// console.log(data);
-		// 	if(data.length<=0){
-		// 		var data = system.xml("pages.xml");
-		// 		$(data.responseText).find("errorContent").each(function(i,content){
-		// 			$("#display_error").html(content);
-		// 		});
-		// 	}
-		// 	else{
-		// 		$("#display_employeeDetails").removeClass('hidden');
-		// 		$("#display_error").addClass('hidden');
-
-		// 		content += "<div id='profile-card' class='card'>"+
-		// 					"   <div class='card-content'>"+
-		// 					"		<h3><b><center>PERSONAL DATA SHEET</center></b></h3>"+
-		// 					"		<h5 class='left'>Print legibly. Mark appropriate boxes with '/' <span style='padding-left:30%;'>1. CS ID No.<input /></span></h5>"+
-		// 					"		<h5 class='left'>l. PERSONAL INFORMATION</h5>"+
-		// 					"</div>"+
-		// 					"</div>";
-        		
-		// 		$("#printme").html(content);
-
-		// 		employee.deactivate();
-		// 		employee.activate();
-		// 		employee.update();
-		// 		employee.updatePicture();
-
-		// 		$("a[data-cmd='print']").on('click',function(){
-		// 			$("#printme").print();
-		// 		});
-		// 		// $("i[data-cmd='value']").on('click',function(){
-		// 		// 	console.log(data);
-		// 		// });
-		// 	}
-		// });
 
 		var content="";
 		var data = system.ajax('../assets/harmony/Process.php?get-education',id);
@@ -2607,122 +2617,158 @@ employee = {
 						"		 <div class='divider'></div></br>"+
 						"		<h5>Elementary Level</h5>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][1]+"</span>"+
-						"			<a data-value='"+data[0][1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][1]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name Of School' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of School'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][2]+"</span>"+
-						"			<a data-value='"+data[0][2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Gender' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][2]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Degree Course' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Degree Course'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][3]+"</span>"+
-						"			<a data-value='"+data[0][3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][3]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Year Graduated' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Year Graduated'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][4]+"</span>"+
-						"			<a data-value='"+data[0][4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Occupation'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][4]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Highest Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update  Highest Grade/Level/Units Earned'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][5]+"</span>"+
-						"			<a data-value='"+data[0][5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][5]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][6]+"</span>"+
-						"			<a data-value='"+data[0][6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][6]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div></br>"+
 						"		<h5>Secondary Level</h5>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][7]+"</span>"+
-						"			<a data-value='"+data[0][7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][7]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of School'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][8]+"</span>"+
-						"			<a data-value='"+data[0][8]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][8]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Degree' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Degree Course'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][9]+"</span>"+
-						"			<a data-value='"+data[0][9]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][9]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Year' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Year Graduated'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][10]+"</span>"+
-						"			<a data-value='"+data[0][10]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][10]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update  Highest Grade/Level/Units Earned'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][11]+"</span>"+
-						"			<a data-value='"+data[0][11]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][11]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][12]+"</span>"+
-						"			<a data-value='"+data[0][12]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
-						"		 </p>"+
-						"		 <div class='divider'></div></br>"+
-						"		<h5>Vocational/Trade Course</h5>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][13]+"</span>"+
-						"			<a data-value='"+data[0][13]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i>Degree Course: "+data[0][14]+"</span>"+
-						"			<a data-value='"+data[0][14]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i>Year Graduated: "+data[0][15]+"</span>"+
-						"			<a data-value='"+data[0][15]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][16]+"</span>"+
-						"			<a data-value='"+data[0][16]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][17]+"</span>"+
-						"			<a data-value='"+data[0][17]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][18]+"</span>"+
-						"			<a data-value='"+data[0][18]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date of Birth' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
+						// "			<a data-value='"+data[0][12]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+						// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						// "			</a>"+
 						"		 </p>"+
 						"    </div>"+
 						"</div>";
 				$("#educational_background").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateEducation();
+				// employee.updatePicture();
+			}
+		});
+
+		var content="";
+		var data = system.ajax('../assets/harmony/Process.php?get-vocational',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				var data = system.xml("pages.xml");
+				$(data.responseText).find("errorContent").each(function(i,content){
+					$("#display_error").html(content);
+				});
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Vocational/Trade Course</h5>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+value[1]+"</span>"+
+							// "			<a data-value='"+value[1]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name Of School' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of School'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+value[2]+"</span>"+
+							// "			<a data-value='"+value[2]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Degree Course' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Degree Course'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+value[3]+"</span>"+
+							// "			<a data-value='"+value[3]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Year Graduated' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Year Graduated'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+value[4]+"</span>"+
+							// "			<a data-value='"+value[4]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Highest Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update  Highest Grade/Level/Units Earned'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[5]+"</span>"+
+							// "			<a data-value='"+value[5]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[6]+"</span>"+
+							// "			<a data-value='"+value[6]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div></br></br>";
+							"</div>"+
+							"</div>";
+        		});
+        		
+				$("#vocational").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateVocational();
+				// employee.updatePicture();
 			}
 		});
 		
@@ -2751,39 +2797,39 @@ employee = {
 				
 				content +=	"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+value[1]+"</span>"+
-							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[1]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name Of School' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of School'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+value[2]+"</span>"+
-							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[2]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Degree Course' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Degree Course'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[3]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Year Graduated' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Year Graduated'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+value[4]+"</span>"+
-							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[4]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Highest Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update  Highest Grade/Level/Units Earned'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[5]+"</span>"+
-							"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[5]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[6]+"</span>"+
-							"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[6]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div></br></br>";
 							"</div>"+
@@ -2792,10 +2838,10 @@ employee = {
         		
 				$("#college_level").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateCollege();
+				// employee.updatePicture();
 			}
 		});
 
@@ -2824,54 +2870,54 @@ employee = {
 				
 				content +=	"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+value[1]+"</span>"+
-							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of School'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+value[2]+"</span>"+
-							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Degree Course'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Year Graduated'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+value[4]+"</span>"+
-							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update  Highest Grade/Level/Units Earned'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[5]+"</span>"+
-							"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[6]+"</span>"+
-							"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div></br></br>";
 							"</div>"+
 							"</div>";
         		});
         		
-				$("#vocational").html(content);
+				$("#graduate").html(content);
 
 				employee.deactivate();
 				employee.activate();
-				employee.update();
+				// employee.update();
 				employee.updatePicture();
 			}
 		});
-
+		//end
 		var content="";
 		var data = system.ajax('../assets/harmony/Process.php?get-civil',id);
 		data.done(function(data){
@@ -2897,51 +2943,51 @@ employee = {
 				
 				content +=	"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Career Service: "+value[1]+"</span>"+
-							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[1]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Career Service' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Rating: "+value[2]+"</span>"+
-							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[2]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Rating' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Date Of Examinantion: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[3]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date Of Examinantion' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Place Of Examination: "+value[4]+"</span>"+
-							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[4]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Place Of Examination' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Number: "+value[5]+"</span>"+
-							"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[5]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Date Of Release: "+value[6]+"</span>"+
-							"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[6]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date Of Release' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div></br></br>";
 							"</div>"+
 							"</div>";
         		});
         		
-				$("#vocational").html(content);
+				$("#civil").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateCivil();
+				// employee.updatePicture();
 			}
 		});
 
@@ -2968,61 +3014,59 @@ employee = {
             		data.length;
             		// console.log(value);
 				
-				content +=	"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
-							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+				content +=	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
+							// "			<a data-value='"+value[1]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[2]+"</span>"+
-							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[2]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position Title' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[3]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Department' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[4]+"</span>"+
-							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[4]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Monthly Salary' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Salary Grade: "+value[5]+"</span>"+
-							"			<a data-value='"+value[5]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[5]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Salary Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Status Of Appointment: "+value[6]+"</span>"+
-							"			<a data-value='"+value[6]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[6]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Status Of Appointment' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Gov't Service: "+value[7]+"</span>"+
-							"			<a data-value='"+value[7]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							// "			<a data-value='"+value[7]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Government Service' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div></br></br>";
         		});
 
-				content += "<a class='btn waves-effect waves-light orange left' data-cmd=''>New</a></br></br>"+
-							"</div>"+
+				content += 	"</div>"+
 							"</div>";
         		
 				$("#work").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateWork();
+				// employee.updatePicture();
 			}
 		});
 
@@ -3050,43 +3094,42 @@ employee = {
             		// console.log(value);
 				
 				content +=	"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
-							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name & address of organization: "+value[1]+"</span>"+
+							// "			<a data-value='"+value[1]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[2]+"</span>"+
-							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates(from-to): "+value[2]+"</span>"+
+							// "			<a data-value='"+value[2]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Number of Hours: "+value[3]+"</span>"+
+							// "			<a data-value='"+value[3]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[4]+"</span>"+
-							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position: "+value[4]+"</span>"+
+							// "			<a data-value='"+value[4]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div></br></br>";
         		});
 
-        		content += "<a class='btn waves-effect waves-light orange left' data-cmd=''>New</a></br></br>"+
-							"</div>"+
+        		content += 	"</div>"+
 							"</div>";
 
         		
 				$("#voluntary").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateVoluntary();
+				// employee.updatePicture();
 			}
 		});
 
@@ -3113,29 +3156,28 @@ employee = {
             		data.length;
             		// console.log(value);
 				
-				content +=	"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[1]+"</span>"+
-							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+				content +=	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Title of seminar: "+value[1]+"</span>"+
+							// "			<a data-value='"+value[1]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Title of seminar' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[2]+"</span>"+
-							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[2]+"</span>"+
+							// "			<a data-value='"+value[2]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Number of hours: "+value[3]+"</span>"+
+							// "			<a data-value='"+value[3]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[4]+"</span>"+
-							"			<a data-value='"+value[4]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Conducted/Sponsored by: "+value[4]+"</span>"+
+							// "			<a data-value='"+value[4]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Conducted/Sponsored by' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div></br></br>";
 							"</div>"+
@@ -3144,15 +3186,15 @@ employee = {
         		
 				$("#training").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateTraining();
+				// employee.updatePicture();
 			}
 		});
 
 		var content="";
-		var data = system.ajax('../assets/harmony/Process.php?get-other',id);
+		var data = system.ajax('../assets/harmony/Process.php?get-skills',id);
 		data.done(function(data){
 			data = JSON.parse(data);
 			// console.log(data);
@@ -3168,7 +3210,8 @@ employee = {
 
 				content += "<div id='profile-card' class='card'>"+
 							"   <div class='card-content'>"+
-							"		<h5>Other Information</h5>";
+							"		<h5>Other Information</h5>"+
+							"		<h6>Special Skills/Hobbies</h6>";
 
 				$(data).each(function(index,value){
             		data.length;
@@ -3176,38 +3219,111 @@ employee = {
 				
 				content +=	"		 <div class='divider'></div>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Special Skills/Hobbies: "+value[1]+"</span>"+
-							"			<a data-value='"+value[1]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
-							"		 </p>"+
-							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Non-Academic Distinctions/Recognition: "+value[2]+"</span>"+
-							"			<a data-value='"+value[2]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
-							"		 </p>"+
-							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Membership in Association/Organization: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-							"			</a>"+
-							"		 </p>"+
-							"		 <div class='divider'></div></br></br>";
+							// "			<a data-value='"+value[1]+"' data-cmd='updateSkills' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Special skills/Hobbies' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
+							"		 </p>"
 							"</div>"+
 							"</div>";
         		});
         		
-				$("#other").html(content);
+				$("#skills").html(content);
 
-				employee.deactivate();
-				employee.activate();
-				employee.update();
-				employee.updatePicture();
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateSkills();
+				// employee.updatePicture();
+			}
+		});
+
+		var content="";
+		var data = system.ajax('../assets/harmony/Process.php?get-nonAcademic',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				var data = system.xml("pages.xml");
+				$(data.responseText).find("errorContent").each(function(i,content){
+					$("#display_error").html(content);
+				});
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Other Information</h5>"+
+							"		<h6>Non-Academic Distinctions/Recognition</h6>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Non-Academic distinctions/Organization: "+value[1]+"</span>"+
+							// "			<a data-value='"+value[1]+"' data-cmd='updateNonAcademic' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Non-Academic distinctions/Organization' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
+							"		 </p>";
+							"</div>"+
+							"</div>";
+        		});
+        		
+				$("#non_academic").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateNonAcademic();
+				// employee.updatePicture();
+			}
+		});
+
+		var content="";
+		var data = system.ajax('../assets/harmony/Process.php?get-membership',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				var data = system.xml("pages.xml");
+				$(data.responseText).find("errorContent").each(function(i,content){
+					$("#display_error").html(content);
+				});
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content += "<div id='profile-card' class='card'>"+
+							"   <div class='card-content'>"+
+							"		<h5>Other Information</h5>"+
+							"		<h6>Membership in Association/Organization</h6>";
+
+				$(data).each(function(index,value){
+            		data.length;
+            		// console.log(value);
+				
+				content +=	"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Membership in Association/Organization: "+value[1]+"</span>"+
+							// "			<a data-value='"+value[1]+"' data-cmd='updateMembership' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Membership in organization/Association' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							// "				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							// "			</a>"+
+							"		 </p>";
+							"</div>"+
+							"</div>";
+        		});
+        		
+				$("#membership").html(content);
+
+				// employee.deactivate();
+				// employee.activate();
+				employee.updateMembership();
+				// employee.updatePicture();
 			}
 		});
 
 	},
-	update:function(){
+	updatePersonalInfo:function(){
 		$("a[data-cmd='updateEmployee']").on('click',function(){
 			var data = $(this).data();
 			var id = data.node;
@@ -3961,552 +4077,6 @@ employee = {
 				    }
 				}); 
 			}
-			//Family_Background Update
-			else if(data.prop == "Spouse Surename"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Surename updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Spouse First Name"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('First Name updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Spouse Middle Name"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Middle Name updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Spouse Occupation"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Occupation updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Spouse Employer/Bus Name"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Empployer updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Spouse Business Address"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Address updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Spouse Telephone Number"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Telephone Number updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Father Surename"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Surename updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Father First Name"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('First Name updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Father Middle Name"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Middle Name updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Mother Surename"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Surename updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Mother First Name"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('First Name updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Mother Middle Name"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Middle Name updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Mother Middle Name"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Middle Name updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			//child
-			else if(data.prop == "Name Of Child"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employes',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Name Of Child updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Birthday"){
-				$('#modal_confirm').openModal('show');			
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-employee',[id,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Birthday updated.',4000);
-								$('#modal_confirm').closeModal();	
-								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
 			else if(data.prop == "Gender"){
 				var content = "<h4>Change "+data.prop+"</h4>"+
 							  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
@@ -4651,6 +4221,2577 @@ employee = {
 				    }
 				}); 
 			}
+		});
+	},
+	updateFamily:function(){
+		$("a[data-cmd='updateFamily']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Spouse Surename"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Surename updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Spouse First Name"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('First Name updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Spouse Middle Name"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Middle Name updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Spouse Occupation"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Occupation updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Spouse Employer/Bus Name"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Empployer updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Spouse Business Address"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Address updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Spouse Telephone Number"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Telephone Number updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Father Surename"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Surename updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Father First Name"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('First Name updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Father Middle Name"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Middle Name updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Mother Surename"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Surename updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Mother First Name"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('First Name updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Mother Middle Name"){
+				$('#modal_confirm').openModal('show');			
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var data = system.ajax('../assets/harmony/Process.php?update-family',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Middle Name updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+		});
+	},
+	updateChild:function(){
+		$("a[data-cmd='updateChild']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Name Of Child"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('myname',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var name = localStorage.getItem('myname');
+							var data = system.ajax('../assets/harmony/Process.php?update-child',[name,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Name Of Child updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('myname');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+			else if(data.prop == "Birthday"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('bday',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var bday = localStorage.getItem('bday');
+						var data = system.ajax('../assets/harmony/Process.php?update-child',[bday,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Birthday updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('bday');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+		});
+	},
+	updateEducation:function(){
+		$("a[data-cmd='updateEducation']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Name Of School"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('myname',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var name = localStorage.getItem('myname');
+							var data = system.ajax('../assets/harmony/Process.php?update-education',[name,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Name Of Child updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('myname');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+			else if(data.prop == "Year Graduated"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('year',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var year = localStorage.getItem('year');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[year,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Year Graduated updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('year');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Degree Course"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('degree',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var degree = localStorage.getItem('degree');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[degree,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Degree Course updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('degree');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Highest Grade"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('grade',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var grade = localStorage.getItem('grade');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[grade,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Highest Grade updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('grade');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Inclusive Dates"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Dates updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Scholarship/Non Academics Honor Recieved"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('scholar',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var scholar = localStorage.getItem('scholar');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[scholar,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Scholarship/Honor Recieved updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('scholar');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Name"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('myname',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var name = localStorage.getItem('myname');
+							var data = system.ajax('../assets/harmony/Process.php?update-education',[name,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Name Of Child updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('myname');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+			else if(data.prop == "Year"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('year',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var year = localStorage.getItem('year');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[year,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Year Graduated updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('year');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Degree"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('degree',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var degree = localStorage.getItem('degree');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[degree,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Degree Course updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('degree');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Grade"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('grade',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var grade = localStorage.getItem('grade');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[grade,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Highest Grade updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('grade');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Dates"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Dates updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Scholarship"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('scholar',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var scholar = localStorage.getItem('scholar');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[scholar,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Scholarship/Honor Recieved updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('scholar');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+
+
+		});
+	},
+	updateVocational:function(){
+		$("a[data-cmd='updateVocational']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Name Of School"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('myname',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var name = localStorage.getItem('myname');
+							var data = system.ajax('../assets/harmony/Process.php?update-vocational',[name,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Name Of Child updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('myname');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+			else if(data.prop == "Year Graduated"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('year',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var year = localStorage.getItem('year');
+						var data = system.ajax('../assets/harmony/Process.php?update-vocational',[year,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Year Graduated updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('year');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Degree Course"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('degree',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var degree = localStorage.getItem('degree');
+						var data = system.ajax('../assets/harmony/Process.php?update-vocational',[degree,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Degree Course updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('degree');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Highest Grade"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('grade',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var grade = localStorage.getItem('grade');
+						var data = system.ajax('../assets/harmony/Process.php?update-vocational',[grade,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Highest Grade updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('grade');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Inclusive Dates"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-vocational',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Dates updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Scholarship/Non Academics Honor Recieved"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('scholar',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var scholar = localStorage.getItem('scholar');
+						var data = system.ajax('../assets/harmony/Process.php?update-vocational',[scholar,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Scholarship/Honor Recieved updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('scholar');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+
+
+		});
+	},
+	updateCollege:function(){
+		$("a[data-cmd='updateCollege']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Name Of School"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('myname',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var name = localStorage.getItem('myname');
+							var data = system.ajax('../assets/harmony/Process.php?update-college',[name,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Name Of Child updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('myname');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+			else if(data.prop == "Year Graduated"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('year',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var year = localStorage.getItem('year');
+						var data = system.ajax('../assets/harmony/Process.php?update-college',[year,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Year Graduated updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('year');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Degree Course"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('degree',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var degree = localStorage.getItem('degree');
+						var data = system.ajax('../assets/harmony/Process.php?update-college',[degree,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Degree Course updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('degree');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Highest Grade"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('grade',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var grade = localStorage.getItem('grade');
+						var data = system.ajax('../assets/harmony/Process.php?update-college',[grade,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Highest Grade updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('grade');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Inclusive Dates"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-college',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Dates updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Scholarship/Non Academics Honor Recieved"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('scholar',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var scholar = localStorage.getItem('scholar');
+						var data = system.ajax('../assets/harmony/Process.php?update-college',[scholar,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Scholarship/Honor Recieved updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('scholar');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+
+
+		});
+	},
+	updateCivil:function(){
+		$("a[data-cmd='updateCivil']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Career Service"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('career',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var career = localStorage.getItem('career');
+							var data = system.ajax('../assets/harmony/Process.php?update-civil',[career,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Career Service updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('career');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+			else if(data.prop == "Rating"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('rating',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var rating = localStorage.getItem('rating');
+						var data = system.ajax('../assets/harmony/Process.php?update-civil',[rating,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Rating updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('rating');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Date Of Examination"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('doe',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var doe = localStorage.getItem('doe');
+						var data = system.ajax('../assets/harmony/Process.php?update-civil',[doe,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Date Of Examination updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('doe');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Place Of Examination"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('place',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var place = localStorage.getItem('place');
+						var data = system.ajax('../assets/harmony/Process.php?update-civil',[place,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Place Of Examination updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('place');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Number"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('number',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var number = localStorage.getItem('number');
+						var data = system.ajax('../assets/harmony/Process.php?update-civil',[number,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Number updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('number');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Date Of Release"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('doe',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var doe = localStorage.getItem('doe');
+						var data = system.ajax('../assets/harmony/Process.php?update-civil',[doe,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Date Of Release updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('doe');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+
+
+		});
+	},
+	updateWork:function(){
+		$("a[data-cmd='updateWork']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Inclusive Dates"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('dates',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var dates = localStorage.getItem('dates');
+							var data = system.ajax('../assets/harmony/Process.php?update-work',[dates,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Inclusive Dates updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('dates');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+			else if(data.prop == "Position Title"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('title',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var title = localStorage.getItem('title');
+						var data = system.ajax('../assets/harmony/Process.php?update-work',[title,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Position Title updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('title');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Department"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('department',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var department = localStorage.getItem('department');
+						var data = system.ajax('../assets/harmony/Process.php?update-work',[department,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Department updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('department');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Monthly Salary"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('salary',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var salary = localStorage.getItem('salary');
+						var data = system.ajax('../assets/harmony/Process.php?update-work',[salary,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Month Salary updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('salary');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Salary Grade"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('salary',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var salary = localStorage.getItem('salary');
+						var data = system.ajax('../assets/harmony/Process.php?update-work',[salary,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Salary Grade updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('salary');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Status Of Appointment"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('status',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var status = localStorage.getItem('status');
+						var data = system.ajax('../assets/harmony/Process.php?update-work',[status,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Status Of Appointment updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('status');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Government Service"){
+				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('service',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var id = localStorage.getItem('service');
+						var data = system.ajax('../assets/harmony/Process.php?update-work',[id,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Government Service updated.',4000);
+								$('#modal_confirm').closeModal();	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+
+
+		});
+	},
+	updateVoluntary:function(){
+		$("a[data-cmd='updateVoluntary']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Name"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('name',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var name = localStorage.getItem('name');
+							var data = system.ajax('../assets/harmony/Process.php?update-voluntary',[name,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Name updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('name');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+			else if(data.prop == "Inclusive Dates"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('date',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var date = localStorage.getItem('date');
+						var data = system.ajax('../assets/harmony/Process.php?update-voluntary',[date,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Position date updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('date');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Number of hours"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('hours',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var hours = localStorage.getItem('hours');
+						var data = system.ajax('../assets/harmony/Process.php?update-voluntary',[hours,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Number of Hours updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('hours');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Position"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('position',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var position = localStorage.getItem('position');
+						var data = system.ajax('../assets/harmony/Process.php?update-voluntary',[position,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Position updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('salary');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+
+		});
+	},
+	updateTraining:function(){
+		$("a[data-cmd='updateTraining']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Title of seminar"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('title',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var title = localStorage.getItem('title');
+							var data = system.ajax('../assets/harmony/Process.php?update-training',[title,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Title of seminar updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('title');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+			else if(data.prop == "Inclusive Dates"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('date',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var date = localStorage.getItem('date');
+						var data = system.ajax('../assets/harmony/Process.php?update-training',[date,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive date updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('date');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Number of hours"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('hours',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var hours = localStorage.getItem('hours');
+						var data = system.ajax('../assets/harmony/Process.php?update-training',[hours,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Number of Hours updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('hours');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Conducted/Sponsored by"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('conducted',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var conducted = localStorage.getItem('conducted');
+						var data = system.ajax('../assets/harmony/Process.php?update-training',[conducted,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Conducted/Sponsored updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('conducted');	
+								App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+
+		});
+	},
+	updateSkills:function(){
+		$("a[data-cmd='updateSkills']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Special skills/Hobbies"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('skill',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var skill = localStorage.getItem('skill');
+							var data = system.ajax('../assets/harmony/Process.php?update-skills',[skill,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Special skills/Hobbies updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('skill');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+
+		});
+	},
+	updateNonAcademic:function(){
+		$("a[data-cmd='updateNonAcademic']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Non-Academic distinctions/Organization"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('academic',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var academic = localStorage.getItem('academic');
+							var data = system.ajax('../assets/harmony/Process.php?update-nonAcademic',[academic,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Non-Academic distinctions/Organization updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('academic');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+
+		});
+	},
+	updateMembership:function(){
+		$("a[data-cmd='updateMembership']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Membership in organization/Association"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('membership',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var membership = localStorage.getItem('membership');
+							var data = system.ajax('../assets/harmony/Process.php?update-membership',[membership,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Non-membership distinctions/Organization updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('membership');	
+									App.handleLoadPage("#cmd=index;content=focusEmployee;"+id);
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+				}
+
 		});
 	},
 	updatePicture:function(){
@@ -5215,7 +7356,7 @@ employee_Account = {
 			$("#display_clientList").html("<h5 class='center'>No Departments to show.</h5>");
 		}
 	},
-	add:function(){
+	add:function(id){
 		$("#add_account").on('click',function(){
 			var data = system.xml("pages.xml");
 			$(data.responseText).find("addAccount_employee").each(function(i,content){
@@ -5241,14 +7382,15 @@ employee_Account = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?set-newEmployeeAccount',_form);
+						var data = system.ajax('../assets/harmony/Process.php?set-newEmployeeAccount',[id,_form]);
 						data.done(function(data){
+							console.log(_form);
+							console.log(data);
 							if(data == 1){
 								if(data.responseText != ""){
 									system.clearForm();
 									Materialize.toast('Saved.',4000);
-									$('#modal').closeModal();
-									App.handleLoadPage("#cmd=index;content=employee_account");
+									App.handleLoadPage("#cmd=index;content=focus_account");
 								}
 							}
 							else{
