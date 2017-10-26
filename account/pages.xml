@@ -143,20 +143,27 @@
 				<div class='col offset-m1 offset-l1 s12 m10 l10'>
 					<div class='input-field col s12'>
 						<h4 class="">Account</h4>
-						<div class='input-field col s12 m6 l3'>
-							<label for='field_name'>Name: </label>
+						<div class='input-field col s12'>
+							<label for='field_name'>First Name: </label>
 				            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
 							<div class='error_name'></div>	
 						</div>
-						<div class='input-field col s12 m6 l4'>
+						<div class='input-field col s12'>
 							<label for='field_username'>Username: </label>
 				            <input id='field_username' type='text' name='field_username' data-error='.error_username'>
-							<div class='error_username'></div>	
+							<div class='error_username'></div>
+							<div id='note_username' class='hidden animated zoomOut'>
+								Username must contain atleast 1 number and 6 character length. <br/>
+							</div>	
 						</div>
-						<div class='input-field col s12 m6 l5'>
+						<div class='input-field col s12'>
 							<label for='field_password'>Password: </label>
 				            <input id='field_password' type='password' name='field_password' data-error='.error_password'>
 							<div class='error_password'></div>	
+							<div id='note_password' class='hidden animated zoomOut'>
+								Password must contain atleast 1 number, 1 uppercase letter, 1 lowercare letter, 1 special character* and 6 character length. <br/>
+								<u>Special characters are ! @ $ % *</u>
+							</div>
 						</div>
 						<div class='row'>
 							<div class='input-field col s12'>
@@ -499,12 +506,12 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s4'>
-								<label for='field_height'>Height: </label>
+								<label for='field_height'>Height (0.00 m): </label>
 					            <input id='field_height' type='text' name='field_height' data-error='.error_height'>
 								<div class='error_height'></div>	
 							</div>
 							<div class='input-field col s4'>
-								<label for='field_weight'>Weight: </label>
+								<label for='field_weight'>Weight (kg): </label>
 					            <input id='field_weight' type='text' name='field_weight' data-error='.error_weight'>
 								<div class='error_weight'></div>	
 							</div>
@@ -807,12 +814,12 @@
 							</div>
 						</div>
 						<div class='row'>
-							<div class='input-field col s5'>
+							<div class='input-field col s6'>
 								<label for='field_e_year'>Year Graduated(If graduated): </label>
 					            <input id='field_e_year' type='text' name='field_e_year' data-error='.error_e_year'>
 								<div class='error_e_year'></div>	
 							</div>
-							<div class='input-field col s7'>
+							<div class='input-field col s6'>
 								<label for='field_e_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
 					            <input id='field_e_grade' type='text' name='field_e_grade' data-error='.error_e_grade'>
 								<div class='error_e_grade'></div>	
@@ -848,12 +855,12 @@
 							</div>
 						</div>
 						<div class='row'>
-							<div class='input-field col s5'>
+							<div class='input-field col s6'>
 								<label for='field_s_year'>Year Graduated(If graduated): </label>
 					            <input id='field_s_year' type='text' name='field_s_year' data-error='.error_s_year'>
 								<div class='error_s_year'></div>	
 							</div>
-							<div class='input-field col s7'>
+							<div class='input-field col s6'>
 								<label for='field_s_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
 					            <input id='field_s_grade' type='text' name='field_s_grade' data-error='.error_s_grade'>
 								<div class='error_s_grade'></div>	
@@ -996,7 +1003,7 @@
 						</div>
 						<div class='divider'></div></br>
 					</div>
-					<div class='row left'>
+					<div class='row right'>
 						<div class='input-field col s12'>
 							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 						</div>
@@ -1119,7 +1126,7 @@
 						</div>
 						<div class='divider'></div></br>
 					</div>
-					<div class='row left'>
+					<div class='row right'>
 						<div class='input-field col s12'>
 							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 						</div>
@@ -1243,7 +1250,7 @@
 						</div>
 						<div class='divider'></div></br>
 					</div>
-					<div class='row left'>
+					<div class='row right'>
 						<div class='input-field col s12'>
 							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 						</div>
@@ -1276,7 +1283,7 @@
 									<div class='error_rating'></div>	
 								</div>
 								<div class='input-field col s3'>
-									<label for='field_doe'>Date Of Examination/Conferment: </label>
+									<label for='field_doe'>Date Of Examination/Conferment (mm/dd/yyyy): </label>
 						            <input id='field_doe' type='text' name='field_doe' data-error='.error_doe'>
 									<div class='error_doe'></div>	
 								</div>
@@ -1293,7 +1300,7 @@
 									<div class='error_licence'></div>	
 								</div>
 								<div class='input-field col s3'>
-									<label for='field_date'>Date Of Release Of Licence: </label>
+									<label for='field_date'>Date Of Release Of Licence (mm/dd/yyyy): </label>
 						            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
 									<div class='error_date'></div>	
 								</div>
@@ -1364,7 +1371,7 @@
 						</div>
 						<div class='divider'></div></br>
 					</div>
-					<div class='row left'>
+					<div class='row right'>
 						<div class='input-field col s12'>
 							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 						</div>
@@ -1498,7 +1505,7 @@
 						</div>
 						<div class='divider'></div></br>
 					</div>
-					<div class='row left'>
+					<div class='row right'>
 						<div class='input-field col s12'>
 							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 						</div>
@@ -1595,13 +1602,10 @@
 									<div class='error_position'></div>	
 								</div>
 							</div>
-							<div class='input-field col s4 left'>
-								<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
-							</div>
 						</div>
 						<div class='divider'></div></br>
 					</div>
-					<div class='row left'>
+					<div class='row right'>
 						<div class='input-field col s12'>
 							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 						</div>
@@ -1628,7 +1632,7 @@
 						            <input id='field_title' type='text' name='field_title' data-error='.error_title'>
 									<div class='error_title'></div>	
 								</div>
-								<div class='input-field col s3'>
+								<div class='input-field col s6'>
 									<label for='field_from'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
 						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
 									<div class='error_from'></div>	
@@ -1681,7 +1685,7 @@
 						            <input id='field_title' type='text' name='field_title' data-error='.error_title'>
 									<div class='error_title'></div>	
 								</div>
-								<div class='input-field col s3'>
+								<div class='input-field col s6'>
 									<label for='field_from'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
 						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
 									<div class='error_from'></div>	
@@ -1700,13 +1704,10 @@
 									<div class='error_conducted'></div>	
 								</div>
 							</div>
-							<div class='input-field col s4 left'>
-								<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
-							</div>
 						</div>
 						<div class='divider'></div></br>
 					</div>
-					<div class='row left'>
+					<div class='row right'>
 						<div class='input-field col s12'>
 							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 						</div>
@@ -1765,7 +1766,7 @@
 						            <input id='field_skills' type='text' name='field_skills' data-error='.error_skills'>
 									<div class='error_skills'></div>	
 								</div>
-								<div class='input-field col s2 left'>
+								<div class='input-field col s2 right'>
 									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 								</div>
 							</div>
@@ -1826,7 +1827,7 @@
 						            <input id='field_non_academic' type='text' name='field_non_academic' data-error='.error_non_academic'>
 									<div class='error_non_academic'></div>	
 								</div>
-								<div class='input-field col s2 left'>
+								<div class='input-field col s2 right'>
 									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 								</div>
 							</div>
@@ -1856,7 +1857,7 @@
 						            <input id='field_association' type='text' name='field_association' data-error='.error_association'>
 									<div class='error_association'></div>	
 								</div>
-								<div class='input-field col s2 left'>
+								<div class='input-field col s2 right'>
 									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
 								</div>
 							</div>
@@ -1866,7 +1867,1352 @@
 				</div>
 			</div>
 		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_Questions'>Next</a></p>
+		</div>
 	</addMembership>
+
+	<addMemberships>
+		<form id='form_addMemberships' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Other Information<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s10'>
+									<label for='field_association'>Membership in Association/Organization: </label>
+						            <input id='field_association' type='text' name='field_association' data-error='.error_association'>
+									<div class='error_association'></div>	
+								</div>
+								<div class='input-field col s2 right'>
+									<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addMemberships>
+		
+	<addQuestions>
+		<form id='form_questions' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Other Information<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div>
+						</div><br/><br/>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>Are you related by consanguinity or affinity to any of the following: </label>
+									<div class='error_title'></div>	
+								</div>
+							</div><br />
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>a. Within the third degree(for National Government Employees): </label>
+									<label style='margin-top:3%;color:black;'>appointing authority, recomendiing authority, chief of office/bureau/department or person who has immediate supervision on you in the Office, Bureau or Deaprtment where you will be apointed?</label>
+									<div class='error_title'></div>	
+								</div><br /><br /><br /><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_36A' class='active'>Select:</label>
+									<select name='field_36A'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details36A'>If Yes, give details: </label>
+						            <input id='field_details36A' type='text' name='field_details36A' data-error='.error_details36A'>
+									<div class='error_details36A'></div>	
+								</div>				
+							</div>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>b. Within the fourth degree(for Local Government Employees): </label>
+									<label style='margin-top:3%;color:black;'>appointing authority, recommending authority where you will be apointed?</label>
+									<div class='error_title'></div>	
+								</div><br /><br /><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_36B' class='active'>Select:</label>
+									<select name='field_36B'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details36B'>If Yes, give details: </label>
+						            <input id='field_details36B' type='text' name='field_details36A' data-error='.error_details36B'>
+									<div class='error_details36B'></div>	
+								</div>				
+							</div>
+							<div class='divider'></div>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>a. Have you ever been formally charged? </label>
+								</div><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_37A' class='active'>Select:</label>
+									<select name='field_37A'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details37A'>If Yes, give details: </label>
+						            <input id='field_details37A' type='text' name='field_details36A' data-error='.error_details37A'>
+									<div class='error_details37A'></div>	
+								</div>				
+							</div>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>b. Have you ever been guilty of any administrative offense? </label>
+								</div><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_37B' class='active'>Select:</label>
+									<select name='field_37B'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details37B'>If Yes, give details: </label>
+						            <input id='field_details37B' type='text' name='field_details36A' data-error='.error_details37B'>
+									<div class='error_details37B'></div>	
+								</div>				
+							</div>
+							<div class='divider'></div>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>Have you ever been convicted of any crime or violation of any law, decree, ordinance or regulation by any court or tribunal? </label>
+								</div><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_38' class='active'>Select:</label>
+									<select name='field_38'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details38'>If Yes, give details: </label>
+						            <input id='field_details38' type='text' name='field_details36A' data-error='.error_details38'>
+									<div class='error_details38'></div>	
+								</div>				
+							</div>
+							<div class='divider'></div>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>Have you ever been separated from the service in any following modes: resignation, retirement, dropped from the rolls, dismissal, terminantion, end of term, finished contract AWOL or phase out in the public or private sector? </label>
+								</div><br /><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_39' class='active'>Select:</label>
+									<select name='field_39'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details39'>If Yes, give details: </label>
+						            <input id='field_details39' type='text' name='field_details36A' data-error='.error_details39'>
+									<div class='error_details39'></div>	
+								</div>				
+							</div>
+							<div class='divider'></div>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>Have you been candidate in a national or local election(exept Brangay election)? </label>
+								</div><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_40' class='active'>Select:</label>
+									<select name='field_40'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details40'>If Yes, give details: </label>
+						            <input id='field_details40' type='text' name='field_details36A' data-error='.error_details40'>
+									<div class='error_details40'></div>	
+								</div>				
+							</div>
+							<div class='divider'></div>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>Pursuant to: (a) Indigenous People's Act(RA8371); (b) Magna Carta for Disabled Persons(RA7277); and (c) Solo Parents Welfare Act of 2000 (RA8972), please answer the following items:s </label>
+									<div class='error_title'></div>	
+								</div>
+							</div><br />
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>a. Are you a member of any indigenous group?: </label>
+									<div class='error_title'></div>	
+								</div><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_41A' class='active'>Select:</label>
+									<select name='field_41A'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details41A'>If Yes, give details: </label>
+						            <input id='field_details41A' type='text' name='field_details36A' data-error='.error_details41A'>
+									<div class='error_details41A'></div>	
+								</div>				
+							</div>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>b. Are you differently abled? </label>
+									<div class='error_title'></div>	
+								</div><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_41B' class='active'>Select:</label>
+									<select name='field_41B'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details41B'>If Yes, give details: </label>
+						            <input id='field_details41B' type='text' name='field_details36A' data-error='.error_details41B'>
+									<div class='error_details41B'></div>	
+								</div>				
+							</div>
+							<div class='row'>
+								<div class='input-field s12'>
+									<label style='color:black;'>c. Are you a solo parent? </label>
+									<div class='error_title'></div>	
+								</div><br />
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_41C' class='active'>Select:</label>
+									<select name='field_41C'>
+										<option selected>Yes</option>
+										<option>No</option>
+									</select>
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_details41C'>If Yes, give details: </label>
+						            <input id='field_details41C' type='text' name='field_details36A' data-error='.error_details41C'>
+									<div class='error_details41C'></div>	
+								</div>				
+							</div>
+
+						</div>
+						<div class='divider'></div>
+					</div>
+					<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addQuestions>
+
+	<addReferences>
+		<form id='form_references' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>References(Person not related consanguinity or affinity to applicant / apointee)<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_name'>Name: </label>
+						            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
+									<div class='error_name'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_address'>Address: </label>
+						            <input id='field_address' type='text' name='field_address' data-error='.error_address'>
+									<div class='error_address'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_telephone'>Telephone Number: </label>
+						            <input id='field_telephone' type='text' name='field_telephone' data-error='.error_telephone'>
+									<div class='error_telephone'></div>	
+								</div>
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addReferences>
+
+	<addSALNpersonalInfo>
+		<form id='form_personalInfo' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<h5>Declarant<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></h5>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s5'>
+									<label for='field_lname'>Family Name: </label>
+						            <input id='field_lname' type='text' name='field_lname' data-error='.error_lname'>
+									<div class='error_lname'></div>	
+								</div>
+								<div class='input-field col s5'>
+									<label for='field_fname'>First Name: </label>
+						            <input id='field_fname' type='text' name='field_fname' data-error='.error_fname'>
+									<div class='error_fname'></div>	
+								</div>
+								<div class='input-field col s2'>
+									<label for='field_mname'>Middle Initial: </label>
+						            <input id='field_mname' type='text' name='field_mname' data-error='.error_mname'>
+									<div class='error_mname'></div>	
+								</div>
+							</div>
+							<div class='row'>
+									<div class='input-field col s12'>
+									<label for='field_office_address'>Address: </label>
+						            <input id='field_office_address' type='text' name='field_office_address' data-error='.error_office_address'>
+									<div class='error_office_address'></div>	
+								</div>				
+							</div>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_position'>Position: </label>
+						            <input id='field_position' type='text' name='field_position' data-error='.error_position'>
+									<div class='error_position'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_agency'>Agency/Office: </label>
+						            <input id='field_agency' type='text' name='field_agency' data-error='.error_agency'>
+									<div class='error_agency'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_address'>Office Address: </label>
+						            <input id='field_address' type='text' name='field_address' data-error='.error_address'>
+									<div class='error_address'></div>	
+								</div>
+							</div>						
+							<div class='divider'></div>
+							<h5>Spouse</h5>
+							<div class='row'>
+								<div class='input-field col s5'>
+									<label for='field_s_lname'>Family Name: </label>
+						            <input id='field_s_lname' type='text' name='field_s_lname' data-error='.error_s_lname'>
+									<div class='error_s_lname'></div>	
+								</div>
+								<div class='input-field col s5'>
+									<label for='field_s_fname'>First Name: </label>
+						            <input id='field_s_fname' type='text' name='field_s_fname' data-error='.error_s_fname'>
+									<div class='error_s_fname'></div>	
+								</div>
+								<div class='input-field col s2'>
+									<label for='field_s_mname'>Middle Initial: </label>
+						            <input id='field_s_mname' type='text' name='field_s_mname' data-error='.error_s_mname'>
+									<div class='error_s_mname'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_s_position'>Position: </label>
+						            <input id='field_s_position' type='text' name='field_s_position' data-error='.error_s_position'>
+									<div class='error_s_position'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_s_office'>Agency/Office: </label>
+						            <input id='field_s_office' type='text' name='field_s_office' data-error='.error_s_office'>
+									<div class='error_s_office'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_s_address'>Office Address: </label>
+						            <input id='field_s_address' type='text' name='field_s_address' data-error='.error_s_address'>
+									<div class='error_s_address'></div>	
+								</div>
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addSALNpersonalInfo>
+
+	<addUnmarriedChild>
+		<form id='form_addAnak' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Unmarried Children Below(18) Years of Age Living in Declarant's Household<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_name'>Name Of Child: </label>
+						            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
+									<div class='error_name'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_child_dob'>Date Of Birth: </label>
+						            <input id='field_child_dob' type='text' name='field_child_dob' data-error='.error_child_dob'>
+									<div class='error_child_dob'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_child_age'>Age: </label>
+						            <input id='field_child_age' type='text' name='field_child_age' data-error='.error_child_age'>
+									<div class='error_child_age'></div>	
+								</div>
+								<div class='input-field col s2'>
+									<button class='btn blue waves-effect waves-light right' type='submit'>Save ....</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_real'>Next</a></p>
+		</div>
+	</addUnmarriedChild>
+
+	<addUnmarriedChilds>
+		<form id='form_addAnaks' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Unmarried Children Below(18) Years of Age Living in Declarant's Household<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_name'>Name Of Child: </label>
+						            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
+									<div class='error_name'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_child_dob'>Date Of Birth: </label>
+						            <input id='field_child_dob' type='text' name='field_child_dob' data-error='.error_child_dob'>
+									<div class='error_child_dob'></div>	
+								</div>
+								<div class='input-field col s3'>
+									<label for='field_child_age'>Age: </label>
+						            <input id='field_child_age' type='text' name='field_child_age' data-error='.error_child_age'>
+									<div class='error_child_age'></div>	
+								</div>
+								<div class='input-field col s2'>
+									<button class='btn blue waves-effect waves-light right' type='submit'>Save ....</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addUnmarriedChilds>
+
+	<addReal>
+		<form id='form_addReal' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Real Properties<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_description'>Description: </label>
+						            <input id='field_description' type='text' name='field_description' data-error='.error_description'>
+									<div class='error_description'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_kind'>Kind: </label>
+						            <input id='field_kind' type='text' name='field_kind' data-error='.error_kind'>
+									<div class='error_kind'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_location'>Exact Location: </label>
+						            <input id='field_location' type='text' name='field_location' data-error='.error_location'>
+									<div class='error_location'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_assessed'>Assessed Value: </label>
+						            <input id='field_assessed' type='text' name='field_assessed' data-error='.error_assessed'>
+									<div class='error_assessed'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_market'>Current Fair Market Value: </label>
+						            <input id='field_market' type='text' name='field_market' data-error='.error_market'>
+									<div class='error_market'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_year'>Acqusition Year: </label>
+						            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+									<div class='error_year'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_mode'>Acqusition Mode: </label>
+						            <input id='field_mode' type='text' name='field_mode' data-error='.error_mode'>
+									<div class='error_mode'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_year'>Acqusition Cost: </label>
+						            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+									<div class='error_year'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_personal'>Next</a></p>
+		</div>
+	</addReal>
+
+	<addReals>
+		<form id='form_addReals' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Real Properties<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_description'>Description: </label>
+						            <input id='field_description' type='text' name='field_description' data-error='.error_description'>
+									<div class='error_description'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_kind'>Kind: </label>
+						            <input id='field_kind' type='text' name='field_kind' data-error='.error_kind'>
+									<div class='error_kind'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_location'>Exact Location: </label>
+						            <input id='field_location' type='text' name='field_location' data-error='.error_location'>
+									<div class='error_location'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_assessed'>Assessed Value: </label>
+						            <input id='field_assessed' type='text' name='field_assessed' data-error='.error_assessed'>
+									<div class='error_assessed'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_market'>Current Fair Market Value: </label>
+						            <input id='field_market' type='text' name='field_market' data-error='.error_market'>
+									<div class='error_market'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_year'>Acqusition Year: </label>
+						            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+									<div class='error_year'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_mode'>Acqusition Mode: </label>
+						            <input id='field_mode' type='text' name='field_mode' data-error='.error_mode'>
+									<div class='error_mode'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_year'>Acqusition Cost: </label>
+						            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+									<div class='error_year'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addReals>
+
+	<addPersonal>
+		<form id='form_personal' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Real Properties<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_description'>Description: </label>
+						            <input id='field_description' type='text' name='field_description' data-error='.error_description'>
+									<div class='error_description'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_year'>Year Acquired: </label>
+						            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+									<div class='error_year'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_cost'>Acquisition Cost/Amount: </label>
+						            <input id='field_cost' type='text' name='field_cost' data-error='.error_cost'>
+									<div class='error_cost'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_liabilities'>Next</a></p>
+		</div>
+	</addPersonal>
+
+	<addPersonals>
+		<form id='form_personals' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Real Properties<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_description'>Description: </label>
+						            <input id='field_description' type='text' name='field_description' data-error='.error_description'>
+									<div class='error_description'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_year'>Year Acquired: </label>
+						            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
+									<div class='error_year'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_cost'>Acquisition Cost/Amount: </label>
+						            <input id='field_cost' type='text' name='field_cost' data-error='.error_cost'>
+									<div class='error_cost'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addPersonals>
+
+	<addLiabilities>
+		<form id='form_liabilities' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Liabilities<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_nature'>Nature: </label>
+						            <input id='field_nature' type='text' name='field_nature' data-error='.error_nature'>
+									<div class='error_nature'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_creditors'>Name Of Creditors: </label>
+						            <input id='field_creditors' type='text' name='field_creditors' data-error='.error_creditors'>
+									<div class='error_creditors'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_balance'>Outstanding Balance: </label>
+						            <input id='field_balance' type='text' name='field_balance' data-error='.error_balance'>
+									<div class='error_balance'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_business'>Next</a></p>
+		</div>
+	</addLiabilities>
+
+	<addLiabilitiess>
+		<form id='form_liabilitiess' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Liabilities<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_nature'>Nature: </label>
+						            <input id='field_nature' type='text' name='field_nature' data-error='.error_nature'>
+									<div class='error_nature'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_creditors'>Name Of Creditors: </label>
+						            <input id='field_creditors' type='text' name='field_creditors' data-error='.error_creditors'>
+									<div class='error_creditors'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_balance'>Outstanding Balance: </label>
+						            <input id='field_balance' type='text' name='field_balance' data-error='.error_balance'>
+									<div class='error_balance'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addLiabilitiess>
+
+	<addBusiness>
+		<form id='form_business' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Business Interests And Financial Connections<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_entity'>Name Of Entity/Business Enterprise: </label>
+						            <input id='field_entity' type='text' name='field_entity' data-error='.error_entity'>
+									<div class='error_entity'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_address'>Business Address: </label>
+						            <input id='field_address' type='text' name='field_address' data-error='.error_address'>
+									<div class='error_address'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_nature'>Nature Of Business /Or Financial Connection: </label>
+						            <input id='field_nature' type='text' name='field_nature' data-error='.error_nature'>
+									<div class='error_nature'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_date'>Date Of Acquisition Of Interests Or Connector: </label>
+						            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
+									<div class='error_date'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_relatives'>Next</a></p>
+		</div>
+	</addBusiness>
+
+	<addBusinesss>
+		<form id='form_businesss' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Business Interests And Financial Connections<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_entity'>Name Of Entity/Business Enterprise: </label>
+						            <input id='field_entity' type='text' name='field_entity' data-error='.error_entity'>
+									<div class='error_entity'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_address'>Business Address: </label>
+						            <input id='field_address' type='text' name='field_address' data-error='.error_address'>
+									<div class='error_address'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_nature'>Nature Of Business /Or Financial Connection: </label>
+						            <input id='field_nature' type='text' name='field_nature' data-error='.error_nature'>
+									<div class='error_nature'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_date'>Date Of Acquisition Of Interests Or Connector: </label>
+						            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
+									<div class='error_date'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addBusinesss>
+
+	<addRelatives>
+		<form id='form_relatives' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Relatives in the Government Service<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_relative'>Name Of Relative: </label>
+						            <input id='field_relative' type='text' name='field_relative' data-error='.error_relative'>
+									<div class='error_relative'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_relationship'>Relationship: </label>
+						            <input id='field_relationship' type='text' name='field_relationship' data-error='.error_relationship'>
+									<div class='error_relationship'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_position'>Position: </label>
+						            <input id='field_position' type='text' name='field_position' data-error='.error_position'>
+									<div class='error_position'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_agency'>Name Of Agency/Office And Address: </label>
+						            <input id='field_agency' type='text' name='field_agency' data-error='.error_agency'>
+									<div class='error_agency'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addRelatives>
+
+	<leave>
+		<form id='form_leave' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p style="margin-top:5%;text-align: center;font-size:20px;" ><i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i><b>APPLICATION FOR LEAVE</b></p><br/>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<label for='field_office'>Office/Agency:</label>
+					            <input id='field_office' type='text' name='field_office' data-error='.error_office'>
+								<div class='error_office'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s4'>
+								<label for='field_lname'>Last Name: </label>
+					            <input id='field_lname' type='text' name='field_lname' data-error='.error_lname'>
+								<div class='error_lname'></div>	
+							</div>
+							<div class='input-field col s4'>
+								<label for='field_fname'>First Name: </label>
+					            <input id='field_fname' type='text' name='field_fname' data-error='.error_fname'>
+								<div class='error_fname'></div>	
+							</div>
+							<div class='input-field col s4'>
+								<label for='field_mname'>Middle Name: </label>
+					            <input id='field_mname' type='text' name='field_mname' data-error='.error_mname'>
+								<div class='error_mname'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s4'>
+								<label for='field_dof'>Date of Filling(mm/dd/yyyy): </label>
+					            <input id='field_dof' type='text' name='field_dof' data-error='.error_dof'>
+								<div class='error_dof'></div>	
+							</div>
+							<div class='input-field col s4'>
+								<label for='field_position'>Position: </label>
+					            <input id='field_position' type='text' name='field_position' data-error='.error_position'>
+								<div class='error_position'></div>	
+							</div>
+							<div class='input-field col s4'>
+								<label for='field_salary'>Salary(Monthly): </label>
+					            <input id='field_salary' type='text' name='field_salary' data-error='.error_salary'>
+								<div class='error_salary'></div>	
+							</div>
+						</div>
+						<div class='divider'></div>
+						<div class='row'><br />
+							<div class='input-field col s6'>
+								<label for='field_leave' class='active'>Types of leave: </label>
+								<select name='field_leave'>
+									<option selected>VACATION</option>
+									<option>SICK</option>
+									<option>MATERNITY</option>
+									<option>OTHER</option>
+								</select>
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_leaveSpecify'>Specify: </label>
+					            <input id='field_leaveSpecify' type='text' name='field_leaveSpecify' data-error='.error_leaveSpecify'>
+								<div class='error_leaveSpecify'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_workingDays'>Number of working days for: </label>
+					            <input id='field_workingDays' type='text' name='field_workingDays' data-error='.error_workingDays'>
+								<div class='error_workingDays'></div>	
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_inclusiveDate'>Inclusive Date(mm/dd/yyyy): </label>
+					            <input id='field_inclusiveDate' type='text' name='field_inclusiveDate' data-error='.error_inclusiveDate'>
+								<div class='error_inclusiveDate'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_where' class='active'>Where leave will be spent: </label>
+								<select name='field_where'>
+									<option selected>Within the Philippines</option>
+									<option>Abroad</option>		
+									<option>In hospital</option>
+									<option>Out-Patient</option>									
+								</select>
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_whereSpecify'>Specify: </label>
+					            <input id='field_whereSpecify' type='text' name='field_whereSpecify' data-error='.error_whereSpecify'>
+								<div class='error_whereSpecify'></div>	
+							</div>
+						</div>						
+						<div class='row'>
+							<div class='input-field col s8'>
+								<label for='field_commutation' class='active'>Commutation: </label>
+								<select name='field_commutation'>
+									<option selected>Requested</option>
+									<option>Not Requested</option>									
+								</select>
+							</div><br / ><br / >
+							<div class='col s4 center'>
+								<div class='divider' style='background-color:black;'></div>
+								<span>(Signature of Applicant)</span>
+							</div>
+						</div>
+						<div class='divider'></div>
+						<h6><center>DETAILS OF ACTIONS ON APPLICATION</center></h6>
+						<div class='row'>
+							<div class='input-field col s4'>
+								<label for='field_certification'>Certification of leave credits as of: </label>
+					            <input id='field_certification' type='text' name='field_certification' data-error='.error_certification'>
+								<div class='error_certification'></div>	
+							</div>
+							<div class='input-field col s3'>
+								<label for='field_vacation'>Vacation(Days): </label>
+					            <input id='field_vacation' type='text' name='field_vacation' data-error='.error_vacation'>
+								<div class='error_vacation'></div>	
+							</div>
+							<div class='input-field col s3'>
+								<label for='field_sick'>Sick(Days): </label>
+					            <input id='field_sick' type='text' name='field_sick' data-error='.error_sick'>
+								<div class='error_sick'></div>	
+							</div>
+							<div class='input-field col s2'>
+								<label for='field_total'>Total(Days): </label>
+					            <input id='field_total' type='text' name='field_total' data-error='.error_total'>
+								<div class='error_total'></div>	
+							</div>
+						</div><br />
+						<div class='row'>
+							<div class='col s4 offset-s4 center'>
+								<span ><b>KEITH C. BALINTOS</b></span><br />
+								<span>OIC-HRMO</span>
+							</div>
+						</div>
+						<div class='divider'></div>
+						<div class='row'>
+							<div class='input-field col s4'>
+								<label for='field_withPay'>Approved For:(Day with pay): </label>
+					            <input disabled='' id='field_withPay' type='text' name='field_withPay' data-error='.error_withPay'>
+								<div class='error_withPay'></div>	
+							</div>
+							<div class='input-field col s4'>
+								<label for='field_withoutPay'>Approved For:(Day without pay): </label>
+					            <input disabled='' id='field_withoutPay' type='text' name='field_withoutPay' data-error='.error_withoutPay'>
+								<div class='error_withoutPay'></div>	
+							</div>
+							<div class='input-field col s4'>
+								<label for='field_other'>Approved For:(Other(Specify)): </label>
+					            <input disabled='' id='field_other'  type='text' name='field_other' data-error='.error_other'>
+								<div class='error_other'></div>	
+							</div>
+						</div><br />
+						<div class='divider' style='background-color:black;'></div>
+						<div class='row'><br />
+							<div class='input-field col s6'>
+								<label for='field_recommendation' class='active'>Recommendation: </label>
+								<select disabled='' name='field_recommendation'>
+									<option selected>Approved</option>
+									<option>Disapproved</option>									
+								</select>
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_dueRecommendation'>Due to: </label>
+					            <input disabled='' id='field_dueRecommendation' type='text' name='field_dueRecommendation' data-error='.error_dueRecommendation'>
+								<div class='error_dueRecommendation'></div>	
+							</div>				
+						</div><br /><br />
+						<div class='row'>
+							<div class='col s4 offset-s4 center'>
+								<div class='divider' style='background-color:black;'></div>
+								<span>(Authorized Official)</span>
+							</div>
+						</div><br />
+						<div class='divider' style='background-color:black;'></div>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<label for='field_dueTo'>Due to: </label>
+					            <input id='field_dueTo' disabled='' type='text' name='field_dueTo' data-error='.error_dueTo'>
+								<div class='error_dueTo'></div>	
+							</div>		
+						</div><br /><br /><br />
+						<div class='row'>
+							<div class='col s4 offset-s4 center'>
+								<span><b>ALIMAR R. BRIANA</b></span><br />
+								<span>Municipal Mayor</span>
+							</div>
+						</div>
+					</div><br /><br />
+					<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Send</button>
+						</div>
+					</div><br /><br /><br />
+				</div>
+			</div>
+		</form>
+	</leave>
+
+	<travelOrder>
+		<form id='form_me' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p style='text-align: center;'>Republic of the Philippines<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<p style="margin-top:-2%;font-size: 15px;text-align: center;" ><b>MUNICIPALITY OF MABINI</b></p>
+							<p style="margin-top:-2%;text-align: center;" >PANGASINAN</p>
+							<p style="margin-top:5%;text-align: center;font-size:30px;" ><b>TRAVEL ORDER</b></p><br/>
+						</div>
+						<div class='row right'>
+							<div class='input-field col s12'>
+								<label for='field_date'>Date: </label>
+					            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
+								<div class='error_date'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<label for='field_name'>Name: </label>
+					            <input id='field_name' type='text' name='field_name' data-error='.error_name' style='width:85%;'>
+								<div class='error_name'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_position'>Position: </label>
+					            <input id='field_position' type='text' name='field_position' data-error='.error_position' style='width:85%;'>
+								<div class='error_position'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_section'>Section: </label>
+					            <input id='field_section' type='text' name='field_section' data-error='.error_section' style='width:85%;'>
+								<div class='error_section'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<label for='field_destination'>Destination: </label>
+					            <input id='field_destination' type='text' name='field_destination' data-error='.error_destination' style='width:85%;'>
+								<div class='error_destination'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_departure'>Date/Time of Departure: </label>
+					            <input id='field_departure' type='text' name='field_departure' data-error='.error_departure' style='width:85%;'>
+								<div class='error_departure'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_arrival'>Date/Time of Arrival: </label>
+					            <input id='field_arrival' type='text' name='field_arrival' data-error='.error_arrival' style='width:85%;'>
+								<div class='error_arrival'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<label for='field_purpose'>Purpose: </label>
+					            <input id='field_purpose' type='text' name='field_purpose' data-error='.error_purpose' style='width:85%;'>
+								<div class='error_purpose'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_conducted'>Person(s) to be contacted: </label>
+					            <input id='field_conducted' type='text' name='field_conducted' data-error='.error_conducted' style='width:85%;'>
+								<div class='error_conducted'></div>	
+							</div>
+						</div><br /><br />
+						<div class='row'>
+							<div class='col s4 offset-s6'>
+								<span>Approved:</span>
+							</div><br /><br />
+							<div class='col s4 offset-s7 center'>
+								<span><b>ALIMAR R. BRIANA</b></span><br />
+								<span>Municipal Mayor</span>
+							</div>
+						</div>
+					</div><br /><br />
+					<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Send</button>
+						</div>
+					</div><br /><br /><br />
+				</div>
+			</div>
+		</form>
+	</travelOrder>
+
+	<travelOrders>
+		<form id='form_me' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p style='text-align: center;'>Republic of the Philippines<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<p style="margin-top:-2%;font-size: 15px;text-align: center;" ><b>MUNICIPALITY OF MABINI</b></p>
+							<p style="margin-top:-2%;text-align: center;" >PANGASINAN</p>
+							<p style="margin-top:5%;text-align: center;font-size:30px;" ><b>TRAVEL ORDER</b></p><br/>
+						</div>
+						<div class='row right'>
+							<div class='input-field col s12'>
+								<label for='field_date'>Date: </label>
+					            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
+								<div class='error_date'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<label for='field_name'>Name: </label>
+					            <input id='field_name' type='text' name='field_name' data-error='.error_name' style='width:85%;'>
+								<div class='error_name'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_position'>Position: </label>
+					            <input id='field_position' type='text' name='field_position' data-error='.error_position' style='width:85%;'>
+								<div class='error_position'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_section'>Section: </label>
+					            <input id='field_section' type='text' name='field_section' data-error='.error_section' style='width:85%;'>
+								<div class='error_section'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<label for='field_destination'>Destination: </label>
+					            <input id='field_destination' type='text' name='field_destination' data-error='.error_destination' style='width:85%;'>
+								<div class='error_destination'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_departure'>Date/Time of Departure: </label>
+					            <input id='field_departure' type='text' name='field_departure' data-error='.error_departure' style='width:85%;'>
+								<div class='error_departure'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_arrival'>Date/Time of Arrival: </label>
+					            <input id='field_arrival' type='text' name='field_arrival' data-error='.error_arrival' style='width:85%;'>
+								<div class='error_arrival'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
+								<label for='field_purpose'>Purpose: </label>
+					            <input id='field_purpose' type='text' name='field_purpose' data-error='.error_purpose' style='width:85%;'>
+								<div class='error_purpose'></div>	
+							</div>
+							<div class='input-field col s12'>
+								<label for='field_conducted'>Person(s) to be contacted: </label>
+					            <input id='field_conducted' type='text' name='field_conducted' data-error='.error_conducted' style='width:85%;'>
+								<div class='error_conducted'></div>	
+							</div>
+						</div>
+						<div class='divider'></div><br />
+						<div class='row'>
+							<div class='input-field col s6'>
+								<label for='field_commutation' class='active'>Approval: </label>
+								<select name='field_commutation'>
+									<option selected>Approve</option>
+									<option>Disapprove</option>									
+								</select>
+							</div>
+							<div class='input-field col s6'>
+								<label for='field_due'>Due to: </label>
+					            <input id='field_due' type='text' name='field_due' data-error='.error_due' style='width:85%;'>
+								<div class='error_due'></div>	
+							</div>
+						</div><br /><br />
+						<div class='row'>
+							<div class='col s4 offset-s6'>
+								<span>Approved:</span>
+							</div><br /><br />
+							<div class='col s4 offset-s7 center'>
+								<span><b>ALIMAR R. BRIANA</b></span><br />
+								<span>Municipal Mayor</span>
+							</div>
+						</div>
+					</div><br /><br />
+					<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Send</button>
+						</div>
+					</div><br /><br /><br />
+				</div>
+			</div>
+		</form>
+	</travelOrders>
 
 	<addPoint>
 		<form id='form_addPoints' class='formValidate' method='get' action='' novalidate='novalidate'>

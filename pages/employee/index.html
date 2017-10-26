@@ -27,11 +27,11 @@
                 <li class="blue darken-1" id='user-account' style='padding-top: 10px;padding-bottom: 10px;'>
                     <div class="row" style='margin-bottom: 0px !important;'>
                         <div class="col col s4 m4 l4">
-                            <img src="../assets/images/avatar.jpg" id='picture' alt="" class="circle responsive-img valign profile-image">
+                            <img src="../assets/images/avatar.jpg" id='picture' alt="" class="circle responsive-img valign10profile-image">
                         </div>
                         <div class="col col s8 m8 l8">
                             <a class='btn-flat dropdown-button waves-effect waves-light white-text profile-btn'  data-activates='account'>
-                                <span>Name</span>
+                                <span id="name-admin" style="text-transform: none ! important;"></span>
                                 <i class='mdi-navigation-arrow-drop-down right'></i>
                             </a>
                             <ul id='account' class='dropdown-content'>
@@ -74,6 +74,27 @@
         myId = JSON.parse(myId);
         localStorage.setItem('myId',myId[0][0]);
         localStorage.setItem('company_id',myId[0][1]);
+    });
+
+     var data = system.html('../assets/harmony/Process.php?get-myAccount');
+    data.done(function(data){
+        data = JSON.parse(data);
+    
+        $("#name-admin").html(data[0][3]);
+    });
+
+   var id = localStorage.getItem('myId');
+    var data = system.ajax('../assets/harmony/Process.php?get-employeeDetails',id);
+    data.done(function(data){
+        data = JSON.parse(data);
+        if(data.length<=0){
+            $("#picture").attr("src",'../assets/images/profile/avatar.jpg'); 
+        }
+        else{
+             var profile = (data[0][11] == "")?'avatar.jpg':data[0][11];
+            $("#picture").attr("src",'../assets/images/profile/'+data[0][11]);
+        }
+       
     });
         
 </script>

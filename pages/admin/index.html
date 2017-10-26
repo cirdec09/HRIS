@@ -33,7 +33,7 @@
                         </div>
                         <div class="col col s8 m8 l8">
                             <a class='btn-flat dropdown-button waves-effect waves-light white-text profile-btn'  data-activates='account'>
-                                <span id="name-admin"></span>
+                                <span id="name-admin" style="text-transform: none ! important;"></span>
                                 <i class='mdi-navigation-arrow-drop-down right'></i>
                             </a>
                             <ul id='account' class='dropdown-content'>
@@ -79,8 +79,8 @@
         data = JSON.parse(data);
         var profile = (data[0][8] == "")?'avatar.jpg':data[0][8];
         $("#picture").attr("src",'../assets/images/profile/'+data[0][8]);
-
-        $("#name-admin").html(data[0][1]);
+    
+        $("#name-admin").html(data[0][2]);
         $("#admin").html(data[0][4]);   
     });
 </script>

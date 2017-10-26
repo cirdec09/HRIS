@@ -1,0 +1,45 @@
+<div class="wrapper">
+	<div class="container">
+		<div class="row">
+			<div class="col s12 m8 l8">
+				<h5 class="breadcrumbs-title">Pending Requests</h5>
+				<ol class="breadcrumbs">
+					<!-- <li><a href="../account/">Dashboard</a></li>
+					<li><a id='bread1'>Client Details</a></li>
+					<li class="active">Employee Details</li> -->
+				</ol>
+			</div>
+		</div>
+	</div>
+	<div class="divider"></div>
+    <div class="container" id='scroll' style="overflow: hidden;">
+        <div class="section">
+			<div id='display_travel'>
+				<div class='card' id="pending"></div>
+			</div>
+			<div id='display_error' class="row margin"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+	var h = 500;
+	$("#scroll").height(h).perfectScrollbar({
+		suppressScrollX: true,
+		wheelPropagation:true
+	});
+
+    $("select").material_select();
+    $(".dropdown-button").dropdown();
+    $('.tooltipped').tooltip({delay: 50});
+
+    // var hash = window.location.hash;
+    // var hash = hash.split(';');
+    // var id = hash[2];
+    // var client = id.split("-");
+    
+   	leave.pending();
+</script>
+
+
+
+
