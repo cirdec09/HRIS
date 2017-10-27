@@ -3705,7 +3705,7 @@ $function = new DatabaseClasses;
 
 			if($data[1][0]['name'] == "field_Description"){
 				$description = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_real SET description = '{$description}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_real SET description = '{$description}' WHERE description = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Description is updated to {$description}.","Update");
 					echo 1;
@@ -3717,7 +3717,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Kind"){
 				$kind = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_real SET kind = '{$kind}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_real SET kind = '{$kind}' WHERE kind = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Kind is updated to {$kind}.","Update");
 					echo 1;
@@ -3729,7 +3729,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Exact Location"){
 				$location = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_real SET location = '{$location}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_real SET location = '{$location}' WHERE location = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Location is updated to {$location}.","Update");
 					echo 1;
@@ -3741,7 +3741,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Assessed Value"){
 				$assesesed = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_real SET assessed = '{$assesesed}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_real SET assessed = '{$assesesed}' WHERE assessed = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Assesesed is updated to {$assesesed}.","Update");
 					echo 1;
@@ -3753,7 +3753,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Current Fair Market Value"){
 				$current = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_real SET current = '{$current}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_real SET current = '{$current}' WHERE current = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"current is updated to {$current}.","Update");
 					echo 1;
@@ -3765,7 +3765,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Acqusition Year"){
 				$year = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_real SET acquisition_year = '{$year}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_real SET acquisition_year = '{$year}' WHERE acquisition_year = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Year is updated to {$year}.","Update");
 					echo 1;
@@ -3777,7 +3777,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Acqusition Mode"){
 				$mode = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_real SET acquisition_mode = '{$mode}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_real SET acquisition_mode = '{$mode}' WHERE acquisition_mode = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Mode is updated to {$mode}.","Update");
 					echo 1;
@@ -3789,7 +3789,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Acqusition Cost"){
 				$cost = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_real SET acquisition_cost = '{$cost}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_real SET acquisition_cost = '{$cost}' WHERE acquisition_cost = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Cost is updated to {$cost}.","Update");
 					echo 1;

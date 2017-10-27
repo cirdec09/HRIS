@@ -9774,6 +9774,7 @@ leave = {
 							  "		<label for='field_Where leave will be spent' class='active'>Type of Leave: </label>"+
 							  "		<select name='field_Where leave will be spent'>"+
 							  "			<option selected>Within the Philippines</option>"+
+							  "			<option>Abroad</option>"+
 							  "			<option>In hospital</option>"+
 							  "			<option>Out-Patient</option>"+
 							  "		</select>"+

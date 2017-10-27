@@ -3826,6 +3826,7 @@ SALN ={
 	    });
 	},
 	details:function(id){
+		var print = "";
 		var content = "";
 		var bago = "";
 		var data = system.ajax('../assets/harmony/Process.php?get-adminSALNpersonalInfo',id);
@@ -3934,8 +3935,87 @@ SALN ={
 						"</div>";
 				$("#personalInfo").html(content);
 
-				// SALN.activate();
-				// SALN.deactivate();
+				print +="<div id='profile-card' class='card'>"+
+							"<div class='card-content'>"+
+									"<span style='position: absolute;right: 0px;width: 218px;'>Revised as of January 2015</span><br />"+
+									"<span style='position: absolute;right: 0px;width: 218px;'>Per CSC Resolution No. 1500088</span><br />"+
+									"<span style='position: absolute;right: 0px;width: 218px;' >Promugated on January 23, 2015</span>"+
+							"</div><br /><br />"+
+							"<span style=''><font size='4.5'><center><b>SWORN STATEMENT OF ASSETS, LIABILITIES AND NET WORTH</b></center></font></span>"+
+							"<span style=''><center>As of December 25, 2017</center></span>"+
+							"<span style=''><center>(Required by R.A 6713)</center></span>"+
+							"<span style='padding-left:7%;'><font size='2'><b>Note:</b> Husband and wife are both public officials and employees may file the required statements jointly or separately.</font></span><br />"+
+							"<span style=''><center><c><input style='width:10px;height:5px;'/> Joint Filing</c><e style='padding-left:5%;'><input style='width:10px;height:5px;'/> Separate Filing</e><f style='padding-left:5%;'><input style='width:10px;height:5px;'/> Not Applicable</f></center></span><br />"+
+							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
+								"<tr>"+
+									"<td style='width:10%;'><b>Declarant: </b></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:15%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][3]+"</center></td>"+
+									"<td style='width:15%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][4]+"</center></td>"+
+									"<td style='width:3%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][5]+"</center></td>"+
+									"<td style='width:5%;'></td>"+
+									"<td style='width:21%;'><b>POSITION:</b></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:29%;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][7]+"</td>"+
+								"</tr>"+
+								"<tr>"+
+									"<td style='width:10%;'></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:15%;'><center>(Family Name)</center></td>"+
+									"<td style='width:15%;'><center>(First Name)</center></td>"+
+									"<td style='width:3%;'><center>(M.I)</center></td>"+
+									"<td style='width:5%;'></td>"+
+									"<td style='width:21%;'><b>AGENCY/OFFICE:</b></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:29%;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][8]+"</td>"+
+								"</tr>"+
+							"</table>"+
+							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
+								"<tr>"+
+									"<td style='width:10%;'><b>ADDRESS: </b></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:33%;border-bottom:1px solid black;word-wrap: break-word;'>"+data[0][6]+"</td>"+
+									"<td style='width:5%;'></td>"+
+									"<td style='width:21%;text-align:left;'><b>OFFICE ADDRESS:</b></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:28%;border-bottom:1px solid black;word-wrap: break-word;'>"+data[0][9]+"</td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
+								"<tr>"+
+									"<td style='width:10%;'><b>SPOUSE: </b></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:15%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][10]+"</center></td>"+
+									"<td style='width:15%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][11]+"</center></td>"+
+									"<td style='width:3%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][12]+"</center></td>"+
+									"<td style='width:5%;'></td>"+
+									"<td style='width:21%;'><b>POSITION:</b></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:29%;border-bottom:1px solid black;word-wrap: break-word;'>"+data[0][13]+"</td>"+
+								"</tr>"+
+								"<tr>"+
+									"<td style='width:10%;'></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:15%;'><center>(Family Name)</center></td>"+
+									"<td style='width:15%;'><center>(First Name)</center></td>"+
+									"<td style='width:3%;'><center>(M.I)</center></td>"+
+									"<td style='width:5%;'></td>"+
+									"<td style='width:21%;'><b>AGENCY/OFFICE:</b></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:29%;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][14]+"</td>"+
+								"</tr>"+
+							"</table>"+
+							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
+								"<tr>"+
+									"<td style='width:10%;'></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:34%;'></td>"+
+									"<td style='width:5%;'></td>"+
+									"<td style='width:21%;text-align:left;'><b>OFFICE ADDRESS:</b></td>"+
+									"<td style='width:1%;'></td>"+
+									"<td style='width:28%;border-bottom:1px solid black;word-wrap: break-word;'>"+data[0][15]+"</td>"+
+								"</tr>"+
+							"</table><br />";
 
 				}
 		});
@@ -3962,11 +4042,25 @@ SALN ={
 							"   <div class='card-content'>"+
 							"		<h5>Unmarried Children Below(18) Years of Age Living in Declarant's Household</h5>";
 
-				$(data).each(function(index,value){
-            		// data.length;
-            		// console.log(value);
-				
-				content +=	"        <br /><p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-person cyan-text text-darken-2'></i> Name Of Child: "+value[2]+"</span>"+
+				print += "<table style='border-collapse: collapse;width:100%;'>"+
+								"<tr>"+
+									"<td style='border-bottom:1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+									"<td style='border-bottom:1px solid black;'></td>"+
+								"</tr>"+
+							"</table><br />"+					
+							"<span style=''><font size='2.9'><b><center><u>UNMARRIED CHILDREN BELOW EIGHTEEN(18) YEARS OF AGE LIVING IN DECLARANT'S HOUSEHOLD</u></center></b></font></span><br />"+
+							"<table style='border-collapse: collapse;width:85%;table-layout: fixed;'  align='center'>"+
+								"<tr>"+
+									"<td style='width:38%;'><b><center>NAME </center></b></td>"+
+									"<td style='width:5%;'></td>"+
+									"<td style='width:18%;'><b><center>DATE OF BIRTH </center></b></td>"+
+									"<td style='width:5%;'></td>"+
+									"<td style='width:10%;'><b><center>AGE </center></b></td>"+
+								"</tr>";
+				$(data).each(function(index,value){		
+				content +=	"<br /><p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-person cyan-text text-darken-2'></i> Name Of Child: "+value[2]+"</span>"+
 							"			<button data-value='"+value[2]+"' disabled data-cmd='updateUnmarried' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name Of Child' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of Child '>"+
 							"				<i class='mdi-editor-mode-edit right grey-text' data-cmd='value'></i>"+
 							"			</button>"+
@@ -3983,13 +4077,36 @@ SALN ={
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
-							"		 <div class='divider'></div></br>";
+							"		 <div class='divider'></div></br>";		
+        		});
+
+        		$(data).each(function(index,value){
+            		// data.length;
+            		// console.log(value);
+				
+					print +="<tr>"+
+								"<td style='width:38%;border-bottom:1px solid black;word-wrap: break-word;'> <center>"+value[2]+"</center></td>"+
+								"<td style='width:5%;'></td>"+
+								"<td style='width:18%;border-bottom:1px solid black;word-wrap: break-word;'> <center>"+value[3]+"</center></td>"+
+								"<td style='width:5%;'></td>"+
+								"<td style='width:10%;border-bottom:1px solid black;word-wrap: break-word;'> <center>"+value[4]+"</center></td>"+
+							"</tr>";
 							
         		});
 
-        		content += 	"</div>"+
+        		content += 		"</div>"+
 							"</div>";
-        		
+
+        		print += 		"</table><br /><br />"+
+        						"<table style='border-collapse: collapse;width:100%;'>"+
+									"<tr>"+
+										"<td style='border-bottom:1px solid black;'></td>"+
+									"</tr>"+
+									"<tr>"+
+										"<td style='border-bottom:1px solid black;'></td>"+
+									"</tr>"+
+								"</table><br />";
+
 				$("#unmarriedChild").html(content);
 			}
 		});
@@ -3997,6 +4114,7 @@ SALN ={
 		var content="";
 		var bago="";
 		var subTotalA = 0;
+		var subTotalAprint = 0;
 		var data = system.ajax('../assets/harmony/Process.php?get-adminReal',id);
 		data.done(function(data){
 			data = JSON.parse(data);
@@ -4018,9 +4136,34 @@ SALN ={
 							"		<h5>Assets</h5>"+
 							"		<h6>a. Real Properties</h6>";
 
+				print +=	"<span style=''><font size='4'><b><center><u>ASSETS, LIABILITIES AND NETWORTH</u></center></b></font></span>"+
+							"<span style=''><font size='3'><center>(Including those of the spouse and unmarried children below eighteen(18)</center></font></span>"+
+							"<span style=''><font size='3'><b>1. ASSETS</b></font></span><br />"+
+							"<span style='padding-left:5%;'><font size='3'><b>a. Real Properties*</b></font></span><br /><br />"+
+							"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
+								"<tr>"+
+									"<td style='width:15%;border:1px solid black' rowspan='2'><br /><b><center>DESCRIPTION</b><br />"+
+										"(e.g. lot, house and lot, condominuim and improvements)</center>"+
+									"</td>"+
+									"<td style='width:15%;border:1px solid black' rowspan='2'><br /><b><center>KIND</b><br />"+
+										"(e.g. residential, commercial, industrial, agricultural and mixed use)</center>"+
+									"</td>"+
+									"<td style='width:15%;border:1px solid black' rowspan='2'><br /><b><center>EXACT LOCATION</b></td>"+
+									"<td style='width:10%;border:1px solid black'><br /><b><center>ASSESED VALUE</b></td>"+
+									"<td style='width:16%;border:1px solid black'><br /><b><center>CURRENT FAIR MARKET VALUE</b></td>"+
+									"<td style='width:16%;border:1px solid black' colspan='2'><center><b>ACQUISITION</b></center></td>"+
+									"<td style='width:10%;border:1px solid black' rowspan='2'><center><b>ACQUISITION COST</b></center></td>"+
+
+								"</tr>"+
+								"<tr>"+
+									"<td style='width:21%;border:1px solid black' colspan='2'><center>(As found in the Tax Destination of Real Property)</center></td>"+
+									"<td style='width:8%;border:1px solid black'><center><b>YEAR</b></center></td>"+
+									"<td style='width:8%;border:1px solid black'><center><b>MODE</b></center></td>"+
+								"</tr>";
+							
+							
+
 				$(data).each(function(index,value){
-            		// data.length;
-            		// console.log(value);
 					subTotalA = subTotalA + Number(value[9]);
 
 				content +=	"        <br /><p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-description cyan-text text-darken-2'></i> Description: "+value[2]+"</span>"+
@@ -4073,11 +4216,41 @@ SALN ={
 							"		 <div class='divider'></div></br>";
 							
         		});
+				
+				$(data).each(function(index,value){
+					subTotalAprint = subTotalAprint + Number(value[9]);
+
+				print +="<tr>"+
+							"<td style='width:15%;border:1px solid black'><center>"+value[2]+"</center></td>"+
+							"<td style='width:15%;border:1px solid black'><center>"+value[3]+"</center></td>"+
+							"<td style='width:15%;border:1px solid black'><center>"+value[4]+"</center></td>"+
+							"<td style='width:10%;border:1px solid black'><center>"+value[5]+"</center></td>"+
+							"<td style='width:16%;border:1px solid black'><center>"+value[6]+"</center></td>"+
+							"<td style='width:8%;border:1px solid black'><center>"+value[7]+"</center></td>"+
+							"<td style='width:8%;border:1px solid black'><center>"+value[8]+"</center></td>"+
+							"<td style='width:10%;border:1px solid black'><center>"+value[9]+"</center></td>"+
+						"</tr>";					
+        		});
+
 				localStorage.setItem('TotalA',subTotalA);
         		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: "+subTotalA+"</span>"+
         					"		 </p>"+
 							"</div>"+
 							"</div>";
+
+				print +="</table><br />"+
+						"<table style='border-collapse: collapse;width:100%;>"+
+							"<tr>"+
+								"<td style='width:15%;'><center></center></td>"+
+								"<td style='width:15%;'><center></center></td>"+
+								"<td style='width:15%;'><center></center></td>"+
+								"<td style='width:10%;'><center></center></td>"+
+								"<td style='width:16%;'><center></center></td>"+
+								"<td style='width:13%;'><center><b>Subtotal:</b></center></td>"+
+								"<td style='width:12%;border-bottom:1px solid black;'><center>"+subTotalAprint+"</center></td>"+
+							"</tr>"+
+						"</table>";
+						
         		
 				$("#real").html(content);
 			}
@@ -4086,6 +4259,7 @@ SALN ={
 		var content="";
 		var bago="";
 		var subTotalB=0;
+		var subTotalBprint=0;
 		var a = "", b="", totalAssets=0;
 		var data = system.ajax('../assets/harmony/Process.php?get-adminPersonal',id);
 		data.done(function(data){
@@ -4105,7 +4279,15 @@ SALN ={
 
 				content += "<div id='profile-card'>"+
 							"   <div class='card-content'>"+
-							"		<h6>b. Personal Properties</h6>";
+							"		<h6>b. Personal Properties</h6><br />";
+
+				print +="<span style='padding-left:5%;'><font size='3'><b>b. Personal Properties*</b></font></span><br /><br />"+
+						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
+								"<tr>"+
+									"<td style='width:50%;border:1px solid black;'><b><center>DESCRIPTION</center></b></td>"+
+									"<td style='width:30%;border:1px solid black;'><b><center>YEAR ACQUIRED</center></b></td>"+
+									"<td style='width:20%;border:1px solid black;'><b><center>ACQUISITION COST/AMOUNT</center></b></td>"+
+								"</tr>";
 
 				$(data).each(function(index,value){
             		// data.length;
@@ -4131,10 +4313,44 @@ SALN ={
 							"		 </p>"+
 							"		 <div class='divider'></div></br>";
         		});
+
+        		$(data).each(function(index,value){
+            		// data.length;
+            		// console.log(value);
+					subTotalBprint = subTotalBprint + Number(value[4]);
+
+				print +="<tr>"+
+							"<td style='width:50%;border:1px solid black;'><center>"+value[2]+"</center></td>"+
+							"<td style='width:30%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
+							"<td style='width:20%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
+						"</tr>";
+						
+        		});
+
+    			
+        		
 				localStorage.setItem('TotalB',subTotalB);
 				a = localStorage.getItem('TotalA');
 				b = localStorage.getItem('TotalB');
 				totalAssets=(Number(a)+Number(b));
+
+				print +="</table><br />"+
+    					"<table style='border-collapse: collapse;width:100%;'>"+
+	    					"<tr>"+
+								"<td style='width:50%;'></td>"+
+								"<td style='width:30%;text-align:right;'><b>Subtotal:</b></td>"+
+								"<td style='width:20%;border-bottom:1px solid black;'><center>"+subTotalBprint+"</center></td>"+
+							"</tr>"+
+        				"</table><br />"+
+        				"<table style='border-collapse: collapse;width:100%;'>"+
+							"<tr>"+
+								"<td style='width:50%;'></td>"+
+								"<td style='width:30%;text-align:right;'><b>TOTAL ASSETS(a+b):</b></td>"+
+								"<td style='width:20%;border-bottom:2px solid black;'><center>"+totalAssets+"</center></td>"+
+							"</tr>"+
+        				"</table><br />"+
+						"<span style=''><font size='4'>* Additional sheet/s may be used, if necessary</font></span><br />"+
+						"<span style=''><font size='4'><center><i>Page 1 of </i></center></font></span>";
 
         		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: "+subTotalB+"</span>"+
 							"		 </p>"+
@@ -4319,6 +4535,14 @@ SALN ={
         		
 				$("#relatives").html(content);
 			}
+		});
+
+		print += "</div>";
+
+		$("#salnPrint").html(print);
+
+		$("a[data-cmd='print_saln']").on('click',function(){
+			$(print).print();
 		});
 	},
 }
