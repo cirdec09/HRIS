@@ -1711,7 +1711,7 @@ employee = {
 				$("#personal_information").html(content);
 
 				print += "<div class='card'>"+
-							"<table style='border-collapse:collapse;width:100%;border:1px solid black;height:100px;'>"+
+							"<table style='border-collapse:collapse;width:100%;border:3px solid black;height:100px;'>"+
 								"<tr>"+
 									"<td style='width:65%;vertical-align:top;'>CS FORM 212(Revised 2005)</td>"+
 									"<td style='width:10%;'></td>"+
@@ -1726,28 +1726,26 @@ employee = {
 									"<td style='width:25%;border:1px solid black;'></td>"+
 								"</tr>"+
         					"</table>"+
-   							"<table style='border-collapse:collapse;width:100%;border:1px solid black;'>"+
+   							"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
 								"<tr>"+
 									"<td style='width:100%;background-color:black;color:white;'>l. PERSONAL INFORMATION</td>"+
 								"</tr>"+
         					"</table>"+
-   							"<table style='border-collapse:collapse;width:100%;border:1px solid black;'>"+
+							"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
 								"<tr>"+
-								    "<td><center>2. SURENAME</center></td>"+     
-									"<td style='width:30%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;"+data[0][4]+"</td>"+
+								    "<td>2. SURENAME</td>"+     
+									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;"+data[0][4]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td><center>FIRST NAME</center></td>"+
-									"<td style='width:30%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;"+data[0][5]+"</td>"+
+									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;"+data[0][5]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:20%;'><center>MIDDLE NAME</center></td>"+
-								    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'>&nbsp;&nbsp;"+data[0][6]+"</td>"+
-								    "<td style='width:35%;border: 1px solid black;'>3. NAME EXTENSION(e.g. Jr.,Sr.)</td>"+
-									"<td style='width:15%;border: 1px solid black;'></td>"+
+								    "<td style='width:22%;'><center>MIDDLE NAME</center></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>&nbsp;&nbsp;"+data[0][6]+"</td>"+
+								    "<td style='width:33%;border: 1px solid black;'><font size='2.9'>3. NAME EXTENSION(e.g. Jr.,Sr.)</font></td>"+
+									"<td style='width:20%;border: 1px solid black;'></td>"+
 								"</tr>"+
-							"</table>"+
-							"<table style='border-collapse:collapse;width:100%;border:1px solid black;'>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>4. DATE OF BIRTH</td>"+
 								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][9]+"</td>"+
@@ -1781,7 +1779,7 @@ employee = {
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;'></td>"+
-								    "<td style='width:33%;'>18. PERMAMANENT ADDRESS</td>"+
+								    "<td style='width:33%;'><font size='2.9'>18. PERMAMANENT ADDRESS</font></td>"+
 									"<td style='width:20%;border: 1px solid black;' rowspan='3'>"+data[0][27]+"</td>"+
 								"</tr>"+
 								"<tr>"+
@@ -1813,7 +1811,7 @@ employee = {
 									"<td style='width:20%;border: 1px solid black;'>"+data[0][30]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>13. PAG-IBIG ID NO.</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2.9'>13. PAG-IBIG ID NO.</font></td>"+
 								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][21]+"</td>"+
 								    "<td style='width:33%;border: 1px solid black;'>21. CELLPHONE NO.</td>"+
 									"<td style='width:20%;border: 1px solid black;'>"+data[0][10]+"</td>"+
@@ -1830,8 +1828,7 @@ employee = {
 								    "<td style='width:33%;border: 1px solid black;'>23. TIN</td>"+
 									"<td style='width:20%;border: 1px solid black;'>"+data[0][32]+"</td>"+
 								"</tr>"+
-							"</table>"+
-						"</div>";
+							"</table>";
 			}
 		});
 
@@ -1935,10 +1932,72 @@ employee = {
 						"</div>";
 				$("#family_background").html(content);
 
-				// employee.deactivate();
-				// employee.activate();
-				// employee.updateFamily();
-				// employee.updatePicture();
+				print +="<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+							"<tr>"+
+								"<td style='width:100%;background-color:black;color:white;'>ll. FAMILY BACKGROUND</td>"+
+							"</tr>"+
+        				"</table>"+
+        				"<table style='border-collapse:collapse;width:50%;display: inline-table;border:3px solid black;'>"+
+							"<tr>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center>24. SPOUSE'S SURENAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center>FIRST NAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center>MIDDLE NAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>OCCUPATION</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>EMPLOYER/BUS NAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>BUSINESS ADDRESS</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>TELEPHONE N0.</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>2. SURENAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;word-wrap: break-word;'>26. FATHER'S SURENAME</td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center>FIRST NAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center>MIDDLE NAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;border: 1px solid black;' colspan='2'>27. MOTHER'S MAIDEN NAME</td>"+     
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center>SURENAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center>FIRST NAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center>MIDDLE NAME</center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							"</tr>"+
+						"</table>";
 			}
 		});
 
@@ -1961,12 +2020,19 @@ employee = {
 							"   <div class='card-content'>"+
 							"		<h5>Child</h5>";
 
+				print += "<table style='border-collapse:collapse;width:50%;float:right;border:3px solid black;'>"+
+							"<tr>"+
+							    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'>25. NAME OF CHILD<br /><font size='2'><center>(Write full name and list all)</center></font></td>"+     
+								"<td style='width:20%;border: 1px solid black;word-wrap: break-word;'><center>DATE OF BIRTH<br /><font size='2'>(mm/dd/yyyy)</font></center></td>"+
+							"</tr>";
+						
+
 				$(data).each(function(index,value){
             		data.length;
             		// console.log(value);
 				
 				content +=	"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Name Of Child: "+value[2]+"</span>"+
+							"        <p><span style='width:80%;float:left;' class='truncate'> <i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Name Of Child: "+value[2]+"</span>"+
 							"			<button data-value='"+value[2]+"' disabled data-cmd='updateChild' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name Of Child' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name of child'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text' data-cmd='value'></i>"+
 							"			</button>"+
@@ -1980,6 +2046,22 @@ employee = {
 							"		 <div class='divider'></div></br>";		
 
         		});
+
+        		$(data).each(function(index,value){
+        			print +="<tr>"+
+							    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'><center>"+value[2]+"</center></td>"+     
+								"<td style='width:20%;border: 1px solid black;word-wrap: break-word;'><center>"+value[3]+"</center></td>"+
+							"</tr>";
+							
+        		});
+
+        		print +="</table>"+
+						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+							"<tr>"+
+								"<td style='width:100%;background-color:black;color:white;'>lll. EDUCATIONAL BACKGROUND</td>"+
+							"</tr>"+
+        				"</table>"+
+	        			"</div>";
 
         		content += 	"</div>"+
 							"</div>";

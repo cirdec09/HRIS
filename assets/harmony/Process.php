@@ -70,7 +70,7 @@ $function = new DatabaseClasses;
 		$password = sha1($data[1]['value']);
 		$date = new DateTime();
 		$hash = $date->getTimestamp();
-		$query = $function->PDO(true,"SELECT * FROM tbl_employees WHERE employee_id = '{$username}' AND password = '{$password}'");
+		$query = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE employee_id = '{$username}' AND password = '{$password}'");
 
 		if(count($query)>0){
 			if($query[0][15] == 0){
@@ -106,7 +106,7 @@ $function = new DatabaseClasses;
 	if(isset($_GET['validateEmployeeID'])){
 		$data = $_POST['data'];
 		$count = 0;
-		$query = $function->PDO(true,"SELECT count(*) FROM tbl_employees WHERE employee_id = '{$data}'");
+		$query = $function->PDO(true,"SELECT count(*) FROM tbl_personalInfo WHERE employee_id = '{$data}'");
 		$count = $count + $query[0][0];
 		print_r($count);
 	}
@@ -174,7 +174,7 @@ $function = new DatabaseClasses;
 
 		if(isset($_GET['get-employeePointsActivityAdmin'])){
 			$data = $_POST['data'];
-			$info = $function->PDO(true,"SELECT * FROM tbl_employees WHERE id = '{$data}'");
+			$info = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE id = '{$data}'");
 			$employer_id = $info[0][2];
 			$employee_id = $info[0][1];
 
@@ -184,7 +184,7 @@ $function = new DatabaseClasses;
 
 		if(isset($_GET['get-employeeBuysActivityAdmin'])){
 			$data = $_POST['data'];
-			$info = $function->PDO(true,"SELECT * FROM tbl_employees WHERE id = '{$data}'");
+			$info = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE id = '{$data}'");
 			$employer_id = $info[0][2];
 			$employee_id = $info[0][0];
 
@@ -238,7 +238,7 @@ $function = new DatabaseClasses;
 
 		if(isset($_GET['get-employees'])){
 			$user = $function->getUser();
-			$query = $function->PDO(true,"SELECT * FROM tbl_employees WHERE employer_id = '{$user}' AND status = 1 ORDER BY `date` DESC");
+			$query = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE employer_id = '{$user}' AND status = 1 ORDER BY `date` DESC");
 			print_r(json_encode($query));
 		}
 
@@ -349,13 +349,13 @@ $function = new DatabaseClasses;
 
 		if(isset($_GET['get-employee'])){
 			$user = $function->getUser();
-			$query = $function->PDO(true,"SELECT * FROM tbl_employees WHERE status = 1 ORDER BY `date` DESC");
+			$query = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE status = 1 ORDER BY `date` DESC");
 			print_r(json_encode($query));
 		}
 
 		// if(isset($_GET['get-printPDS'])){
 		// 	$data = $_POST['data'];
-		// 	$query = $function->PDO(true,"SELECT * FROM tbl_employees INNER JOIN tbl_family ON tbl_employees.employee_id = tbl_family.employee_id INNER JOIN tbl_child ON tbl_employees.employee_id = tbl_child.employee_id INNER JOIN tbl_education ON tbl_employees.employee_id = tbl_education.employee_id INNER JOIN tbl_vocational ON tbl_employees.employee_id = tbl_vocational.employee_id");
+		// 	$query = $function->PDO(true,"SELECT * FROM tbl_personalInfo INNER JOIN tbl_family ON tbl_personalInfo.employee_id = tbl_family.employee_id INNER JOIN tbl_child ON tbl_personalInfo.employee_id = tbl_child.employee_id INNER JOIN tbl_education ON tbl_personalInfo.employee_id = tbl_education.employee_id INNER JOIN tbl_vocational ON tbl_personalInfo.employee_id = tbl_vocational.employee_id");
 		// 	print_r(json_encode($query));
 		// }
 
@@ -451,7 +451,7 @@ $function = new DatabaseClasses;
 
 		if(isset($_GET['get-employeeDetails'])){
 			$data = $_POST['data'];
-			$query = $function->PDO(true,"SELECT * FROM tbl_employees WHERE employee_id = '{$data}'");
+			$query = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE employee_id = '{$data}'");
 			print_r(json_encode($query));
 		}
 
@@ -551,12 +551,12 @@ $function = new DatabaseClasses;
 		}
 
 		if(isset($_GET['get-allEmployee'])){
-			$query = $function->PDO(true,"SELECT * FROM tbl_employees WHERE status = 1 ORDER BY employer_id ASC");
+			$query = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE status = 1 ORDER BY employer_id ASC");
 			print_r(json_encode($query));
 		}
 
 		if(isset($_GET['get-allEmployeeCount'])){
-			$query = $function->PDO(true,"SELECT COUNT(*),department_id FROM tbl_employees GROUP BY department_id");
+			$query = $function->PDO(true,"SELECT COUNT(*),department_id FROM tbl_personalInfo GROUP BY department_id");
 			print_r(json_encode($query));
 		}
 
@@ -604,7 +604,7 @@ $function = new DatabaseClasses;
 
 		if(isset($_GET['get-employeeByID'])){
 			$data = $_POST['data'];
-			$query = $function->PDO(true,"SELECT * FROM tbl_employees WHERE department_id = '{$data}' ORDER BY department_id");
+			$query = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE department_id = '{$data}' ORDER BY department_id");
 			print_r(json_encode($query));
 		}
 
@@ -634,7 +634,7 @@ $function = new DatabaseClasses;
 
 		if(isset($_GET['get-searchByEmployeeID'])){
 			$data = $_POST['data'];
-			$query = $function->PDO(true,"SELECT * FROM tbl_employees WHERE id = '{$data}' AND status = 1 ORDER BY `date` DESC");
+			$query = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE id = '{$data}' AND status = 1 ORDER BY `date` DESC");
 			print_r(json_encode($query));
 		}
 
@@ -1132,13 +1132,13 @@ $function = new DatabaseClasses;
 		
 		if(isset($_GET['set-newEmployees'])){
 			$data = $_POST['data'];
-			$id = $function->PDO_IDGenerator('tbl_employees','id');
+			$id = $function->PDO_IDGenerator('tbl_personalInfo','id');
 			$date = $function->PDO_DateAndTime();
 			$department = $data[2];
 	        $employee_id = $data[1];
 			
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_employees(id,employee_id,employee_number,department_id,family_name,given_name,middle_name,place_of_birth,gender,date_of_birth,contact_number,picture,position,status,`date`,cstatus,citizenship,height,weight,btype,gsis,pagibig,philhealth,sss,r_address,r_zipcode,r_tele,p_address,p_zipcode,p_tele,email_address,agency_num,tin) VALUES ('{$id}','{$employee_id}','{$data[0][26]['value']}','{$department}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][5]['value']}','{$data[0][4]['value']}','{$data[0][6]['value']}','avatar.jpg','{$data[0][25]['value']}','1','{$date}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','{$data[0][13]['value']}','{$data[0][14]['value']}','{$data[0][15]['value']}','{$data[0][16]['value']}','{$data[0][17]['value']}','{$data[0][18]['value']}','{$data[0][19]['value']}','{$data[0][20]['value']}','{$data[0][21]['value']}','{$data[0][22]['value']}','{$data[0][23]['value']}','{$data[0][24]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_personalInfo(id,employee_id,employee_number,department_id,family_name,given_name,middle_name,place_of_birth,gender,date_of_birth,contact_number,picture,position,status,`date`,cstatus,citizenship,height,weight,btype,gsis,pagibig,philhealth,sss,r_address,r_zipcode,r_tele,p_address,p_zipcode,p_tele,email_address,agency_num,tin) VALUES ('{$id}','{$employee_id}','{$data[0][26]['value']}','{$department}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][5]['value']}','{$data[0][4]['value']}','{$data[0][6]['value']}','avatar.jpg','{$data[0][25]['value']}','1','{$date}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','{$data[0][13]['value']}','{$data[0][14]['value']}','{$data[0][15]['value']}','{$data[0][16]['value']}','{$data[0][17]['value']}','{$data[0][18]['value']}','{$data[0][19]['value']}','{$data[0][20]['value']}','{$data[0][21]['value']}','{$data[0][22]['value']}','{$data[0][23]['value']}','{$data[0][24]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -1156,7 +1156,7 @@ $function = new DatabaseClasses;
 	        // print_r($data);
 			// $password = sha1($data[0][27]['value']);
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_employees(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number
+			$query = $function->PDO(false,"INSERT INTO tbl_personalInfo(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number
 				,picture,position,status,`date`,cstatus,citizenship,height,weight,btype,gsis,pagibig,philhealth,sss,r_address,r_zipcode,r_tele,p_address,p_zipcode,p_tele,email_address,agency_num,tin) VALUES ('{$id}','{$data[0][26]['value']}','{$user}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][5]['value']}','{$data[0][4]['value']}','{$data[0][6]['value']}','avatar.jpg','{$data[0][25]['value']}','1','{$date}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','{$data[0][13]['value']}','{$data[0][14]['value']}','{$data[0][15]['value']}','{$data[0][16]['value']}','{$data[0][17]['value']}','{$data[0][18]['value']}','{$data[0][19]['value']}','{$data[0][20]['value']}','{$data[0][21]['value']}','{$data[0][22]['value']}','{$data[0][23]['value']}','{$data[0][24]['value']}']}')");
 			if($query->execute()){
 					echo 1;
@@ -1171,7 +1171,7 @@ $function = new DatabaseClasses;
 			$q1 = ""; $count = 0;
 			$date = $function->PDO_DateAndTime();
 			$user = $function->getUser();
-			$numEmployees = $function->PDO(true,"SELECT * FROM tbl_employees WHERE company_id = '{$user}'");
+			$numEmployees = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE company_id = '{$user}'");
 			$count = count($numEmployees);
 
 			$data = $_POST['data'];
@@ -1192,7 +1192,7 @@ $function = new DatabaseClasses;
 
 			$log = $function->log("add",$user,"adding bulk employee in tbl_employer.");
 
-			$query = $function->PDO(false,"INSERT INTO  tbl_employees(id,employee_id,employer_id,password,family_name,given_name,gender,date_of_birth,email_address,status,`date`) VALUES".$q1);
+			$query = $function->PDO(false,"INSERT INTO  tbl_personalInfo(id,employee_id,employer_id,password,family_name,given_name,gender,date_of_birth,email_address,status,`date`) VALUES".$q1);
 			if($query->execute()){
 				$function->log($log,$user,"Added ".(count($data))." employee in tbl_employer.");
 				echo 1;
@@ -1209,7 +1209,7 @@ $function = new DatabaseClasses;
 			$data = $_POST['data'];
 			$user = $data[1];
 
-			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_employees WHERE company_id = '{$user}';");
+			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_personalInfo WHERE company_id = '{$user}';");
 			$count = $numEmployees[0][0];
 			$data = json_decode($data[0]);
 
@@ -1233,7 +1233,7 @@ $function = new DatabaseClasses;
 		        }
 			}
 
-			$query = $function->PDO(false,"INSERT INTO tbl_employees(id,empolyee_id,company_id,password,family_name,given_name,gender,date_of_birth,email_address,status,`date`) VALUES".$q1.";");
+			$query = $function->PDO(false,"INSERT INTO tbl_personalInfo(id,empolyee_id,company_id,password,family_name,given_name,gender,date_of_birth,email_address,status,`date`) VALUES".$q1.";");
 			if($query->execute()){
 				$query2 = $function->PDO(false,"INSERT INTO tbl_points(id,employee_id,company_id,points) VALUES".$q2.";");
 				if($query2->execute()){
@@ -1241,7 +1241,7 @@ $function = new DatabaseClasses;
 					echo 1;
 				}
 				else{
-					$query3 = $function->PDO(false,"DELETE tbl_employees WHERE company_id = '{$user}';");
+					$query3 = $function->PDO(false,"DELETE tbl_personalInfo WHERE company_id = '{$user}';");
 					echo 0;
 					$Data = $query2->errorInfo();
 					print_r($Data);
@@ -1259,7 +1259,7 @@ $function = new DatabaseClasses;
 			$data = $_POST['data'];
 			$company_id = $data[1];
 
-			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_employees WHERE company_id = '{$company_id}';");
+			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_personalInfo WHERE company_id = '{$company_id}';");
 			$count = $numEmployees[0][0];
 			$data = json_decode($data[0]);
 
@@ -1414,20 +1414,20 @@ $function = new DatabaseClasses;
 			$data = $_POST['data'];
 			$date = $function->PDO_DateAndTime();
 			$user = $data[1];
-			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_employees WHERE company_id = '{$user}';");
+			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_personalInfo WHERE company_id = '{$user}';");
 			$count = $numEmployees[0][0];
 		    $id = $user.'-'.($count++);
 			$password = sha1($data[0][11]['value']);
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_employees(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number,	email_address,address,picture,position,password,status,`date`) VALUES ('{$id}','{$data[0][10]['value']}','{$user}','{$data[0][2]['value']}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][3]['value']}','{$data[0][5]['value']}','{$data[0][4]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][6]['value']}','avatar.jpg','{$data[0][9]['value']}','{$password}','2','{$date}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_personalInfo(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number,	email_address,address,picture,position,password,status,`date`) VALUES ('{$id}','{$data[0][10]['value']}','{$user}','{$data[0][2]['value']}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][3]['value']}','{$data[0][5]['value']}','{$data[0][4]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][6]['value']}','avatar.jpg','{$data[0][9]['value']}','{$password}','2','{$date}')");
 			if($query->execute()){
 				$query2 = $function->PDO(false,"INSERT INTO tbl_points(id,employee_id,company_id,points) VALUES ('{$id}',{$function->escape($data[0][10]['value'])},'{$user}',0)");
 				if($query2->execute()){
-					$function->log("add","Employer","Added employee with an id of \'".$id."\' in tbl_employees.");
+					$function->log("add","Employer","Added employee with an id of \'".$id."\' in tbl_personalInfo.");
 					echo 1;
 				}
 				else{
-					$query3 = $function->PDO(false,"DELETE tbl_employees WHERE id = '{$id}';");
+					$query3 = $function->PDO(false,"DELETE tbl_personalInfo WHERE id = '{$id}';");
 					echo 0;
 					$Data = $query2->errorInfo();
 					print_r($Data);
@@ -1443,20 +1443,20 @@ $function = new DatabaseClasses;
 			$data = $_POST['data'];
 			$date = $function->PDO_DateAndTime();
 			$user = $data[1];
-			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_employees WHERE company_id = '{$user}';");
+			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_personalInfo WHERE company_id = '{$user}';");
 			$count = $numEmployees[0][0];
 		    $id = $user.'-'.($count++);
 			$password = sha1($data[0][11]['value']);
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_employees(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number,	email_address,address,picture,position,password,status,`date`) VALUES ('{$id}','{$data[0][10]['value']}','{$user}','{$data[0][2]['value']}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][3]['value']}','{$data[0][5]['value']}','{$data[0][4]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][6]['value']}','avatar.jpg','{$data[0][9]['value']}','{$password}','2','{$date}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_personalInfo(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number,	email_address,address,picture,position,password,status,`date`) VALUES ('{$id}','{$data[0][10]['value']}','{$user}','{$data[0][2]['value']}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][3]['value']}','{$data[0][5]['value']}','{$data[0][4]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][6]['value']}','avatar.jpg','{$data[0][9]['value']}','{$password}','2','{$date}')");
 			if($query->execute()){
 				$query2 = $function->PDO(false,"INSERT INTO tbl_points(id,employee_id,company_id,points) VALUES ('{$id}',{$function->escape($data[0][10]['value'])},'{$user}',0)");
 				if($query2->execute()){
-					$function->log("add","Employer","Added employee with an id of \'".$id."\' in tbl_employees.");
+					$function->log("add","Employer","Added employee with an id of \'".$id."\' in tbl_personalInfo.");
 					echo 1;
 				}
 				else{
-					$query3 = $function->PDO(false,"DELETE tbl_employees WHERE id = '{$id}';");
+					$query3 = $function->PDO(false,"DELETE tbl_personalInfo WHERE id = '{$id}';");
 					echo 0;
 					$Data = $query2->errorInfo();
 					print_r($Data);
@@ -1528,11 +1528,11 @@ $function = new DatabaseClasses;
 			$employee_id = $tempAccount[0][1];
 			$email = $function->escape($tempAccount[0][4]);
 			$password = sha1($data[0][8]['value']);
-			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_employees WHERE company_id = '{$company_id}';");
+			$numEmployees = $function->PDO(true,"SELECT COUNT(*) FROM tbl_personalInfo WHERE company_id = '{$company_id}';");
 			$count = $numEmployees[0][0];
 		    $id = $company_id.'-'.($count++);
 
-			$query = $function->PDO(false,"INSERT INTO tbl_employees(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number,	email_address,address,picture,position,password,status,`date`) VALUES ('{$id}','{$employee_id}','{$company_id}',{$function->escape($data[0][0]['value'])},{$function->escape($data[0][1]['value'])},{$function->escape($data[0][2]['value'])},{$function->escape($data[0][3]['value'])},{$function->escape($data[0][4]['value'])},{$function->escape($data[0][5]['value'])},{$function->escape($data[0][7]['value'])},{$email},{$function->escape($data[0][6]['value'])},'avatar.jpg','Employee','{$password}','1','{$date}'); INSERT INTO tbl_points(id,employee_id,company_id,points) VALUES ('{$id}','{$employee_id}','{$company_id}',0); DELETE FROM tbl_accountconfirmation WHERE id = '{$data[1]}'");
+			$query = $function->PDO(false,"INSERT INTO tbl_personalInfo(id,employee_id,company_id,family_name,given_name,middle_name,nickname,gender,date_of_birth,contact_number,	email_address,address,picture,position,password,status,`date`) VALUES ('{$id}','{$employee_id}','{$company_id}',{$function->escape($data[0][0]['value'])},{$function->escape($data[0][1]['value'])},{$function->escape($data[0][2]['value'])},{$function->escape($data[0][3]['value'])},{$function->escape($data[0][4]['value'])},{$function->escape($data[0][5]['value'])},{$function->escape($data[0][7]['value'])},{$email},{$function->escape($data[0][6]['value'])},'avatar.jpg','Employee','{$password}','1','{$date}'); INSERT INTO tbl_points(id,employee_id,company_id,points) VALUES ('{$id}','{$employee_id}','{$company_id}',0); DELETE FROM tbl_accountconfirmation WHERE id = '{$data[1]}'");
 			if($query->execute()){
 				$function->log("Confirmation",$id,"Confirmed account");
 				echo 1;
@@ -1830,7 +1830,7 @@ $function = new DatabaseClasses;
 			// print_r($data);
 
 			if($data[1][0]['name'] == "field_gname"){
-				$query = $function->PDO(false,"UPDATE tbl_employees  SET family_name = '{$data[1][2]['value']}', given_name = '{$data[1][0]['value']}', middle_name = '{$data[1][1]['value']}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo  SET family_name = '{$data[1][2]['value']}', given_name = '{$data[1][0]['value']}', middle_name = '{$data[1][1]['value']}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Name is updated to {$data[1][0]['value']} {$data[1][1]['value']} {$data[1][2]['value']}.","Update");
 					echo 1;
@@ -1842,7 +1842,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Place Of Birth"){
 				$place = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET place_of_birth = '{$place}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET place_of_birth = '{$place}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Place of Birth is updated to {$place}.","Update");
 					echo 1;
@@ -1854,7 +1854,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Position"){
 				$position = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET position = '{$position}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET position = '{$position}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Position is updated to {$position}.","Update");
 					echo 1;
@@ -1866,7 +1866,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Phone"){
 				$phone = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET contact_number = '{$phone}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET contact_number = '{$phone}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Phone is updated to {$phone}.","Update");
 					echo 1;
@@ -1878,7 +1878,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Email"){
 				$email = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET email_address = '{$email}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET email_address = '{$email}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Email is updated to {$email}.","Update");
 					echo 1;
@@ -1890,7 +1890,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Gender"){
 				$gender = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET gender = '{$gender}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET gender = '{$gender}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Gender is updated to {$gender}.","Update");
 					echo 1;
@@ -1902,7 +1902,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Civil Status"){
 				$cstatus = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET cstatus = '{$cstatus}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET cstatus = '{$cstatus}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Civil Status is updated to {$cstatus}.","Update");
 					echo 1;
@@ -1914,7 +1914,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Citizenship"){
 				$citizenship = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET citizenship = '{$citizenship}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET citizenship = '{$citizenship}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Citizenship is updated to {$citizenship}.","Update");
 					echo 1;
@@ -1926,7 +1926,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Height"){
 				$height = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET height = '{$height}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET height = '{$height}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Height is updated to {$height}.","Update");
 					echo 1;
@@ -1938,7 +1938,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Weight"){
 				$weight = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET weight = '{$weight}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET weight = '{$weight}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Weight is updated to {$weight}.","Update");
 					echo 1;
@@ -1950,7 +1950,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Blood Type"){
 				$btype = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET btype = '{$btype}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET btype = '{$btype}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Blood Type is updated to {$btype}.","Update");
 					echo 1;
@@ -1962,7 +1962,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_GSIS Number"){
 				$gsis = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET gsis = '{$gsis}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET gsis = '{$gsis}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"GSIS ID Number is updated to {$gsis}.","Update");
 					echo 1;
@@ -1974,7 +1974,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Pag-Ibig ID Number"){
 				$pagibig = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET pagibig = '{$pagibig}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET pagibig = '{$pagibig}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Pag-Ibig ID Number is updated to {$pagibig}.","Update");
 					echo 1;
@@ -1986,7 +1986,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Philhealth Number"){
 				$philhealth = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET philhealth = '{$philhealth}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET philhealth = '{$philhealth}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Philhealth Number is updated to {$philhealth}.","Update");
 					echo 1;
@@ -1998,7 +1998,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_SSS Number"){
 				$sss = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET sss = '{$sss}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET sss = '{$sss}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"SSS ID Number is updated to {$sss}.","Update");
 					echo 1;
@@ -2010,7 +2010,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Residential Address"){
 				$r_address = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET r_address = '{$r_address}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET r_address = '{$r_address}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Residential Address is updated to {$r_address}.","Update");
 					echo 1;
@@ -2022,7 +2022,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Residential Zipcode"){
 				$r_zipcode = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET r_zipcode = '{$r_zipcode}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET r_zipcode = '{$r_zipcode}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Zipcode is updated to {$r_zipcode}.","Update");
 					echo 1;
@@ -2034,7 +2034,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Residential Telephone Number"){
 				$r_tele = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET r_tele = '{$r_tele}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET r_tele = '{$r_tele}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Telephone Number is updated to {$r_tele}.","Update");
 					echo 1;
@@ -2046,7 +2046,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Permanent Address"){
 				$p_address = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET p_address = '{$p_address}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET p_address = '{$p_address}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Permanent Address is updated to {$p_address}.","Update");
 					echo 1;
@@ -2058,7 +2058,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Permanent Zipcode"){
 				$p_zipcode = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET p_zipcode = '{$p_zipcode}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET p_zipcode = '{$p_zipcode}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Zipcode is updated to {$p_zipcode}.","Update");
 					echo 1;
@@ -2070,7 +2070,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Permanent Telephone Number"){
 				$p_tele = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET p_tele = '{$p_tele}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET p_tele = '{$p_tele}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Telephone Number is updated to {$p_tele}.","Update");
 					echo 1;
@@ -2082,7 +2082,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Employee Agency Number"){
 				$agency_num = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET agency_num = '{$agency_num}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET agency_num = '{$agency_num}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Telephone Number is updated to {$agency_num}.","Update");
 					echo 1;
@@ -2094,7 +2094,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Tin"){
 				$tin = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET tin = '{$tin}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET tin = '{$tin}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Telephone Number is updated to {$tin}.","Update");
 					echo 1;
@@ -2106,7 +2106,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_dob"){
 				$date_of_birth = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET date_of_birth = '{$date_of_birth}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET date_of_birth = '{$date_of_birth}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Gender is updated to {$date_of_birth}.","Update");
 					echo 1;
@@ -4428,7 +4428,7 @@ $function = new DatabaseClasses;
 			$user = $data[0];
 
 			$picture = $function->saveImage($user,$data[1]);
-			$query = $function->PDO(false,"UPDATE tbl_employees SET picture = '{$picture}' WHERE id = '{$user}';");
+			$query = $function->PDO(false,"UPDATE tbl_personalInfo SET picture = '{$picture}' WHERE id = '{$user}';");
 			if($query->execute()){
 				$log = $function->log2($user,"Picture is updated to {$picture}.","Update");
 				echo 1;
@@ -4546,7 +4546,7 @@ $function = new DatabaseClasses;
 			else if($data[1][0]['name'] == "field_Password"){
 				$session = $_SESSION['kaboom'];
 				$password = sha1($data[1][0]['value']);
-				$query = $function->PDO(false,"UPDATE tbl_employees SET password = '{$password}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET password = '{$password}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$_SESSION["kaboom"] = [$session[0],$password,$session[2]];
 					$log = $function->log2($user,"Password updated","Update");
@@ -4701,7 +4701,7 @@ $function = new DatabaseClasses;
 		    if(isset($_GET['activate-employee'])){
 				$user = $function->getUser();
 		    	$data = $_POST['data'];
-				$query = $function->PDO(false,"UPDATE tbl_employees SET status = '1' WHERE id = '{$data}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET status = '1' WHERE id = '{$data}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Activating employee account","Active");
 					echo 1;
@@ -4792,7 +4792,7 @@ $function = new DatabaseClasses;
 				$user = $function->getUser();
 		    	$data = $_POST['data'];
 				$remarks = json_encode($data);
-				$query = $function->PDO(false,"UPDATE tbl_employees SET status = '0' WHERE id = '{$data[0]}';");
+				$query = $function->PDO(false,"UPDATE tbl_personalInfo SET status = '0' WHERE id = '{$data[0]}';");
 				if($query->execute()){
 					$log = $function->log2($user,$remarks,"Deactivate");
 					echo 1;
@@ -4868,7 +4868,7 @@ $function = new DatabaseClasses;
 				$val = [];
 				$q1 = $function->PDO(true,"SELECT DISTINCT(request_by) FROM tbl_request LIMIT {$data[1]}, {$data[0]}");
 				foreach ($q1 as $i => $v) {
-					$account = $function->PDO(true,"SELECT * FROM tbl_employees WHERE id = '{$v[0]}'");
+					$account = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE id = '{$v[0]}'");
 					$requests = $function->PDO(true,"SELECT * FROM tbl_request WHERE request_by = '{$v[0]}' AND header = 'Update Employee Account' AND status = 0");
 					if(count($requests)>0){
 						$val[] = [$account[0],$requests];
@@ -4884,7 +4884,7 @@ $function = new DatabaseClasses;
 				$val = [];
 				$q1 = $function->PDO(true,"SELECT DISTINCT(request_to) FROM tbl_request LIMIT {$data[1]}, {$data[0]}");
 				foreach ($q1 as $i => $v) {
-					$account = $function->PDO(true,"SELECT * FROM tbl_employees WHERE id = '{$v[0]}'");
+					$account = $function->PDO(true,"SELECT * FROM tbl_personalInfo WHERE id = '{$v[0]}'");
 					$requests = $function->PDO(true,"SELECT * FROM tbl_request WHERE request_to = '{$v[0]}' AND header = 'Add Points' AND status = 0");
 					if(count($requests)>0){
 						$val[] = [$account[0],$requests];
@@ -4899,7 +4899,7 @@ $function = new DatabaseClasses;
 		    	if($q1[0][5] == 'Name'){
 		    		$names = json_decode($q1[0][4]);
 		    		$id = $q1[0][2];
-					$query = $function->PDO(false,"UPDATE tbl_employees SET family_name = '{$names[0]}', given_name = '{$names[1]}', middle_name = '{$names[2]}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
+					$query = $function->PDO(false,"UPDATE tbl_personalInfo SET family_name = '{$names[0]}', given_name = '{$names[1]}', middle_name = '{$names[2]}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
 					if($query->execute()){
 						$log = $function->log2($id,"Name has been changed.","Accepted Request");
 						echo 1;
@@ -4912,7 +4912,7 @@ $function = new DatabaseClasses;
 		    	else if($q1[0][5] == 'Nickname'){
 		    		$value = $q1[0][4];
 		    		$id = $q1[0][2];
-					$query = $function->PDO(false,"UPDATE tbl_employees SET nickname = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
+					$query = $function->PDO(false,"UPDATE tbl_personalInfo SET nickname = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
 					if($query->execute()){
 						$log = $function->log2($id,"Nickname has been changed.","Accepted Request");
 						echo 1;
@@ -4925,7 +4925,7 @@ $function = new DatabaseClasses;
 		    	else if($q1[0][5] == 'Position'){
 		    		$value = $q1[0][4];
 		    		$id = $q1[0][2];
-					$query = $function->PDO(false,"UPDATE tbl_employees SET 	position = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
+					$query = $function->PDO(false,"UPDATE tbl_personalInfo SET 	position = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
 					if($query->execute()){
 						$log = $function->log2($id,"Position has been changed.","Accepted Request");
 						echo 1;
@@ -4938,7 +4938,7 @@ $function = new DatabaseClasses;
 		    	else if($q1[0][5] == 'Contact Number'){
 		    		$value = $q1[0][4];
 		    		$id = $q1[0][2];
-					$query = $function->PDO(false,"UPDATE tbl_employees SET contact_number = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
+					$query = $function->PDO(false,"UPDATE tbl_personalInfo SET contact_number = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
 					if($query->execute()){
 						$log = $function->log2($id,"Contact Number has been changed.","Accepted Request");
 						echo 1;
@@ -4951,7 +4951,7 @@ $function = new DatabaseClasses;
 		    	else if($q1[0][5] == 'Date of Birth'){
 		    		$value = $q1[0][4];
 		    		$id = $q1[0][2];
-					$query = $function->PDO(false,"UPDATE tbl_employees SET date_of_birth = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
+					$query = $function->PDO(false,"UPDATE tbl_personalInfo SET date_of_birth = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
 					if($query->execute()){
 						$log = $function->log2($id,"Date  of birth has been changed.","Accepted Request");
 						echo 1;
@@ -4964,7 +4964,7 @@ $function = new DatabaseClasses;
 		    	else if($q1[0][5] == 'Email'){
 		    		$value = $q1[0][4];
 		    		$id = $q1[0][2];
-					$query = $function->PDO(false,"UPDATE tbl_employees SET email_address = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
+					$query = $function->PDO(false,"UPDATE tbl_personalInfo SET email_address = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
 					if($query->execute()){
 						$log = $function->log2($id,"Email has been changed.","Accepted Request");
 						echo 1;
@@ -4977,7 +4977,7 @@ $function = new DatabaseClasses;
 		    	else if($q1[0][5] == 'Address'){
 		    		$value = $q1[0][4];
 		    		$id = $q1[0][2];
-					$query = $function->PDO(false,"UPDATE tbl_employees SET 	address = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
+					$query = $function->PDO(false,"UPDATE tbl_personalInfo SET 	address = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
 					if($query->execute()){
 						$log = $function->log2($id,"Address has been changed.","Accepted Request");
 						echo 1;
@@ -4990,7 +4990,7 @@ $function = new DatabaseClasses;
 		    	else if($q1[0][5] == 'Gender'){
 		    		$value = $q1[0][4];
 		    		$id = $q1[0][2];
-					$query = $function->PDO(false,"UPDATE tbl_employees SET 	gender = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
+					$query = $function->PDO(false,"UPDATE tbl_personalInfo SET 	gender = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
 					if($query->execute()){
 						$log = $function->log2($id,"Gender has been changed.","Accepted Request");
 						echo 1;
@@ -5003,7 +5003,7 @@ $function = new DatabaseClasses;
 		    	else if($q1[0][5] == 'Profile Picture'){
 		    		$value = $q1[0][4];
 		    		$id = $q1[0][2];
-					$query = $function->PDO(false,"UPDATE tbl_employees SET picture = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
+					$query = $function->PDO(false,"UPDATE tbl_personalInfo SET picture = '{$value}' WHERE id = '{$id}'; UPDATE tbl_request SET status = '1' WHERE id = '{$data['request']}';");
 					if($query->execute()){
 						$log = $function->log2($id,"Picture has been changed.","Accepted Request");
 						echo 1;
