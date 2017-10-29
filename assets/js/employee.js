@@ -476,13 +476,15 @@ PDS = {
 			    	field_e_degree: {required: true,maxlength: 50},
 			    	field_e_year: {required: true,maxlength: 50},
 			    	field_e_grade: {required: true,maxlength: 50},
-			    	field_e_dates: {required: true,maxlength: 50},
+			    	field_e_from: {required: true,maxlength: 50},
+			    	field_e_to: {required: true,maxlength: 50},
 			    	field_e_scholar: {required: true,maxlength: 50},
 			    	field_s_name: {required: true,maxlength: 50},
 			    	field_s_degree: {required: true,maxlength: 50},
 			    	field_s_year: {required: true,maxlength: 50},
 			    	field_s_grade: {required: true,maxlength: 50},
-			    	field_s_dates: {required: true,maxlength: 50},
+			    	field_s_from: {required: true,maxlength: 50},
+			    	field_s_to: {required: true,maxlength: 50},
 			    	field_s_scholar: {required: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
@@ -538,7 +540,8 @@ PDS = {
 			    	field_degree: {required: true,maxlength: 50},
 			    	field_year: {required: true,maxlength: 50},
 			    	field_grade: {required: true,maxlength: 50},
-			    	field_dates: {required: true,maxlength: 50},
+			    	field_from: {required: true,maxlength: 50},
+			    	field_to: {required: true,maxlength: 50},
 			    	field_scholar: {required: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
@@ -577,7 +580,7 @@ PDS = {
 			$("#modal .modal-content").html("");
 			$('.lean-overlay').remove();
 		});
-		$("a[data-cmd='add_graduate']").on('click',function(){
+		$("a[data-cmd='add_vocational']").on('click',function(){
 			PDS.addVocational();
 		});
 	},
@@ -595,7 +598,8 @@ PDS = {
 			    	field_degree: {required: true,maxlength: 50},
 			    	field_year: {required: true,maxlength: 50},
 			    	field_grade: {required: true,maxlength: 50},
-			    	field_dates: {required: true,maxlength: 50},
+			    	field_from: {required: true,maxlength: 50},
+			    	field_to: {required: true,maxlength: 50},
 			    	field_scholar: {required: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
@@ -652,7 +656,8 @@ PDS = {
 			    	field_degree: {required: true,maxlength: 50},
 			    	field_year: {required: true,maxlength: 50},
 			    	field_grade: {required: true,maxlength: 50},
-			    	field_dates: {required: true,maxlength: 50},
+			    	field_from: {required: true,maxlength: 50},
+			    	field_to: {required: true,maxlength: 50},
 			    	field_scholar: {required: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
@@ -1414,7 +1419,6 @@ PDS = {
 		});
 
 		$("a[data-cmd='add_pds']").on('click',function(){
-				// PDS.addFamily();
 				PDS.addPersonalinfo();
 			});   		
 	},
@@ -1741,51 +1745,63 @@ PDS = {
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][6]+"</span>"+
-						"			<a data-value='"+data[0][6]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+data[0][6]+"</span>"+
+						"			<a data-value='"+data[0][6]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Elementary Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][7]+"</span>"+
-						"			<a data-value='"+data[0][7]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+data[0][7]+"</span>"+
+						"			<a data-value='"+data[0][7]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Elementary Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][8]+"</span>"+
+						"			<a data-value='"+data[0][8]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div></br>"+
 						"		<h5>Secondary Level</h5>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][8]+"</span>"+
-						"			<a data-value='"+data[0][8]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of School'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][9]+"</span>"+
+						"			<a data-value='"+data[0][9]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of School'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][9]+"</span>"+
-						"			<a data-value='"+data[0][9]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Degree' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Degree Course'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][10]+"</span>"+
+						"			<a data-value='"+data[0][10]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Degree' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Degree Course'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][10]+"</span>"+
-						"			<a data-value='"+data[0][10]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Year' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Year Graduated'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][11]+"</span>"+
+						"			<a data-value='"+data[0][11]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Year' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Year Graduated'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][11]+"</span>"+
-						"			<a data-value='"+data[0][11]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Highest Grade/Level/Units Earned'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][12]+"</span>"+
+						"			<a data-value='"+data[0][12]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Highest Grade/Level/Units Earned'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][12]+"</span>"+
-						"			<a data-value='"+data[0][12]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+data[0][13]+"</span>"+
+						"			<a data-value='"+data[0][13]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Secondary Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][13]+"</span>"+
-						"			<a data-value='"+data[0][13]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+data[0][14]+"</span>"+
+						"			<a data-value='"+data[0][14]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Secondary Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][15]+"</span>"+
+						"			<a data-value='"+data[0][15]+"' data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
@@ -1898,14 +1914,20 @@ PDS = {
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[6]+"</span>"+
-							"			<a data-value='"+value[6]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[7]+"</span>"+
-							"			<a data-value='"+value[7]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[7]+"</span>"+
+							"			<a data-value='"+value[7]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[8]+"</span>"+
+							"			<a data-value='"+value[8]+"' data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
@@ -2021,14 +2043,20 @@ PDS = {
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[6]+"</span>"+
-							"			<a data-value='"+value[6]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[7]+"</span>"+
-							"			<a data-value='"+value[7]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[7]+"</span>"+
+							"			<a data-value='"+value[7]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[8]+"</span>"+
+							"			<a data-value='"+value[8]+"' data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
@@ -2143,14 +2171,20 @@ PDS = {
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[6]+"</span>"+
-							"			<a data-value='"+value[6]+"' data-cmd='updateGraduate' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateGraduate' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[7]+"</span>"+
-							"			<a data-value='"+value[7]+"' data-cmd='updateGraduate' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[7]+"</span>"+
+							"			<a data-value='"+value[7]+"' data-cmd='updateGraduate' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[8]+"</span>"+
+							"			<a data-value='"+value[8]+"' data-cmd='updateGraduate' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
@@ -2364,44 +2398,50 @@ PDS = {
             		// console.log(value);
 				
 				content +=	"		 <br />"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[2]+"</span>"+
-							"			<a data-value='"+value[2]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[2]+"</span>"+
+							"			<a data-value='"+value[2]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position Title' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[4]+"</span>"+
-							"			<a data-value='"+value[4]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Department' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Department/Agency/Office/Company'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[4]+"</span>"+
+							"			<a data-value='"+value[4]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position Title' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[5]+"</span>"+
-							"			<a data-value='"+value[5]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Monthly Salary' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Monthly Salary'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[5]+"</span>"+
+							"			<a data-value='"+value[5]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Department' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Department/Agency/Office/Company'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Salary Grade: "+value[6]+"</span>"+
-							"			<a data-value='"+value[6]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Salary Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Salary Grade'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Monthly Salary' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Monthly Salary'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Status Of Appointment: "+value[7]+"</span>"+
-							"			<a data-value='"+value[7]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Status Of Appointment' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Status Of Appointment'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Salary Grade: "+value[7]+"</span>"+
+							"			<a data-value='"+value[7]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Salary Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Salary Grade'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Gov't Service: "+value[8]+"</span>"+
-							"			<a data-value='"+value[8]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Government Service' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Gov't Service'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Status Of Appointment: "+value[8]+"</span>"+
+							"			<a data-value='"+value[8]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Status Of Appointment' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Status Of Appointment'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Gov't Service: "+value[9]+"</span>"+
+							"			<a data-value='"+value[9]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Government Service' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Gov't Service'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
@@ -2492,26 +2532,32 @@ PDS = {
             		// console.log(value);
 				
 				content +=	"		 <br />"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[2]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name & address of organization: "+value[2]+"</span>"+
 							"			<a data-value='"+value[2]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[4]+"</span>"+
-							"			<a data-value='"+value[4]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Department/Agency/Office/Company'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[4]+"</span>"+
+							"			<a data-value='"+value[4]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[5]+"</span>"+
-							"			<a data-value='"+value[5]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Monthly Salary'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Number of Hours: "+value[5]+"</span>"+
+							"			<a data-value='"+value[5]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Department/Agency/Office/Company'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Monthly Salary'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
@@ -2604,26 +2650,32 @@ PDS = {
             		// console.log(value);
 				
 				content +=	"		 <br />"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates: "+value[2]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Title Of Seminar: "+value[2]+"</span>"+
 							"			<a data-value='"+value[2]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Title of seminar' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[3]+"</span>"+
-							"			<a data-value='"+value[3]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[3]+"</span>"+
+							"			<a data-value='"+value[3]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[4]+"</span>"+
-							"			<a data-value='"+value[4]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Department/Agency/Office/Company'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[4]+"</span>"+
+							"			<a data-value='"+value[4]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[5]+"</span>"+
-							"			<a data-value='"+value[5]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Conducted/Sponsored by' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Monthly Salary'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i>Number of hours: "+value[5]+"</span>"+
+							"			<a data-value='"+value[5]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Department/Agency/Office/Company'>"+
+							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+							"			</a>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Conducted/Sponsored by: "+value[6]+"</span>"+
+							"			<a data-value='"+value[6]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Conducted/Sponsored by' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Monthly Salary'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
@@ -3193,7 +3245,6 @@ PDS = {
 		data.done(function(data){
 			data = JSON.parse(data);
 				
-				console.log(data);
 				$("#display_employeeDetails").removeClass('hidden');
 				$("#display_error").addClass('hidden');
 
@@ -5016,7 +5067,7 @@ PDS = {
 				    }
 				}); 
 			}
-			else if(data.prop == "Inclusive Dates"){
+			else if(data.prop == "Elementary Inclusive Date Of Attendance From"){
 				$('#modal_confirm').openModal('show');
 				localStorage.setItem('dates',data.value);
 				$("#form_update").validate({
@@ -5041,7 +5092,45 @@ PDS = {
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
-								Materialize.toast('Inclusive Dates updated.',4000);
+								Materialize.toast('Elementary Inclusive Date Of Attendance From updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Elementary Inclusive Date Of Attendance To"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Elementary Inclusive Date Of Attendance To updated.',4000);
 								$('#modal_confirm').closeModal();
 								localStorage.removeItem('dates');	
 								App.handleLoadPage("#cmd=index;content=PDS");
@@ -5204,6 +5293,82 @@ PDS = {
 						});
 				    }
 				}); 
+			}			
+			else if(data.prop == "Secondary Inclusive Date Of Attendance From"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Secondary Inclusive Date Of Attendance From updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Secondary Inclusive Date Of Attendance To"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-education',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Secondary Inclusive Date Of Attendance To updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
 			}
 			else if(data.prop == "Grade"){
 				$('#modal_confirm').openModal('show');
@@ -5233,44 +5398,6 @@ PDS = {
 								Materialize.toast('Highest Grade updated.',4000);
 								$('#modal_confirm').closeModal();
 								localStorage.removeItem('grade');	
-								App.handleLoadPage("#cmd=index;content=PDS");
-
-							}
-							else{
-								Materialize.toast('Cannot process request.',4000);
-							}
-						});
-				    }
-				}); 
-			}
-			else if(data.prop == "Dates"){
-				$('#modal_confirm').openModal('show');
-				localStorage.setItem('dates',data.value);
-				$("#form_update").validate({
-				    rules: {
-				        field_Email: {required: true,maxlength: 50,checkEmail:true},
-				    },
-				    errorElement : 'div',
-				    errorPlacement: function(error, element) {
-						var placement = $(element).data('error');
-						if(placement){
-							$(placement).append(error)
-						} 
-						else{
-							error.insertAfter(element);
-						}
-					},
-					submitHandler: function (form) {
-						var _form = $(form).serializeArray();
-						var dates = localStorage.getItem('dates');
-						var data = system.ajax('../assets/harmony/Process.php?update-education',[dates,_form]);
-						data.done(function(data){
-							console.log(data);
-							if(data == 1){
-								system.clearForm();
-								Materialize.toast('Inclusive Dates updated.',4000);
-								$('#modal_confirm').closeModal();
-								localStorage.removeItem('dates');	
 								App.handleLoadPage("#cmd=index;content=PDS");
 
 							}
@@ -5491,7 +5618,7 @@ PDS = {
 				    }
 				}); 
 			}
-			else if(data.prop == "Inclusive Dates"){
+			else if(data.prop == "Inclusive Date Of Attendance From"){
 				$('#modal_confirm').openModal('show');
 				localStorage.setItem('dates',data.value);
 				$("#form_update").validate({
@@ -5516,7 +5643,45 @@ PDS = {
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
-								Materialize.toast('Inclusive Dates updated.',4000);
+								Materialize.toast('Inclusive Date Of Attendance From updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Inclusive Date Of Attendance To"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-vocational',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Date Of Attendance To updated.',4000);
 								$('#modal_confirm').closeModal();
 								localStorage.removeItem('dates');	
 								App.handleLoadPage("#cmd=index;content=PDS");
@@ -5739,7 +5904,7 @@ PDS = {
 				    }
 				}); 
 			}
-			else if(data.prop == "Inclusive Dates"){
+			else if(data.prop == "Inclusive Date Of Attendance From"){
 				$('#modal_confirm').openModal('show');
 				localStorage.setItem('dates',data.value);
 				$("#form_update").validate({
@@ -5764,7 +5929,45 @@ PDS = {
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
-								Materialize.toast('Inclusive Dates updated.',4000);
+								Materialize.toast('Inclusive Date Of Attendance From updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Inclusive Date Of Attendance To"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-college',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Date Of Attendance To updated.',4000);
 								$('#modal_confirm').closeModal();
 								localStorage.removeItem('dates');	
 								App.handleLoadPage("#cmd=index;content=PDS");
@@ -5987,7 +6190,7 @@ PDS = {
 				    }
 				}); 
 			}
-			else if(data.prop == "Inclusive Dates"){
+			else if(data.prop == "Inclusive Date Of Attendance From"){
 				$('#modal_confirm').openModal('show');
 				localStorage.setItem('dates',data.value);
 				$("#form_update").validate({
@@ -6012,7 +6215,45 @@ PDS = {
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
-								Materialize.toast('Inclusive Dates updated.',4000);
+								Materialize.toast('Inclusive Date Of Attendance From updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Inclusive Date Of Attendance To"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-graduate',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Date Of Attendance To updated.',4000);
 								$('#modal_confirm').closeModal();
 								localStorage.removeItem('dates');	
 								App.handleLoadPage("#cmd=index;content=PDS");
@@ -6332,43 +6573,82 @@ PDS = {
 			$('#modal_confirm .modal-footer').html("");			
 			$('.lean-overlay').remove();
 
-			if(data.prop == "Inclusive Dates"){
-					$('#modal_confirm').openModal('show');
-					localStorage.setItem('dates',data.value);
-					$("#form_update").validate({
-					    rules: {
-					        field_Email: {required: true,maxlength: 50,checkEmail:true},
-					    },
-					    errorElement : 'div',
-					    errorPlacement: function(error, element) {
-							var placement = $(element).data('error');
-							if(placement){
-								$(placement).append(error)
-							} 
-							else{
-								error.insertAfter(element);
+			if(data.prop == "Inclusive Date Of Attendance From"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-work',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Date Of Attendance From updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
 							}
-						},
-						submitHandler: function (form) {
-							var _form = $(form).serializeArray();
-							var dates = localStorage.getItem('dates');
-							var data = system.ajax('../assets/harmony/Process.php?update-work',[dates,_form]);
-							data.done(function(data){
-								console.log(data);
-								if(data == 1){
-									system.clearForm();
-									Materialize.toast('Inclusive Dates updated.',4000);
-									$('#modal_confirm').closeModal();
-									localStorage.removeItem('dates');	
-									App.handleLoadPage("#cmd=index;content=PDS;"+id);
-								}
-								else{
-									Materialize.toast('Cannot process request.',4000);
-								}
-							});
-					    }
-					}); 
-				}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Inclusive Date Of Attendance To"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-work',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Date Of Attendance To updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
 			else if(data.prop == "Position Title"){
 				$('#modal_confirm').openModal('show');
 				localStorage.setItem('title',data.value);
@@ -6653,9 +6933,9 @@ PDS = {
 					    }
 					}); 
 				}
-			else if(data.prop == "Inclusive Dates"){
+			else if(data.prop == "Inclusive Date Of Attendance From"){
 				$('#modal_confirm').openModal('show');
-				localStorage.setItem('date',data.value);
+				localStorage.setItem('dates',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Email: {required: true,maxlength: 50,checkEmail:true},
@@ -6672,15 +6952,53 @@ PDS = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var date = localStorage.getItem('date');
-						var data = system.ajax('../assets/harmony/Process.php?update-voluntary',[date,_form]);
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-voluntary',[dates,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
-								Materialize.toast('Position date updated.',4000);
+								Materialize.toast('Inclusive Date Of Attendance From updated.',4000);
 								$('#modal_confirm').closeModal();
-								localStorage.removeItem('date');	
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Inclusive Date Of Attendance To"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-voluntary',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Date Of Attendance To updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
 								App.handleLoadPage("#cmd=index;content=PDS");
 
 							}
@@ -6824,9 +7142,9 @@ PDS = {
 					    }
 					}); 
 				}
-			else if(data.prop == "Inclusive Dates"){
+			else if(data.prop == "Inclusive Date Of Attendance From"){
 				$('#modal_confirm').openModal('show');
-				localStorage.setItem('date',data.value);
+				localStorage.setItem('dates',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Email: {required: true,maxlength: 50,checkEmail:true},
@@ -6843,15 +7161,53 @@ PDS = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var date = localStorage.getItem('date');
-						var data = system.ajax('../assets/harmony/Process.php?update-training',[date,_form]);
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-training',[dates,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
-								Materialize.toast('Inclusive date updated.',4000);
+								Materialize.toast('Inclusive Date Of Attendance From updated.',4000);
 								$('#modal_confirm').closeModal();
-								localStorage.removeItem('date');	
+								localStorage.removeItem('dates');	
+								App.handleLoadPage("#cmd=index;content=PDS");
+
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Inclusive Date Of Attendance To"){
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('dates',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Email: {required: true,maxlength: 50,checkEmail:true},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var dates = localStorage.getItem('dates');
+						var data = system.ajax('../assets/harmony/Process.php?update-training',[dates,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Inclusive Date Of Attendance To updated.',4000);
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('dates');	
 								App.handleLoadPage("#cmd=index;content=PDS");
 
 							}
@@ -10414,6 +10770,67 @@ SALN = {
 			$("#modal .modal-content").html("");
 			$('.lean-overlay').remove();
 		});
+		$("a[data-cmd='add_Other']").on('click',function(){
+			SALN.addOther();
+		});
+	},
+	addOther:function(){
+		var data = system.xml("pages.xml");
+		$(data.responseText).find("addOther").each(function(i,content){
+			console.log("Other");
+			$("#modal .modal-content").html(content);
+			$('#modal').openModal('show');		
+		    $("select").material_select();
+
+			$("#form_other").validate({
+			    rules: {
+		    		field_date: {required: true,checkDate:true,maxlength: 50},
+					field_government_issued: {required: true,maxlength: 50},
+					field_id_number: {required: true,maxlength: 50},
+					field_date_issued: {maxlength: 50},
+					field_s_government_issued: {required: true,maxlength: 50},
+					field_s_id_number: {required: true,maxlength: 50},
+					field_s_date_issued: {checkDate:true,maxlength: 50},
+
+			    },
+			    errorElement : 'div',
+			    errorPlacement: function(error, element) {
+					var placement = $(element).data('error');
+					if(placement){
+						$(placement).append(error)
+					} 
+					else{
+						error.insertAfter(element);
+					}
+				},
+				submitHandler: function (form) {
+					var _form = $(form).serializeArray();
+					var id = localStorage.getItem('myId');
+					var data = system.ajax('../assets/harmony/Process.php?set-newSalnOther',[_form,id]);
+					data.done(function(data){
+						console.log(data);
+						
+						if(data == 1){
+							if(data.responseText != ""){
+								Materialize.toast('Saved.',4000);
+								system.clearForm();
+								$("#modal").closeModal();
+								$(".lean-overlay").remove();
+						    	App.handleLoadPage("#cmd=index;content=SALN;"+id);			
+							}
+						}
+						else{
+							Materialize.toast('Cannot process request.',4000);
+						}
+					});
+			    }
+			});
+		});
+		$("i[data-cmd='exit_personal']").on('click',function(){
+			$('#modal').closeModal();
+			$("#modal .modal-content").html("");
+			$('.lean-overlay').remove();
+		});
 	},
 
 	//Details
@@ -10439,15 +10856,15 @@ SALN = {
 
 				if(Number(data[0][16]) == 1){
 					status = "Active";
-					var actions = "<a data-cmd='deactivateEmployee' data-name='"+data[0][4]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Deactivate account' data-cmd='update'>"+
-								  "	<i class='mdi-action-lock-open right black-text'></i>"+
-								  "</a>";	
+					var actions = "<button data-cmd='deactivateEmployee' disabled='' data-name='"+data[0][4]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Deactivate account' data-cmd='update'>"+
+								  "	<i class='mdi-action-lock-open right grey-text'></i>"+
+								  "</button>";	
 				}
 				else{
 					status = "Deactivated";
-					var actions = "<a data-cmd='activateEmployee' data-name='"+data[0][4]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Activate account' data-cmd='update'>"+
-								  "	<i class='mdi-action-lock right black-text'></i>"+
-								  "</a>";	
+					var actions = "<button data-cmd='activateEmployee' disabled='' data-name='"+data[0][4]+"' data-node='"+data[0][0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Activate account' data-cmd='update'>"+
+								  "	<i class='mdi-action-lock right grey-text'></i>"+
+								  "</button>";	
 				}
 
 				var profile = ((data[0][10] == "") || (data[0][10] == null))?"avatar.jpg":data[0][10];
@@ -10487,6 +10904,8 @@ SALN = {
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"<h5>SPOUSE</h5>"+
 						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Family Name: "+data[0][10]+"</span>"+
 						"			<a data-value='"+data[0][10]+"' data-cmd='updatePersonalInfo' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Last Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
@@ -10537,6 +10956,7 @@ SALN = {
 				SALN.liabilitiesDetails();
 				SALN.businessDetails();
 				SALN.relativesDetails();
+				SALN.otherDetails();
 
 			}
 		});
@@ -11179,7 +11599,7 @@ SALN = {
 
 				$("a[data-cmd='add_relatives']").on('click',function(){
 					var data = system.xml("pages.xml");
-					$(data.responseText).find("addRelatives").each(function(i,content){
+					$(data.responseText).find("addRelativess").each(function(i,content){
 						console.log("Relatives");
 						$("#modal .modal-content").html(content);
 						$('#modal').openModal('show');		
@@ -11210,6 +11630,148 @@ SALN = {
 										if(data.responseText != ""){
 											Materialize.toast('Saved.',4000);
 											system.clearForm();
+									    	App.handleLoadPage("#cmd=index;content=SALN;"+id);			
+										}
+									}
+									else{
+										Materialize.toast('Cannot process request.',4000);
+									}
+								});
+						    }
+						});
+					});
+					$("i[data-cmd='exit_personal']").on('click',function(){
+						$('#modal').closeModal();
+						$("#modal .modal-content").html("");
+						$('.lean-overlay').remove();
+					});
+				});
+		});
+	},
+	otherDetails:function(){
+		var content="";
+		var bago="";
+		var id = localStorage.getItem('myId');
+		var data = system.ajax('../assets/harmony/Process.php?get-other',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div id='profile-card' class='card'>"+
+							"<div class='card-content'>"+
+								"<h5>Other Information</h5><br />"+
+								"<a class='btn waves-effect waves-light orange left' data-cmd='add_other'>Add</a></br></br>"+
+							"</div>"+
+						"</div>";
+			
+				$("#other").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content ="<div id='profile-card' class='card'>"+
+						"    <div class='card-image waves-effect waves-block waves-light'>"+
+						"        <img class='activator' src='../assets/images/user-bg.jpg' alt='user background'>"+
+						"    </div>"+
+						"    <div class='card-content'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Date(dd/mm/yyy): "+data[0][2]+"</span>"+
+						"			<a data-value='"+data[0][2]+"' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"<h5>Declarant</h5>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Government Issued ID: "+data[0][3]+"</span>"+
+						"			<a data-value='"+data[0][3]+"' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Declarant Government Issued ID' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-cached cyan-text text-darken-2'></i> ID No.: "+data[0][4]+"</span>"+
+						"			<a data-value='"+data[0][4]+"' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Declarant ID No.' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-event cyan-text text-darken-2'></i> Date Issued: "+data[0][5]+"</span>"+
+						"			<a data-value='"+data[0][5]+"' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Declarant Date Issued' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"<h5>Spouse</h5>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Government Issued ID: "+data[0][6]+"</span>"+
+						"			<a data-value='"+data[0][6]+"' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Co-Declarant/Spouse Government Issued ID' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> ID No.: "+data[0][7]+"</span>"+
+						"			<a data-value='"+data[0][7]+"' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Co-Declarant/Spouse ID No.' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-accessibility cyan-text text-darken-2'></i> Date Issued: "+data[0][8]+"</span>"+
+						"			<a data-value='"+data[0][8]+"' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Co-Declarant/Spouse Date Issued' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"    </div>"+
+						"</div>";
+        		
+				$("#other").html(content);
+			}
+				// employee.deactivate();
+				// employee.activate();
+				SALN.updateOther();
+				// employee.updatePicture();
+
+				$("a[data-cmd='add_other']").on('click',function(){
+					var data = system.xml("pages.xml");
+					$(data.responseText).find("addOther").each(function(i,content){
+						console.log("Other");
+						$("#modal .modal-content").html(content);
+						$('#modal').openModal('show');		
+					    $("select").material_select();
+
+						$("#form_other").validate({
+						    rules: {
+					    		field_date: {required: true,checkDate:true,maxlength: 50},
+								field_government_issued: {required: true,maxlength: 50},
+								field_id_number: {required: true,maxlength: 50},
+								field_date_issued: {maxlength: 50},
+								field_s_government_issued: {required: true,maxlength: 50},
+								field_s_id_number: {required: true,maxlength: 50},
+								field_s_date_issued: {checkDate:true,maxlength: 50},
+
+						    },
+						    errorElement : 'div',
+						    errorPlacement: function(error, element) {
+								var placement = $(element).data('error');
+								if(placement){
+									$(placement).append(error)
+								} 
+								else{
+									error.insertAfter(element);
+								}
+							},
+							submitHandler: function (form) {
+								var _form = $(form).serializeArray();
+								var id = localStorage.getItem('myId');
+								var data = system.ajax('../assets/harmony/Process.php?set-newSalnOther',[_form,id]);
+								data.done(function(data){
+									console.log(data);
+									
+									if(data == 1){
+										if(data.responseText != ""){
+											Materialize.toast('Saved.',4000);
+											system.clearForm();
+											$("#modal").closeModal();
+											$(".lean-overlay").remove();
 									    	App.handleLoadPage("#cmd=index;content=SALN;"+id);			
 										}
 									}
@@ -11665,7 +12227,8 @@ SALN = {
 			$('.lean-overlay').remove();
 
 			if(data.prop == "Name Of Child"){
-				$('#modal_confirm').openModal('show');			
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('laman',data.value);			
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -11682,13 +12245,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-unmarried',[id,_form]);
+						var laman = localStorage.getItem('laman');
+						var data = system.ajax('../assets/harmony/Process.php?update-unmarried',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Name updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -11699,7 +12264,8 @@ SALN = {
 				}); 
 			}
 			else if(data.prop == "Date Of Birth"){
-				$('#modal_confirm').openModal('show');			
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -11716,13 +12282,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-unmarried',[id,_form]);
+						var laman = localStorage.getItem('laman');			
+						var data = system.ajax('../assets/harmony/Process.php?update-unmarried',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Date Of Birth updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -11733,7 +12301,8 @@ SALN = {
 				}); 
 			}
 			else if(data.prop == "Age"){
-				$('#modal_confirm').openModal('show');			
+				$('#modal_confirm').openModal('show');
+				localStorage.setItem('laman',data.value);			
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -11750,7 +12319,8 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-unmarried',[id,_form]);
+						var laman = localStorage.getItem('laman');			
+						var data = system.ajax('../assets/harmony/Process.php?update-unmarried',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
@@ -11788,6 +12358,7 @@ SALN = {
 
 			if(data.prop == "Description"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -11804,13 +12375,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-real',[id,_form]);
+						var laman = localStorage.getItem('laman');
+						var data = system.ajax('../assets/harmony/Process.php?update-real',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Description updated.',4000);
-								$('#modal_confirm').closeModal();	
+								$('#modal_confirm').closeModal();
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -11822,6 +12395,7 @@ SALN = {
 			}
 			else if(data.prop == "Kind"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -11838,12 +12412,14 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-real',[id,_form]);
+						var laman = localStorage.getItem('laman');
+						var data = system.ajax('../assets/harmony/Process.php?update-real',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Kind updated.',4000);
+								localStorage.removeItem('laman');	
 								$('#modal_confirm').closeModal();	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
@@ -11856,6 +12432,7 @@ SALN = {
 			}
 			else if(data.prop == "Exact Location"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -11872,13 +12449,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-real',[id,_form]);
+						var laman = localStorage.getItem('laman');
+						var data = system.ajax('../assets/harmony/Process.php?update-real',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Exact Location updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -11890,6 +12469,7 @@ SALN = {
 			}
 			else if(data.prop == "Assessed Value"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -11906,13 +12486,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-real',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-real',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Assessed Value updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -11924,6 +12506,7 @@ SALN = {
 			}
 			else if(data.prop == "Current Fair Market Value"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -11940,13 +12523,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-real',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-real',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Current Fair Market Value updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -11958,6 +12543,7 @@ SALN = {
 			}
 			else if(data.prop == "Acqusition Year"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -11974,13 +12560,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-real',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-real',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Acqusition Year updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -11992,6 +12580,7 @@ SALN = {
 			}
 			else if(data.prop == "Acqusition Mode"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12008,13 +12597,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-real',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-real',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Acqusition Mode updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12026,6 +12617,7 @@ SALN = {
 			}
 			else if(data.prop == "Acqusition Cost"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12042,13 +12634,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-real',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-real',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Acqusition Cost updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12080,6 +12674,7 @@ SALN = {
 
 			if(data.prop == "Description"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12096,13 +12691,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-personal',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-personal',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Description updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12114,6 +12711,7 @@ SALN = {
 			}
 			else if(data.prop == "Year Acquired"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12130,13 +12728,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-personal',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-personal',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Year Acquired updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12148,6 +12748,7 @@ SALN = {
 			}
 			else if(data.prop == "Acquisition Cost/Amount"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12164,13 +12765,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-personal',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-personal',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Acquisition Cost/Amount updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12202,6 +12805,7 @@ SALN = {
 
 			if(data.prop == "Nature"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12218,13 +12822,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-liabilities',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-liabilities',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Nature updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12236,6 +12842,7 @@ SALN = {
 			}
 			else if(data.prop == "Name Of Creditors"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12252,13 +12859,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-liabilities',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-liabilities',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Name Of Creditors updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12270,6 +12879,7 @@ SALN = {
 			}
 			else if(data.prop == "Outstanding Balance"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12286,13 +12896,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-liabilities',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-liabilities',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Outstanding Balance updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12324,6 +12936,7 @@ SALN = {
 
 			if(data.prop == "Name Of Entity"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12340,13 +12953,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-business',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-business',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Name Of Entity updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12358,6 +12973,7 @@ SALN = {
 			}
 			else if(data.prop == "Business Address"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12374,13 +12990,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-business',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-business',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Business Address updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12392,6 +13010,7 @@ SALN = {
 			}
 			else if(data.prop == "Nature Of Business"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12408,13 +13027,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-business',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-business',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Nature Of Business updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12426,6 +13047,7 @@ SALN = {
 			}
 			else if(data.prop == "Date Of Acquisition Of Interests"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12442,13 +13064,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-business',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-business',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Date Of Acquisition Of Interests updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12480,6 +13104,7 @@ SALN = {
 
 			if(data.prop == "Name Of Relative"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12496,13 +13121,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-relatives',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-relatives',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Name Of Relative updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12514,6 +13141,7 @@ SALN = {
 			}
 			else if(data.prop == "Relationship"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12530,13 +13158,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-relatives',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-relatives',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Relationship updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12548,6 +13178,7 @@ SALN = {
 			}
 			else if(data.prop == "Position"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12564,13 +13195,15 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-relatives',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-relatives',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Position updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12582,6 +13215,7 @@ SALN = {
 			}
 			else if(data.prop == "Name Of Agency/Office And Address"){
 				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
 				$("#form_update").validate({
 				    rules: {
 				        field_Nickname: {required: true,maxlength: 50},
@@ -12598,13 +13232,294 @@ SALN = {
 					},
 					submitHandler: function (form) {
 						var _form = $(form).serializeArray();
-						var data = system.ajax('../assets/harmony/Process.php?update-relatives',[id,_form]);
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-relatives',[laman,_form]);
 						data.done(function(data){
 							console.log(data);
 							if(data == 1){
 								system.clearForm();
 								Materialize.toast('Name Of Agency/Office And Address updated.',4000);
 								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
+								App.handleLoadPage("#cmd=index;content=SALN");
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			
+		});
+	},
+	updateOther:function(){
+		$("a[data-cmd='updateOther']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
+
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Date"){
+				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Date: {checkDate: true,required: true,maxlength: 50},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-salnOther',[laman,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Date updated.',4000);
+								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
+								App.handleLoadPage("#cmd=index;content=SALN");
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Declarant Government Issued ID"){
+				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Nickname: {required: true,maxlength: 50},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-salnOther',[laman,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Declarant Government Issued ID updated.',4000);
+								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
+								App.handleLoadPage("#cmd=index;content=SALN");
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Declarant ID No."){
+				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Nickname: {required: true,maxlength: 50},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-salnOther',[laman,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Declarant ID No. updated.',4000);
+								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
+								App.handleLoadPage("#cmd=index;content=SALN");
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Declarant Date Issued"){
+				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Nickname: {required: true,maxlength: 50},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-salnOther',[laman,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Declarant Date Issued updated.',4000);
+								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
+								App.handleLoadPage("#cmd=index;content=SALN");
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Co-Declarant/Spouse Government Issued ID"){
+				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Nickname: {required: true,maxlength: 50},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-salnOther',[laman,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Co-Declarant/Spouse Government Issued ID updated.',4000);
+								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
+								App.handleLoadPage("#cmd=index;content=SALN");
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Co-Declarant/Spouse ID No."){
+				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Nickname: {required: true,maxlength: 50},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-salnOther',[laman,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Co-Declarant/Spouse ID No. updated.',4000);
+								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
+								App.handleLoadPage("#cmd=index;content=SALN");
+							}
+							else{
+								Materialize.toast('Cannot process request.',4000);
+							}
+						});
+				    }
+				}); 
+			}
+			else if(data.prop == "Co-Declarant/Spouse Date Issued"){
+				$('#modal_confirm').openModal('show');			
+				localStorage.setItem('laman',data.value);
+				$("#form_update").validate({
+				    rules: {
+				        field_Nickname: {required: true,maxlength: 50},
+				    },
+				    errorElement : 'div',
+				    errorPlacement: function(error, element) {
+						var placement = $(element).data('error');
+						if(placement){
+							$(placement).append(error)
+						} 
+						else{
+							error.insertAfter(element);
+						}
+					},
+					submitHandler: function (form) {
+						var _form = $(form).serializeArray();
+						var laman = localStorage.getItem('laman');	
+						var data = system.ajax('../assets/harmony/Process.php?update-salnOther',[laman,_form]);
+						data.done(function(data){
+							console.log(data);
+							if(data == 1){
+								system.clearForm();
+								Materialize.toast('Co-Declarant/Spouse Date Issued updated.',4000);
+								$('#modal_confirm').closeModal();	
+								localStorage.removeItem('laman');	
 								App.handleLoadPage("#cmd=index;content=SALN");
 							}
 							else{
@@ -12680,5 +13595,4 @@ SALN = {
 			});
 		})
 	},
-
 }

@@ -1711,17 +1711,132 @@ employee = {
 				$("#personal_information").html(content);
 
 				print += "<div id='profile-card' class='card'>"+
-							"<div class='card-content'>"+
-								"<font size='4'>"+
-								"<table style='border-collapse: collapse;width:100%;'>"+
-
-									"<td style='border: 1px solid black;'><p style='text-align: center;'><font size='6'><b>Personal Data Sheet</b></font></p>"+
-										"<span style='text-align: left;'><font size='1'>Print Legibly. Mark appropriate boxes with / and use separate sheet if necessary.<span style='padding-left:29.2%;'></span><span style='background-color:black ! important;'>1. CS ID No.</span> <input style='width:17.7%;'/></font></span>"+
-									"</td>"+
-		  							
-								"</table>"+
-								"</font>"+
-							"</div>"+
+							"<table style='border-collapse:collapse;width:100%;border:1px solid black;height:100px;'>"+
+								"<tr>"+
+									"<td style='width:65%;vertical-align:top;'>CS FORM 212(Revised 2005)</td>"+
+									"<td style='width:10%;'></td>"+
+									"<td style='width:25%;'></td>"+
+								"</tr>"+
+								"<tr>"+
+									"<td style='vertical-align:center;' colspan='3'><font size='5'><center><b>PERSONAL DATA SHEET</b></center></font></td>"+
+								"</tr>"+
+								"<tr>"+
+									"<td style='width:65%;'><font size='2'>Print legibly. Mark appropriate boxes <input style='height:10px;width:10px;' /> width / and use separate sheet if necessary<font></td>"+
+									"<td style='width:5%;background-color:black;color:white;'><center><font size='2'>1. CS ID No.</font></center></td>"+
+									"<td style='width:25%;border:1px solid black;'></td>"+
+								"</tr>"+
+        					"</table>"+
+   							"<table style='border-collapse:collapse;width:100%;border:1px solid black;'>"+
+								"<tr>"+
+									"<td style='width:100%;background-color:black;color:white;'>l. PERSONAL INFORMATION</td>"+
+								"</tr>"+
+        					"</table>"+
+   							"<table style='border-collapse:collapse;width:100%;border:1px solid black;'>"+
+								"<tr>"+
+								    "<td><center>2. SURENAME</center></td>"+     
+									"<td style='width:30%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;Almandres</td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td><center>FIRST NAME</center></td>"+
+									"<td style='width:30%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;Cedric</td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:20%;'><center>MIDDLE NAME</center></td>"+
+								    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'>&nbsp;&nbsp;Mejos</td>"+
+								    "<td style='width:35%;border: 1px solid black;'>3. NAME EXTENSION(e.g. Jr.,Sr.)</td>"+
+									"<td style='width:15%;border: 1px solid black;'></td>"+
+								"</tr>"+
+							"</table>"+
+							"<table style='border-collapse:collapse;width:100%;border:1px solid black;'>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>4. DATE OF BIRTH</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;' >16. RESIDENTIAL ADDRESS</td>"+
+									"<td style='width:21%;border: 1px solid black;' rowspan='3'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>5. PLACE OF BIRTH</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;'></td>"+
+									// "<td style='widt1:23%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>6. SEX</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><center><input type='checkbox'>Male&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Female</center></td>"+
+								    "<td style='width:32%;'></td>"+
+									// "<td style='widt1:23%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;'>7. CIVIL STATUS</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;' rowspan='3'>"+
+								    	"<input type='checkbox'>Single&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Widowed<br />"+
+								    	"<input type='checkbox'>Married&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Separated<br />"+
+								    	"<input type='checkbox'>Anulled&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Other"+
+								    "</td>"+
+								    "<td style='width:32%;border: 1px solid black;text-align:right;'>ZIP CODE</td>"+
+									"<td style='width:21%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%'></td>"+
+								    // "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;border: 1px solid black;'>17. TELEPHONE NO.</td>"+
+									"<td style='width:21%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;'></td>"+
+								    // "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;'>18. PERMAMANENT ADDRESS</td>"+
+									"<td style='width:21%;border: 1px solid black;' rowspan='3'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>8. CITIZENSHIP</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;'></td>"+
+									// "<td style='widt1:23%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>9. HEIGHT (m)</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;'></td>"+
+									// "<td style='widt1:23%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>10. WEIGHT (kg)</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;border: 1px solid black;text-align:right;'>ZIP CODE</td>"+
+									"<td style='width:21%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>11. BLOOD TYPE</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;border: 1px solid black;'>19. TELEPHONE NO.</td>"+
+									"<td style='width:21%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>12. GSIS ID NO.</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;border: 1px solid black;'>20. E-MAIL ADDRESS (if any)</td>"+
+									"<td style='width:21%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>13. PAG-IBIG ID NO.</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;border: 1px solid black;'>21. CELLPHONE NO.</td>"+
+									"<td style='width:21%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2.9'>14. PHILHEALTH ID NO.</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;border: 1px solid black;'>22. AGENCY EMPLOYEE NO.</td>"+
+									"<td style='width:21%;border: 1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+								    "<td style='width:22%;border: 1px solid black;'>15. SSS NO.</td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
+								    "<td style='width:32%;border: 1px solid black;'>23. TIN</td>"+
+									"<td style='width:21%;border: 1px solid black;'></td>"+
+								"</tr>"+
+							"</table>"+
 						"</div>";
 			}
 		});
@@ -1826,90 +1941,6 @@ employee = {
 						"</div>";
 				$("#family_background").html(content);
 
-				print += "<div id='profile-card' class='card'>"+
-						"    <div class='card-content'>"+
-						"		<h5>Family Background</h5>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-account-circle cyan-text text-darken-2'></i> Spouse's Surename: "+data[0][2]+"</span>"+
-						"			<button data-value='"+data[0][2]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i> First Name: "+data[0][3]+"</span>"+
-						"			<button data-value='"+data[0][3]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i> Middle Name: "+data[0][4]+"</span>"+
-						"			<button data-value='"+data[0][4]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-work cyan-text text-darken-2'></i> Occupation: "+data[0][5]+"</span>"+
-						"			<button data-value='"+data[0][5]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Occupation' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Occupation'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Employer/Bus Name: "+data[0][6]+"</span>"+
-						"			<button data-value='"+data[0][6]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Employer/Bus Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Employer/Bus Name'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-store cyan-text text-darken-2'></i> Business Address: "+data[0][7]+"</span>"+
-						"			<button data-value='"+data[0][7]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Business Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Business Address'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Telephone Number: "+data[0][8]+"</span>"+
-						"			<button data-value='"+data[0][8]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Telephone Number'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Father's surname: "+data[0][9]+"</span>"+
-						"			<button data-value='"+data[0][9]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> First Name: "+data[0][10]+"</span>"+
-						"			<button data-value='"+data[0][10]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Middle Name: "+data[0][11]+"</span>"+
-						"			<button data-value='"+data[0][11]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Mother's surename: "+data[0][12]+"</span>"+
-						"			<button data-value='"+data[0][12]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> First Name: "+data[0][13]+"</span>"+
-						"			<button data-value='"+data[0][13]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Middle Name: "+data[0][14]+"</span>"+
-						"			<abuttondata-value='"+data[0][14]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Middle Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Middle Name'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
-						"    </div>"+
-						"</div>";
-
 				// employee.deactivate();
 				// employee.activate();
 				// employee.updateFamily();
@@ -2006,51 +2037,63 @@ employee = {
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][6]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+data[0][6]+"</span>"+
 						"			<button data-value='"+data[0][6]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][7]+"</span>"+
-						"			<button data-value='"+data[0][7]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+data[0][7]+"</span>"+
+						"			<button data-value='"+data[0][7]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][8]+"</span>"+
+						"			<button data-value='"+data[0][8]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div></br>"+
 						"		<h5>Secondary Level</h5>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][8]+"</span>"+
-						"			<button data-value='"+data[0][8]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of School'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Name Of School: "+data[0][9]+"</span>"+
+						"			<button data-value='"+data[0][9]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name Of School'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][9]+"</span>"+
-						"			<button data-value='"+data[0][9]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Degree' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Degree Course'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Degree Course: "+data[0][10]+"</span>"+
+						"			<button data-value='"+data[0][10]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Degree' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Degree Course'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][10]+"</span>"+
-						"			<button data-value='"+data[0][10]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Year' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Year Graduated'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Year Graduated: "+data[0][11]+"</span>"+
+						"			<button data-value='"+data[0][11]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Year' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Year Graduated'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][11]+"</span>"+
-						"			<button data-value='"+data[0][11]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update  Highest Grade/Level/Units Earned'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Highest Grade/Level/Units Earned: "+data[0][12]+"</span>"+
+						"			<button data-value='"+data[0][12]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update  Highest Grade/Level/Units Earned'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][12]+"</span>"+
-						"			<button data-value='"+data[0][12]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][13]+"</span>"+
+						"			<button data-value='"+data[0][13]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][13]+"</span>"+
-						"			<button data-value='"+data[0][13]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+data[0][14]+"</span>"+
+						"			<button data-value='"+data[0][14]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+data[0][15]+"</span>"+
+						"			<button data-value='"+data[0][15]+"' disabled data-cmd='updateEducation' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
@@ -2113,14 +2156,20 @@ employee = {
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[6]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance From: "+value[6]+"</span>"+
 							"			<button data-value='"+value[6]+"' disabled data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[7]+"</span>"+
-							"			<button data-value='"+value[7]+"' disabled data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance To: "+value[7]+"</span>"+
+							"			<button data-value='"+value[7]+"' disabled data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+							"			</button>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[8]+"</span>"+
+							"			<button data-value='"+value[8]+"' disabled data-cmd='updateVocational' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
@@ -2186,14 +2235,20 @@ employee = {
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[6]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance From: "+value[6]+"</span>"+
 							"			<button data-value='"+value[6]+"' disabled data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[7]+"</span>"+
-							"			<button data-value='"+value[7]+"' disabled data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance To: "+value[7]+"</span>"+
+							"			<button data-value='"+value[7]+"' disabled data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+							"			</button>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[8]+"</span>"+
+							"			<button data-value='"+value[8]+"' disabled data-cmd='updateCollege' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Scholarship/Non Academics Honor Recieved' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
@@ -2259,14 +2314,20 @@ employee = {
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance: "+value[6]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance From: "+value[6]+"</span>"+
 							"			<button data-value='"+value[6]+"' disabled data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[7]+"</span>"+
-							"			<button data-value='"+value[7]+"' disabled data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Dates Of Attendance To: "+value[7]+"</span>"+
+							"			<button data-value='"+value[7]+"' disabled data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates Of Attendance'>"+
+							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+							"			</button>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Scholarship/Academics Honors Recieved: "+value[8]+"</span>"+
+							"			<button data-value='"+value[8]+"' disabled data-cmd='updateEmployee' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Scholarship/Academics Honors Recieved'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
@@ -2380,44 +2441,50 @@ employee = {
             		data.length;
             		// console.log(value);
 				
-				content +=	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Dates: "+value[2]+"</span>"+
+				content +=	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[2]+"</span>"+
 							"			<button data-value='"+value[2]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-assignment-ind cyan-text text-darken-2'></i> Position Title: "+value[3]+"</span>"+
-							"			<button data-value='"+value[3]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position Title' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[3]+"</span>"+
+							"			<button data-value='"+value[3]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-work cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[4]+"</span>"+
-							"			<button data-value='"+value[4]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Department' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-assignment-ind cyan-text text-darken-2'></i> Position Title: "+value[4]+"</span>"+
+							"			<button data-value='"+value[4]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position Title' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Monthly Salary: "+value[5]+"</span>"+
-							"			<button data-value='"+value[5]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Monthly Salary' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-work cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[5]+"</span>"+
+							"			<button data-value='"+value[5]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Department' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-grade cyan-text text-darken-2'></i> Salary Grade: "+value[6]+"</span>"+
-							"			<button data-value='"+value[6]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Salary Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Monthly Salary: "+value[6]+"</span>"+
+							"			<button data-value='"+value[6]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Monthly Salary' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-info cyan-text text-darken-2'></i> Status Of Appointment: "+value[7]+"</span>"+
-							"			<button data-value='"+value[7]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Status Of Appointment' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-grade cyan-text text-darken-2'></i> Salary Grade: "+value[7]+"</span>"+
+							"			<button data-value='"+value[7]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Salary Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-image-portrait cyan-text text-darken-2'></i> Gov't Service: "+value[8]+"</span>"+
-							"			<button data-value='"+value[8]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Government Service' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-info cyan-text text-darken-2'></i> Status Of Appointment: "+value[8]+"</span>"+
+							"			<button data-value='"+value[8]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Status Of Appointment' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+							"			</button>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-image-portrait cyan-text text-darken-2'></i> Gov't Service: "+value[9]+"</span>"+
+							"			<button data-value='"+value[9]+"' disabled data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Government Service' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
@@ -2466,20 +2533,26 @@ employee = {
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Dates(from-to): "+value[3]+"</span>"+
-							"			<button data-value='"+value[3]+"' disabled data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[3]+"</span>"+
+							"			<button data-value='"+value[3]+"' disabled data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-format-list-numbered cyan-text text-darken-2'></i> Number of Hours: "+value[4]+"</span>"+
-							"			<button data-value='"+value[4]+"' disabled data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[4]+"</span>"+
+							"			<button data-value='"+value[4]+"' disabled data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-wallet-membership cyan-text text-darken-2'></i> Position: "+value[5]+"</span>"+
-							"			<button data-value='"+value[5]+"' disabled data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-format-list-numbered cyan-text text-darken-2'></i> Number of Hours: "+value[5]+"</span>"+
+							"			<button data-value='"+value[5]+"' disabled data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+							"			</button>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-wallet-membership cyan-text text-darken-2'></i> Position: "+value[6]+"</span>"+
+							"			<button data-value='"+value[6]+"' disabled data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
@@ -2522,26 +2595,32 @@ employee = {
             		data.length;
             		// console.log(value);
 				
-				content +=	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-description cyan-text text-darken-2'></i> Title of seminar: "+value[2]+"</span>"+
+				content +=	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-description cyan-text text-darken-2'></i> Title Of Seminar: "+value[2]+"</span>"+
 							"			<button data-value='"+value[2]+"' disabled data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Title of seminar' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Dates: "+value[3]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[3]+"</span>"+
 							"			<button data-value='"+value[3]+"' disabled data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-format-list-numbered cyan-text text-darken-2'></i> Number of hours: "+value[4]+"</span>"+
-							"			<button data-value='"+value[4]+"' disabled data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[4]+"</span>"+
+							"			<button data-value='"+value[4]+"' disabled data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Dates' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-people cyan-text text-darken-2'></i> Conducted/Sponsored by: "+value[5]+"</span>"+
-							"			<button data-value='"+value[5]+"' disabled data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Conducted/Sponsored by' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-format-list-numbered cyan-text text-darken-2'></i> Number of hours: "+value[5]+"</span>"+
+							"			<button data-value='"+value[5]+"' disabled data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
+							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+							"			</button>"+
+							"		 </p>"+
+							"		 <div class='divider'></div>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-people cyan-text text-darken-2'></i> Conducted/Sponsored by: "+value[6]+"</span>"+
+							"			<button data-value='"+value[6]+"' disabled data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Conducted/Sponsored by' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 							"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 							"			</button>"+
 							"		 </p>"+
@@ -2882,7 +2961,7 @@ employee = {
 			}
 		});
 
-		$("#printme").html(print);
+		$("#print").html(print);
 
 		$("a[data-cmd='print_pds']").on('click',function(){
 			$(print).print();
@@ -3940,10 +4019,18 @@ SALN ={
 									"<span style='position: absolute;right: 0px;width: 218px;'>Revised as of January 2015</span><br />"+
 									"<span style='position: absolute;right: 0px;width: 218px;'>Per CSC Resolution No. 1500088</span><br />"+
 									"<span style='position: absolute;right: 0px;width: 218px;' >Promugated on January 23, 2015</span>"+
-							"</div><br /><br />"+
+							"</div><br />"+
 							"<span style=''><font size='4.5'><center><b>SWORN STATEMENT OF ASSETS, LIABILITIES AND NET WORTH</b></center></font></span>"+
-							"<span style=''><center>As of December 25, 2017</center></span>"+
-							"<span style=''><center>(Required by R.A 6713)</center></span>"+
+							"<table style='border-collapse: collapse;width:40%;height:10%;' align='center'>"+
+								"<tr>"+
+									"<td style='width:15%;'>As of</td>"+
+									"<td style='width:85%;border-bottom:1px solid black;'></td>"+
+								"</tr>"+
+								"<tr>"+
+									"<td style='width:15%;'></td>"+
+									"<td style='width:85%;'><center>(Required by R.A 6713)</center></td>"+
+								"</tr>"+
+							"</table><br />"+
 							"<span style='padding-left:7%;'><font size='2'><b>Note:</b> Husband and wife are both public officials and employees may file the required statements jointly or separately.</font></span><br />"+
 							"<span style=''><center><c><input style='width:10px;height:5px;'/> Joint Filing</c><e style='padding-left:5%;'><input style='width:10px;height:5px;'/> Separate Filing</e><f style='padding-left:5%;'><input style='width:10px;height:5px;'/> Not Applicable</f></center></span><br />"+
 							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
@@ -4348,9 +4435,9 @@ SALN ={
 								"<td style='width:30%;text-align:right;'><b>TOTAL ASSETS(a+b):</b></td>"+
 								"<td style='width:20%;border-bottom:2px solid black;'><center>"+totalAssets+"</center></td>"+
 							"</tr>"+
-        				"</table><br />"+
-						"<span style=''><font size='4'>* Additional sheet/s may be used, if necessary</font></span><br />"+
-						"<span style=''><font size='4'><center><i>Page 1 of </i></center></font></span>";
+        				"</table><br /><br /><br />";
+						// "<span style=''><font size='4'>* Additional sheet/s may be used, if necessary</font></span><br />"+
+						// "<span style=''><font size='4'><center><i>Page 1 of </i></center></font></span>";
 
         		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: "+subTotalB+"</span>"+
 							"		 </p>"+
@@ -4365,6 +4452,8 @@ SALN ={
 
 		var content="";
 		var bago="";
+		var totalLiabilitiesPrint=0;
+		var a = "", b="", netWorth=0;
 		var data = system.ajax('../assets/harmony/Process.php?get-adminLiabilities',id);
 		data.done(function(data){
 			data = JSON.parse(data);
@@ -4384,6 +4473,14 @@ SALN ={
 				content += "<div id='profile-card'>"+
 							"   <div class='card-content'>"+
 							"		<h5>Liabilities</h5>";
+
+				print +="<span style='padding-left:5%;'><font size='3'><b>2. LIABILITIES*</b></font></span><br /><br />"+
+						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
+								"<tr>"+
+									"<td style='width:50%;border:1px solid black;'><b><center>NATURE</center></b></td>"+
+									"<td style='width:30%;border:1px solid black;'><b><center>NAME OF CREDITORS</center></b></td>"+
+									"<td style='width:20%;border:1px solid black;'><b><center>OUTSTANDING BALANCE</center></b></td>"+
+								"</tr>";
 
 				$(data).each(function(index,value){
             		// data.length;
@@ -4408,10 +4505,37 @@ SALN ={
 							"		 </p>"+
 							"		 <div class='divider'></div></br>";
         		});
+
+        		$(data).each(function(index,value){
+					totalLiabilitiesPrint = totalLiabilitiesPrint + Number(value[4]);
+				print +="<tr>"+
+							"<td style='width:50%;border:1px solid black;'><center>"+value[2]+"</center></td>"+
+							"<td style='width:30%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
+							"<td style='width:20%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
+						"</tr>";
+        		});
+				netWorth=(totalAssets-totalLiabilitiesPrint);
+
+
+        		print +="</table><br />"+
+    					"<table style='border-collapse: collapse;width:100%;'>"+
+	    					"<tr>"+
+								"<td style='width:50%;'></td>"+
+								"<td style='width:30%;text-align:right;'><b>TOTAL LIABILITIES:</b></td>"+
+								"<td style='width:20%;border-bottom:1px solid black;'><center>"+totalLiabilitiesPrint+"</center></td>"+
+							"</tr>"+
+        				"</table><br />"+
+        				"<table style='border-collapse: collapse;width:100%;'>"+
+							"<tr>"+
+								"<td style='width:30%;'></td>"+
+								"<td style='width:50%;text-align:right;'><b>NER WORTH: Total Assets less Total Liabilities= </b></td>"+
+								"<td style='width:20%;border-bottom:2px solid black;'><center>"+netWorth+"</center></td>"+
+							"</tr>"+
+        				"</table><br />";
 				
-        		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Total Liabilities:</span>"+
+        		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Total Liabilities: "+totalLiabilitiesPrint+"</span>"+
 							"		 </p>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-maps-local-atm cyan-text text-darken-2'></i> Net Worth:Total Assets less Total Liabilities=</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-maps-local-atm cyan-text text-darken-2'></i> Net Worth:Total Assets less Total Liabilities= "+netWorth+"</span>"+
 							"		 </p>"+
 							"</div>"+
 							"</div>";
@@ -4440,6 +4564,17 @@ SALN ={
 				content += "<div id='profile-card'>"+
 							"   <div class='card-content'>"+
 							"		<h5>Business Interests And Financial Connections</h5>";
+
+				print +="<span style=''><font size='4'><b><center><u>BUSINESS INTERESTS AND FINANCIAL CONNECTIONS</u></center></b></font></span>"+
+						"<span style=''><font size='2.5'><center><i>(of Declarant's spouse/ Unmarried Children Below Eighteen(18) years of Age Living in Declarant's Household)</i></center></font></span>"+
+						"<span style=''><center><c><input style='width:10px;height:5px;'/> I/ We do not have any business interest or financial connection.</c></center></span><br />"+
+						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
+							"<tr>"+
+								"<th style='width:25%;border:1px solid black;'><b><center>NAME OF ENTITY/BUSINESS ENTERPRISE</center></b></td>"+
+								"<th style='width:25%;border:1px solid black;'><b><center>BUSINESS ADDRESS</center></b></th>"+
+								"<th style='width:25%;border:1px solid black;'><b><center>NATURE OF BUSINESS INTEREST &/OR FINANCIAL CONNECTION</center></b></th>"+
+								"<th style='width:25%;border:1px solid black;'><b><center>DATE OF ACQUISITION OF INTEREST OR CONNECTION</center></b></th>";
+							"</tr>";
 
 				$(data).each(function(index,value){
             		// data.length;
@@ -4470,6 +4605,17 @@ SALN ={
 							"		 </p>"+
 							"		 <div class='divider'></div></br>";
         		});
+
+        		$(data).each(function(index,value){
+            	print +="<tr>"+
+							"<td style='width:25%;border:1px solid black;'><center>"+value[2]+"</center></td>"+
+							"<td style='width:25%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
+							"<td style='width:25%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
+							"<td style='width:25%;border:1px solid black;'><center>"+value[5]+"</center></td>"+
+					"</tr>";
+        		});
+
+        		print +="</table><br />";
 				
         		content += 	"</div>"+
 							"</div>";
@@ -4489,6 +4635,8 @@ SALN ={
 				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
 						"<a class='btn waves-effect waves-light orange right' data-cmd='add_personalInfo'>Add</a>"+
 						"</div>";
+
+				
 			
 				$("#display_error").html(bago);
 			}
@@ -4500,6 +4648,16 @@ SALN ={
 							"   <div class='card-content'>"+
 							"		<h5>Relatives in the Government Service</h5>";
 
+				print +="<span style=''><font size='4'><b><center><u>RELATIVES IN THE GOVERNMENT SERVICE</u></center></b></font></span>"+
+						"<span style=''><font size='2.5'><center><i>(within the Fourth Degree of Consanguinity or Affinity. Include also Bias, Balae and Inso)</i></center></font></span>"+
+						"<span style=''><center><c><input style='width:10px;height:5px;'/> I/ We do not know of any relative/s in the government service)</c></center></span><br />"+
+						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
+							"<tr>"+
+								"<th style='width:30%;border:1px solid black;'><b><center>NAME OF RELATIVE</center></b></td>"+
+								"<th style='width:15%;border:1px solid black;'><b><center>RELATIONSHIP</center></b></th>"+
+								"<th style='width:15%;border:1px solid black;'><b><center>POSITION</center></b></th>"+
+								"<th style='width:40%;border:1px solid black;'><b><center>NAME OF AGENCY/OFFICE AND ADDRESS</center></b></th>";
+							"</tr>";
 				$(data).each(function(index,value){
             		// data.length;
             		// console.log(value);
@@ -4529,7 +4687,18 @@ SALN ={
 							"		 </p>"+
 							"		 <div class='divider'></div></br>";
         		});
-				
+
+        		$(data).each(function(index,value){
+            	print +="<tr>"+
+							"<td style='width:30%;border:1px solid black;'><center>"+value[2]+"</center></td>"+
+							"<td style='width:15%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
+							"<td style='width:15%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
+							"<td style='width:40%;border:1px solid black;'><center>"+value[5]+"</center></td>"+
+					"</tr>";
+        		});
+
+        		print +="</table><br />";
+
         		content += 	"</div>"+
 							"</div>";
         		
@@ -4537,10 +4706,153 @@ SALN ={
 			}
 		});
 
-		print += "</div>";
+		var content="";
+		var bago="";
+		var id = localStorage.getItem('myId');
+		var data = system.ajax('../assets/harmony/Process.php?get-other',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			// console.log(data);
 
-		$("#salnPrint").html(print);
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
 
+				content ="<div id='profile-card' class='card'>"+
+						"    <div class='card-image waves-effect waves-block waves-light'>"+
+						"        <img class='activator' src='../assets/images/user-bg.jpg' alt='user background'>"+
+						"    </div>"+
+						"    <div class='card-content'>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Date(dd/mm/yyy): "+data[0][2]+"</span>"+
+						"			<button data-value='"+data[0][2]+"' disabled='' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"<h5>Declarant</h5>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Government Issued ID: "+data[0][3]+"</span>"+
+						"			<button data-value='"+data[0][3]+"' disabled='' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Declarant Government Issued ID' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-cached cyan-text text-darken-2'></i> ID No.: "+data[0][4]+"</span>"+
+						"			<button data-value='"+data[0][4]+"' disabled='' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Declarant ID No.' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-event cyan-text text-darken-2'></i> Date Issued: "+data[0][5]+"</span>"+
+						"			<button data-value='"+data[0][5]+"' disabled='' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Declarant Date Issued' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"<h5>Spouse</h5>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Government Issued ID: "+data[0][6]+"</span>"+
+						"			<button data-value='"+data[0][6]+"' disabled='' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Co-Declarant/Spouse Government Issued ID' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> ID No.: "+data[0][7]+"</span>"+
+						"			<button data-value='"+data[0][7]+"' disabled='' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Co-Declarant/Spouse ID No.' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-accessibility cyan-text text-darken-2'></i> Date Issued: "+data[0][8]+"</span>"+
+						"			<button data-value='"+data[0][8]+"' disabled='' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Co-Declarant/Spouse Date Issued' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"    </div>"+
+						"</div>";
+        		
+				$("#other").html(content);
+				print +="<p style='text-indent: 50px;'>I hereby certify that these are true and correct statements of my assets, liabilities, net worth, business interests and financial connections,including those of my spouse and unmarried children below (18) years of age living in my household, and that to the best of my knowledge, the above-enumerated are names of my relatives in the government within the fourth civil degree of consanguinity or affinity.</p>"+
+        				"<p style='text-indent: 50px;'>I hereby authorize the Ombdsman or his/her duly authorized representative to obtain and secure from all appropriate governemnt agencies, including the Bureau of Internal Revenue such documents that may show my assets, liabilities, net worth, business interests and financial connections, to include those of my spouse and unmarried children below 18 years of age living with me in my household covering previous years to include the year I first assumed office in government.</p>"+
+						"<table style='border-collapse: collapse;width:100%;'>"+
+							"<tr>"+
+								"<td style='width:5%;'><b>Date: </b></td>"+
+								"<td style='width:5%;'></td>"+
+								"<td style='width:20%;border-bottom:1px solid black;'><center>"+data[0][2]+"</center></td>"+
+								"<td style='width:70%;'></td>"+
+							"</tr>"+
+        				"</table><br /><br />"+
+        				"<table style='border-collapse: collapse;width:100%;'>"+
+							"<tr>"+
+								"<td style='width:47%;border-bottom:1px solid black;'></td>"+
+								"<td style='width:6%;'></td>"+
+								"<td style='width:47%;border-bottom:1px solid black;'></td>"+
+							"</tr>"+
+							"<tr>"+
+								"<td style='width:47%;'><center><i>(Signiture of Applicant)</i></center></td>"+
+								"<td style='width:6%;'></td>"+
+								"<td style='width:47%;'><center><i>(Signiture of Co-Declarant/Spouse)</i></center></td>"+
+							"</tr>"+
+        				"</table><br />"+
+        				"<table style='border-collapse: collapse;width:100%;'>"+
+							"<tr>"+
+								"<td style='width:22%;'>Government Issued ID:</td>"+
+								"<td style='width:1%;'></td>"+
+								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][3]+"</center></td>"+
+								"<td style='width:8%;'></td>"+
+								"<td style='width:22%;'>Government Issued ID:</td>"+
+								"<td style='width:1%;'></td>"+
+								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][4]+"</center></td>"+
+							"</tr>"+
+							"<tr>"+
+								"<td style='width:22%;'>ID No.:</td>"+
+								"<td style='width:1%;'></td>"+
+								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][5]+"</center></td>"+
+								"<td style='width:8%;'></td>"+
+								"<td style='width:22%;'>ID No.:</td>"+
+								"<td style='width:1%;'></td>"+
+								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][6]+"</center></td>"+
+							"</tr>"+
+							"<tr>"+
+								"<td style='width:22%;'>Date Issued:</td>"+
+								"<td style='width:1%;'></td>"+
+								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][7]+"</center></td>"+
+								"<td style='width:8%;'></td>"+
+								"<td style='width:22%;'>Date Issued::</td>"+
+								"<td style='width:1%;'></td>"+
+								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][8]+"</center></td>"+
+							"</tr>"+
+        				"</table><br /><br />"+
+        				"<table style='border-collapse: collapse;width:100%;'>"+
+							"<tr>"+
+								"<td style='width:46%;text-indent: 20px;'><b>SUBSCRIBE AND SWORN</b> to before me this</td>"+
+								"<td style='width:8%;border-bottom:1px solid black;'><center></center></td>"+
+								"<td style='width:8%;'><center>day of</center></td>"+
+								"<td style='width:20%;border-bottom:1px solid black;'><center></center></td>"+
+								"<td style='width:18%;'>, affiant exhibiting</td>"+
+							"</tr>"+
+        				"</table>"+
+        				"<table style='border-collapse: collapse;width:100%;'>"+
+							"<tr>"+
+								"<td style=''>to me the above-stated government issued identification card.</td>"+
+							"</tr>"+
+        				"</table><br /><br />"+
+        				"<table style='border-collapse: collapse;width:100%;'>"+
+							"<tr>"+
+								"<td style='width:45%;'><center></center></td>"+
+								"<td style='width:40%;border-bottom:1px solid black;'></td>"+
+								"<td style='width:15%;'></td>"+							
+							"</tr>"+
+							"<tr>"+
+								"<td style='width:45%;'><center></center></td>"+
+								"<td style='width:40%;'><center><i>(Person Administering Oath)</i></center></td>"+
+								"<td style='width:15%;'></td>"+							
+							"</tr>"+
+        				"</table><br />"+
+						"</div>";
+		});
+		
+
+		// $("#salnPrint").html(print);
 		$("a[data-cmd='print_saln']").on('click',function(){
 			$(print).print();
 		});

@@ -827,11 +827,18 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s6'>
-								<label for='field_e_dates'>Inclusive Dates Of Attendance(From-To): </label>
-					            <input id='field_e_dates' type='text' name='field_e_dates' data-error='.error_e_dates'>
-								<div class='error_e_dates'></div>	
+								<label for='field_e_from'>Inclusive Date Of Attendance From: </label>
+					            <input id='field_e_from' type='text' name='field_e_from' data-error='.error_e_from'>
+								<div class='error_e_from'></div>	
 							</div>
 							<div class='input-field col s6'>
+								<label for='field_e_to'>Inclusive Date Of Attendance To: </label>
+					            <input id='field_e_to' type='text' name='field_e_to' data-error='.error_e_to'>
+								<div class='error_e_to'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
 								<label for='field_e_scholar'>Scholarship/Academic Honors Recieved: </label>
 					            <input id='field_e_scholar' type='text' name='field_e_scholar' data-error='.error_e_scholar'>
 								<div class='error_e_scholar'></div>	
@@ -868,11 +875,18 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s6'>
-								<label for='field_s_dates'>Inclusive Dates Of Attendance(From-To): </label>
-					            <input id='field_s_dates' type='text' name='field_s_dates' data-error='.error_s_dates'>
-								<div class='error_s_dates'></div>	
+								<label for='field_s_from'>Inclusive Date Of Attendance From: </label>
+					            <input id='field_s_from' type='text' name='field_s_from' data-error='.error_s_from'>
+								<div class='error_s_from'></div>	
 							</div>
 							<div class='input-field col s6'>
+								<label for='field_s_to'>Inclusive Date Of Attendance To: </label>
+					            <input id='field_s_to' type='text' name='field_s_to' data-error='.error_s_to'>
+								<div class='error_s_to'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
 								<label for='field_s_scholar'>Scholarship/Academic Honors Recieved: </label>
 					            <input id='field_s_scholar' type='text' name='field_s_scholar' data-error='.error_s_scholar'>
 								<div class='error_s_scholar'></div>	
@@ -916,12 +930,12 @@
 							</div>
 						</div>
 						<div class='row'>
-							<div class='input-field col s5'>
+							<div class='input-field col s6'>
 								<label for='field_year'>Year Graduated(If graduated): </label>
 					            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
 								<div class='error_year'></div>	
 							</div>
-							<div class='input-field col s7'>
+							<div class='input-field col s6'>
 								<label for='field_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
 					            <input id='field_grade' type='text' name='field_grade' data-error='.error_grade'>
 								<div class='error_grade'></div>	
@@ -929,11 +943,18 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s6'>
-								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
-					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
-								<div class='error_dates'></div>	
+								<label for='field_from'>Inclusive Date Of Attendance From: </label>
+					            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+								<div class='error_from'></div>	
 							</div>
 							<div class='input-field col s6'>
+								<label for='field_to'>Inclusive Date Of Attendance to: </label>
+					            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+								<div class='error_to'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
 								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
 					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
 								<div class='error_scholar'></div>	
@@ -978,12 +999,12 @@
 							</div>
 						</div>
 						<div class='row'>
-							<div class='input-field col s5'>
+							<div class='input-field col s6'>
 								<label for='field_year'>Year Graduated(If graduated): </label>
 					            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
 								<div class='error_year'></div>	
 							</div>
-							<div class='input-field col s7'>
+							<div class='input-field col s6'>
 								<label for='field_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
 					            <input id='field_grade' type='text' name='field_grade' data-error='.error_grade'>
 								<div class='error_grade'></div>	
@@ -991,11 +1012,18 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s6'>
-								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
-					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
-								<div class='error_dates'></div>	
+								<label for='field_from'>Inclusive Date Of Attendance From: </label>
+					            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+								<div class='error_from'></div>	
 							</div>
 							<div class='input-field col s6'>
+								<label for='field_to'>Inclusive Date Of Attendance to: </label>
+					            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+								<div class='error_to'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
 								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
 					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
 								<div class='error_scholar'></div>	
@@ -1040,12 +1068,12 @@
 							</div>
 						</div>
 						<div class='row'>
-							<div class='input-field col s5'>
+							<div class='input-field col s6'>
 								<label for='field_year'>Year Graduated(If graduated): </label>
 					            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
 								<div class='error_year'></div>	
 							</div>
-							<div class='input-field col s7'>
+							<div class='input-field col s6'>
 								<label for='field_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
 					            <input id='field_grade' type='text' name='field_grade' data-error='.error_grade'>
 								<div class='error_grade'></div>	
@@ -1053,11 +1081,18 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s6'>
-								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
-					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
-								<div class='error_dates'></div>	
+								<label for='field_from'>Inclusive Date Of Attendance From: </label>
+					            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+								<div class='error_from'></div>	
 							</div>
 							<div class='input-field col s6'>
+								<label for='field_to'>Inclusive Date Of Attendance to: </label>
+					            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+								<div class='error_to'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
 								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
 					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
 								<div class='error_scholar'></div>	
@@ -1101,24 +1136,31 @@
 							</div>
 						</div>
 						<div class='row'>
-							<div class='input-field col s5'>
+							<div class='input-field col s6'>
 								<label for='field_year'>Year Graduated(If graduated): </label>
 					            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
 								<div class='error_year'></div>	
 							</div>
-							<div class='input-field col s7'>
-								<label for='field_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
+							<div class='input-field col s6'>
+								<label for='field_grade'>Highest G6ade/Level/Units Earned(if not graduated): </label>
 					            <input id='field_grade' type='text' name='field_grade' data-error='.error_grade'>
 								<div class='error_grade'></div>	
 							</div>
 						</div>
 						<div class='row'>
 							<div class='input-field col s6'>
-								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
-					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
-								<div class='error_dates'></div>	
+								<label for='field_from'>Inclusive Date Of Attendance From: </label>
+					            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+								<div class='error_from'></div>	
 							</div>
-							<div class='input-field col s6'>
+							<div class='inp6t-field col s6'>
+								<label for='field_to'>Inclusive Date Of Attendance to: </label>
+					            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+								<div class='error_to'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
 								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
 					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
 								<div class='error_scholar'></div>	
@@ -1163,12 +1205,12 @@
 							</div>
 						</div>
 						<div class='row'>
-							<div class='input-field col s5'>
+							<div class='input-field col s6'>
 								<label for='field_year'>Year Graduated(If graduated): </label>
 					            <input id='field_year' type='text' name='field_year' data-error='.error_year'>
 								<div class='error_year'></div>	
 							</div>
-							<div class='input-field col s7'>
+							<div class='input-field col s6'>
 								<label for='field_grade'>Highest Grade/Level/Units Earned(if not graduated): </label>
 					            <input id='field_grade' type='text' name='field_grade' data-error='.error_grade'>
 								<div class='error_grade'></div>	
@@ -1176,11 +1218,18 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s6'>
-								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
-					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
-								<div class='error_dates'></div>	
+								<label for='field_from'>Inclusive Date Of Attendance From: </label>
+					            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+								<div class='error_from'></div>	
 							</div>
 							<div class='input-field col s6'>
+								<label for='field_to'>Inclusive Date Of Attendance to: </label>
+					            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+								<div class='error_to'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
 								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
 					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
 								<div class='error_scholar'></div>	
@@ -1238,11 +1287,18 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s6'>
-								<label for='field_dates'>Inclusive Dates Of Attendance(From-To): </label>
-					            <input id='field_dates' type='text' name='field_dates' data-error='.error_dates'>
-								<div class='error_dates'></div>	
+								<label for='field_from'>Inclusive Date Of Attendance From: </label>
+					            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+								<div class='error_from'></div>	
 							</div>
 							<div class='input-field col s6'>
+								<label for='field_to'>Inclusive Date Of Attendance to: </label>
+					            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+								<div class='error_to'></div>	
+							</div>
+						</div>
+						<div class='row'>
+							<div class='input-field col s12'>
 								<label for='field_scholar'>Scholarship/Academic Honors Recieved: </label>
 					            <input id='field_scholar' type='text' name='field_scholar' data-error='.error_scholar'>
 								<div class='error_scholar'></div>	
@@ -2816,6 +2872,58 @@
 							</div>
 							<div class='divider'></div>
 						</div>
+						<div class='row left'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_Other'>Next</a></p>
+		</div>
+	</addRelatives>
+
+	<addRelativess>
+		<form id='form_relatives' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Relatives in the Government Service<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_relative'>Name Of Relative: </label>
+						            <input id='field_relative' type='text' name='field_relative' data-error='.error_relative'>
+									<div class='error_relative'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_relationship'>Relationship: </label>
+						            <input id='field_relationship' type='text' name='field_relationship' data-error='.error_relationship'>
+									<div class='error_relationship'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_position'>Position: </label>
+						            <input id='field_position' type='text' name='field_position' data-error='.error_position'>
+									<div class='error_position'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_agency'>Name Of Agency/Office And Address: </label>
+						            <input id='field_agency' type='text' name='field_agency' data-error='.error_agency'>
+									<div class='error_agency'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
 						<div class='row right'>
 						<div class='input-field col s12'>
 							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
@@ -2825,7 +2933,76 @@
 				</div>
 			</div>
 		</form>
-	</addRelatives>
+	</addRelativess>
+
+	<addOther>
+		<form id='form_other' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Other Information<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br />
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s12'>
+									<label for='field_date'>Date(mm/dd/yyy): </label>
+						            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
+									<div class='error_date'></div>	
+								</div>
+							</div><br /><br />
+							<p>Declarant</p>
+							<div class='divider'></div>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_government_issued'>Government Issued ID: </label>
+						            <input id='field_government_issued' type='text' name='field_government_issued' data-error='.error_government_issued'>
+									<div class='error_government_issued'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_id_number'>ID No.: </label>
+						            <input id='field_id_number' type='text' name='field_id_number' data-error='.error_id_number'>
+									<div class='error_id_number'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_date_issued'>Date Issued(mm/dd/yyyy): </label>
+						            <input id='field_date_issued' type='text' name='field_date_issued' data-error='.error_date_issued'>
+									<div class='error_date_issued'></div>	
+								</div>
+							</div><br /><br /><br />
+							<p>Co-Declarant/Spouse</p>
+							<div class='divider'></div>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_s_government_issued'>Government Issued ID: </label>
+						            <input id='field_s_government_issued' type='text' name='field_s_government_issued' data-error='.error_s_government_issued'>
+									<div class='error_s_government_issued'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_s_id_number'>ID No.: </label>
+						            <input id='field_s_id_number' type='text' name='field_s_id_number' data-error='.error_s_id_number'>
+									<div class='error_s_id_number'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_s_date_issued'>Date Issued(mm/dd/yyyy): </label>
+						            <input id='field_s_date_issued' type='text' name='field_s_date_issued' data-error='.error_s_date_issued'>
+									<div class='error_s_date_issued'></div>	
+								</div>
+							</div>
+							<div class='divider'></div>
+						</div>
+						<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addOther>
 
 	<leave>
 		<form id='form_leave' class='formValidate' method='get' action='' novalidate='novalidate'>

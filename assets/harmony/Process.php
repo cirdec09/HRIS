@@ -437,6 +437,12 @@ $function = new DatabaseClasses;
 			print_r(json_encode($query));
 		}
 
+		if(isset($_GET['get-other'])){
+			$data = $_POST['data'];
+			$query = $function->PDO(true,"SELECT * FROM tbl_saln_other WHERE employee_id = '{$data}'");
+			print_r(json_encode($query));
+		}
+
 		if(isset($_GET['get-adminRelatives'])){
 			$data = $_POST['data'];
 			$query = $function->PDO(true,"SELECT * FROM tbl_saln_relatives WHERE employee_id = '{$data}'");
@@ -765,7 +771,7 @@ $function = new DatabaseClasses;
 	        $id = $function->PDO_IDGenerator('tbl_education','id');
 			$employee_id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_education(id,employee_id,e_name,e_degree,e_year,e_grade,e_dates,e_scholar,s_name,s_degree,s_year,s_grade,s_dates,s_scholar) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_education(id,employee_id,e_name,e_degree,e_year,e_grade,e_from,e_to,e_scholar,s_name,s_degree,s_year,s_grade,s_from,s_to,s_scholar) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','{$data[0][13]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -780,7 +786,7 @@ $function = new DatabaseClasses;
 	        $id = $function->PDO_IDGenerator('tbl_vocational','id');
 			$employee_id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_vocational(id,employee_id,name,degree,year,grade,dates,scholar) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_vocational(id,employee_id,name,degree,year,grade,date_from,date_to,scholar) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -795,7 +801,7 @@ $function = new DatabaseClasses;
 	        $id = $function->PDO_IDGenerator('tbl_college','id');
 			$employee_id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_college(id,employee_id,name,degree,year,grade,dates,scholar) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_college(id,employee_id,name,degree,year,grade,date_from,date_to,scholar) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -810,7 +816,7 @@ $function = new DatabaseClasses;
 	        $id = $function->PDO_IDGenerator('tbl_graduate','id');
 			$employee_id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_graduate(id,employee_id,name,degree,year,grade,dates,scholar) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_graduate(id,employee_id,name,degree,year,grade,date_from,date_to,scholar) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -1068,6 +1074,21 @@ $function = new DatabaseClasses;
 			$employee_id = $data[1];
 			
 			$query = $function->PDO(false,"INSERT INTO tbl_saln_relatives(id,employee_id,name,relationship,position,agency) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}')");
+			if($query->execute()){
+					echo 1;
+			}
+			else{
+				$Data = $query->errorInfo();
+				print_r($Data);
+			}
+		}
+
+		if(isset($_GET['set-newSalnOther'])){
+			$data = $_POST['data'];
+			$id = $function->PDO_IDGenerator('tbl_saln_other','id');
+			$employee_id = $data[1];
+			
+			$query = $function->PDO(false,"INSERT INTO tbl_saln_other(id,employee_id,dates,goverment_issued,id_number,date_issued,s_goverment_issued,s_id_number,s_date_issued) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -2341,9 +2362,21 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
-			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
+			elseif($data[1][0]['name'] == "field_Elementary Inclusive Date Of Attendance From"){
 				$dates = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_education SET e_dates = '{$dates}' WHERE e_dates = '{$ref}';");
+				$query = $function->PDO(false,"UPDATE tbl_education SET e_from = '{$dates}' WHERE e_from = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Elementary Inclusive Date Of Attendance To"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET e_to = '{$dates}' WHERE e_to = '{$ref}';");
 				if($query->execute()){
 					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
 					echo 1;
@@ -2413,9 +2446,21 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
-			elseif($data[1][0]['name'] == "field_Dates"){
+			elseif($data[1][0]['name'] == "field_Secondary Inclusive Date Of Attendance From"){
 				$dates = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_education SET s_dates = '{$dates}' WHERE s_dates = '{$ref}';");
+				$query = $function->PDO(false,"UPDATE tbl_education SET s_from = '{$dates}' WHERE s_from = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Secondary Inclusive Date Of Attendance To"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_education SET s_to = '{$dates}' WHERE s_to = '{$ref}';");
 				if($query->execute()){
 					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
 					echo 1;
@@ -2491,9 +2536,21 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
-			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance From"){
 				$dates = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_college SET dates = '{$dates}' WHERE dates = '{$ref}';");
+				$query = $function->PDO(false,"UPDATE tbl_college SET date_from = '{$dates}' WHERE date_from = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance To"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_college SET date_to = '{$dates}' WHERE date_to = '{$ref}';");
 				if($query->execute()){
 					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
 					echo 1;
@@ -2569,9 +2626,21 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
-			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance From"){
 				$dates = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_graduate SET dates = '{$dates}' WHERE dates = '{$ref}';");
+				$query = $function->PDO(false,"UPDATE tbl_graduate SET date_from = '{$dates}' WHERE date_from = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance To"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_graduate SET date_to = '{$dates}' WHERE date_to = '{$ref}';");
 				if($query->execute()){
 					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
 					echo 1;
@@ -2647,9 +2716,21 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
-			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance From"){
 				$dates = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_vocational SET dates = '{$dates}' WHERE dates = '{$ref}';");
+				$query = $function->PDO(false,"UPDATE tbl_vocational SET date_from = '{$dates}' WHERE date_from = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance To"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_vocational SET date_to = '{$dates}' WHERE date_to = '{$ref}';");
 				if($query->execute()){
 					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
 					echo 1;
@@ -2755,9 +2836,21 @@ $function = new DatabaseClasses;
 			$data = $_POST['data'];
 			$ref = $data[0];
 			
-			if($data[1][0]['name'] == "field_Inclusive Dates"){
+			if($data[1][0]['name'] == "field_Inclusive Date Of Attendance From"){
 				$dates = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_work SET inclusive_date = '{$dates}' WHERE inclusive_date = '{$ref}';");
+				$query = $function->PDO(false,"UPDATE tbl_work SET date_from = '{$dates}' WHERE date_from = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance To"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_work SET date_to = '{$dates}' WHERE date_to = '{$ref}';");
 				if($query->execute()){
 					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
 					echo 1;
@@ -2845,11 +2938,23 @@ $function = new DatabaseClasses;
 			$data = $_POST['data'];
 			$ref = $data[0];
 			
-			if($data[1][0]['name'] == "field_Name"){
-				$name = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_voluntary SET name = '{$name}' WHERE name = '{$ref}';");
+			if($data[1][0]['name'] == "field_Inclusive Date Of Attendance From"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_voluntary SET date_from = '{$dates}' WHERE date_from = '{$ref}';");
 				if($query->execute()){
-					$log = $function->log2($ref,"Name is updated to {$name}.","Update");
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance To"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_voluntary SET date_to = '{$dates}' WHERE date_to = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
 					echo 1;
 				}
 				else{
@@ -2911,11 +3016,23 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
-			elseif($data[1][0]['name'] == "field_Inclusive Dates"){
-				$date = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_training SET inclusive_date = '{$date}' WHERE inclusive_date = '{$ref}';");
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance From"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_training SET date_from = '{$dates}' WHERE date_from = '{$ref}';");
 				if($query->execute()){
-					$log = $function->log2($ref,"Inclusive Dates are updated to {$date}.","Update");
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			elseif($data[1][0]['name'] == "field_Inclusive Date Of Attendance To"){
+				$dates = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_training SET date_to = '{$dates}' WHERE date_to = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Inclusive Dates is updated to {$dates}.","Update");
 					echo 1;
 				}
 				else{
@@ -3663,7 +3780,7 @@ $function = new DatabaseClasses;
 
 			if($data[1][0]['name'] == "field_Name Of Child"){
 				$name = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_unmarried_child SET name = '{$name}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_unmarried_child SET name = '{$name}' WHERE name = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Name of Child is updated to {$name}.","Update");
 					echo 1;
@@ -3675,7 +3792,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Date Of Birth"){
 				$dob = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_unmarried_child SET dob = '{$dob}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_unmarried_child SET dob = '{$dob}' WHERE dob = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"dob is updated to {$dob}.","Update");
 					echo 1;
@@ -3687,7 +3804,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Age"){
 				$age = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_unmarried_child SET age = '{$age}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_unmarried_child SET age = '{$age}' WHERE age = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Age is updated to {$age}.","Update");
 					echo 1;
@@ -3807,7 +3924,7 @@ $function = new DatabaseClasses;
 
 			if($data[1][0]['name'] == "field_Description"){
 				$description = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_personal SET description = '{$description}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_personal SET description = '{$description}' WHERE description = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Description is updated to {$description}.","Update");
 					echo 1;
@@ -3819,7 +3936,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Year Acquired"){
 				$year = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_personal SET year = '{$year}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_personal SET year = '{$year}' WHERE year = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Year is updated to {$year}.","Update");
 					echo 1;
@@ -3831,7 +3948,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Acquisition Cost/Amount"){
 				$cost = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_personal SET cost = '{$cost}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_personal SET cost = '{$cost}' WHERE cost = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Cost is updated to {$cost}.","Update");
 					echo 1;
@@ -3849,7 +3966,7 @@ $function = new DatabaseClasses;
 
 			if($data[1][0]['name'] == "field_Nature"){
 				$nature = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_liabilities SET nature = '{$nature}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_liabilities SET nature = '{$nature}' WHERE nature = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Nature is updated to {$nature}.","Update");
 					echo 1;
@@ -3861,7 +3978,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Name Of Creditors"){
 				$creditors = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_liabilities SET creditors = '{$creditors}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_liabilities SET creditors = '{$creditors}' WHERE creditors = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Creditors is updated to {$creditors}.","Update");
 					echo 1;
@@ -3873,7 +3990,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Outstanding Balance"){
 				$balance = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_liabilities SET balance = '{$balance}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_liabilities SET balance = '{$balance}' WHERE balance = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Balance is updated to {$balance}.","Update");
 					echo 1;
@@ -3891,7 +4008,7 @@ $function = new DatabaseClasses;
 
 			if($data[1][0]['name'] == "field_Name Of Entity"){
 				$entity = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_business SET name = '{$entity}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_business SET name = '{$entity}' WHERE name = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Entity is updated to {$entity}.","Update");
 					echo 1;
@@ -3903,7 +4020,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Business Address"){
 				$address = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_business SET address = '{$address}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_business SET address = '{$address}' WHERE address = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Address is updated to {$address}.","Update");
 					echo 1;
@@ -3915,7 +4032,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Nature Of Business"){
 				$nature = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_business SET nature = '{$nature}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_business SET nature = '{$nature}' WHERE nature = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Nature is updated to {$nature}.","Update");
 					echo 1;
@@ -3927,7 +4044,7 @@ $function = new DatabaseClasses;
 			}	
 			else if($data[1][0]['name'] == "field_Date Of Acquisition Of Interests"){
 				$interest = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_business SET date_interest = '{$interest}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_business SET date_interest = '{$interest}' WHERE date_interest = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"interest is updated to {$interest}.","Update");
 					echo 1;
@@ -3945,7 +4062,7 @@ $function = new DatabaseClasses;
 
 			if($data[1][0]['name'] == "field_Name Of Relative"){
 				$relative = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_relatives SET name = '{$relative}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_relatives SET name = '{$relative}' WHERE name = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Relative is updated to {$relative}.","Update");
 					echo 1;
@@ -3957,7 +4074,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Relationship"){
 				$relationship = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_relatives SET relationship = '{$relationship}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_relatives SET relationship = '{$relationship}' WHERE relationship = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Relationship is updated to {$relationship}.","Update");
 					echo 1;
@@ -3969,7 +4086,7 @@ $function = new DatabaseClasses;
 			}
 			else if($data[1][0]['name'] == "field_Position"){
 				$position = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_relatives SET position = '{$position}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_relatives SET position = '{$position}' WHERE position = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Position is updated to {$position}.","Update");
 					echo 1;
@@ -3981,7 +4098,7 @@ $function = new DatabaseClasses;
 			}	
 			else if($data[1][0]['name'] == "field_Name Of Agency/Office And Address"){
 				$agency = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_saln_relatives SET agency = '{$agency}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_saln_relatives SET agency = '{$agency}' WHERE agency = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Agency is updated to {$agency}.","Update");
 					echo 1;
@@ -3991,6 +4108,96 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}	
+		}
+
+		if(isset($_GET['update-salnOther'])){
+			$data = $_POST['data'];
+			$user = $data[0];
+
+			if($data[1][0]['name'] == "field_Date"){
+				$relative = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_saln_other SET dates = '{$relative}' WHERE dates = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"Date is updated to {$relative}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Declarant Government Issued ID"){
+				$governmentIssued = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_saln_other SET goverment_issued = '{$governmentIssued}' WHERE goverment_issued = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"Goverment Issued is updated to {$governmentIssued}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Declarant ID No."){
+				$number = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_saln_other SET id_number = '{$number}' WHERE id_number = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"ID Number is updated to {$number}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}	
+			else if($data[1][0]['name'] == "field_Declarant Date Issued"){
+				$date = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_saln_other SET date_issued = '{$date}' WHERE date_issued = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"Date is updated to {$date}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}	
+			else if($data[1][0]['name'] == "field_Co-Declarant/Spouse Government Issued ID"){
+				$issued = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_saln_other SET s_goverment_issued = '{$issued}' WHERE s_goverment_issued = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"Government Issued is updated to {$issued}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Co-Declarant/Spouse ID No."){
+				$number = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_saln_other SET s_id_number = '{$number}' WHERE s_id_number = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"ID Number is updated to {$number}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}	
+			else if($data[1][0]['name'] == "field_Co-Declarant/Spouse Date Issued"){
+				$date = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_saln_other SET s_date_issued = '{$date}' WHERE s_date_issued = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"Date Issued is updated to {$date}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
 		}
 
 		if(isset($_GET['update-leave'])){
