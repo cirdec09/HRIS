@@ -1710,7 +1710,7 @@ employee = {
 						"</div>";
 				$("#personal_information").html(content);
 
-				print += "<div id='profile-card' class='card'>"+
+				print += "<div class='card'>"+
 							"<table style='border-collapse:collapse;width:100%;border:1px solid black;height:100px;'>"+
 								"<tr>"+
 									"<td style='width:65%;vertical-align:top;'>CS FORM 212(Revised 2005)</td>"+
@@ -1734,15 +1734,15 @@ employee = {
    							"<table style='border-collapse:collapse;width:100%;border:1px solid black;'>"+
 								"<tr>"+
 								    "<td><center>2. SURENAME</center></td>"+     
-									"<td style='width:30%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;Almandres</td>"+
+									"<td style='width:30%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;"+data[0][4]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td><center>FIRST NAME</center></td>"+
-									"<td style='width:30%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;Cedric</td>"+
+									"<td style='width:30%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;"+data[0][5]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:20%;'><center>MIDDLE NAME</center></td>"+
-								    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'>&nbsp;&nbsp;Mejos</td>"+
+								    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'>&nbsp;&nbsp;"+data[0][6]+"</td>"+
 								    "<td style='width:35%;border: 1px solid black;'>3. NAME EXTENSION(e.g. Jr.,Sr.)</td>"+
 									"<td style='width:15%;border: 1px solid black;'></td>"+
 								"</tr>"+
@@ -1750,91 +1750,85 @@ employee = {
 							"<table style='border-collapse:collapse;width:100%;border:1px solid black;'>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>4. DATE OF BIRTH</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;' >16. RESIDENTIAL ADDRESS</td>"+
-									"<td style='width:21%;border: 1px solid black;' rowspan='3'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][9]+"</td>"+
+								    "<td style='width:33%;' >16. RESIDENTIAL ADDRESS</td>"+
+									"<td style='width:20%;border: 1px solid black;' rowspan='3'>"+data[0][24]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>5. PLACE OF BIRTH</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;'></td>"+
-									// "<td style='widt1:23%;border: 1px solid black;'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][7]+"</td>"+
+								    "<td style='width:33%;'></td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>6. SEX</td>"+
 								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><center><input type='checkbox'>Male&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Female</center></td>"+
-								    "<td style='width:32%;'></td>"+
-									// "<td style='widt1:23%;border: 1px solid black;'></td>"+
+								    "<td style='width:33%;'></td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;'>7. CIVIL STATUS</td>"+
 								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;' rowspan='3'>"+
-								    	"<input type='checkbox'>Single&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Widowed<br />"+
-								    	"<input type='checkbox'>Married&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Separated<br />"+
-								    	"<input type='checkbox'>Anulled&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Other"+
+								    	"<input type='checkbox'>Single&nbsp;&nbsp;&nbsp;<input type='checkbox'>Widowed<br />"+
+								    	"<input type='checkbox'>Married<input type='checkbox'>Separated<br />"+
+								    	"<input type='checkbox'>Anulled<input type='checkbox'>Other"+
 								    "</td>"+
-								    "<td style='width:32%;border: 1px solid black;text-align:right;'>ZIP CODE</td>"+
-									"<td style='width:21%;border: 1px solid black;'></td>"+
+								    "<td style='width:33%;border: 1px solid black;text-align:right;'>ZIP CODE</td>"+
+									"<td style='width:20%;border: 1px solid black;'>"+data[0][25]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%'></td>"+
-								    // "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;border: 1px solid black;'>17. TELEPHONE NO.</td>"+
-									"<td style='width:21%;border: 1px solid black;'></td>"+
+								    "<td style='width:33%;border: 1px solid black;'>17. TELEPHONE NO.</td>"+
+									"<td style='width:20%;border: 1px solid black;'>"+data[0][26]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;'></td>"+
-								    // "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;'>18. PERMAMANENT ADDRESS</td>"+
-									"<td style='width:21%;border: 1px solid black;' rowspan='3'></td>"+
+								    "<td style='width:33%;'>18. PERMAMANENT ADDRESS</td>"+
+									"<td style='width:20%;border: 1px solid black;' rowspan='3'>"+data[0][27]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>8. CITIZENSHIP</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;'></td>"+
-									// "<td style='widt1:23%;border: 1px solid black;'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][16]+"</td>"+
+								    "<td style='width:33%;'></td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>9. HEIGHT (m)</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;'></td>"+
-									// "<td style='widt1:23%;border: 1px solid black;'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][17]+"</td>"+
+								    "<td style='width:33%;'></td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>10. WEIGHT (kg)</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;border: 1px solid black;text-align:right;'>ZIP CODE</td>"+
-									"<td style='width:21%;border: 1px solid black;'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][18]+"</td>"+
+								    "<td style='width:33%;border: 1px solid black;text-align:right;'>ZIP CODE</td>"+
+									"<td style='width:20%;border: 1px solid black;'>"+data[0][28]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>11. BLOOD TYPE</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;border: 1px solid black;'>19. TELEPHONE NO.</td>"+
-									"<td style='width:21%;border: 1px solid black;'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][19]+"</td>"+
+								    "<td style='width:33%;border: 1px solid black;'>19. TELEPHONE NO.</td>"+
+									"<td style='width:20%;border: 1px solid black;'>"+data[0][29]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>12. GSIS ID NO.</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;border: 1px solid black;'>20. E-MAIL ADDRESS (if any)</td>"+
-									"<td style='width:21%;border: 1px solid black;'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][20]+"</td>"+
+								    "<td style='width:33%;border: 1px solid black;'>20. E-MAIL ADDRESS (if any)</td>"+
+									"<td style='width:20%;border: 1px solid black;'>"+data[0][30]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>13. PAG-IBIG ID NO.</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;border: 1px solid black;'>21. CELLPHONE NO.</td>"+
-									"<td style='width:21%;border: 1px solid black;'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][21]+"</td>"+
+								    "<td style='width:33%;border: 1px solid black;'>21. CELLPHONE NO.</td>"+
+									"<td style='width:20%;border: 1px solid black;'>"+data[0][10]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'><font size='2.9'>14. PHILHEALTH ID NO.</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;border: 1px solid black;'>22. AGENCY EMPLOYEE NO.</td>"+
-									"<td style='width:21%;border: 1px solid black;'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][22]+"</td>"+
+								    "<td style='width:33%;border: 1px solid black;'>22. AGENCY EMPLOYEE NO.</td>"+
+									"<td style='width:20%;border: 1px solid black;'>"+data[0][31]+"</td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'>15. SSS NO.</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'></td>"+
-								    "<td style='width:32%;border: 1px solid black;'>23. TIN</td>"+
-									"<td style='width:21%;border: 1px solid black;'></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][23]+"</td>"+
+								    "<td style='width:33%;border: 1px solid black;'>23. TIN</td>"+
+									"<td style='width:20%;border: 1px solid black;'>"+data[0][32]+"</td>"+
 								"</tr>"+
 							"</table>"+
 						"</div>";
