@@ -1733,100 +1733,100 @@ employee = {
         					"</table>"+
 							"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
 								"<tr>"+
-								    "<td>2. SURENAME</td>"+     
-									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;"+data[0][4]+"</td>"+
+								    "<td><font size='2'>2. SURENAME</font></td>"+     
+									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;<font size='2'>"+data[0][4]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td><center>FIRST NAME</center></td>"+
-									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;"+data[0][5]+"</td>"+
+								    "<td><center><font size='2'>FIRST NAME</font></center></td>"+
+									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;<font size='2'>"+data[0][5]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;'><center>MIDDLE NAME</center></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>&nbsp;&nbsp;"+data[0][6]+"</td>"+
+								    "<td style='width:22%;'><center><font size='2'>MIDDLE NAME</font></center></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>&nbsp;&nbsp;<font size='2'>"+data[0][6]+"</font></td>"+
 								    "<td style='width:33%;border: 1px solid black;'><font size='2.9'>3. NAME EXTENSION(e.g. Jr.,Sr.)</font></td>"+
 									"<td style='width:20%;border: 1px solid black;'></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>4. DATE OF BIRTH</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][9]+"</td>"+
-								    "<td style='width:33%;' >16. RESIDENTIAL ADDRESS</td>"+
-									"<td style='width:20%;border: 1px solid black;' rowspan='3'>"+data[0][24]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>4. DATE OF BIRTH</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][9]+"</font></td>"+
+								    "<td style='width:33%;' ><font size='2'>16. RESIDENTIAL ADDRESS</font></td>"+
+									"<td style='width:20%;border: 1px solid black;' rowspan='3'><font size='2'>"+data[0][24]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>5. PLACE OF BIRTH</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][7]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>5. PLACE OF BIRTH</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][7]+"</font></td>"+
 								    "<td style='width:33%;'></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>6. SEX</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>6. SEX</font></td>"+
 								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><center><input type='checkbox'>Male&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Female</center></td>"+
 								    "<td style='width:33%;'></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;'>7. CIVIL STATUS</td>"+
+								    "<td style='width:22%;'><font size='2'>7. CIVIL STATUS</font></td>"+
 								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;' rowspan='3'>"+
 								    	"<input type='checkbox'>Single&nbsp;&nbsp;&nbsp;<input type='checkbox'>Widowed<br />"+
 								    	"<input type='checkbox'>Married<input type='checkbox'>Separated<br />"+
 								    	"<input type='checkbox'>Anulled<input type='checkbox'>Other"+
 								    "</td>"+
-								    "<td style='width:33%;border: 1px solid black;text-align:right;'>ZIP CODE</td>"+
-									"<td style='width:20%;border: 1px solid black;'>"+data[0][25]+"</td>"+
+								    "<td style='width:33%;border: 1px solid black;text-align:right;'><font size='2'>ZIP CODE</font></td>"+
+									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][25]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%'></td>"+
-								    "<td style='width:33%;border: 1px solid black;'>17. TELEPHONE NO.</td>"+
-									"<td style='width:20%;border: 1px solid black;'>"+data[0][26]+"</td>"+
+								    "<td style='width:33%;border: 1px solid black;'><font size='2'>17. TELEPHONE NO.</font></td>"+
+									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][26]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;'></td>"+
-								    "<td style='width:33%;'><font size='2.9'>18. PERMAMANENT ADDRESS</font></td>"+
-									"<td style='width:20%;border: 1px solid black;' rowspan='3'>"+data[0][27]+"</td>"+
+								    "<td style='width:33%;'><font size='2'>18. PERMAMANENT ADDRESS</font></td>"+
+									"<td style='width:20%;border: 1px solid black;' rowspan='3'><font size='2'>"+data[0][27]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>8. CITIZENSHIP</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][16]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>8. CITIZENSHIP</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][16]+"</font></td>"+
 								    "<td style='width:33%;'></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>9. HEIGHT (m)</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][17]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>9. HEIGHT (m)</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][17]+"</font></td>"+
 								    "<td style='width:33%;'></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>10. WEIGHT (kg)</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][18]+"</td>"+
-								    "<td style='width:33%;border: 1px solid black;text-align:right;'>ZIP CODE</td>"+
-									"<td style='width:20%;border: 1px solid black;'>"+data[0][28]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>10. WEIGHT (kg)</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][18]+"</font></td>"+
+								    "<td style='width:33%;border: 1px solid black;text-align:right;'><font size='2'>IP CODE</font></td>"+
+									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][28]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>11. BLOOD TYPE</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][19]+"</td>"+
-								    "<td style='width:33%;border: 1px solid black;'>19. TELEPHONE NO.</td>"+
-									"<td style='width:20%;border: 1px solid black;'>"+data[0][29]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>11. BLOOD TYPE</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][19]+"</font></td>"+
+								    "<td style='width:33%;border: 1px solid black;'><font size='2'>19. TELEPHONE NO.</font></td>"+
+									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][29]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>12. GSIS ID NO.</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][20]+"</td>"+
-								    "<td style='width:33%;border: 1px solid black;'>20. E-MAIL ADDRESS (if any)</td>"+
-									"<td style='width:20%;border: 1px solid black;'>"+data[0][30]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>12. GSIS ID NO.</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][20]+"</font></td>"+
+								    "<td style='width:33%;border: 1px solid black;'><font size='2'>20. E-MAIL ADDRESS (if any)</font></td>"+
+									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][30]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2.9'>13. PAG-IBIG ID NO.</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][21]+"</td>"+
-								    "<td style='width:33%;border: 1px solid black;'>21. CELLPHONE NO.</td>"+
-									"<td style='width:20%;border: 1px solid black;'>"+data[0][10]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>13. PAG-IBIG ID NO.</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][21]+"</font></td>"+
+								    "<td style='width:33%;border: 1px solid black;'><font size='2'>21. CELLPHONE NO.</font></td>"+
+									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][10]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2.9'>14. PHILHEALTH ID NO.</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][22]+"</td>"+
-								    "<td style='width:33%;border: 1px solid black;'>22. AGENCY EMPLOYEE NO.</td>"+
-									"<td style='width:20%;border: 1px solid black;'>"+data[0][31]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>14. PHILHEALTH ID NO.</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][22]+"</font></td>"+
+								    "<td style='width:33%;border: 1px solid black;'><font size='2'>22. AGENCY EMPLOYEE NO.</font></td>"+
+									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][31]+"</font></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'>15. SSS NO.</td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>"+data[0][23]+"</td>"+
-								    "<td style='width:33%;border: 1px solid black;'>23. TIN</td>"+
-									"<td style='width:20%;border: 1px solid black;'>"+data[0][32]+"</td>"+
+								    "<td style='width:22%;border: 1px solid black;'><font size='2'>15. SSS NO.</font></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][23]+"</font></td>"+
+								    "<td style='width:33%;border: 1px solid black;'><font size='2'>23. TIN</font></td>"+
+									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][32]+"</font></td>"+
 								"</tr>"+
 							"</table>";
 			}
@@ -1939,63 +1939,62 @@ employee = {
         				"</table>"+
         				"<table style='border-collapse:collapse;width:50%;display: inline-table;border:3px solid black;'>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center>24. SPOUSE'S SURENAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>24. SPOUSE'S SURENAME</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][2]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center>FIRST NAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>FIRST NAME</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][3]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center>MIDDLE NAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>MIDDLE NAME</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][4]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>OCCUPATION</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>OCCUPATION</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][5]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>EMPLOYER/BUS NAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>EMPLOYER/BUS NAME</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][6]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>BUSINESS ADDRESS</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>BUSINESS ADDRESS</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][7]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>TELEPHONE N0.</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>TELEPHONE N0.</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][8]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center>2. SURENAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;' colspan='2'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+     
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'>26. FATHER'S SURENAME</td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;word-wrap: break-word;'><font size='2'>26. FATHER'S SURENAME</font></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][9]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center>FIRST NAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>FIRST NAME</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][10]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center>MIDDLE NAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>MIDDLE NAME</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][11]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;' colspan='2'>27. MOTHER'S MAIDEN NAME</td>"+     
+							    "<td style='width:18%;border: 1px solid black;' colspan='2'><font size='2'>27. MOTHER'S MAIDEN NAME</font></td>"+     
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center>SURENAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>SURENAME</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][12]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center>FIRST NAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>FIRST NAME</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][13]+"</font></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center>MIDDLE NAME</center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'></td>"+
+							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>MIDDLE NAME</font></center></td>"+     
+								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][14]+"</font></td>"+
 							"</tr>"+
 						"</table>";
 			}
@@ -2005,7 +2004,7 @@ employee = {
 		var data = system.ajax('../assets/harmony/Process.php?get-child',id);
 		data.done(function(data){
 			data = JSON.parse(data);
-			// console.log(data);
+			console.log(data);
 			if(data.length<=0){
 				var data = system.xml("pages.xml");
 				$(data.responseText).find("errorContent").each(function(i,content){
@@ -2022,8 +2021,8 @@ employee = {
 
 				print += "<table style='border-collapse:collapse;width:50%;float:right;border:3px solid black;'>"+
 							"<tr>"+
-							    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'>25. NAME OF CHILD<br /><font size='2'><center>(Write full name and list all)</center></font></td>"+     
-								"<td style='width:20%;border: 1px solid black;word-wrap: break-word;'><center>DATE OF BIRTH<br /><font size='2'>(mm/dd/yyyy)</font></center></td>"+
+							    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'><font size='2'>25. NAME OF CHILD</font><br /><font size='2'><center>(Write full name and list all)</center></font></td>"+     
+								"<td style='width:20%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>DATE OF BIRTH</font><br /><font size='2'>(mm/dd/yyyy)</font></center></td>"+
 							"</tr>";
 						
 
@@ -2049,19 +2048,16 @@ employee = {
 
         		$(data).each(function(index,value){
         			print +="<tr>"+
-							    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'><center>"+value[2]+"</center></td>"+     
-								"<td style='width:20%;border: 1px solid black;word-wrap: break-word;'><center>"+value[3]+"</center></td>"+
+							    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>"+value[2]+"</font></center></td>"+     
+								"<td style='width:20%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>"+value[3]+"</font></center></td>"+
 							"</tr>";
 							
         		});
 
-        		print +="</table>"+
-						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
-							"<tr>"+
-								"<td style='width:100%;background-color:black;color:white;'>lll. EDUCATIONAL BACKGROUND</td>"+
-							"</tr>"+
-        				"</table>"+
-	        			"</div>";
+        		print +="<tr>"+
+						    "<td style='border: 1px solid black;word-wrap: break-word;' colspan='2'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
+						"</tr>"+
+						"</table>";
 
         		content += 	"</div>"+
 							"</div>";
@@ -2177,10 +2173,46 @@ employee = {
 						"</div>";
 				$("#educational_background").html(content);
 
-				// employee.deactivate();
-				// employee.activate();
-				// employee.updateEducation();
-				// employee.updatePicture();
+
+				print +="<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+							"<tr>"+
+								"<td style='width:100%;background-color:black;color:white;'>lll. EDUCATIONAL BACKGROUND</td>"+
+							"</tr>"+
+        				"</table>"+
+						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+							"<tr>"+
+							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>28. LEVEL</center></font></td>"+     
+								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>NAME OF SCHOOL (Write in full)</center></font></td>"+
+								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>DEGREE COURSE (Write in full)</center></font></td>"+     
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>YEAR GRADUATED (If graduated)</center></font></td>"+
+								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>HIGHEST GRADE/ LEVEL/ UNITS EARNED <br />(If not graduated)</center></font></td>"+     
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;' colspan='2'><font size='2'><center>INCLUSIVE DATES</center></font></td>"+
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>SCHOLARSHIP/ ACADEMIC HONORS RECIEVED</center></font></td>"+
+							"</tr>"+
+							"<tr>"+    
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>FROM</center></font></td>"+
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>To</center></font></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>ELEMENTARY</center></font></td>"+     
+								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
+								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][3]+"</center></font></td>"+     
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
+								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][5]+"</center></font></td>"+     
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][6]+"</center></font></td>"+
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][7]+"</center></font></td>"+
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][8]+"</center></font></td>"+
+							"</tr>"+
+							"<tr>"+
+							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>SECONDARY</center></font></td>"+     
+								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][9]+"</center></font></td>"+
+								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][10]+"</center></font></td>"+     
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][11]+"</center></font></td>"+
+								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][12]+"</center></font></td>"+     
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][13]+"</center></font></td>"+
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][14]+"</center></font></td>"+
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][15]+"</center></font></td>"+
+							"</tr>";
 			}
 		});
 
@@ -2253,6 +2285,21 @@ employee = {
 							"</div>"+
 							"</div>";
         		});
+
+				$(data).each(function(index,value){
+            		print +="<tr>"+
+							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>VOCATIONAL/ TRADE COURSE</center></font></td>"+     
+								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
+								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][3]+"</center></font></td>"+     
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
+								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][5]+"</center></font></td>"+     
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][6]+"</center></font></td>"+
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][7]+"</center></font></td>"+
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][8]+"</center></font></td>"+
+							"</tr>";
+        		});
+
+							
         		
 				$("#vocational").html(content);
 
@@ -2332,6 +2379,17 @@ employee = {
 							"</div>"+
 							"</div>";
         		});
+
+            		print +="<tr>"+
+							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>COLLEGE</center></font></td>"+     
+								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
+								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][3]+"</center></font></td>"+     
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
+								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][5]+"</center></font></td>"+     
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][6]+"</center></font></td>"+
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][7]+"</center></font></td>"+
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][8]+"</center></font></td>"+
+							"</tr>";
         		
 				$("#college_level").html(content);
 
@@ -2411,6 +2469,23 @@ employee = {
 							"</div>"+
 							"</div>";
         		});
+
+				$(data).each(function(index,value){
+            		print +="<tr>"+
+							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>GRADUATE STUDIES</center></font></td>"+     
+								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
+								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][3]+"</center></font></td>"+     
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
+								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][5]+"</center></font></td>"+     
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][6]+"</center></font></td>"+
+								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][7]+"</center></font></td>"+
+								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][8]+"</center></font></td>"+
+							"</tr>";
+        		});
+        			print +="<tr>"+
+							    "<td style='border: 1px solid black;word-wrap: break-word;' colspan='8'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
+							"</tr>"+
+						"</table>";
         		
 				$("#graduate").html(content);
 
