@@ -544,6 +544,12 @@ $function = new DatabaseClasses;
 			print_r(json_encode($query));
 		}
 
+		if(isset($_GET['get-last'])){
+			$data = $_POST['data'];
+			$query = $function->PDO(true,"SELECT * FROM tbl_last WHERE employee_id = '{$data}'");
+			print_r(json_encode($query));
+		}
+
 		if(isset($_GET['get-department'])){
 			$data = $_POST['data'];
 			$query = $function->PDO(true,"SELECT * FROM tbl_other WHERE id = '{$data}'");
@@ -861,7 +867,7 @@ $function = new DatabaseClasses;
 			$id = $function->PDO_IDGenerator('tbl_work','id');
 			$employee_id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_work(id,employee_id,inclusive_date,position,department,monthly_salary,salary_grade,appointment,service) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_work(id,employee_id,date_from,date_to,position,department,monthly_salary,salary_grade,appointment,service) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}','{$data[0][7]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -876,7 +882,7 @@ $function = new DatabaseClasses;
 			$id = $function->PDO_IDGenerator('tbl_voluntary','id');
 			$employee_id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_voluntary(id,employee_id,name,inclusive_date,hours,position) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_voluntary(id,employee_id,name,date_from,date_to,hours,position) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -891,7 +897,7 @@ $function = new DatabaseClasses;
 			$id = $function->PDO_IDGenerator('tbl_training','id');
 			$employee_id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_training(id,employee_id,title,inclusive_date,hours,conducted) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_training(id,employee_id,title,date_from,date_to,hours,conducted) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -966,7 +972,22 @@ $function = new DatabaseClasses;
 			$id = $function->PDO_IDGenerator('tbl_references','id');
 			$employee_id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_references(id,employee_id,name,address,tel) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_references(id,employee_id,name,address,tel,tax,issued_at,issued_on,accomplish) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}')");
+			if($query->execute()){
+					echo 1;
+			}
+			else{
+				$Data = $query->errorInfo();
+				print_r($Data);
+			}
+		}
+
+		if(isset($_GET['set-newLast'])){
+			$data = $_POST['data'];
+			$id = $function->PDO_IDGenerator('tbl_last','id');
+			$employee_id = $data[1];
+			
+			$query = $function->PDO(false,"INSERT INTO tbl_last(id,employee_id,tax,issued_at,issued_on,accomplish) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -3407,7 +3428,110 @@ $function = new DatabaseClasses;
 					print_r($Data);
 				}
 			}
+			else if($data[1][0]['name'] == "field_Community Tax Certificate No."){
+				$tel = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_references SET tax = '{$tel}' WHERE tax = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Community Tax Certificate No. is updated to {$tel}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Issued at"){
+				$tel = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_references SET issued_at = '{$tel}' WHERE issued_at = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Issued at is updated to {$tel}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Issued On"){
+				$tel = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_references SET issued_on = '{$tel}' WHERE issued_on = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Issued On is updated to {$tel}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Date Accomplish"){
+				$tel = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_references SET accomplish = '{$tel}' WHERE accomplish = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Date Accomplish is updated to {$tel}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
 		}
+
+		if(isset($_GET['update-last'])){
+			$data = $_POST['data'];
+			$ref = $data[0];
+			
+			if($data[1][0]['name'] == "field_Community Tax Certificate No."){
+				$tel = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_last SET tax = '{$tel}' WHERE tax = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Community Tax Certificate No. is updated to {$tel}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Issued at"){
+				$tel = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_last SET issued_at = '{$tel}' WHERE issued_at = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Issued at is updated to {$tel}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Issued On"){
+				$tel = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_last SET issued_on = '{$tel}' WHERE issued_on = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Issued On is updated to {$tel}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Date Accomplish"){
+				$tel = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_last SET accomplish = '{$tel}' WHERE accomplish = '{$ref}';");
+				if($query->execute()){
+					$log = $function->log2($ref,"Date Accomplish is updated to {$tel}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+		}
+
 
 		if(isset($_GET['update-travel'])){
 			$data = $_POST['data'];

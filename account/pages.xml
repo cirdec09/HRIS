@@ -1449,12 +1449,17 @@
 						</div>
 						<div class='row'>
 							<div class='row'>
-								<div class='input-field col s6'>
-									<label for='field_to'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
+								<div class='input-field col s4'>
+									<label for='field_from'>Inclusive Date From(dd/mm/yyyy): </label>
+						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+									<div class='error_from'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_to'>Inclusive Date To(dd/mm/yyyy): </label>
 						            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
 									<div class='error_to'></div>	
 								</div>
-								<div class='input-field col s6'>
+								<div class='input-field col s4'>
 									<label for='field_position'>Position Title(Write in full): </label>
 						            <input id='field_position' type='text' name='field_position' data-error='.error_position'>
 									<div class='error_position'></div>	
@@ -1474,7 +1479,7 @@
 							</div>
 							<div class='row'>
 								<div class='input-field col s3'>
-									<label for='field_salary_grade'>Salary Grade and Step Step Increment(Format "00-0"): </label>
+									<label for='field_salary_grade'>Salary Grade and Step Increment(Format "00-0"): </label>
 						            <input id='field_salary_grade' type='text' name='field_salary_grade' data-error='.error_salary_grade'>
 									<div class='error_salary_grade'></div>	
 								</div>
@@ -1518,12 +1523,17 @@
 						</div>
 						<div class='row'>
 							<div class='row'>
-								<div class='input-field col s6'>
-									<label for='field_to'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
+								<div class='input-field col s4'>
+									<label for='field_from'>Inclusive Date From(dd/mm/yyyy): </label>
+						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
+									<div class='error_from'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_to'>Inclusive Date To(dd/mm/yyyy): </label>
 						            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
 									<div class='error_to'></div>	
 								</div>
-								<div class='input-field col s6'>
+								<div class='input-field col s4'>
 									<label for='field_position'>Position Title(Write in full): </label>
 						            <input id='field_position' type='text' name='field_position' data-error='.error_position'>
 									<div class='error_position'></div>	
@@ -1583,15 +1593,22 @@
 						</div>
 						<div class='row'>
 							<div class='row'>
-								<div class='input-field col s6'>
+								<div class='input-field col s12'>
 									<label for='field_name'>Name and Address of Organization: </label>
 						            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
 									<div class='error_name'></div>	
 								</div>
+							</div>
+							<div class='row'>
 								<div class='input-field col s6'>
-									<label for='field_from'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
+									<label for='field_from'>Inclusive Date From: </label>
 						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
 									<div class='error_from'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_to'>Inclusive Date To: </label>
+						            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+									<div class='error_to'></div>	
 								</div>
 							</div>
 							<div class='row'>
@@ -1635,15 +1652,22 @@
 						</div>
 						<div class='row'>
 							<div class='row'>
-								<div class='input-field col s6'>
+								<div class='input-field col s12'>
 									<label for='field_name'>Name and Address of Organization: </label>
 						            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
 									<div class='error_name'></div>	
 								</div>
+							</div>
+							<div class='row'>
 								<div class='input-field col s6'>
-									<label for='field_from'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
+									<label for='field_from'>Inclusive Date From: </label>
 						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
 									<div class='error_from'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_to'>Inclusive Date To: </label>
+						            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+									<div class='error_to'></div>	
 								</div>
 							</div>
 							<div class='row'>
@@ -1683,17 +1707,23 @@
 						</div>
 						<div class='row'>
 							<div class='row'>
-								<div class='input-field col s6'>
+								<div class='input-field col s12'>
 									<label for='field_title'>Title Of Seminar/Conference/Workshop/Short Courses(write in full): </label>
 						            <input id='field_title' type='text' name='field_title' data-error='.error_title'>
 									<div class='error_title'></div>	
 								</div>
+							</div>
+							<div class='row'>
 								<div class='input-field col s6'>
-									<label for='field_from'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
+									<label for='field_from'>Inclusive Date From: </label>
 						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
 									<div class='error_from'></div>	
 								</div>
-								
+								<div class='input-field col s6'>
+									<label for='field_to'>Inclusive Date To: </label>
+						            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+									<div class='error_to'></div>	
+								</div>
 							</div>
 							<div class='row'>
 								<div class='input-field col s6'>
@@ -1736,17 +1766,23 @@
 						</div>
 						<div class='row'>
 							<div class='row'>
-								<div class='input-field col s6'>
+								<div class='input-field col s12'>
 									<label for='field_title'>Title Of Seminar/Conference/Workshop/Short Courses(write in full): </label>
 						            <input id='field_title' type='text' name='field_title' data-error='.error_title'>
 									<div class='error_title'></div>	
 								</div>
+							</div>
+							<div class='row'>
 								<div class='input-field col s6'>
-									<label for='field_from'>Inclusive Dates(dd/mm/yyyy-dd/mm/yyyy): </label>
+									<label for='field_from'>Inclusive Date From: </label>
 						            <input id='field_from' type='text' name='field_from' data-error='.error_from'>
 									<div class='error_from'></div>	
 								</div>
-								
+								<div class='input-field col s6'>
+									<label for='field_to'>Inclusive Date To: </label>
+						            <input id='field_to' type='text' name='field_to' data-error='.error_to'>
+									<div class='error_to'></div>	
+								</div>
 							</div>
 							<div class='row'>
 								<div class='input-field col s6'>
@@ -1978,7 +2014,7 @@
 							<div class='row'>
 								<div class='input-field s12'>
 									<label style='color:black;'>a. Within the third degree(for National Government Employees): </label>
-									<label style='margin-top:3%;color:black;'>appointing authority, recomendiing authority, chief of office/bureau/department or person who has immediate supervision on you in the Office, Bureau or Deaprtment where you will be apointed?</label>
+									<label style='margin-top:3%;color:black;'>appointing authority, recomending authority, chief of office/bureau/department or person who has immediate supervision on you in the Office, Bureau or Deaprtment where you will be apointed?</label>
 									<div class='error_title'></div>	
 								</div><br /><br /><br /><br />
 							</div>
@@ -2119,7 +2155,7 @@
 							<div class='divider'></div>
 							<div class='row'>
 								<div class='input-field s12'>
-									<label style='color:black;'>Pursuant to: (a) Indigenous People's Act(RA8371); (b) Magna Carta for Disabled Persons(RA7277); and (c) Solo Parents Welfare Act of 2000 (RA8972), please answer the following items:s </label>
+									<label style='color:black;'>Pursuant to: (a) Indigenous People's Act(RA8371); (b) Magna Carta for Disabled Persons(RA7277); and (c) Solo Parents Welfare Act of 2000 (RA8972), please answer the following items: </label>
 									<div class='error_title'></div>	
 								</div>
 							</div><br />
@@ -2236,7 +2272,100 @@
 				</div>
 			</div>
 		</form>
+		<div class='divider'></div>
+		<div class='col s12 m4 l4 input-field right'>
+			<p><a class="btn waves-effect waves-light orange right" data-cmd='add_Last'>Next</a></p>
+		</div>
 	</addReferences>
+
+	<addReferencess>
+		<form id='form_referencess' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>References(Person not related consanguinity or affinity to applicant / apointee)<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s4'>
+									<label for='field_name'>Name: </label>
+						            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
+									<div class='error_name'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_address'>Address: </label>
+						            <input id='field_address' type='text' name='field_address' data-error='.error_address'>
+									<div class='error_address'></div>	
+								</div>
+								<div class='input-field col s4'>
+									<label for='field_telephone'>Telephone Number: </label>
+						            <input id='field_telephone' type='text' name='field_telephone' data-error='.error_telephone'>
+									<div class='error_telephone'></div>	
+								</div>
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addReferencess>
+
+	<addLast>
+		<form id='form_last' class='formValidate' method='get' action='' novalidate='novalidate'>
+			<div class='row'>
+				<div class='col offset-m1 offset-l1 s12 m10 l10'>
+					<!-- <h4 class="">New Employee</h4> -->
+					<div class='row'>
+						<div class='input-field col s12'>
+							<p>Other Information<i class='mdi-navigation-cancel right black-text small' data-cmd='exit_personal'></i></p>
+							<div class='divider'></div><br/>
+						</div>
+						<div class='row'>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_tax'>Community Tax Certificate No.: </label>
+						            <input id='field_tax' type='text' name='field_tax' data-error='.error_tax'>
+									<div class='error_tax'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_issued_at'>Issued at (mm/dd/yyyy): </label>
+						            <input id='field_issued_at' type='text' name='field_issued_at' data-error='.error_issued_at'>
+									<div class='error_issued_at'></div>	
+								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_issued_on'>Issued On (mm/dd/yyyy): </label>
+						            <input id='field_issued_on' type='text' name='field_issued_on' data-error='.error_issued_on'>
+									<div class='error_issued_on'></div>	
+								</div>
+								<div class='input-field col s6'>
+									<label for='field_accomplish'>Date Accomplish (mm/dd/yyyy): </label>
+						            <input id='field_accomplish' type='text' name='field_accomplish' data-error='.error_accomplish'>
+									<div class='error_accomplish'></div>	
+								</div>
+							</div>
+						</div>
+						<div class='divider'></div></br>
+					</div>
+					<div class='row right'>
+						<div class='input-field col s12'>
+							<button class='btn blue waves-effect waves-light right' type='submit'>Save</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</addLast>
 
 	<addSALNpersonalInfo>
 		<form id='form_personalInfo' class='formValidate' method='get' action='' novalidate='novalidate'>

@@ -39,7 +39,7 @@ account = {
 
 				content =  "<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
-						"        <img class='activator' src='../assets/images/user-bg.jpg' alt='user background'>"+
+						"        <img class='activator' src='../assets/images/user-bg-2.jpeg' alt='user background'>"+
 						"    </div>"+
 						"    <div class='card-content'>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Name: "+data[0][2]+"</span>"+
@@ -769,7 +769,8 @@ PDS = {
 
 			$("#form_addWork").validate({
 			    rules: {
-			    	field_to: {required: true,maxlength: 50},
+			    	field_to: {required: true,checkDate: true,maxlength: 50},
+			    	field_from: {required: true,checkDate: true,maxlength: 50},
 			    	field_position: {required: true,maxlength: 50},
 			    	field_department: {required: true,maxlength: 50},
 			    	field_salary: {required: true,maxlength: 50},
@@ -829,7 +830,8 @@ PDS = {
 			$("#form_addVoluntary").validate({
 			    rules: {
 			    	field_name: {required: true,maxlength: 50},
-			    	field_from: {required: true,maxlength: 50},
+			    	field_from: {required: true,checkDate: true,maxlength: 50},
+			    	field_to: {required: true,checkDate: true,maxlength: 50},
 			    	field_number: {required: true,maxlength: 50},
 			    	field_position: {required: true,maxlength: 50},
 			    },
@@ -885,7 +887,8 @@ PDS = {
 			$("#form_addTraining").validate({
 			    rules: {
 			    	field_title: {required: true,maxlength: 50},
-			    	field_from: {required: true,maxlength: 50},
+			    	field_from: {required: true,checkDate: true,maxlength: 50},
+			    	field_to: {required: true,checkDate: true,maxlength: 50},
 			    	field_number: {required: true,maxlength: 50},
 			    	field_conducted: {required: true,maxlength: 50},
 			    },
@@ -1082,8 +1085,7 @@ PDS = {
 			$('#modal').closeModal();
 			$("#modal .modal-content").html("");
 			$('.lean-overlay').remove();
-		});
-		
+		});	
 		$("a[data-cmd='add_Questions']").on('click',function(){
 			PDS.addQuestions();
 		});
@@ -1149,9 +1151,13 @@ PDS = {
 
 			$("#form_references").validate({
 			    rules: {
-			    	field_name: {maxlength: 50},
-			    	field_address: {maxlength: 50},
-			    	field_telephone: {maxlength: 50},
+			    	field_name: {required: true,maxlength: 50},
+			    	field_address: {required: true,maxlength: 50},
+			    	field_telephone: {required: true,maxlength: 50},
+			    	field_tax: {required: true,maxlength: 50},
+			    	field_issued_at: {required: true,maxlength: 50},
+			    	field_issued_on: {required: true,maxlength: 50},
+			    	field_accomplish: {required: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -1168,13 +1174,67 @@ PDS = {
 					var id = localStorage.getItem('myId');
 					var data = system.ajax('../assets/harmony/Process.php?set-newReferences',[_form,id]);
 					data.done(function(data){
-						// console.log(_form);
-						// console.log(data);
+						
+						console.log(data);
 						if(data == 1){
 							if(data.responseText != ""){
 								Materialize.toast('Saved.',4000);
 								system.clearForm();
-						    	// $(location).attr('href',"#cmd=index;content=focusClient");
+						    	App.handleLoadPage("#cmd=index;content=PDS;"+id);			
+							}
+						}
+						else{
+							Materialize.toast('Cannot process request.',4000);
+						}
+					});
+			    }
+			});
+		});
+		$("i[data-cmd='exit_personal']").on('click',function(){
+			$('#modal').closeModal();
+			$("#modal .modal-content").html("");
+			$('.lean-overlay').remove();
+		});
+		$("a[data-cmd='add_Last']").on('click',function(){
+			PDS.addLast();
+		});
+	},
+	addLast:function(){
+		var data = system.xml("pages.xml");
+		$(data.responseText).find("addLast").each(function(i,content){
+			console.log("Last");
+			$("#modal .modal-content").html(content);
+			$('#modal').openModal('show');		
+		    $("select").material_select();
+
+			$("#form_last").validate({
+			    rules: {
+			    	field_tax: {required: true,maxlength: 50},
+			    	field_issued_at: {checkDate: true,required: true,maxlength: 50},
+			    	field_issued_on: {checkDate: true,required: true,maxlength: 50},
+			    	field_accomplish: {checkDate: true,required: true,maxlength: 50},
+			    },
+			    errorElement : 'div',
+			    errorPlacement: function(error, element) {
+					var placement = $(element).data('error');
+					if(placement){
+						$(placement).append(error)
+					} 
+					else{
+						error.insertAfter(element);
+					}
+				},
+				submitHandler: function (form) {
+					var _form = $(form).serializeArray();
+					var id = localStorage.getItem('myId');
+					var data = system.ajax('../assets/harmony/Process.php?set-newLast',[_form,id]);
+					data.done(function(data){
+						
+						console.log(data);
+						if(data == 1){
+							if(data.responseText != ""){
+								Materialize.toast('Saved.',4000);
+								system.clearForm();
 						    	App.handleLoadPage("#cmd=index;content=PDS;"+id);			
 							}
 						}
@@ -1225,10 +1285,10 @@ PDS = {
 								  "</a>";	
 				}
 
-				var profile = ((data[0][1] == "") || (data[0][1] == null))?"avatar.jpg":data[0][11];
+				var profile = ((data[0][11] == "") || (data[0][11] == null))?"avatar.jpg":data[0][11];
 				content = "<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
-						"        <img class='activator' src='../assets/images/s5.png' alt='user background'>"+
+						"        <img class='activator' src='../assets/images/user-bg-2.jpeg' alt='user background'>"+
 						"    </div>"+
 						"    <div class='card-content'>"+
 						"        <div class=' responsive-img activator card-profile-image circle'>"+
@@ -1414,12 +1474,13 @@ PDS = {
 				PDS.membershipDetails();
 				PDS.questionsDetails();
 				PDS.referencesDetails();
+				PDS.lastDetails();
 
 			}
 		});
 
 		$("a[data-cmd='add_pds']").on('click',function(){
-				PDS.addPersonalinfo();
+				PDS.addReferences();
 			});   		
 	},
 	familyDetails:function(){
@@ -1467,7 +1528,7 @@ PDS = {
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-work cyan-text text-darken-2'></i> Occupation: "+data[0][5]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-work  cyan-text text-darken-2'></i> Occupation: "+data[0][5]+"</span>"+
 						"			<a data-value='"+data[0][5]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Occupation' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Occupation'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
@@ -1497,7 +1558,7 @@ PDS = {
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> First Name: "+data[0][10]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people  cyan-text text-darken-2'></i> First Name: "+data[0][10]+"</span>"+
 						"			<a data-value='"+data[0][10]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father First Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update First Name'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
@@ -2276,37 +2337,37 @@ PDS = {
             		// console.log(value);
 				
 				content +=	"		 <br />"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Career Service: "+value[2]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-communication-quick-contacts-mail cyan-text text-darken-2'></i> Career Service: "+value[2]+"</span>"+
 							"			<a data-value='"+value[2]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Career Service' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Career Service'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Rating: "+value[3]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-stars cyan-text text-darken-2'></i> Rating: "+value[3]+"</span>"+
 							"			<a data-value='"+value[3]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Rating' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Rating'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Date Of Examinantion: "+value[4]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Date Of Examinantion: "+value[4]+"</span>"+
 							"			<a data-value='"+value[4]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date Of Examinantion' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Date Of Examinantion'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Place Of Examination: "+value[5]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-maps-place cyan-text text-darken-2'></i> Place Of Examination: "+value[5]+"</span>"+
 							"			<a data-value='"+value[5]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Place Of Examination' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Place Of Examination'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Number: "+value[6]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-description cyan-text text-darken-2'></i> Number: "+value[6]+"</span>"+
 							"			<a data-value='"+value[6]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Number'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Date Of Release: "+value[7]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Date Of Release: "+value[7]+"</span>"+
 							"			<a data-value='"+value[7]+"' data-cmd='updateCivil' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date Of Release' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Date Of Release'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
@@ -2398,49 +2459,49 @@ PDS = {
             		// console.log(value);
 				
 				content +=	"		 <br />"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[2]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[2]+"</span>"+
 							"			<a data-value='"+value[2]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[3]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[3]+"</span>"+
 							"			<a data-value='"+value[3]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position Title: "+value[4]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-assignment-ind cyan-text text-darken-2'></i> Position Title: "+value[4]+"</span>"+
 							"			<a data-value='"+value[4]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position Title' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[5]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-work cyan-text text-darken-2'></i> Department/Agency/Office/Company: "+value[5]+"</span>"+
 							"			<a data-value='"+value[5]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Department' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Department/Agency/Office/Company'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Monthly Salary: "+value[6]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Monthly Salary: "+value[6]+"</span>"+
 							"			<a data-value='"+value[6]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Monthly Salary' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Monthly Salary'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Salary Grade: "+value[7]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-grade cyan-text text-darken-2'></i> Salary Grade: "+value[7]+"</span>"+
 							"			<a data-value='"+value[7]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Salary Grade' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Salary Grade'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Status Of Appointment: "+value[8]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-info cyan-text text-darken-2'></i> Status Of Appointment: "+value[8]+"</span>"+
 							"			<a data-value='"+value[8]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Status Of Appointment' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Status Of Appointment'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Gov't Service: "+value[9]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-image-portrait cyan-text text-darken-2'></i> Gov't Service: "+value[9]+"</span>"+
 							"			<a data-value='"+value[9]+"' data-cmd='updateWork' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Government Service' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Gov't Service'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
@@ -2532,31 +2593,31 @@ PDS = {
             		// console.log(value);
 				
 				content +=	"		 <br />"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name & address of organization: "+value[2]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-maps-map cyan-text text-darken-2'></i> Name & address of organization: "+value[2]+"</span>"+
 							"			<a data-value='"+value[2]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[3]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[3]+"</span>"+
 							"			<a data-value='"+value[3]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[4]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[4]+"</span>"+
 							"			<a data-value='"+value[4]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Number of Hours: "+value[5]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-format-list-numbered cyan-text text-darken-2'></i> Number of Hours: "+value[5]+"</span>"+
 							"			<a data-value='"+value[5]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Department/Agency/Office/Company'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Position: "+value[6]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-wallet-membership cyan-text text-darken-2'></i> Position: "+value[6]+"</span>"+
 							"			<a data-value='"+value[6]+"' data-cmd='updateVoluntary' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Position' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Monthly Salary'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
@@ -2650,31 +2711,31 @@ PDS = {
             		// console.log(value);
 				
 				content +=	"		 <br />"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Title Of Seminar: "+value[2]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-description cyan-text text-darken-2'></i> Title Of Seminar: "+value[2]+"</span>"+
 							"			<a data-value='"+value[2]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Title of seminar' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Inclusive Dates'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[3]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance From: "+value[3]+"</span>"+
 							"			<a data-value='"+value[3]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance From' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[4]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-insert-invitation cyan-text text-darken-2'></i> Inclusive Date Of Attendance To: "+value[4]+"</span>"+
 							"			<a data-value='"+value[4]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Inclusive Date Of Attendance To' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Position Title'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i>Number of hours: "+value[5]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-format-list-numbered cyan-text text-darken-2'></i>Number of hours: "+value[5]+"</span>"+
 							"			<a data-value='"+value[5]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Number of hours' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Department/Agency/Office/Company'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
 							"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Conducted/Sponsored by: "+value[6]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-people cyan-text cyan-text text-darken-2'></i> Conducted/Sponsored by: "+value[6]+"</span>"+
 							"			<a data-value='"+value[6]+"' data-cmd='updateTraining' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Conducted/Sponsored by' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Monthly Salary'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
@@ -2862,7 +2923,7 @@ PDS = {
             		// console.log(value);
 				
 				content +=	"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Non-Academic Distinctions/Organization: "+value[2]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-maps-local-attraction cyan-text text-darken-2'></i> Non-Academic Distinctions/Organization: "+value[2]+"</span>"+
 							"			<a data-value='"+value[2]+"' data-cmd='updateNonAcademic' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Non-Academic distinctions/Organization' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Non-Academic Distinctions/Organization'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
@@ -2955,7 +3016,7 @@ PDS = {
             		// console.log(value);
 				
 				content +=	"		 <div class='divider'></div>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Membership in Association/Organization: "+value[2]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-group cyan-text text-darken-2'></i> Membership in Association/Organization: "+value[2]+"</span>"+
 							"			<a data-value='"+value[2]+"' data-cmd='updateMembership' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Membership in organization/Association' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Membership in Association/Organization'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
@@ -3054,121 +3115,121 @@ PDS = {
 						"    <div class='card-content'>"+
 						"		<h5>Other Information</h5>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-account-circle cyan-text text-darken-2'></i>Within the third degree(for National Government Employees)...?: "+data[0][2]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-question-answer cyan-text text-darken-2'></i>Within the third degree(for National Government Employees)...?: "+data[0][2]+"</span>"+
 						"			<a data-value='"+data[0][2]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Within the third degree(for National Government Employees):appointing authority, recomendiing authority, chief of office/bureau/department or person who has immediate supervision on you in the Office, Bureau or Deaprtment where you will be apointed?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i> If Yes, give details: "+data[0][3]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> If Yes, give details: "+data[0][3]+"</span>"+
 						"			<a data-value='"+data[0][3]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 36 A' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-account-circle cyan-text text-darken-2'></i>Within the fourth degree(for Local Government Employees)...?: "+data[0][4]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-question-answer cyan-text text-darken-2'></i>Within the fourth degree(for Local Government Employees)...?: "+data[0][4]+"</span>"+
 						"			<a data-value='"+data[0][4]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Within the fourth degree(for Local Government Employees)appointing authority, recommending authority where you will be apointed?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-work cyan-text text-darken-2'></i> If Yes, give details: "+data[0][5]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> If Yes, give details: "+data[0][5]+"</span>"+
 						"			<a data-value='"+data[0][5]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 36 B' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Have you ever been formally charged?: "+data[0][6]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-question-answer cyan-text text-darken-2'></i> Have you ever been formally charged?: "+data[0][6]+"</span>"+
 						"			<a data-value='"+data[0][6]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Have you ever been formally charged?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-store cyan-text text-darken-2'></i> If Yes, give details: "+data[0][7]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> If Yes, give details: "+data[0][7]+"</span>"+
 						"			<a data-value='"+data[0][7]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 37 A' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Have you ever been guilty of any administrative offense?: "+data[0][8]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-question-answer cyan-text text-darken-2'></i> Have you ever been guilty of any administrative offense?: "+data[0][8]+"</span>"+
 						"			<a data-value='"+data[0][8]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Have you ever been guilty of any administrative offense?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> If Yes, give details: "+data[0][9]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> If Yes, give details: "+data[0][9]+"</span>"+
 						"			<a data-value='"+data[0][9]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 37 B' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i>Have you ever been convicted of any crime...?: "+data[0][10]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-question-answer cyan-text text-darken-2'></i>Have you ever been convicted of any crime...?: "+data[0][10]+"</span>"+
 						"			<a data-value='"+data[0][10]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Have you ever been convicted of any crime or violation of any law, decree, ordinance or regulation by any court or tribunal?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> If Yes, give details: "+data[0][11]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> If Yes, give details: "+data[0][11]+"</span>"+
 						"			<a data-value='"+data[0][11]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 38' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Have you ever been separated from the service..?: "+data[0][12]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-question-answer cyan-text text-darken-2'></i> Have you ever been separated from the service..?: "+data[0][12]+"</span>"+
 						"			<a data-value='"+data[0][12]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Have you ever been separated from the service in any following modes: resignation, retirement, dropped from the rolls, dismissal, terminantion, end of term, finished contract AWOL or phase out in the public or private sector?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> If Yes, give details: "+data[0][13]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> If Yes, give details: "+data[0][13]+"</span>"+
 						"			<a data-value='"+data[0][13]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 39' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Have you been candidate in a national or local election...?: "+data[0][14]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-question-answer cyan-text text-darken-2'></i> Have you been candidate in a national or local election...?: "+data[0][14]+"</span>"+
 						"			<a data-value='"+data[0][14]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Have you been candidate in a national or local election(exept Brangay election)?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> If Yes, give details: "+data[0][15]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-detailse cyan-text text-darken-2'></i> If Yes, give details: "+data[0][15]+"</span>"+
 						"			<a data-value='"+data[0][15]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 40' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Are you a member of any indigenous group?: "+data[0][16]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-question-answer cyan-text text-darken-2'></i> Are you a member of any indigenous group?: "+data[0][16]+"</span>"+
 						"			<a data-value='"+data[0][16]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Are you a member of any indigenous group?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> If Yes, give details: "+data[0][17]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> If Yes, give details: "+data[0][17]+"</span>"+
 						"			<a data-value='"+data[0][17]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 41 A' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Are you differently abled?: "+data[0][18]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-question-answer cyan-text text-darken-2'></i> Are you differently abled?: "+data[0][18]+"</span>"+
 						"			<a data-value='"+data[0][18]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Are you differently abled?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> If Yes, give details: "+data[0][19]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> If Yes, give details: "+data[0][19]+"</span>"+
 						"			<a data-value='"+data[0][19]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 41 B' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Are you a solo parent?: "+data[0][20]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-question-answer cyan-text text-darken-2'></i> Are you a solo parent?: "+data[0][20]+"</span>"+
 						"			<a data-value='"+data[0][20]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Are you a solo parent?' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> If Yes, give details: "+data[0][21]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> If Yes, give details: "+data[0][21]+"</span>"+
 						"			<a data-value='"+data[0][21]+"' data-cmd='updateQuestions' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Details 41 C' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
@@ -3240,6 +3301,7 @@ PDS = {
 	referencesDetails:function(){
 		var content="";
 		var bago="";
+		var other='';
 		var id = localStorage.getItem('myId');
 		var data = system.ajax('../assets/harmony/Process.php?get-references',id);
 		data.done(function(data){
@@ -3257,17 +3319,17 @@ PDS = {
             		data.length;
             		// console.log(value);
 				
-				content +=	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Name: "+value[2]+"</span>"+
+				content +=	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-person cyan-text text-darken-2'></i> Name: "+value[2]+"</span>"+
 							"			<a data-value='"+value[2]+"' data-cmd='updateReferences' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Name'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Address: "+value[3]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-home cyan-text text-darken-2'></i> Address: "+value[3]+"</span>"+
 							"			<a data-value='"+value[3]+"' data-cmd='updateReferences' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Address'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
 							"		 </p>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-school cyan-text text-darken-2'></i> Telephone Number: "+value[4]+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-settings-phone cyan-text text-darken-2'></i> Telephone Number: "+value[4]+"</span>"+
 							"			<a data-value='"+value[4]+"' data-cmd='updateReferences' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Telephone Number' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Telephone Number'>"+
 							"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 							"			</a>"+
@@ -3288,13 +3350,13 @@ PDS = {
 
 				$("a[data-cmd='add_references']").on('click',function(){
 					var data = system.xml("pages.xml");
-					$(data.responseText).find("addReferences").each(function(i,content){
+					$(data.responseText).find("addReferencess").each(function(i,content){
 						console.log("References");
 						$("#modal .modal-content").html(content);
 						$('#modal').openModal('show');		
 					    $("select").material_select();
 
-						$("#form_references").validate({
+						$("#form_referencess").validate({
 						    rules: {
 						    	field_e_name: {maxlength: 50},
 						    	field_e_grades: {maxlength: 50},
@@ -3315,12 +3377,123 @@ PDS = {
 								var data = system.ajax('../assets/harmony/Process.php?set-newReferences',[_form,id]);
 								data.done(function(data){
 									// console.log(_form);
-									// console.log(data);
+									console.log(data);
 									if(data == 1){
 										if(data.responseText != ""){
 											Materialize.toast('Saved.',4000);
 											system.clearForm();
 									    	// $(location).attr('href',"#cmd=index;content=focusClient");
+									    	App.handleLoadPage("#cmd=index;content=PDS;"+id);			
+										}
+									}
+									else{
+										Materialize.toast('Cannot process request.',4000);
+									}
+								});
+						    }
+						});
+					});
+					$("i[data-cmd='exit_personal']").on('click',function(){
+						$('#modal').closeModal();
+						$("#modal .modal-content").html("");
+						$('.lean-overlay').remove();
+					});
+				});
+		});
+	},
+	lastDetails:function(){
+		var content="";
+		var bago="";
+		var id = localStorage.getItem('myId');
+		var data = system.ajax('../assets/harmony/Process.php?get-last',id);
+		data.done(function(data){
+			data = JSON.parse(data);
+			console.log(data);
+
+			if(data.length<=0){
+				bago = 	"<div id='profile-card' class='card'>"+
+						"   <div class='card-content'>"+
+						"		<h5>Other Information</h5><br />"+
+						"<a class='btn waves-effect waves-light orange left' data-cmd='add_last'>Add</a></br></br>"+
+						"</div>"+
+						"</div>";
+			
+				$("#last").html(bago);
+			}
+			else{
+				$("#display_employeeDetails").removeClass('hidden');
+				$("#display_error").addClass('hidden');
+
+				content = "<div id='profile-card' class='card'>"+
+						"    <div class='card-content'>"+
+						"		<h5>Other Information</h5>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-question-answer cyan-text text-darken-2'></i>Community Tax Certificate No.: "+data[0][2]+"</span>"+
+						"			<a data-value='"+data[0][2]+"' data-cmd='updateLast' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Community Tax Certificate No.' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> Issued at (mm/dd/yyyy): "+data[0][3]+"</span>"+
+						"			<a data-value='"+data[0][3]+"' data-cmd='updateLast' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Issued at' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i>Issued On (mm/dd/yyyy): "+data[0][4]+"</span>"+
+						"			<a data-value='"+data[0][4]+"' data-cmd='updateLast' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Issued On' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-image-details cyan-text text-darken-2'></i> Date Accomplish (mm/dd/yyyy): "+data[0][5]+"</span>"+
+						"			<a data-value='"+data[0][5]+"' data-cmd='updateLast' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date Accomplish' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
+						"			</a>"+
+						"		 </p>"+
+						"    </div>"+
+						"</div>";
+				$("#last").html(content);
+
+				PDS.updateLast();
+			}
+
+				$("a[data-cmd='add_last']").on('click',function(){
+					var data = system.xml("pages.xml");
+					$(data.responseText).find("addLast").each(function(i,content){
+						console.log("Last");
+						$("#modal .modal-content").html(content);
+						$('#modal').openModal('show');		
+					    $("select").material_select();
+
+						$("#form_last").validate({
+						    rules: {
+						    	field_tax: {required: true,maxlength: 50},
+						    	field_issued_at: {checkDate: true,required: true,maxlength: 50},
+						    	field_issued_on: {checkDate: true,required: true,maxlength: 50},
+						    	field_accomplish: {checkDate: true,required: true,maxlength: 50},
+						    },
+						    errorElement : 'div',
+						    errorPlacement: function(error, element) {
+								var placement = $(element).data('error');
+								if(placement){
+									$(placement).append(error)
+								} 
+								else{
+									error.insertAfter(element);
+								}
+							},
+							submitHandler: function (form) {
+								var _form = $(form).serializeArray();
+								var id = localStorage.getItem('myId');
+								var data = system.ajax('../assets/harmony/Process.php?set-newLast',[_form,id]);
+								data.done(function(data){
+									
+									console.log(data);
+									if(data == 1){
+										if(data.responseText != ""){
+											Materialize.toast('Saved.',4000);
+											system.clearForm();
 									    	App.handleLoadPage("#cmd=index;content=PDS;"+id);			
 										}
 									}
@@ -8537,7 +8710,321 @@ PDS = {
 					    }
 					}); 
 				}
+			else if(data.prop == "Community Tax Certificate No."){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('laman',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var laman = localStorage.getItem('laman');
+							var data = system.ajax('../assets/harmony/Process.php?update-references',[laman,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Community Tax Certificate No. updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('laman');	
+									App.handleLoadPage("#cmd=index;content=PDS");
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+			}
+			else if(data.prop == "Issued at"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('laman',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var laman = localStorage.getItem('laman');
+							var data = system.ajax('../assets/harmony/Process.php?update-references',[laman,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Date updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('laman');	
+									App.handleLoadPage("#cmd=index;content=PDS");
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+			}
+			else if(data.prop == "Issued On"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('laman',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var laman = localStorage.getItem('laman');
+							var data = system.ajax('../assets/harmony/Process.php?update-references',[laman,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Date updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('laman');	
+									App.handleLoadPage("#cmd=index;content=PDS");
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+			}
+			else if(data.prop == "Date Accomplish"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('laman',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var laman = localStorage.getItem('laman');
+							var data = system.ajax('../assets/harmony/Process.php?update-references',[laman,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Date updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('laman');	
+									App.handleLoadPage("#cmd=index;content=PDS");
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+			}
+		});
+	},
+	updateLast:function(){
+		$("a[data-cmd='updateLast']").on('click',function(){
+			var data = $(this).data();
+			var id = data.node;
 
+			var content = "<h4>Change "+data.prop+"</h4>"+
+						  "<form id='form_update' class='formValidate' method='get' action='' novalidate='novalidate'>"+
+						  "		<label for='field_"+data.prop+"'>"+data.prop+": </label>"+
+						  "		<input id='field_"+data.prop+"' type='text' name='field_"+data.prop+"' data-error='.error_"+data.prop+"' value='"+data.value+"'>"+
+						  "		<div class='error_"+data.prop+"'></div>"+
+						  "		<button type='submit' data-cmd='button_proceed' class='waves-effect waves-grey grey lighten-5 blue-text btn-flat modal-action right'>Save</button>"+
+						  "		<a class='waves-effect waves-grey grey-text btn-flat modal-action modal-close right'>Cancel</a>"+
+						  "</form>";
+			$("#modal_confirm .modal-content").html(content);
+			$('#modal_confirm .modal-footer').html("");			
+			$('.lean-overlay').remove();
+
+			if(data.prop == "Community Tax Certificate No."){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('laman',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var laman = localStorage.getItem('laman');
+							var data = system.ajax('../assets/harmony/Process.php?update-last',[laman,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Community Tax Certificate No. updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('laman');	
+									App.handleLoadPage("#cmd=index;content=PDS");
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+			}
+			else if(data.prop == "Issued at"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('laman',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var laman = localStorage.getItem('laman');
+							var data = system.ajax('../assets/harmony/Process.php?update-last',[laman,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Date updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('laman');	
+									App.handleLoadPage("#cmd=index;content=PDS");
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+			}
+			else if(data.prop == "Issued On"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('laman',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var laman = localStorage.getItem('laman');
+							var data = system.ajax('../assets/harmony/Process.php?update-last',[laman,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Date updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('laman');	
+									App.handleLoadPage("#cmd=index;content=PDS");
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+			}
+			else if(data.prop == "Date Accomplish"){
+					$('#modal_confirm').openModal('show');
+					localStorage.setItem('laman',data.value);
+					$("#form_update").validate({
+					    rules: {
+					        field_Email: {required: true,maxlength: 50,checkEmail:true},
+					    },
+					    errorElement : 'div',
+					    errorPlacement: function(error, element) {
+							var placement = $(element).data('error');
+							if(placement){
+								$(placement).append(error)
+							} 
+							else{
+								error.insertAfter(element);
+							}
+						},
+						submitHandler: function (form) {
+							var _form = $(form).serializeArray();
+							var laman = localStorage.getItem('laman');
+							var data = system.ajax('../assets/harmony/Process.php?update-last',[laman,_form]);
+							data.done(function(data){
+								console.log(data);
+								if(data == 1){
+									system.clearForm();
+									Materialize.toast('Date updated.',4000);
+									$('#modal_confirm').closeModal();
+									localStorage.removeItem('laman');	
+									App.handleLoadPage("#cmd=index;content=PDS");
+								}
+								else{
+									Materialize.toast('Cannot process request.',4000);
+								}
+							});
+					    }
+					}); 
+			}
 		});
 	},
 	deactivate:function(){
@@ -8882,7 +9369,7 @@ travel = {
 
 				content = "<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
-						"        <img class='activator' src='../assets/images/user-bg.jpg' alt='user background'>"+
+						"        <img class='activator' src='../assets/images/user-bg-2.jpeg' alt='user background'>"+
 						"    </div>"+
 						"    <div class='card-content'>"+
 						"		<h5>Travel Order</h5>"+
@@ -9559,7 +10046,7 @@ leave = {
 
 				content = "<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
-						"        <img class='activator' src='../assets/images/user-bg.jpg' alt='user background'>"+
+						"        <img class='activator' src='../assets/images/user-bg-2.jpeg' alt='user background'>"+
 						"    </div>"+
 						"    <div class='card-content'>"+
 						"		<h5>Application For Leave</h5>"+
@@ -10871,7 +11358,7 @@ SALN = {
 				
 				content ="<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
-						"        <img class='activator' src='../assets/images/user-bg.jpg' alt='user background'>"+
+						"        <img class='activator' src='../assets/images/user-bg-2.jpeg' alt='user background'>"+
 						"    </div>"+
 						"    <div class='card-content'>"+
 						"        <span class='card-title activator grey-text text-darken-4'>"+data[0][3]+" "+data[0][4]+" "+data[0][5]+" </span>"+
