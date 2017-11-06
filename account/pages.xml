@@ -183,7 +183,6 @@
 					<h4 class="">New Department</h4>
 					<div class='row'>
 						<div class='input-field col s12'>
-							<p>Department Information</p>
 							<div class='divider'></div><br/>
 						</div>
 						<div class='input-field col s12'>
@@ -191,21 +190,7 @@
 				            <input id='field_name' type='text' name='field_name' data-error='.error_name'>
 							<div class='error_name'></div>	
 						</div>
-						<div class='input-field col s6'>
-							<label for='field_phone'>Contact Number: </label>
-				            <input id='field_phone' type='text' name='field_phone' data-error='.error_phone'>
-							<div class='error_phone'></div>	
-						</div>
-						<div class='input-field col s6'>
-							<label for='field_email'>Email Address: </label>
-				            <input id='field_email' type='text' name='field_email' data-error='.error_email'>
-							<div class='error_email'></div>	
-						</div>
-						<div class='input-field col s12'>
-							<label for='field_address'>Department Address: </label>
-				            <input id='field_address' type='text' name='field_address' data-error='.error_address'>
-							<div class='error_address'></div>	
-						</div>
+					
 						<!-- <div class='input-field col s12'>
 							<p>Account Information</p>
 							<div class='divider'></div><br/>
@@ -2454,6 +2439,21 @@
 						            <input id='field_s_address' type='text' name='field_s_address' data-error='.error_s_address'>
 									<div class='error_s_address'></div>	
 								</div>
+							</div>
+							<div class='row'>
+								<div class='input-field col s6'>
+									<label for='field_date'>Date (Format: December 25): </label>
+						            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
+									<div class='error_date'></div>	
+								</div>
+								<div class='input-field col s6'>
+								<label for='field_note' class='active'>Note: </label>
+								<select name='field_note'>
+									<option selected>Joint Filing</option>
+									<option>Separate Filing</option>
+									<option>Not Applicable</option>
+								</select>
+							</div>
 							</div>
 						</div>
 						<div class='divider'></div></br>

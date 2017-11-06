@@ -744,9 +744,8 @@ $function = new DatabaseClasses;
 	        $companyID = $function->PDO_IDGenerator('tbl_department','id');
 			$date = $function->PDO_DateAndTime();
 		    $id = $companyID.'-0';
-			$password = sha1($data[3]['value']);
 
-			$query = $function->PDO(false,"INSERT INTO tbl_department(id,company_name,address,email,contact_number,logo,status,`date`) VALUES ('{$companyID}','{$data[0]['value']}','{$data[3]['value']}','{$data[2]['value']}','{$data[1]['value']}','logo.png','1','{$date}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_department(id,department_name,status,`date`) VALUES ('{$companyID}','{$data[0]['value']}','1','{$date}')");
 			if($query->execute()){
 				$function->log("add","Admin","Added employer with an id of \'".$id."\' in tbl_employer.");
 				echo 1;
@@ -972,7 +971,7 @@ $function = new DatabaseClasses;
 			$id = $function->PDO_IDGenerator('tbl_references','id');
 			$employee_id = $data[1];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_references(id,employee_id,name,address,tel,tax,issued_at,issued_on,accomplish) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_references(id,employee_id,name,address,tel) VALUES ('{$id}','{$employee_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -1004,7 +1003,7 @@ $function = new DatabaseClasses;
 			$employee_id = $data[1];
 			$company_id = $data[2];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_saln_personalInfo(id,employee_id,department_id,lname,fname,minitial,address,position,agency,office_address,s_lname,s_fname,s_minitial,s_position,s_agency,s_office_address,status) VALUES ('{$id}','{$employee_id}','{$company_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','1')");
+			$query = $function->PDO(false,"INSERT INTO tbl_saln_personalInfo(id,employee_id,department_id,lname,fname,minitial,address,position,agency,office_address,s_lname,s_fname,s_minitial,s_position,s_agency,s_office_address,status,as_of,filing) VALUES ('{$id}','{$employee_id}','{$company_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','1','{$data[0][13]['value']}','{$data[0][14]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}
@@ -1686,7 +1685,7 @@ $function = new DatabaseClasses;
 
 			if($data[1][0]['name'] == "field_Name"){
 				$name = $data[1][0]['value'];
-				$query = $function->PDO(false,"UPDATE tbl_department SET company_name = '{$name}' WHERE id = '{$user}';");
+				$query = $function->PDO(false,"UPDATE tbl_department SET department_name = '{$name}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Name is updated to {$name}.","Update");
 					echo 1;
@@ -3887,6 +3886,30 @@ $function = new DatabaseClasses;
 				$query = $function->PDO(false,"UPDATE tbl_saln_personalInfo SET s_office_address = '{$office}' WHERE id = '{$user}';");
 				if($query->execute()){
 					$log = $function->log2($user,"Office is updated to {$office}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_As Of"){
+				$office = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_saln_personalInfo SET as_of = '{$office}' WHERE id = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"Date is updated to {$office}.","Update");
+					echo 1;
+				}
+				else{
+					$Data = $query->errorInfo();
+					print_r($Data);
+				}
+			}
+			else if($data[1][0]['name'] == "field_Filing"){
+				$office = $data[1][0]['value'];
+				$query = $function->PDO(false,"UPDATE tbl_saln_personalInfo SET filing = '{$office}' WHERE id = '{$user}';");
+				if($query->execute()){
+					$log = $function->log2($user,"Filing is updated to {$office}.","Update");
 					echo 1;
 				}
 				else{

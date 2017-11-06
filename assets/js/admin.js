@@ -580,7 +580,7 @@ client = {
 				    rules: {
 				        field_name: {required: true,maxlength: 50},
 				        field_phone: {maxlength: 50},
-				        field_email: {maxlength: 50,checkEmail:true},
+				        field_email: {maxlength: 50,},
 				        field_address: {maxlength: 50},
 				    },
 				    errorElement : 'div',
@@ -633,28 +633,11 @@ client = {
 
 		content = "<div id='profile-card' class='card'>"+
 				"    <div class='card-content'>"+
-				"        <span class='card-title activator grey-text text-darken-4'>"+data[1]+" </span>"+
+				"        <span class='activator grey-text text-darken-4' style='font-size:20px;'>"+data[1]+" </span>"+
 				"			<a data-cmd='updateCompany' data-value='"+data[1]+"' data-name='"+data[1]+"' data-node='"+data[0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update account'>"+
 				"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 				"			</a>"+
 				"		 <div class='divider'></div>"+
-				"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-phone-msg cyan-text text-darken-2'></i> Phone: "+data[4]+"</span>"+
-				"			<a data-cmd='updateCompany' data-value='"+data[4]+"' data-name='"+data[1]+"' data-node='"+data[0]+"' data-prop='Phone' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update phone'>"+
-				"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-				"			</a>"+
-				"		 </p>"+
-				"		 <div class='divider'></div>"+
-				"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-communication-email cyan-text text-darken-2'></i> Email: "+data[3]+"</span>"+
-				"			<a data-cmd='updateCompany' data-value='"+data[3]+"' data-name='"+data[1]+"' data-node='"+data[0]+"' data-prop='Email' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update email'>"+
-				"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-				"			</a>"+
-				"		 </p>"+
-				"		 <div class='divider'></div>"+
-				"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-room cyan-text text-darken-2'></i> Address: "+data[2]+"</span>"+
-				"			<a data-cmd='updateCompany' data-value='"+data[2]+"' data-name='"+data[1]+"' data-node='"+data[0]+"' data-prop='Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update address'>"+
-				"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-				"			</a>"+
-				"		 </p>"+
 				"    </div>"+
 				"</div>";
 		$("#companyProfile").html(content);	
@@ -1542,6 +1525,8 @@ employee = {
 								  "</a>";	
 				}
 
+				
+
 				var profile = ((data[0][11] == "") || (data[0][11] == null))?"avatar.jpg":data[0][11];
 				content = "<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
@@ -1762,15 +1747,15 @@ employee = {
 							
 								"<tr>"+
 								    "<td style='width:22%;border: 1px solid black;'><font size='2'>6. SEX</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><center><input type='checkbox' id='male'>Male&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox'>Female</center></td>"+
+								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><center><input type='checkbox' "+((String(data[0][8]) == 'Male')? 'checked=true' : '')+" id='myCheckbox'>Male&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][8]) == 'Female')? 'checked=true' : '')+">Female</center></td>"+
 								    "<td style='width:33%;'></td>"+
 								"</tr>"+
 								"<tr>"+
 								    "<td style='width:22%;'><font size='2'>7. CIVIL STATUS</font></td>"+
 								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;' rowspan='3'>"+
-								    	"<input type='checkbox'>Single&nbsp;&nbsp;&nbsp;<input type='checkbox'>Widowed<br />"+
-								    	"<input type='checkbox'>Married<input type='checkbox'>Separated<br />"+
-								    	"<input type='checkbox'>Anulled<input type='checkbox'>Other"+
+								    	"<input type='checkbox' "+((String(data[0][15]) == 'Single')? 'checked=true' : '')+" >Single&nbsp;&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][15]) == 'Widowed')? 'checked=true' : '')+" >Widowed<br />"+
+								    	"<input type='checkbox' "+((String(data[0][15]) == 'Married')? 'checked=true' : '')+" >Married<input type='checkbox' "+((String(data[0][15]) == 'Separated')? 'checked=true' : '')+" >Separated<br />"+
+								    	"<input type='checkbox' "+((String(data[0][15]) == 'Anulled')? 'checked=true' : '')+" >Anulled<input type='checkbox' "+((String(data[0][15]) == 'Other')? 'checked=true' : '')+" >Other"+
 								    "</td>"+
 								    "<td style='width:33%;border: 1px solid black;text-align:right;'><font size='2'>ZIP CODE</font></td>"+
 									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][25]+"</font></td>"+
@@ -1832,7 +1817,13 @@ employee = {
 									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][32]+"</font></td>"+
 								"</tr>"+
 							"</table>";
-								
+				
+				if(String(data[0][8]) == 'Male'){
+					$('#myCheckbox').attr('checked', true);
+				}
+				else{
+					$('#myCheckbox').attr('checked', false);
+				}				
 			}
 		});
 
@@ -3171,7 +3162,7 @@ employee = {
 		var data = system.ajax('../assets/harmony/Process.php?get-questions',id);
 		data.done(function(data){
 			data = JSON.parse(data);
-
+				console.log(data);
 			if(data.length<=0){
 				var data = system.xml("pages.xml");
 				$(data.responseText).find("errorContent").each(function(i,content){
@@ -3316,13 +3307,13 @@ employee = {
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][2]) == 'Yes')? 'checked=true' : '')+" >Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][2]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:25%;height:50px;'><font size='2'><u>"+data[0][3]+"</u></font></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][4]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][4]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:25%;'><font size='2'><u>"+data[0][5]+"</u></font></td>"+
@@ -3336,13 +3327,13 @@ employee = {
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][6]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][6]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:25%;height:50px;'><font size='2'><u>"+data[0][7]+"</u></font></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][8]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][8]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:25%;height:32px;'><font size='2'><u>"+data[0][9]+"</u></font></td>"+
@@ -3356,7 +3347,7 @@ employee = {
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][10]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][10]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:25%;height:43px;'><font size='2'><u>"+data[0][11]+"</u></font></td>"+
@@ -3370,7 +3361,7 @@ employee = {
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][12]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][12]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:25%;height:40px;'><font size='2'><u>"+data[0][13]+"</u></font></td>"+
@@ -3384,7 +3375,7 @@ employee = {
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][14]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][14]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:25%;height:25px;'><font size='2'><u>"+data[0][15]+"</u></font></td>"+
@@ -3407,13 +3398,13 @@ employee = {
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><br /><br /><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, please specify:<u>"+data[0][15]+"</u><br /><br /></font></td>"+
+								"<td style='width:25%;'><font size='2'><br /><br /><input type='checkbox' "+((String(data[0][16]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][16]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][15]+"</u><br /><br /></font></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, please specify:<u>"+data[0][17]+"</u><br /><br /></font></td>"+
+								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][18]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][18]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][17]+"</u><br /><br /></font></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;height:50px;'><font size='2'><input type='checkbox'>Yes&nbsp;&nbsp;<input type='checkbox'>No<br />If Yes, please specify:<u>"+data[0][19]+"</u></font></td>"+
+								"<td style='width:25%;height:50px;'><font size='2'><input type='checkbox'"+((String(data[0][20]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox'"+((String(data[0][20]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][19]+"</u></font></td>"+
 							"</tr>"+
 						"</table>";
 			}
@@ -3450,26 +3441,7 @@ employee = {
 								"<td style='width:30%;border:1px solid black'><font size='2'><center>ADDRESS</center></font></td>"+
 								"<td style='width:20%;border:1px solid black'><font size='2'><center>TEL NO.</center></font></td>"+
 								"<td style='width:23%;border:1px solid black' rowspan='5'><font size='2'><center>ID picture witin the last 6 months 3.5 cm x 4.5 cm (Passport size)<br />Computer generated or xerox copy of picture is not acceptable</center></font></td>"+
-							"</tr>"+
-							"<tr>"+
-								"<td style='width:27%;border:1px solid black'><font size='2'><center>1</center></font></td>"+
-								"<td style='width:30%;border:1px solid black'><font size='2'><center>2</center></font></td>"+
-								"<td style='width:20%;border:1px solid black'><font size='2'><center></center></font></td>"+
-							"</tr>"+
-							"<tr>"+
-								"<td style='width:27%;border:1px solid black'><font size='2'><center>1</center></font></td>"+
-								"<td style='width:30%;border:1px solid black'><font size='2'><center>2</center></font></td>"+
-								"<td style='width:20%;border:1px solid black'><font size='2'><center>3 NO.</center></font></td>"+
-							"</tr>"+
-							"<tr>"+
-								"<td style='width:27%;border:1px solid black'><font size='2'><center>1</center></font></td>"+
-								"<td style='width:30%;border:1px solid black'><font size='2'><center>2</center></font></td>"+
-								"<td style='width:20%;border:1px solid black'><font size='2'><center>3 NO.</center></font></td>"+
-							"</tr>"+
-							"<tr>"+
-								"<td style='width:72%;border:1px solid black' colspan='3'><font size='2'>43. I declare under oath that this Personal Data Sheet has been accomplish by me, and is a true, correct and complete statement pursuant to the provisions of pertinent laws, rules and regulation of the Republic of the Philippines.<br /><br />I also authorized the agency head/ authorized representative to verify/ validate to contents stated herein.I trust that this information shall remain confedential.</font></td>"+
-							"</tr>"+
-						"</table>";
+							"</tr>";
 				$(data).each(function(index,value){
             		data.length;
             		// console.log(value);
@@ -3493,6 +3465,24 @@ employee = {
 							"		 </p>"+
 							"		 <div class='divider'></div>";
         		});
+        		$(data).each(function(index,value){
+            		print +="<tr>"+
+								"<td style='width:27%;border:1px solid black'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
+								"<td style='width:30%;border:1px solid black'><font size='2'><center>"+data[0][3]+"</center></font></td>"+
+								"<td style='width:20%;border:1px solid black'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
+							"</tr>";
+        		});
+        		for (i = 0; i < (3-data.length); i++) {
+ 					print +="<tr>"+
+								"<td style='width:27%;border:1px solid black'><font size='2'><center><br /></center></font></td>"+
+								"<td style='width:30%;border:1px solid black'><font size='2'><center></center></font></td>"+
+								"<td style='width:20%;border:1px solid black'><font size='2'><center></center></font></td>"+
+							"</tr>";
+				}
+        		print +="<tr>"+
+							"<td style='width:72%;border:1px solid black' colspan='3'><font size='2'>43. I declare under oath that this Personal Data Sheet has been accomplish by me, and is a true, correct and complete statement pursuant to the provisions of pertinent laws, rules and regulation of the Republic of the Philippines.<br /><br />I also authorized the agency head/ authorized representative to verify/ validate to contents stated herein.I trust that this information shall remain confedential.</font></td>"+
+						"</tr>"+
+						"</table>";
 
         		content += "</div>"+
 							"</div>";
@@ -3656,6 +3646,11 @@ employee = {
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 							"</tr>"+
 						"</table>"+
+						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+							"<tr>"+
+								"<td style='width:100%;;text-align:right;' height='2'></td>"+
+							"</tr>"+
+        				"</table>"+
 						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
 							"<tr>"+
 								"<td style='width:100%;text-align:right;'><font size='2'>CS FORM 212 (Rvised 2005), Page 4 of 4</font></td>"+
@@ -4678,6 +4673,8 @@ SALN ={
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
+						"<h5>SPOUSE</h5>"+
+						"		 <div class='divider'></div>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-person cyan-text text-darken-2'></i> Family Name: "+data[0][10]+"</span>"+
 						"			<button disabled data-value='"+data[0][10]+"' data-cmd='updatePersonalInfo' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Last Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
@@ -4713,6 +4710,19 @@ SALN ={
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
+						"<h5>Other Information</h5>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-maps-store-mall-directory cyan-text text-darken-2'></i> As Of Date: "+data[0][17]+"</span>"+
+						"			<button disabled data-value='"+data[0][17]+"' data-cmd='updatePersonalInfo' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Agency/Office' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
+						"		 <div class='divider'></div>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-home cyan-text text-darken-2'></i> Filing: "+data[0][18]+"</span>"+
+						"			<button disabled data-value='"+data[0][18]+"' data-cmd='updatePersonalInfo' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Office Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
+						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
+						"			</button>"+
+						"		 </p>"+
 						"    </div>"+
 						"</div>";
 				$("#personalInfo").html(content);
@@ -4727,7 +4737,7 @@ SALN ={
 							"<table style='border-collapse: collapse;width:40%;height:10%;' align='center'>"+
 								"<tr>"+
 									"<td style='width:15%;'>As of</td>"+
-									"<td style='width:85%;border-bottom:1px solid black;'></td>"+
+									"<td style='width:85%;border-bottom:1px solid black;'><center>"+data[0][17]+"</center></td>"+
 								"</tr>"+
 								"<tr>"+
 									"<td style='width:15%;'></td>"+
@@ -4735,7 +4745,7 @@ SALN ={
 								"</tr>"+
 							"</table><br />"+
 							"<span style='padding-left:7%;'><font size='2'><b>Note:</b> Husband and wife are both public officials and employees may file the required statements jointly or separately.</font></span><br />"+
-							"<span style=''><center><c><input style='width:10px;height:5px;'/> Joint Filing</c><e style='padding-left:5%;'><input style='width:10px;height:5px;'/> Separate Filing</e><f style='padding-left:5%;'><input style='width:10px;height:5px;'/> Not Applicable</f></center></span><br />"+
+							"<span style=''><center><c><input type='checkbox' "+((String(data[0][18]) == 'Joint Filing')? 'checked=true' : '')+" /> Joint Filing</c><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Separate Filing')? 'checked=true' : '')+" /> Separate Filing</e><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Not Applicable')? 'checked=true' : '')+" /> Not Applicable</e></center></span><br />"+
 							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
 								"<tr>"+
 									"<td style='width:10%;'><b>Declarant: </b></td>"+
@@ -4884,6 +4894,16 @@ SALN ={
 							
         		});
 
+        		for (i = 0; i < (4-data.length); i++) {
+ 					print +="<tr>"+
+								"<td style='width:38%;border-bottom:1px solid black;word-wrap: break-word;'> <center><br /></center></td>"+
+								"<td style='width:5%;'></td>"+
+								"<td style='width:18%;border-bottom:1px solid black;word-wrap: break-word;'> <center></center></td>"+
+								"<td style='width:5%;'></td>"+
+								"<td style='width:10%;border-bottom:1px solid black;word-wrap: break-word;'> <center></center></td>"+
+							"</tr>";
+				}
+
         		content += 		"</div>"+
 							"</div>";
 
@@ -5022,8 +5042,21 @@ SALN ={
 						"</tr>";					
         		});
 
+        		for (i = 0; i < (4-data.length); i++) {
+ 					print +="<tr>"+
+								"<td style='width:15%;border:1px solid black'><center><br /></center></td>"+
+								"<td style='width:15%;border:1px solid black'><center></center></td>"+
+								"<td style='width:15%;border:1px solid black'><center></center></td>"+
+								"<td style='width:10%;border:1px solid black'><center></center></td>"+
+								"<td style='width:16%;border:1px solid black'><center></center></td>"+
+								"<td style='width:8%;border:1px solid black'><center></center></td>"+
+								"<td style='width:8%;border:1px solid black'><center></center></td>"+
+								"<td style='width:10%;border:1px solid black'><center></center></td>"+
+							"</tr>";
+				}
+
 				localStorage.setItem('TotalA',subTotalA);
-        		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: "+subTotalA+"</span>"+
+        		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: &#8369; "+subTotalA+"</span>"+
         					"		 </p>"+
 							"</div>"+
 							"</div>";
@@ -5037,7 +5070,7 @@ SALN ={
 								"<td style='width:10%;'><center></center></td>"+
 								"<td style='width:16%;'><center></center></td>"+
 								"<td style='width:13%;'><center><b>Subtotal:</b></center></td>"+
-								"<td style='width:12%;border-bottom:1px solid black;'><center>"+subTotalAprint+"</center></td>"+
+								"<td style='width:12%;border-bottom:1px solid black;'><center>&#8369; "+subTotalAprint+"</center></td>"+
 							"</tr>"+
 						"</table>";
 						
@@ -5117,7 +5150,13 @@ SALN ={
 						
         		});
 
-    			
+    			for (i = 0; i < (4-data.length); i++) {
+ 					print +="<tr>"+
+								"<td style='width:50%;border:1px solid black;'><center><br /></center></td>"+
+								"<td style='width:30%;border:1px solid black;'><center></center></td>"+
+								"<td style='width:20%;border:1px solid black;'><center></center></td>"+
+							"</tr>";
+				}
         		
 				localStorage.setItem('TotalB',subTotalB);
 				a = localStorage.getItem('TotalA');
@@ -5129,22 +5168,22 @@ SALN ={
 	    					"<tr>"+
 								"<td style='width:50%;'></td>"+
 								"<td style='width:30%;text-align:right;'><b>Subtotal:</b></td>"+
-								"<td style='width:20%;border-bottom:1px solid black;'><center>"+subTotalBprint+"</center></td>"+
+								"<td style='width:20%;border-bottom:1px solid black;'><center>&#8369; "+subTotalBprint+"</center></td>"+
 							"</tr>"+
         				"</table><br />"+
         				"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
 								"<td style='width:50%;'></td>"+
 								"<td style='width:30%;text-align:right;'><b>TOTAL ASSETS(a+b):</b></td>"+
-								"<td style='width:20%;border-bottom:2px solid black;'><center>"+totalAssets+"</center></td>"+
+								"<td style='width:20%;border-bottom:2px solid black;'><center>&#8369; "+totalAssets+"</center></td>"+
 							"</tr>"+
-        				"</table><br /><br /><br />";
-						// "<span style=''><font size='4'>* Additional sheet/s may be used, if necessary</font></span><br />"+
-						// "<span style=''><font size='4'><center><i>Page 1 of </i></center></font></span>";
+        				"</table>"+
+						"<span style=''><font size='4'>* Additional sheet/s may be used, if necessary</font></span><br />"+
+						"<span style=''><font size='4'><center><i>Page 1 of ___</i></center></font></span>";
 
-        		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: "+subTotalB+"</span>"+
+        		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: &#8369; "+subTotalB+"</span>"+
 							"		 </p>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-maps-local-atm cyan-text text-darken-2'></i> Total Assets(a+b): "+totalAssets+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-maps-local-atm cyan-text text-darken-2'></i> Total Assets(a+b): &#8369; "+totalAssets+"</span>"+
 							"		 </p>"+
 							"</div>"+
 							"</div>";
@@ -5217,6 +5256,13 @@ SALN ={
 							"<td style='width:20%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
 						"</tr>";
         		});
+        		for (i = 0; i < (4-data.length); i++) {
+ 					print +="<tr>"+
+							"<td style='width:50%;border:1px solid black;'><center><br /></center></td>"+
+							"<td style='width:30%;border:1px solid black;'><center></center></td>"+
+							"<td style='width:20%;border:1px solid black;'><center></center></td>"+
+						"</tr>";
+				}
 				netWorth=(totalAssets-totalLiabilitiesPrint);
 
 
@@ -5225,20 +5271,20 @@ SALN ={
 	    					"<tr>"+
 								"<td style='width:50%;'></td>"+
 								"<td style='width:30%;text-align:right;'><b>TOTAL LIABILITIES:</b></td>"+
-								"<td style='width:20%;border-bottom:1px solid black;'><center>"+totalLiabilitiesPrint+"</center></td>"+
+								"<td style='width:20%;border-bottom:1px solid black;'><center>&#8369; "+totalLiabilitiesPrint+"</center></td>"+
 							"</tr>"+
         				"</table><br />"+
         				"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
 								"<td style='width:30%;'></td>"+
 								"<td style='width:50%;text-align:right;'><b>NER WORTH: Total Assets less Total Liabilities= </b></td>"+
-								"<td style='width:20%;border-bottom:2px solid black;'><center>"+netWorth+"</center></td>"+
+								"<td style='width:20%;border-bottom:2px solid black;'><center>&#8369; "+netWorth+"</center></td>"+
 							"</tr>"+
         				"</table><br />";
 				
-        		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Total Liabilities: "+totalLiabilitiesPrint+"</span>"+
+        		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Total Liabilities: &#8369; "+totalLiabilitiesPrint+"</span>"+
 							"		 </p>"+
-							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-maps-local-atm cyan-text text-darken-2'></i> Net Worth:Total Assets less Total Liabilities= "+netWorth+"</span>"+
+							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-maps-local-atm cyan-text text-darken-2'></i> Net Worth:Total Assets less Total Liabilities= &#8369; "+netWorth+"</span>"+
 							"		 </p>"+
 							"</div>"+
 							"</div>";
@@ -5270,7 +5316,7 @@ SALN ={
 
 				print +="<span style=''><font size='4'><b><center><u>BUSINESS INTERESTS AND FINANCIAL CONNECTIONS</u></center></b></font></span>"+
 						"<span style=''><font size='2.5'><center><i>(of Declarant's spouse/ Unmarried Children Below Eighteen(18) years of Age Living in Declarant's Household)</i></center></font></span>"+
-						"<span style=''><center><c><input style='width:10px;height:5px;'/> I/ We do not have any business interest or financial connection.</c></center></span><br />"+
+						"<span style=''><center><c><input type='checkbox' /> I/ We do not have any business interest or financial connection.</c></center></span><br />"+
 						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
 							"<tr>"+
 								"<th style='width:25%;border:1px solid black;'><b><center>NAME OF ENTITY/BUSINESS ENTERPRISE</center></b></td>"+
@@ -5315,8 +5361,17 @@ SALN ={
 							"<td style='width:25%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
 							"<td style='width:25%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
 							"<td style='width:25%;border:1px solid black;'><center>"+value[5]+"</center></td>"+
-					"</tr>";
+						"</tr>";
         		});
+
+        		for (i = 0; i < (4-data.length); i++) {
+ 					print +="<tr>"+
+								"<td style='width:25%;border:1px solid black;'><center><br /></center></td>"+
+								"<td style='width:25%;border:1px solid black;'><center></center></td>"+
+								"<td style='width:25%;border:1px solid black;'><center></center></td>"+
+								"<td style='width:25%;border:1px solid black;'><center></center></td>"+
+							"</tr>";
+				}
 
         		print +="</table><br />";
 				
@@ -5353,7 +5408,7 @@ SALN ={
 
 				print +="<span style=''><font size='4'><b><center><u>RELATIVES IN THE GOVERNMENT SERVICE</u></center></b></font></span>"+
 						"<span style=''><font size='2.5'><center><i>(within the Fourth Degree of Consanguinity or Affinity. Include also Bias, Balae and Inso)</i></center></font></span>"+
-						"<span style=''><center><c><input style='width:10px;height:5px;'/> I/ We do not know of any relative/s in the government service)</c></center></span><br />"+
+						"<span style=''><center><c><input type='checkbox' /> I/ We do not know of any relative/s in the government service)</c></center></span><br />"+
 						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
 							"<tr>"+
 								"<th style='width:30%;border:1px solid black;'><b><center>NAME OF RELATIVE</center></b></td>"+
@@ -5397,8 +5452,16 @@ SALN ={
 							"<td style='width:15%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
 							"<td style='width:15%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
 							"<td style='width:40%;border:1px solid black;'><center>"+value[5]+"</center></td>"+
-					"</tr>";
+						"</tr>";
         		});
+        		for (i = 0; i < (4-data.length); i++) {
+ 					print +="<tr>"+
+								"<td style='width:30%;border:1px solid black;'><center><br /></center></td>"+
+								"<td style='width:15%;border:1px solid black;'><center></center></td>"+
+								"<td style='width:15%;border:1px solid black;'><center></center></td>"+
+								"<td style='width:40%;border:1px solid black;'><center></center></td>"+
+							"</tr>";
+				}
 
         		print +="</table><br />";
 
@@ -5411,7 +5474,6 @@ SALN ={
 
 		var content="";
 		var bago="";
-		var id = localStorage.getItem('myId');
 		var data = system.ajax('../assets/harmony/Process.php?get-other',id);
 		data.done(function(data){
 			data = JSON.parse(data);
@@ -5421,9 +5483,6 @@ SALN ={
 				$("#display_error").addClass('hidden');
 
 				content ="<div id='profile-card' class='card'>"+
-						"    <div class='card-image waves-effect waves-block waves-light'>"+
-						"        <img class='activator' src='../assets/images/user-bg.jpg' alt='user background'>"+
-						"    </div>"+
 						"    <div class='card-content'>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Date(dd/mm/yyy): "+data[0][2]+"</span>"+
 						"			<button data-value='"+data[0][2]+"' disabled='' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
@@ -5550,8 +5609,8 @@ SALN ={
 								"<td style='width:40%;'><center><i>(Person Administering Oath)</i></center></td>"+
 								"<td style='width:15%;'></td>"+							
 							"</tr>"+
-        				"</table><br />"+
-						"</div>";
+        				"</table>"+
+						"<span style=''><font size='4'><center><i>Page 2 of ___</i></center></font></span>";
 		});
 		
 
