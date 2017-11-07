@@ -4560,7 +4560,7 @@ SALN ={
 						"	<td>"+v[4]+"</td>"+
 						"	<td>"+status+"</td>"+
 						"	<td width='1px'>"+
-						"		<a href='#cmd=index;content=focusSALNdetails;"+v[0]+"' class='tooltipped btn-floating waves-effect black-text no-shadow grey lighten-5 right' data-position='left' data-delay='0' data-tooltip='Show Details' data-cmd='update'>"+
+						"		<a href='#cmd=index;content=focusSALNdetails;"+v[1]+"' class='tooltipped btn-floating waves-effect black-text no-shadow grey lighten-5 right' data-position='left' data-delay='0' data-tooltip='Show Details' data-cmd='update'>"+
 						"			<i class='mdi-navigation-more-vert right black-text'></i>"+
 						"		</a>"+
 						"	</td>"+
@@ -4708,92 +4708,88 @@ SALN ={
 				$("#personalInfo").html(content);
 
 				print +="<div id='profile-card' class='card'>"+
-							"<div class='card-content'>"+
-									"<span style='position: absolute;right: 0px;width: 218px;'>Revised as of January 2015</span><br />"+
-									"<span style='position: absolute;right: 0px;width: 218px;'>Per CSC Resolution No. 1500088</span><br />"+
-									"<span style='position: absolute;right: 0px;width: 218px;' >Promugated on January 23, 2015</span>"+
+							"<div>"+
+									"<span style='font-size:60%;font-family:sans-serif;position: absolute;right: 0px;width: 145px;'>Revised as of January 2015</span><br />"+
+									"<span style='font-size:60%;font-family:sans-serif;position: absolute;right: 0px;width: 145px;'>Per CSC Resolution No. 1500088</span><br />"+
+									"<span style='font-size:60%;font-family:sans-serif;position: absolute;right: 0px;width: 145px;' >Promugated on January 23, 2015</span>"+
 							"</div><br />"+
-							"<span style=''><font size='4.5'><center><b>SWORN STATEMENT OF ASSETS, LIABILITIES AND NET WORTH</b></center></font></span>"+
+							"<span style='font-size:110%;font-family:sans-serif;'><center><b>SWORN STATEMENT OF ASSETS, LIABILITIES AND NET WORTH</b></center></span>"+
 							"<table style='border-collapse: collapse;width:40%;height:10%;' align='center'>"+
 								"<tr>"+
-									"<td style='width:15%;'>As of</td>"+
-									"<td style='width:85%;border-bottom:1px solid black;'><center>"+data[0][17]+"</center></td>"+
+									"<td style='width:15%;font-size:70%;font-family:sans-serif;'>As of</td>"+
+									"<td style='width:85%;font-size:70%;font-family:sans-serif;border-bottom:1px solid black;'><center>"+data[0][17]+"</center></td>"+
 								"</tr>"+
 								"<tr>"+
-									"<td style='width:15%;'></td>"+
-									"<td style='width:85%;'><center>(Required by R.A 6713)</center></td>"+
-								"</tr>"+
-							"</table><br />"+
-							"<span style='padding-left:7%;'><font size='2'><b>Note:</b> Husband and wife are both public officials and employees may file the required statements jointly or separately.</font></span><br />"+
-							"<span style=''><center><c><input type='checkbox' /> Joint Filing</c><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Separate Filing')? 'checked=true' : '')+" /> Separate Filing</e><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Not Applicable')? 'checked=true' : '')+" /> Not Applicable</e></center></span><br />"+
-							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
-								"<tr>"+
-									"<td style='width:10%;'><b>Declarant: </b></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:15%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][3]+"</center></td>"+
-									"<td style='width:15%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][4]+"</center></td>"+
-									"<td style='width:3%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][5]+"</center></td>"+
-									"<td style='width:5%;'></td>"+
-									"<td style='width:21%;'><b>POSITION:</b></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:29%;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][7]+"</td>"+
-								"</tr>"+
-								"<tr>"+
-									"<td style='width:10%;'></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:15%;'><center>(Family Name)</center></td>"+
-									"<td style='width:15%;'><center>(First Name)</center></td>"+
-									"<td style='width:3%;'><center>(M.I)</center></td>"+
-									"<td style='width:5%;'></td>"+
-									"<td style='width:21%;'><b>AGENCY/OFFICE:</b></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:29%;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][8]+"</td>"+
-								"</tr>"+
-							"</table>"+
-							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
-								"<tr>"+
-									"<td style='width:10%;'><b>ADDRESS: </b></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:33%;border-bottom:1px solid black;word-wrap: break-word;'>"+data[0][6]+"</td>"+
-									"<td style='width:5%;'></td>"+
-									"<td style='width:21%;text-align:left;'><b>OFFICE ADDRESS:</b></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:28%;border-bottom:1px solid black;word-wrap: break-word;'>"+data[0][9]+"</td>"+
+									"<td style='width:15%;font-size:70%;font-family:sans-serif;'></td>"+
+									"<td style='width:85%;font-size:70%;font-family:sans-serif;'><center>(Required by R.A 6713)</center></td>"+
 								"</tr>"+
 							"</table><br />"+
-							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
+							"<span style='font-size:65%;font-family:sans-serif;padding-left:7%;'><b>Note:</b> Husband and wife are both public officials and employees may file the required statements jointly or separately.</span><br />"+
+							"<span style='font-size:65%;font-family:sans-serif;'><center><c><input type='checkbox' /> Joint Filing</c><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Separate Filing')? 'checked=true' : '')+" /> Separate Filing</e><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Not Applicable')? 'checked=true' : '')+" /> Not Applicable</e></center></span><br />"+
+							"<table style='border-collapse: collapse;width:100%;height:10%;'>"+
 								"<tr>"+
-									"<td style='width:10%;'><b>SPOUSE: </b></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:15%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][10]+"</center></td>"+
-									"<td style='width:15%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][11]+"</center></td>"+
-									"<td style='width:3%;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][12]+"</center></td>"+
-									"<td style='width:5%;'></td>"+
-									"<td style='width:21%;'><b>POSITION:</b></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:29%;border-bottom:1px solid black;word-wrap: break-word;'>"+data[0][13]+"</td>"+
+									"<td style='width:10%;font-size:60%;font-family:sans-serif;'><b>Declarant: </b></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][3]+"</center></td>"+
+									"<td style='width:15%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][4]+"</center></td>"+
+									"<td style='width:3%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][5]+"</center></td>"+
+									"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;'><b>POSITION:</b></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:26%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][7]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-									"<td style='width:10%;'></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:15%;'><center>(Family Name)</center></td>"+
-									"<td style='width:15%;'><center>(First Name)</center></td>"+
-									"<td style='width:3%;'><center>(M.I)</center></td>"+
-									"<td style='width:5%;'></td>"+
-									"<td style='width:21%;'><b>AGENCY/OFFICE:</b></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:29%;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][14]+"</td>"+
+									"<td style='width:10%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;'><center>(Family Name)</center></td>"+
+									"<td style='width:15%;font-size:60%;font-family:sans-serif;'><center>(First Name)</center></td>"+
+									"<td style='width:3%;font-size:60%;font-family:sans-serif;'><center>(M.I)</center></td>"+
+									"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;'><b>AGENCY/OFFICE:</b></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:26%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][8]+"</td>"+
 								"</tr>"+
-							"</table>"+
-							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
 								"<tr>"+
-									"<td style='width:10%;'></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:34%;'></td>"+
-									"<td style='width:5%;'></td>"+
-									"<td style='width:21%;text-align:left;'><b>OFFICE ADDRESS:</b></td>"+
-									"<td style='width:1%;'></td>"+
-									"<td style='width:28%;border-bottom:1px solid black;word-wrap: break-word;'>"+data[0][15]+"</td>"+
+									"<td style='width:10%;font-size:60%;font-family:sans-serif;'><b>ADDRESS:</b></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;border-bottom:1px solid black;font-size:60%;font-family:sans-serif;' colspan='3'> "+data[0][6]+"</td>"+
+									"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;'><b>OFFICE ADDRESS:</b></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:26%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][9]+"</td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;height:10%;'>"+
+								"<tr>"+
+									"<td style='width:10%;font-size:60%;font-family:sans-serif;'><b>Declarant: </b></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][10]+"</center></td>"+
+									"<td style='width:15%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][11]+"</center></td>"+
+									"<td style='width:3%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'><center>"+data[0][12]+"</center></td>"+
+									"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;'><b>POSITION:</b></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:26%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][13]+"</td>"+
+								"</tr>"+
+								"<tr>"+
+									"<td style='width:10%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;'><center>(Family Name)</center></td>"+
+									"<td style='width:15%;font-size:60%;font-family:sans-serif;'><center>(First Name)</center></td>"+
+									"<td style='width:3%;font-size:60%;font-family:sans-serif;'><center>(M.I)</center></td>"+
+									"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;'><b>AGENCY/OFFICE:</b></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:26%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][14]+"</td>"+
+								"</tr>"+
+								"<tr>"+
+									"<td style='width:10%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;' colspan='3'></td>"+
+									"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:19%;font-size:60%;font-family:sans-serif;'><b>OFFICE ADDRESS:</b></td>"+
+									"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:26%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> "+data[0][15]+"</td>"+
 								"</tr>"+
 							"</table><br />";
 
@@ -4830,14 +4826,14 @@ SALN ={
 									"<td style='border-bottom:1px solid black;'></td>"+
 								"</tr>"+
 							"</table><br />"+					
-							"<span style=''><font size='2.9'><b><center><u>UNMARRIED CHILDREN BELOW EIGHTEEN(18) YEARS OF AGE LIVING IN DECLARANT'S HOUSEHOLD</u></center></b></font></span><br />"+
-							"<table style='border-collapse: collapse;width:85%;table-layout: fixed;'  align='center'>"+
+							"<span style='font-size:85%;font-family:sans-serif;'><b><center><u>UNMARRIED CHILDREN BELOW EIGHTEEN(18) YEARS OF AGE LIVING IN DECLARANT'S HOUSEHOLD</u></center></b></span><br />"+
+							"<table style='border-collapse: collapse;width:85%;'  align='center'>"+
 								"<tr>"+
-									"<td style='width:38%;'><b><center>NAME </center></b></td>"+
-									"<td style='width:5%;'></td>"+
-									"<td style='width:18%;'><b><center>DATE OF BIRTH </center></b></td>"+
-									"<td style='width:5%;'></td>"+
-									"<td style='width:10%;'><b><center>AGE </center></b></td>"+
+									"<td style='width:38%;font-size:60%;font-family:sans-serif;'><b><center>NAME </center></b></td>"+
+									"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:18%;font-size:60%;font-family:sans-serif;'><b><center>DATE OF BIRTH </center></b></td>"+
+									"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:10%;font-size:60%;font-family:sans-serif;'><b><center>AGE </center></b></td>"+
 								"</tr>";
 				$(data).each(function(index,value){		
 				content +=	"<br /><p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-person cyan-text text-darken-2'></i> Name Of Child: "+value[2]+"</span>"+
@@ -4865,29 +4861,29 @@ SALN ={
             		// console.log(value);
 				
 					print +="<tr>"+
-								"<td style='width:38%;border-bottom:1px solid black;word-wrap: break-word;'> <center>"+value[2]+"</center></td>"+
-								"<td style='width:5%;'></td>"+
-								"<td style='width:18%;border-bottom:1px solid black;word-wrap: break-word;'> <center>"+value[3]+"</center></td>"+
-								"<td style='width:5%;'></td>"+
-								"<td style='width:10%;border-bottom:1px solid black;word-wrap: break-word;'> <center>"+value[4]+"</center></td>"+
+								"<td style='width:38%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> <center>"+value[2]+"</center></td>"+
+								"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:18%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> <center>"+value[3]+"</center></td>"+
+								"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> <center>"+value[4]+"</center></td>"+
 							"</tr>";
 							
         		});
 
         		for (i = 0; i < (4-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:38%;border-bottom:1px solid black;word-wrap: break-word;'> <center><br /></center></td>"+
-								"<td style='width:5%;'></td>"+
-								"<td style='width:18%;border-bottom:1px solid black;word-wrap: break-word;'> <center></center></td>"+
-								"<td style='width:5%;'></td>"+
-								"<td style='width:10%;border-bottom:1px solid black;word-wrap: break-word;'> <center></center></td>"+
+								"<td style='width:38%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> <center><br /></center></td>"+
+								"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:18%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> <center></center></td>"+
+								"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;word-wrap: break-word;'> <center></center></td>"+
 							"</tr>";
 				}
 
         		content += 		"</div>"+
 							"</div>";
 
-        		print += 		"</table><br /><br />"+
+        		print += 		"</table><br />"+
         						"<table style='border-collapse: collapse;width:100%;'>"+
 									"<tr>"+
 										"<td style='border-bottom:1px solid black;'></td>"+
@@ -4926,29 +4922,29 @@ SALN ={
 							"		<h5>Assets</h5>"+
 							"		<h6>a. Real Properties</h6>";
 
-				print +=	"<span style=''><font size='4'><b><center><u>ASSETS, LIABILITIES AND NETWORTH</u></center></b></font></span>"+
-							"<span style=''><font size='3'><center>(Including those of the spouse and unmarried children below eighteen(18)</center></font></span>"+
-							"<span style=''><font size='3'><b>1. ASSETS</b></font></span><br />"+
-							"<span style='padding-left:5%;'><font size='3'><b>a. Real Properties*</b></font></span><br /><br />"+
+				print +=	"<span style='font-size:80%;font-family:sans-serif;'><b><center><u>ASSETS, LIABILITIES AND NETWORTH</u></center></b></span>"+
+							"<span style='font-size:65%;font-family:sans-serif;'><center>(Including those of the spouse and unmarried children below eighteen(18)</center></span>"+
+							"<span style='font-size:70%;font-family:sans-serif;'><b>1. ASSETS</b></span><br />"+
+							"<span style='padding-left:5%;font-size:70%;font-family:sans-serif;'><b>a. Real Properties*</b></span><br /><br />"+
 							"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
 								"<tr>"+
-									"<td style='width:15%;border:1px solid black' rowspan='2'><br /><center><b>DESCRIPTION</b><br />"+
+									"<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><br /><center><b>DESCRIPTION</b><br />"+
 										"(e.g. lot, house and lot, condominuim and improvements)</center>"+
 									"</td>"+
-									"<td style='width:15%;border:1px solid black' rowspan='2'><br /><center><b>KIND</b><br />"+
+									"<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><br /><center><b>KIND</b><br />"+
 										"(e.g. residential, commercial, industrial, agricultural and mixed use)</center>"+
 									"</td>"+
-									"<td style='width:15%;border:1px solid black' rowspan='2'><br /><b><center>EXACT LOCATION</center></b></td>"+
-									"<td style='width:10%;border:1px solid black'><br /><b><center>ASSESED VALUE</center></b></td>"+
-									"<td style='width:16%;border:1px solid black'><br /><b><center>CURRENT FAIR MARKET VALUE</center></b></td>"+
-									"<td style='width:16%;border:1px solid black' colspan='2'><center><b>ACQUISITION</b></center></td>"+
-									"<td style='width:10%;border:1px solid black' rowspan='2'><center><b>ACQUISITION COST</b></center></td>"+
+									"<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><br /><b><center>EXACT LOCATION</center></b></td>"+
+									"<td style='width:10%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><br /><b><center>ASSESED VALUE</center></b></td>"+
+									"<td style='width:16%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><br /><b><center>CURRENT FAIR MARKET VALUE</center></b></td>"+
+									"<td style='width:16%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' colspan='2'><center><b>ACQUISITION</b></center></td>"+
+									"<td style='width:10%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center><b>ACQUISITION COST</b></center></td>"+
 
 								"</tr>"+
 								"<tr>"+
-									"<td style='width:21%;border:1px solid black' colspan='2'><center>(As found in the Tax Destination of Real Property)</center></td>"+
-									"<td style='width:8%;border:1px solid black'><center><b>YEAR</b></center></td>"+
-									"<td style='width:8%;border:1px solid black'><center><b>MODE</b></center></td>"+
+									"<td style='width:21%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' colspan='2'><center>(As found in the Tax Destination of Real Property)</center></td>"+
+									"<td style='width:8%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center><b>YEAR</b></center></td>"+
+									"<td style='width:8%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center><b>MODE</b></center></td>"+
 								"</tr>";
 							
 							
@@ -5011,32 +5007,32 @@ SALN ={
 					subTotalAprint = subTotalAprint + Number(value[9]);
 
 				print +="<tr>"+
-							"<td style='width:15%;border:1px solid black'><center>"+value[2]+"</center></td>"+
-							"<td style='width:15%;border:1px solid black'><center>"+value[3]+"</center></td>"+
-							"<td style='width:15%;border:1px solid black'><center>"+value[4]+"</center></td>"+
-							"<td style='width:10%;border:1px solid black'><center>"+value[5]+"</center></td>"+
-							"<td style='width:16%;border:1px solid black'><center>"+value[6]+"</center></td>"+
-							"<td style='width:8%;border:1px solid black'><center>"+value[7]+"</center></td>"+
-							"<td style='width:8%;border:1px solid black'><center>"+value[8]+"</center></td>"+
-							"<td style='width:10%;border:1px solid black'><center>"+value[9]+"</center></td>"+
+							"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[2]+"</center></td>"+
+							"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[3]+"</center></td>"+
+							"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[4]+"</center></td>"+
+							"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[5]+"</center></td>"+
+							"<td style='width:16%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[6]+"</center></td>"+
+							"<td style='width:8%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[7]+"</center></td>"+
+							"<td style='width:8%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[8]+"</center></td>"+
+							"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[9]+"</center></td>"+
 						"</tr>";					
         		});
 
         		for (i = 0; i < (4-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:15%;border:1px solid black'><center><br /></center></td>"+
-								"<td style='width:15%;border:1px solid black'><center></center></td>"+
-								"<td style='width:15%;border:1px solid black'><center></center></td>"+
-								"<td style='width:10%;border:1px solid black'><center></center></td>"+
-								"<td style='width:16%;border:1px solid black'><center></center></td>"+
-								"<td style='width:8%;border:1px solid black'><center></center></td>"+
-								"<td style='width:8%;border:1px solid black'><center></center></td>"+
-								"<td style='width:10%;border:1px solid black'><center></center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center><br /></center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
+								"<td style='width:16%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
+								"<td style='width:8%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
+								"<td style='width:8%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
 							"</tr>";
 				}
 
 				localStorage.setItem('TotalA',subTotalA);
-        		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: &#8369; "+subTotalA+"</span>"+
+        		content += 	"        <p><span style='width:80%;font-size:60%;font-family:sans-serif;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: &#8369; "+subTotalA+"</span>"+
         					"		 </p>"+
 							"</div>"+
 							"</div>";
@@ -5044,13 +5040,13 @@ SALN ={
 				print +="</table><br />"+
 						"<table style='border-collapse: collapse;width:100%;>"+
 							"<tr>"+
-								"<td style='width:15%;'><center></center></td>"+
-								"<td style='width:15%;'><center></center></td>"+
-								"<td style='width:15%;'><center></center></td>"+
-								"<td style='width:10%;'><center></center></td>"+
-								"<td style='width:16%;'><center></center></td>"+
-								"<td style='width:13%;'><center><b>Subtotal:</b></center></td>"+
-								"<td style='width:12%;border-bottom:1px solid black;'><center>&#8369; "+subTotalAprint+"</center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;'><center></center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;'><center></center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;'><center></center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;'><center></center></td>"+
+								"<td style='width:16%;font-size:60%;font-family:sans-serif;'><center></center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;'><center><b>Subtotal:</b></center></td>"+
+								"<td style='width:12%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>&#8369; "+subTotalAprint+"</center></td>"+
 							"</tr>"+
 						"</table>";
 						
@@ -5084,12 +5080,12 @@ SALN ={
 							"   <div class='card-content'>"+
 							"		<h6>b. Personal Properties</h6><br />";
 
-				print +="<span style='padding-left:5%;'><font size='3'><b>b. Personal Properties*</b></font></span><br /><br />"+
+				print +="<span style='font-size:70%;font-family:sans-serif;padding-left:5%;'><b>b. Personal Properties*</b></span><br /><br />"+
 						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
 								"<tr>"+
-									"<td style='width:50%;border:1px solid black;'><b><center>DESCRIPTION</center></b></td>"+
-									"<td style='width:30%;border:1px solid black;'><b><center>YEAR ACQUIRED</center></b></td>"+
-									"<td style='width:20%;border:1px solid black;'><b><center>ACQUISITION COST/AMOUNT</center></b></td>"+
+									"<td style='width:50%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>DESCRIPTION</center></b></td>"+
+									"<td style='width:30%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>YEAR ACQUIRED</center></b></td>"+
+									"<td style='width:20%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>ACQUISITION COST/AMOUNT</center></b></td>"+
 								"</tr>";
 
 				$(data).each(function(index,value){
@@ -5123,18 +5119,18 @@ SALN ={
 					subTotalBprint = subTotalBprint + Number(value[4]);
 
 				print +="<tr>"+
-							"<td style='width:50%;border:1px solid black;'><center>"+value[2]+"</center></td>"+
-							"<td style='width:30%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
-							"<td style='width:20%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
+							"<td style='width:50%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[2]+"</center></td>"+
+							"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[3]+"</center></td>"+
+							"<td style='width:20%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[4]+"</center></td>"+
 						"</tr>";
 						
         		});
 
     			for (i = 0; i < (4-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:50%;border:1px solid black;'><center><br /></center></td>"+
-								"<td style='width:30%;border:1px solid black;'><center></center></td>"+
-								"<td style='width:20%;border:1px solid black;'><center></center></td>"+
+								"<td style='width:50%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center><br /></center></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center></center></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center></center></td>"+
 							"</tr>";
 				}
         		
@@ -5146,20 +5142,20 @@ SALN ={
 				print +="</table><br />"+
     					"<table style='border-collapse: collapse;width:100%;'>"+
 	    					"<tr>"+
-								"<td style='width:50%;'></td>"+
-								"<td style='width:30%;text-align:right;'><b>Subtotal:</b></td>"+
-								"<td style='width:20%;border-bottom:1px solid black;'><center>&#8369; "+subTotalBprint+"</center></td>"+
+								"<td style='width:50%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;text-align:right;'><b>Subtotal:</b></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>&#8369; "+subTotalBprint+"</center></td>"+
 							"</tr>"+
         				"</table><br />"+
         				"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
-								"<td style='width:50%;'></td>"+
-								"<td style='width:30%;text-align:right;'><b>TOTAL ASSETS(a+b):</b></td>"+
-								"<td style='width:20%;border-bottom:2px solid black;'><center>&#8369; "+totalAssets+"</center></td>"+
+								"<td style='width:50%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;text-align:right;'><b>TOTAL ASSETS(a+b):</b></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border-bottom:2px solid black;'><center>&#8369; "+totalAssets+"</center></td>"+
 							"</tr>"+
         				"</table>"+
-						"<span style=''><font size='4'>* Additional sheet/s may be used, if necessary</font></span><br />"+
-						"<span style=''><font size='4'><center><i>Page 1 of ___</i></center></font></span>";
+						"<span style='font-size:60%;font-family:sans-serif;'>* Additional sheet/s may be used, if necessary</span><br />"+
+						"<span style='font-size:60%;font-family:sans-serif;'><center><i>Page 1 of ___</i></center></span><br /><br /><br /><br /><br /><br /><br /><br /><br />";
 
         		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-editor-attach-money cyan-text text-darken-2'></i> Subtotal: &#8369; "+subTotalB+"</span>"+
 							"		 </p>"+
@@ -5196,12 +5192,12 @@ SALN ={
 							"   <div class='card-content'>"+
 							"		<h5>Liabilities</h5>";
 
-				print +="<span style='padding-left:5%;'><font size='3'><b>2. LIABILITIES*</b></font></span><br /><br />"+
+				print +="<span style='padding-left:5%;font-size:70%;font-family:sans-serif;'><b>2. LIABILITIES*</b></span><br /><br />"+
 						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
 								"<tr>"+
-									"<td style='width:50%;border:1px solid black;'><b><center>NATURE</center></b></td>"+
-									"<td style='width:30%;border:1px solid black;'><b><center>NAME OF CREDITORS</center></b></td>"+
-									"<td style='width:20%;border:1px solid black;'><b><center>OUTSTANDING BALANCE</center></b></td>"+
+									"<td style='width:50%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>NATURE</center></b></td>"+
+									"<td style='width:30%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>NAME OF CREDITORS</center></b></td>"+
+									"<td style='width:20%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>OUTSTANDING BALANCE</center></b></td>"+
 								"</tr>";
 
 				$(data).each(function(index,value){
@@ -5231,16 +5227,16 @@ SALN ={
         		$(data).each(function(index,value){
 					totalLiabilitiesPrint = totalLiabilitiesPrint + Number(value[4]);
 				print +="<tr>"+
-							"<td style='width:50%;border:1px solid black;'><center>"+value[2]+"</center></td>"+
-							"<td style='width:30%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
-							"<td style='width:20%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
+							"<td style='width:50%;font-size:60%;font-family:sans-serif;border:1px solid black;'><center>"+value[2]+"</center></td>"+
+							"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black;'><center>"+value[3]+"</center></td>"+
+							"<td style='width:20%;font-size:60%;font-family:sans-serif;border:1px solid black;'><center>"+value[4]+"</center></td>"+
 						"</tr>";
         		});
         		for (i = 0; i < (4-data.length); i++) {
  					print +="<tr>"+
-							"<td style='width:50%;border:1px solid black;'><center><br /></center></td>"+
-							"<td style='width:30%;border:1px solid black;'><center></center></td>"+
-							"<td style='width:20%;border:1px solid black;'><center></center></td>"+
+							"<td style='width:50%;font-size:60%;font-family:sans-serif;border:1px solid black;'><center><br /></center></td>"+
+							"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black;'><center></center></td>"+
+							"<td style='width:20%;font-size:60%;font-family:sans-serif;border:1px solid black;'><center></center></td>"+
 						"</tr>";
 				}
 				netWorth=(totalAssets-totalLiabilitiesPrint);
@@ -5249,16 +5245,16 @@ SALN ={
         		print +="</table><br />"+
     					"<table style='border-collapse: collapse;width:100%;'>"+
 	    					"<tr>"+
-								"<td style='width:50%;'></td>"+
-								"<td style='width:30%;text-align:right;'><b>TOTAL LIABILITIES:</b></td>"+
-								"<td style='width:20%;border-bottom:1px solid black;'><center>&#8369; "+totalLiabilitiesPrint+"</center></td>"+
+								"<td style='width:50%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;text-align:right;'><b>TOTAL LIABILITIES:</b></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>&#8369; "+totalLiabilitiesPrint+"</center></td>"+
 							"</tr>"+
         				"</table><br />"+
         				"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
 								"<td style='width:30%;'></td>"+
-								"<td style='width:50%;text-align:right;'><b>NER WORTH: Total Assets less Total Liabilities= </b></td>"+
-								"<td style='width:20%;border-bottom:2px solid black;'><center>&#8369; "+netWorth+"</center></td>"+
+								"<td style='width:50%;text-align:right;font-size:60%;font-family:sans-serif;'><b>NER WORTH: Total Assets less Total Liabilities= </b></td>"+
+								"<td style='width:20%;border-bottom:2px solid black;font-size:60%;font-family:sans-serif;'><center>&#8369; "+netWorth+"</center></td>"+
 							"</tr>"+
         				"</table><br />";
 				
@@ -5294,15 +5290,15 @@ SALN ={
 							"   <div class='card-content'>"+
 							"		<h5>Business Interests And Financial Connections</h5>";
 
-				print +="<span style=''><font size='4'><b><center><u>BUSINESS INTERESTS AND FINANCIAL CONNECTIONS</u></center></b></font></span>"+
-						"<span style=''><font size='2.5'><center><i>(of Declarant's spouse/ Unmarried Children Below Eighteen(18) years of Age Living in Declarant's Household)</i></center></font></span>"+
-						"<span style=''><center><c><input type='checkbox' /> I/ We do not have any business interest or financial connection.</c></center></span><br />"+
+				print +="<span style='font-size:80%;font-family:sans-serif;'><b><center><u>BUSINESS INTERESTS AND FINANCIAL CONNECTIONS</u></center></b></span>"+
+						"<span style='font-size:65%;font-family:sans-serif;'><center><i>(of Declarant's spouse/ Unmarried Children Below Eighteen(18) years of Age Living in Declarant's Household)</i></center></span>"+
+						"<span style='font-size:65%;font-family:sans-serif;'><center><c><input type='checkbox' /> I/ We do not have any business interest or financial connection.</c></center></span><br />"+
 						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
 							"<tr>"+
-								"<th style='width:25%;border:1px solid black;'><b><center>NAME OF ENTITY/BUSINESS ENTERPRISE</center></b></td>"+
-								"<th style='width:25%;border:1px solid black;'><b><center>BUSINESS ADDRESS</center></b></th>"+
-								"<th style='width:25%;border:1px solid black;'><b><center>NATURE OF BUSINESS INTEREST &/OR FINANCIAL CONNECTION</center></b></th>"+
-								"<th style='width:25%;border:1px solid black;'><b><center>DATE OF ACQUISITION OF INTEREST OR CONNECTION</center></b></th>";
+								"<th style='width:25%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>NAME OF ENTITY/BUSINESS ENTERPRISE</center></b></td>"+
+								"<th style='width:25%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>BUSINESS ADDRESS</center></b></th>"+
+								"<th style='width:25%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>NATURE OF BUSINESS INTEREST &/OR FINANCIAL CONNECTION</center></b></th>"+
+								"<th style='width:25%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>DATE OF ACQUISITION OF INTEREST OR CONNECTION</center></b></th>";
 							"</tr>";
 
 				$(data).each(function(index,value){
@@ -5337,19 +5333,19 @@ SALN ={
 
         		$(data).each(function(index,value){
             	print +="<tr>"+
-							"<td style='width:25%;border:1px solid black;'><center>"+value[2]+"</center></td>"+
-							"<td style='width:25%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
-							"<td style='width:25%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
-							"<td style='width:25%;border:1px solid black;'><center>"+value[5]+"</center></td>"+
+							"<td style='width:25%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[2]+"</center></td>"+
+							"<td style='width:25%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[3]+"</center></td>"+
+							"<td style='width:25%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[4]+"</center></td>"+
+							"<td style='width:25%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[5]+"</center></td>"+
 						"</tr>";
         		});
 
         		for (i = 0; i < (4-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:25%;border:1px solid black;'><center><br /></center></td>"+
-								"<td style='width:25%;border:1px solid black;'><center></center></td>"+
-								"<td style='width:25%;border:1px solid black;'><center></center></td>"+
-								"<td style='width:25%;border:1px solid black;'><center></center></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center><br /></center></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center></center></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center></center></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center></center></td>"+
 							"</tr>";
 				}
 
@@ -5386,15 +5382,15 @@ SALN ={
 							"   <div class='card-content'>"+
 							"		<h5>Relatives in the Government Service</h5>";
 
-				print +="<span style=''><font size='4'><b><center><u>RELATIVES IN THE GOVERNMENT SERVICE</u></center></b></font></span>"+
-						"<span style=''><font size='2.5'><center><i>(within the Fourth Degree of Consanguinity or Affinity. Include also Bias, Balae and Inso)</i></center></font></span>"+
-						"<span style=''><center><c><input type='checkbox' /> I/ We do not know of any relative/s in the government service)</c></center></span><br />"+
+				print +="<span style='font-size:80%;font-family:sans-serif;'><b><center><u>RELATIVES IN THE GOVERNMENT SERVICE</u></center></b></span>"+
+						"<span style='font-size:65%;font-family:sans-serif;'><center><i>(within the Fourth Degree of Consanguinity or Affinity. Include also Bias, Balae and Inso)</i></center></span>"+
+						"<span style='font-size:65%;font-family:sans-serif;'><center><c><input type='checkbox' /> I/ We do not know of any relative/s in the government service)</c></center></span><br />"+
 						"<table style='border-collapse: collapse;width:100%;border:1px solid black;'>"+
 							"<tr>"+
-								"<th style='width:30%;border:1px solid black;'><b><center>NAME OF RELATIVE</center></b></td>"+
-								"<th style='width:15%;border:1px solid black;'><b><center>RELATIONSHIP</center></b></th>"+
-								"<th style='width:15%;border:1px solid black;'><b><center>POSITION</center></b></th>"+
-								"<th style='width:40%;border:1px solid black;'><b><center>NAME OF AGENCY/OFFICE AND ADDRESS</center></b></th>";
+								"<th style='width:30%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>NAME OF RELATIVE</center></b></td>"+
+								"<th style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>RELATIONSHIP</center></b></th>"+
+								"<th style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>POSITION</center></b></th>"+
+								"<th style='width:40%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><b><center>NAME OF AGENCY/OFFICE AND ADDRESS</center></b></th>";
 							"</tr>";
 				$(data).each(function(index,value){
             		// data.length;
@@ -5428,18 +5424,18 @@ SALN ={
 
         		$(data).each(function(index,value){
             	print +="<tr>"+
-							"<td style='width:30%;border:1px solid black;'><center>"+value[2]+"</center></td>"+
-							"<td style='width:15%;border:1px solid black;'><center>"+value[3]+"</center></td>"+
-							"<td style='width:15%;border:1px solid black;'><center>"+value[4]+"</center></td>"+
-							"<td style='width:40%;border:1px solid black;'><center>"+value[5]+"</center></td>"+
+							"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[2]+"</center></td>"+
+							"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[3]+"</center></td>"+
+							"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[4]+"</center></td>"+
+							"<td style='width:40%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center>"+value[5]+"</center></td>"+
 						"</tr>";
         		});
         		for (i = 0; i < (4-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:30%;border:1px solid black;'><center><br /></center></td>"+
-								"<td style='width:15%;border:1px solid black;'><center></center></td>"+
-								"<td style='width:15%;border:1px solid black;'><center></center></td>"+
-								"<td style='width:40%;border:1px solid black;'><center></center></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center><br /></center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center></center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center></center></td>"+
+								"<td style='width:40%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='40'><center></center></td>"+
 							"</tr>";
 				}
 
@@ -5457,8 +5453,15 @@ SALN ={
 		var data = system.ajax('../assets/harmony/Process.php?get-other',id);
 		data.done(function(data){
 			data = JSON.parse(data);
-			console.log(data);
-
+			// console.log(data);
+			if(data.length<=0){
+				bago = 	"<div class='col s12 m4 l4 input-field right'>"+
+						"<a class='btn waves-effect waves-light orange right' data-cmd='add_personalInfo'>Add</a>"+
+						"</div>";
+			
+				$("#display_error").html(bago);
+			}
+			else{
 				$("#display_employeeDetails").removeClass('hidden');
 				$("#display_error").addClass('hidden');
 
@@ -5513,84 +5516,85 @@ SALN ={
 						"</div>";
         		
 				$("#other").html(content);
-				print +="<p style='text-indent: 50px;'>I hereby certify that these are true and correct statements of my assets, liabilities, net worth, business interests and financial connections,including those of my spouse and unmarried children below (18) years of age living in my household, and that to the best of my knowledge, the above-enumerated are names of my relatives in the government within the fourth civil degree of consanguinity or affinity.</p>"+
-        				"<p style='text-indent: 50px;'>I hereby authorize the Ombdsman or his/her duly authorized representative to obtain and secure from all appropriate governemnt agencies, including the Bureau of Internal Revenue such documents that may show my assets, liabilities, net worth, business interests and financial connections, to include those of my spouse and unmarried children below 18 years of age living with me in my household covering previous years to include the year I first assumed office in government.</p>"+
+				print +="<p style='text-indent: 50px;font-size:60%;font-family:sans-serif;'>I hereby certify that these are true and correct statements of my assets, liabilities, net worth, business interests and financial connections,including those of my spouse and unmarried children below (18) years of age living in my household, and that to the best of my knowledge, the above-enumerated are names of my relatives in the government within the fourth civil degree of consanguinity or affinity.</p>"+
+        				"<p style='text-indent: 50px;font-size:60%;font-family:sans-serif;'>I hereby authorize the Ombdsman or his/her duly authorized representative to obtain and secure from all appropriate governemnt agencies, including the Bureau of Internal Revenue such documents that may show my assets, liabilities, net worth, business interests and financial connections, to include those of my spouse and unmarried children below 18 years of age living with me in my household covering previous years to include the year I first assumed office in government.</p>"+
 						"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
-								"<td style='width:5%;'><b>Date: </b></td>"+
-								"<td style='width:5%;'></td>"+
-								"<td style='width:20%;border-bottom:1px solid black;'><center>"+data[0][2]+"</center></td>"+
-								"<td style='width:70%;'></td>"+
+								"<td style='width:5%;font-size:60%;font-family:sans-serif;'><b>Date: </b></td>"+
+								"<td style='width:5%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>"+data[0][2]+"</center></td>"+
+								"<td style='width:70%;font-size:60%;font-family:sans-serif;'></td>"+
 							"</tr>"+
         				"</table><br /><br />"+
         				"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
-								"<td style='width:47%;border-bottom:1px solid black;'></td>"+
-								"<td style='width:6%;'></td>"+
-								"<td style='width:47%;border-bottom:1px solid black;'></td>"+
+								"<td style='width:47%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'></td>"+
+								"<td style='width:6%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:47%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:47%;'><center><i>(Signiture of Applicant)</i></center></td>"+
-								"<td style='width:6%;'></td>"+
-								"<td style='width:47%;'><center><i>(Signiture of Co-Declarant/Spouse)</i></center></td>"+
+								"<td style='width:47%;font-size:60%;font-family:sans-serif;'><center><i>(Signiture of Applicant)</i></center></td>"+
+								"<td style='width:6%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:47%;font-size:60%;font-family:sans-serif;'><center><i>(Signiture of Co-Declarant/Spouse)</i></center></td>"+
 							"</tr>"+
         				"</table><br />"+
         				"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
-								"<td style='width:22%;'>Government Issued ID:</td>"+
-								"<td style='width:1%;'></td>"+
-								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][3]+"</center></td>"+
-								"<td style='width:8%;'></td>"+
-								"<td style='width:22%;'>Government Issued ID:</td>"+
-								"<td style='width:1%;'></td>"+
-								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][4]+"</center></td>"+
+								"<td style='width:22%;font-size:60%;font-family:sans-serif;'>Government Issued ID:</td>"+
+								"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:23%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>"+data[0][3]+"</center></td>"+
+								"<td style='width:8%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:22%;font-size:60%;font-family:sans-serif;'>Government Issued ID:</td>"+
+								"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:23%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>"+data[0][4]+"</center></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:22%;'>ID No.:</td>"+
-								"<td style='width:1%;'></td>"+
-								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][5]+"</center></td>"+
-								"<td style='width:8%;'></td>"+
-								"<td style='width:22%;'>ID No.:</td>"+
-								"<td style='width:1%;'></td>"+
-								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][6]+"</center></td>"+
+								"<td style='width:22%;font-size:60%;font-family:sans-serif;'>ID No.:</td>"+
+								"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:23%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>"+data[0][5]+"</center></td>"+
+								"<td style='width:8%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:22%;font-size:60%;font-family:sans-serif;'>ID No.:</td>"+
+								"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:23%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>"+data[0][6]+"</center></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:22%;'>Date Issued:</td>"+
-								"<td style='width:1%;'></td>"+
-								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][7]+"</center></td>"+
-								"<td style='width:8%;'></td>"+
-								"<td style='width:22%;'>Date Issued::</td>"+
-								"<td style='width:1%;'></td>"+
-								"<td style='width:23%;border-bottom:1px solid black;'><center>"+data[0][8]+"</center></td>"+
+								"<td style='width:22%;font-size:60%;font-family:sans-serif;'>Date Issued:</td>"+
+								"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:23%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>"+data[0][7]+"</center></td>"+
+								"<td style='width:8%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:22%;font-size:60%;font-family:sans-serif;'>Date Issued::</td>"+
+								"<td style='width:1%;font-size:60%;font-family:sans-serif;'></td>"+
+								"<td style='width:23%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center>"+data[0][8]+"</center></td>"+
 							"</tr>"+
         				"</table><br /><br />"+
         				"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
-								"<td style='width:46%;text-indent: 20px;'><b>SUBSCRIBE AND SWORN</b> to before me this</td>"+
-								"<td style='width:8%;border-bottom:1px solid black;'><center></center></td>"+
-								"<td style='width:8%;'><center>day of</center></td>"+
-								"<td style='width:20%;border-bottom:1px solid black;'><center></center></td>"+
-								"<td style='width:18%;'>, affiant exhibiting</td>"+
+								"<td style='width:33%;font-size:60%;font-family:sans-serif;text-indent: 20px;'><b>SUBSCRIBE AND SWORN</b> to before me this</td>"+
+								"<td style='width:9%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center></center></td>"+
+								"<td style='width:8%;font-size:60%;font-family:sans-serif;'><center>day of</center></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'><center></center></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;'>, affiant exhibiting to me the above-stated</td>"+
 							"</tr>"+
         				"</table>"+
         				"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
-								"<td style=''>to me the above-stated government issued identification card.</td>"+
+								"<td style='font-size:60%;font-family:sans-serif;'> government issued identification card.</td>"+
 							"</tr>"+
         				"</table><br /><br />"+
         				"<table style='border-collapse: collapse;width:100%;'>"+
 							"<tr>"+
-								"<td style='width:45%;'><center></center></td>"+
-								"<td style='width:40%;border-bottom:1px solid black;'></td>"+
-								"<td style='width:15%;'></td>"+							
+								"<td style='width:45%;font-size:60%;font-family:sans-serif;'><center></center></td>"+
+								"<td style='width:40%;font-size:60%;font-family:sans-serif;border-bottom:1px solid black;'></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;'></td>"+							
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:45%;'><center></center></td>"+
-								"<td style='width:40%;'><center><i>(Person Administering Oath)</i></center></td>"+
-								"<td style='width:15%;'></td>"+							
+								"<td style='width:45%;font-size:60%;font-family:sans-serif;'><center></center></td>"+
+								"<td style='width:40%;font-size:60%;font-family:sans-serif;'><center><i>(Person Administering Oath)</i></center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;'></td>"+							
 							"</tr>"+
         				"</table>"+
-						"<span style=''><font size='4'><center><i>Page 2 of ___</i></center></font></span>";
+						"<span style='font-size:60%;font-family:sans-serif;'><center><i>Page 2 of ___</i></center></span>";
+			}
 		});
 		
 		// $("#salnPrint").html(print);
