@@ -113,7 +113,7 @@ var system = function(){
 						_function();						
 					});
 				},
-				idle: 500000
+				idle: 50000000000
 			});
 		}
 	}

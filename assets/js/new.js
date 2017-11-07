@@ -1,3 +1,10 @@
+
+background-color: #a5aeaf;font-size:60%;font-family:sans-serif;
+
+
+
+
+
 table-layout: fixed;
 
 word-wrap: break-word;

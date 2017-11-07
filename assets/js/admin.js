@@ -1698,123 +1698,123 @@ employee = {
 
 
 				print += "<div class='card'>"+
-							"<table style='border-collapse:collapse;width:100%;border:3px solid black;height:100px;'>"+
+							"<table style='border-collapse:collapse;width:100%;border:2px solid black;height:100px;'>"+
 								"<tr>"+
-									"<td style='width:65%;vertical-align:top;'>CS FORM 212(Revised 2005)</td>"+
-									"<td style='width:10%;'></td>"+
-									"<td style='width:25%;'></td>"+
+									"<td style='width:65%;vertical-align:top;font-size:60%;font-family:sans-serif;'>CS FORM 212(Revised 2005)</td>"+
+									"<td style='width:10%;font-size:60%;font-family:sans-serif;'></td>"+
+									"<td style='width:25%;font-size:60%;font-family:sans-serif;'></td>"+
 								"</tr>"+
 								"<tr>"+
-									"<td style='vertical-align:center;' colspan='3'><font size='5'><center><b>PERSONAL DATA SHEET</b></center></font></td>"+
+									"<td style='vertical-align:center;font-weight:800;font-family:sans-serif;' colspan='3'><font size='5'><center>PERSONAL DATA SHEET</center></td>"+
 								"</tr>"+
 								"<tr>"+
-									"<td style='width:65%;'><font size='2'>Print legibly. Mark appropriate boxes <input style='height:10px;width:10px;' /> width / and use separate sheet if necessary<font></td>"+
-									"<td style='width:5%;background-color:black;color:white;'><center><font size='2'>1. CS ID No.</font></center></td>"+
-									"<td style='width:25%;border:1px solid black;'></td>"+
-								"</tr>"+
-        					"</table>"+
-   							"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
-								"<tr>"+
-									"<td style='width:100%;background-color:black;color:white;'>l. PERSONAL INFORMATION</td>"+
+									"<td style='width:60%;font-size:60%;font-family:sans-serif;'>Print legibly. Mark appropriate boxes <input type='checkbox' /> with &#x2714; and use separate sheet if necessary<font></td>"+
+									"<td style='width:10%;background-color:black;color:white;font-size:60%;font-family:sans-serif;'><center>1. CS ID No.</center></td>"+
+									"<td style='width:25%;border:1px solid black;font-size:60%;font-family:sans-serif;'></td>"+
 								"</tr>"+
         					"</table>"+
-							"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+   							"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 								"<tr>"+
-								    "<td><font size='2'>2. SURENAME</font></td>"+     
-									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;<font size='2'>"+data[0][4]+"</font></td>"+
+									"<td style='width:100%;background-color:black;color:white;font-size:90%;font-family:sans-serif;'>l. PERSONAL INFORMATION</td>"+
+								"</tr>"+
+        					"</table>"+
+							"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
+								"<tr>"+
+								    "<td style='background-color: #a5aeaf;font-size:60%;font-family:sans-serif;' height='17'>2. SURNAME</td>"+     
+									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;font-size:60%;font-family:sans-serif;' colspan='3' height='17'>&nbsp;&nbsp;"+data[0][4]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td><center><font size='2'>FIRST NAME</font></center></td>"+
-									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;' colspan='3'>&nbsp;&nbsp;<font size='2'>"+data[0][5]+"</font></td>"+
+								    "<td style='background-color: #a5aeaf;font-size:60%;font-family:sans-serif;' height='17'><center>FIRST NAME</center></td>"+
+									"<td style='width:25%;border: 1px solid black;word-wrap: break-word;font-size:60%;font-family:sans-serif;' colspan='3' height='17'>&nbsp;&nbsp;"+data[0][5]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;'><center><font size='2'>MIDDLE NAME</font></center></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'>&nbsp;&nbsp;<font size='2'>"+data[0][6]+"</font></td>"+
-								    "<td style='width:33%;border: 1px solid black;'><font size='2.9'>3. NAME EXTENSION(e.g. Jr.,Sr.)</font></td>"+
-									"<td style='width:20%;border: 1px solid black;'></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;' height='17'><center>MIDDLE NAME</center></td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>&nbsp;&nbsp;"+data[0][6]+"</td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>3. NAME EXTENSION(e.g. Jr.,Sr.)</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>4. DATE OF BIRTH</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][9]+"</font></td>"+
-								    "<td style='width:33%;' ><font size='2'>16. RESIDENTIAL ADDRESS</font></td>"+
-									"<td style='width:20%;border: 1px solid black;' rowspan='3'><font size='2'>"+data[0][24]+"</font></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>4. DATE OF BIRTH</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][9]+"</td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;'  height='17'>16. RESIDENTIAL ADDRESS</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' rowspan='3' height='17'>"+data[0][24]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>5. PLACE OF BIRTH</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][7]+"</font></td>"+
-								    "<td style='width:33%;'></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>5. PLACE OF BIRTH</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][7]+"</td>"+
+								    "<td style='width:33%;font-size:60%;font-family:sans-serif;background-color: #a5aeaf;' height='17'></td>"+
 								"</tr>"+
 							
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>6. SEX</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><center><input type='checkbox' "+((String(data[0][8]) == 'Male')? 'checked=true' : '')+" id='myCheckbox'>Male&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][8]) == 'Female')? 'checked=true' : '')+">Female</center></td>"+
-								    "<td style='width:33%;'></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>6. SEX</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'><center><input type='checkbox' "+((String(data[0][8]) == 'Male')? 'checked=true' : '')+" id='myCheckbox'>Male&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][8]) == 'Female')? 'checked=true' : '')+">Female</center></td>"+
+								    "<td style='width:33%;font-size:60%;font-family:sans-serif;background-color: #a5aeaf;' height='17'></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;'><font size='2'>7. CIVIL STATUS</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;' rowspan='3'>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;' height='17'>7. CIVIL STATUS</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' rowspan='3' height='17'>"+
 								    	"<input type='checkbox' "+((String(data[0][15]) == 'Single')? 'checked=true' : '')+" >Single&nbsp;&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][15]) == 'Widowed')? 'checked=true' : '')+" >Widowed<br />"+
 								    	"<input type='checkbox' "+((String(data[0][15]) == 'Married')? 'checked=true' : '')+" >Married<input type='checkbox' "+((String(data[0][15]) == 'Separated')? 'checked=true' : '')+" >Separated<br />"+
 								    	"<input type='checkbox' "+((String(data[0][15]) == 'Anulled')? 'checked=true' : '')+" >Anulled<input type='checkbox' "+((String(data[0][15]) == 'Other')? 'checked=true' : '')+" >Other"+
 								    "</td>"+
-								    "<td style='width:33%;border: 1px solid black;text-align:right;'><font size='2'>ZIP CODE</font></td>"+
-									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][25]+"</font></td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;text-align:right;' height='17'>ZIP CODE</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>"+data[0][25]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%'></td>"+
-								    "<td style='width:33%;border: 1px solid black;'><font size='2'>17. TELEPHONE NO.</font></td>"+
-									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][26]+"</font></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;' height='17'></td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>17. TELEPHONE NO.</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>"+data[0][26]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;'></td>"+
-								    "<td style='width:33%;'><font size='2'>18. PERMAMANENT ADDRESS</font></td>"+
-									"<td style='width:20%;border: 1px solid black;' rowspan='3'><font size='2'>"+data[0][27]+"</font></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;' height='17'></td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;' height='17'>18. PERMAMANENT ADDRESS</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' rowspan='3' height='17'>"+data[0][27]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>8. CITIZENSHIP</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][16]+"</font></td>"+
-								    "<td style='width:33%;'></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;'><font size='2' height='17'>8. CITIZENSHIP</font></td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][16]+"</td>"+
+								    "<td style='width:33%;font-size:60%;font-family:sans-serif;background-color: #a5aeaf;' height='17'></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>9. HEIGHT (m)</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][17]+"</font></td>"+
-								    "<td style='width:33%;'></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>9. HEIGHT (m)</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][17]+"</td>"+
+								    "<td style='width:33%;font-size:60%;font-family:sans-serif;background-color: #a5aeaf;' height='17'></td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>10. WEIGHT (kg)</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][18]+"</font></td>"+
-								    "<td style='width:33%;border: 1px solid black;text-align:right;'><font size='2'>IP CODE</font></td>"+
-									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][28]+"</font></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>10. WEIGHT (kg)</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][18]+"</td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;text-align:right;' height='17'>ZIP CODE</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>"+data[0][28]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>11. BLOOD TYPE</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][19]+"</font></td>"+
-								    "<td style='width:33%;border: 1px solid black;'><font size='2'>19. TELEPHONE NO.</font></td>"+
-									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][29]+"</font></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>11. BLOOD TYPE</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][19]+"</td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>19. TELEPHONE NO.</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>"+data[0][29]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>12. GSIS ID NO.</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][20]+"</font></td>"+
-								    "<td style='width:33%;border: 1px solid black;'><font size='2'>20. E-MAIL ADDRESS (if any)</font></td>"+
-									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][30]+"</font></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>12. GSIS ID NO.</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][20]+"</td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>20. E-MAIL ADDRESS (if any)</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>"+data[0][30]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>13. PAG-IBIG ID NO.</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][21]+"</font></td>"+
-								    "<td style='width:33%;border: 1px solid black;'><font size='2'>21. CELLPHONE NO.</font></td>"+
-									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][10]+"</font></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>13. PAG-IBIG ID NO.</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][21]+"</td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>21. CELLPHONE NO.</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>"+data[0][10]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>14. PHILHEALTH ID NO.</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][22]+"</font></td>"+
-								    "<td style='width:33%;border: 1px solid black;'><font size='2'>22. AGENCY EMPLOYEE NO.</font></td>"+
-									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][31]+"</font></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>14. PHILHEALTH ID NO.</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][22]+"</td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>22. AGENCY EMPLOYEE NO.</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>"+data[0][31]+"</td>"+
 								"</tr>"+
 								"<tr>"+
-								    "<td style='width:22%;border: 1px solid black;'><font size='2'>15. SSS NO.</font></td>"+
-								    "<td style='width:25%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][23]+"</font></td>"+
-								    "<td style='width:33%;border: 1px solid black;'><font size='2'>23. TIN</font></td>"+
-									"<td style='width:20%;border: 1px solid black;'><font size='2'>"+data[0][32]+"</font></td>"+
+								    "<td style='width:22%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>15. SSS NO.</td>"+
+								    "<td style='width:25%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][23]+"</td>"+
+								    "<td style='width:33%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>23. TIN</td>"+
+									"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;' height='17'>"+data[0][32]+"</td>"+
 								"</tr>"+
 							"</table>";
 				
@@ -1846,7 +1846,7 @@ employee = {
 						"    <div class='card-content'>"+
 						"		<h5>Family Background</h5>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-account-circle cyan-text text-darken-2'></i> Spouse's Surename: "+data[0][2]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-account-circle cyan-text text-darken-2'></i> Spouse's Surname: "+data[0][2]+"</span>"+
 						"			<button data-value='"+data[0][2]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
@@ -1888,7 +1888,7 @@ employee = {
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Father's surname: "+data[0][9]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Father's Surname: "+data[0][9]+"</span>"+
 						"			<button data-value='"+data[0][9]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
@@ -1906,7 +1906,7 @@ employee = {
 						"			</button>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Mother's surename: "+data[0][12]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Mother's Surname: "+data[0][12]+"</span>"+
 						"			<button data-value='"+data[0][12]+"' disabled data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
@@ -1927,69 +1927,69 @@ employee = {
 						"</div>";
 				$("#family_background").html(content);
 
-				print +="<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+				print +="<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;background-color:black;color:white;'>ll. FAMILY BACKGROUND</td>"+
+								"<td style='width:100%;font-size:90%;font-family:sans-serif;background-color:black;color:white;'>ll. FAMILY BACKGROUND</td>"+
 							"</tr>"+
         				"</table>"+
-        				"<table style='border-collapse:collapse;width:50%;display: inline-table;border:3px solid black;'>"+
+        				"<table style='border-collapse:collapse;width:50%;display: inline-table;border:2px solid black;'>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>24. SPOUSE'S SURENAME</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][2]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;word-wrap: break-word;' height='17'><center>24. SPOUSE'S SURNAME</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][2]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>FIRST NAME</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][3]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;word-wrap: break-word;' height='17'><center>FIRST NAME</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][3]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>MIDDLE NAME</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][4]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;word-wrap: break-word;' height='17'><center>MIDDLE NAME</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][4]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>OCCUPATION</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][5]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'><center>OCCUPATION</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][5]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>EMPLOYER/BUS NAME</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][6]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'><center>EMPLOYER/BUS NAME</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][6]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>BUSINESS ADDRESS</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][7]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'><center>BUSINESS ADDRESS</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][7]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>TELEPHONE N0.</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][8]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'><center>TELEPHONE N0.</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][8]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;word-wrap: break-word;' colspan='2'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+     
+							    "<td style='width:18%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' colspan='2' height='17'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+     
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><font size='2'>26. FATHER'S SURENAME</font></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][9]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;word-wrap: break-word;' height='17'>26. FATHER SURNAME</td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][9]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>FIRST NAME</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][10]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;word-wrap: break-word;' height='17'><center>FIRST NAME</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][10]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>MIDDLE NAME</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][11]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;word-wrap: break-word;' height='17'><center>MIDDLE NAME</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][11]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;border: 1px solid black;' colspan='2'><font size='2'>27. MOTHER'S MAIDEN NAME</font></td>"+     
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;' colspan='2' height='17'>27. MOTHER'S MAIDEN NAME</td>"+     
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>SURENAME</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][12]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;word-wrap: break-word;' height='17'><center>SURNAME</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][12]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>FIRST NAME</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][13]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;word-wrap: break-word;' height='17'><center>FIRST NAME</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][13]+"</td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:18%;word-wrap: break-word;'><center><font size='2'>MIDDLE NAME</font></center></td>"+     
-								"<td style='width:32%;border: 1px solid black;word-wrap: break-word;'><font size='2'>"+data[0][14]+"</font></td>"+
+							    "<td style='width:18%;background-color: #a5aeaf;font-size:60%;word-wrap: break-word;' height='17'><center>MIDDLE NAME</center></td>"+     
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'>"+data[0][14]+"</td>"+
 							"</tr>"+
 						"</table>";
 			}
@@ -2014,10 +2014,10 @@ employee = {
 							"   <div class='card-content'>"+
 							"		<h5>Child</h5>";
 
-				print += "<table style='border-collapse:collapse;width:50%;float:right;border:3px solid black;'>"+
+				print += "<table style='border-collapse:collapse;width:50%;float:right;border:2px solid black;'>"+
 							"<tr>"+
-							    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'><font size='2'>25. NAME OF CHILD</font><br /><font size='2'><center>(Write full name and list all)</center></font></td>"+     
-								"<td style='width:20%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>DATE OF BIRTH</font><br /><font size='2'>(mm/dd/yyyy)</font></center></td>"+
+							    "<td style='width:30%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'height='17'><center>25. NAME OF CHILD</font> (Write full name and list all)</center></td>"+     
+								"<td style='width:20%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='17'height='17'><center>DATE OF BIRTH (mm/dd/yyyy)</center></td>"+
 							"</tr>";
 						
 
@@ -2043,21 +2043,21 @@ employee = {
 
         		$(data).each(function(index,value){
         			print +="<tr>"+
-							    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>"+value[2]+"</font></center></td>"+     
-								"<td style='width:20%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'>"+value[3]+"</font></center></td>"+
+							    "<td style='width:30%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;'height='17'><center>"+value[2]+"</center></td>"+     
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;'height='17'><center>"+value[3]+"</center></td>"+
 							"</tr>";
 							
         		});
 
-        		for (i = 0; i < (14-data.length); i++) {
+        		for (i = 0; i < (13-data.length); i++) {
  					print +="<tr>"+
-							    "<td style='width:30%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'><br /></font></center></td>"+     
-								"<td style='width:20%;border: 1px solid black;word-wrap: break-word;'><center><font size='2'></font></center></td>"+
+							    "<td style='width:30%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;'height='17'><center><br /></center></td>"+     
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;'height='17'><center></center></td>"+
 							"</tr>";
 				}
 
         		print +="<tr>"+
-						    "<td style='border: 1px solid black;word-wrap: break-word;' colspan='2'><center style='color:red;' ><font size='2'>(Continue on the separate sheet if necessary)</font></center></td>"+
+						    "<td style='font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' colspan='2' height='17'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
 						"</tr>"+
 						"</table>";
 
@@ -2176,44 +2176,44 @@ employee = {
 				$("#educational_background").html(content);
 
 
-				print +="<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+				print +="<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;background-color:black;color:white;'>lll. EDUCATIONAL BACKGROUND</td>"+
+								"<td style='width:100%;font-size:90%;font-family:sans-serif;background-color:black;color:white;'>lll. EDUCATIONAL BACKGROUND</td>"+
 							"</tr>"+
         				"</table>"+
-						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>28. LEVEL</center></font></td>"+     
-								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>NAME OF SCHOOL (Write in full)</center></font></td>"+
-								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>DEGREE COURSE (Write in full)</center></font></td>"+     
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>YEAR GRADUATED (If graduated)</center></font></td>"+
-								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>HIGHEST GRADE/ LEVEL/ UNITS EARNED <br />(If not graduated)</center></font></td>"+     
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;' colspan='2'><font size='2'><center>INCLUSIVE DATES</center></font></td>"+
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;' rowspan='2'><font size='2'><center>SCHOLARSHIP/ ACADEMIC HONORS RECIEVED</center></font></td>"+
+							    "<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' rowspan='2'><center>28. LEVEL</center></td>"+     
+								"<td style='width:17%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' rowspan='2'><center>NAME OF SCHOOL (Write in full)</center></td>"+
+								"<td style='width:9%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' rowspan='2'><center>DEGREE COURSE (Write in full)</center></td>"+     
+								"<td style='width:12.5%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' rowspan='2'><center>YEAR GRADUATED (If graduated)</center></td>"+
+								"<td style='width:16%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' rowspan='2'><center>HIGHEST GRADE/ LEVEL/ UNITS EARNED <br />(If not graduated)</center></td>"+     
+								"<td style='width:7%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' colspan='2'><center>INCLUSIVE DATES</center></td>"+
+								"<td style='width:12.5%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' rowspan='2'><center>SCHOLARSHIP/ ACADEMIC HONORS RECIEVED</center></td>"+
 							"</tr>"+
 							"<tr>"+    
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>FROM</center></font></td>"+
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>To</center></font></td>"+
+								"<td style='width:7%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;'><center>FROM</center></td>"+
+								"<td style='width:7%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;'><center>To</center></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>ELEMENTARY</center></font></td>"+     
-								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
-								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][3]+"</center></font></td>"+     
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
-								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][5]+"</center></font></td>"+     
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][6]+"</center></font></td>"+
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][7]+"</center></font></td>"+
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][8]+"</center></font></td>"+
+							    "<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>ELEMENTARY</center></td>"+     
+								"<td style='width:17%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][2]+"</center></td>"+
+								"<td style='width:9%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][3]+"</center></td>"+     
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][4]+"</center></td>"+
+								"<td style='width:16%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][5]+"</center></td>"+     
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][6]+"</center></td>"+
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][7]+"</center></td>"+
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][8]+"</center></td>"+
 							"</tr>"+
 							"<tr>"+
-							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>SECONDARY</center></font></td>"+     
-								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][9]+"</center></font></td>"+
-								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][10]+"</center></font></td>"+     
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][11]+"</center></font></td>"+
-								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][12]+"</center></font></td>"+     
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][13]+"</center></font></td>"+
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][14]+"</center></font></td>"+
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][15]+"</center></font></td>"+
+							    "<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>SECONDARY</center></font></td>"+     
+								"<td style='width:17%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][9]+"</center></td>"+
+								"<td style='width:9%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][10]+"</center></td>"+     
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][11]+"</center></td>"+
+								"<td style='width:16%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][12]+"</center></td>"+     
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][13]+"</center></td>"+
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][14]+"</center></td>"+
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][15]+"</center></td>"+
 							"</tr>";
 			}
 		});
@@ -2290,14 +2290,14 @@ employee = {
 
 				$(data).each(function(index,value){
             		print +="<tr>"+
-							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>VOCATIONAL/ TRADE COURSE</center></font></td>"+     
-								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
-								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][3]+"</center></font></td>"+     
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
-								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][5]+"</center></font></td>"+     
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][6]+"</center></font></td>"+
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][7]+"</center></font></td>"+
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][8]+"</center></font></td>"+
+							    "<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>VOCATIONAL/ TRADE COURSE</center></td>"+     
+								"<td style='width:17%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][2]+"</center></td>"+
+								"<td style='width:9%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][3]+"</center></td>"+     
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][4]+"</center></td>"+
+								"<td style='width:16%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][5]+"</center></td>"+     
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][6]+"</center></td>"+
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][7]+"</center></td>"+
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][8]+"</center></td>"+
 							"</tr>";
         		});
 
@@ -2383,14 +2383,14 @@ employee = {
         		});
 
             		print +="<tr>"+
-							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>COLLEGE</center></font></td>"+     
-								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
-								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][3]+"</center></font></td>"+     
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
-								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][5]+"</center></font></td>"+     
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][6]+"</center></font></td>"+
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][7]+"</center></font></td>"+
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][8]+"</center></font></td>"+
+							    "<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>COLLEGE</center></td>"+     
+								"<td style='width:17%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][2]+"</center></td>"+
+								"<td style='width:9%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][3]+"</center></td>"+     
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][4]+"</center></td>"+
+								"<td style='width:16%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][5]+"</center></td>"+     
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][6]+"</center></td>"+
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][7]+"</center></td>"+
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][8]+"</center></td>"+
 							"</tr>";
         		
 				$("#college_level").html(content);
@@ -2474,32 +2474,27 @@ employee = {
 
 				$(data).each(function(index,value){
             		print +="<tr>"+
-							    "<td style='width:15%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>GRADUATE STUDIES</center></font></td>"+     
-								"<td style='width:17%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
-								"<td style='width:9%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][3]+"</center></font></td>"+     
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
-								"<td style='width:16%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][5]+"</center></font></td>"+     
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][6]+"</center></font></td>"+
-								"<td style='width:7%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][7]+"</center></font></td>"+
-								"<td style='width:12.5%;border: 1px solid black;word-wrap: break-word;'><font size='2'><center>"+data[0][8]+"</center></font></td>"+
+							    "<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>GRADUATE STUDIES</center></td>"+     
+								"<td style='width:17%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][2]+"</center></td>"+
+								"<td style='width:9%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][3]+"</center></td>"+     
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][4]+"</center></td>"+
+								"<td style='width:16%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][5]+"</center></td>"+     
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][6]+"</center></td>"+
+								"<td style='width:7%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][7]+"</center></td>"+
+								"<td style='width:12.5%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' height='50'><center>"+data[0][8]+"</center></td>"+
 							"</tr>";
         		});
         			print +="<tr>"+
-							    "<td style='border: 1px solid black;word-wrap: break-word;' colspan='8'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
+							    "<td style='font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' colspan='8'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
 							"</tr>"+
 						"</table>"+
-						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;text-align:right;'>Page 1 of 4</td>"+
+								"<td style='font-size:60%;font-family:sans-serif;width:100%;text-align:right;'>Page 1 of 4</td>"+
 							"</tr>"+
-        				"</table><br /><br /><br /><br /><br />";
+        				"</table><br /><br /><br /><br /><br /><br />";
         		
 				$("#graduate").html(content);
-
-				// employee.deactivate();
-				// employee.activate();
-				// // employee.update();
-				// employee.updatePicture();
 			}
 		});
 		//end
@@ -2522,22 +2517,22 @@ employee = {
 							"   <div class='card-content'>"+
 							"		<h5>Civil Service Eligibility</h5>";
 
-				print += "<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+				print += "<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;background-color:black;color:white;'>lV. CIVIL SERVICE</td>"+
+								"<td style='width:100%;background-color: #a5aeafbackground-color: #a5aeaf;font-size:90%;font-family:sans-serif;background-color:black;color:white;'>lV. CIVIL SERVICE</td>"+
 							"</tr>"+
         				"</table>"+
-        				"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+        				"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:20%;border:1px solid black' rowspan='2'><center>29. CAREER SERVICE/ RA 1080 (BOARD/BAR) UNDER SPECIAL LAWS/CES/CSEE</center></td>"+
-								"<td style='width:11%;border:1px solid black' rowspan='2'><center>RATING</center></td>"+
-								"<td style='width:15%;border:1px solid black' rowspan='2'><center>DATE OF EXAMINATION/ CONFERMENT</center></td>"+
-								"<td style='width:30%;border:1px solid black' rowspan='2'><center>PLACE OF EXAMINATION</center></td>"+
-								"<td style='width:24%;border:1px solid black' colspan='2'><center>LICENSE (if applicable)</center></td>"+
+								"<td style='width:20%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>29. CAREER SERVICE/ RA 1080 (BOARD/BAR) UNDER SPECIAL LAWS/CES/CSEE</center></td>"+
+								"<td style='width:11%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>RATING</center></td>"+
+								"<td style='width:15%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>DATE OF EXAMINATION/ CONFERMENT</center></td>"+
+								"<td style='width:30%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>PLACE OF EXAMINATION</center></td>"+
+								"<td style='width:24%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' colspan='2'><center>LICENSE (if applicable)</center></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:12%;border:1px solid black'><center>NUMBER</center></td>"+
-								"<td style='width:12%;border:1px solid black'><center>DATE OF RELEASE</center></td>"+
+								"<td style='width:12%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>NUMBER</center></td>"+
+								"<td style='width:12%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>DATE OF RELEASE</center></td>"+
 							"</tr>";
 
 				$(data).each(function(index,value){
@@ -2587,28 +2582,28 @@ employee = {
 
 				$(data).each(function(index,value){
             		print +="<tr>"+
-								"<td style='width:20%;border:1px solid black'><center>"+value[2]+"</center></td>"+
-								"<td style='width:11%;border:1px solid black'><center>"+value[3]+"</center></td>"+
-								"<td style='width:15%;border:1px solid black'><center>"+value[4]+"</center></td>"+
-								"<td style='width:30%;border:1px solid black'><center>"+value[5]+"</center></td>"+
-								"<td style='width:12%;border:1px solid black'><center>"+value[6]+"</center></td>"+
-								"<td style='width:12%;border:1px solid black'><center>"+value[7]+"</center></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[2]+"</center></td>"+
+								"<td style='width:11%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[3]+"</center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[4]+"</center></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[5]+"</center></td>"+
+								"<td style='width:12%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[6]+"</center></td>"+
+								"<td style='width:12%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[7]+"</center></td>"+
 							"</tr>";
         		});
 
-        		for (i = 0; i < (10-data.length); i++) {
+        		for (i = 0; i < (7-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:20%;border:1px solid black'><center><br /></center></td>"+
-								"<td style='width:11%;border:1px solid black'><center></center></td>"+
-								"<td style='width:15%;border:1px solid black'><center></center></td>"+
-								"<td style='width:30%;border:1px solid black'><center></center></td>"+
-								"<td style='width:12%;border:1px solid black'><center></center></td>"+
-								"<td style='width:12%;border:1px solid black'><center></center></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center><br /></center></td>"+
+								"<td style='width:11%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:15%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:12%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:12%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
 							"</tr>";
 				}
 
         		print +="<tr>"+
-						    "<td style='border: 1px solid black;word-wrap: break-word;' colspan='6'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
+						    "<td style='font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' colspan='6'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
 						"</tr>"+
         				"</table>";
 				$("#civil").html(content);
@@ -2638,24 +2633,24 @@ employee = {
 				content += "<div id='profile-card' class='card'>"+
 							"   <div class='card-content'>"+
 							"		<h5>Work Experience</h5>";
-				print += "<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+				print += "<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;background-color:black;color:white;'>V. WORK EXPERIENCE (Include private employment. Start from your current work.)</td>"+
+								"<td style='width:100%;font-size:90%;font-family:sans-serif;background-color:black;color:white;'>V. WORK EXPERIENCE (Include private employment. Start from your current work.)</td>"+
 							"</tr>"+
         				"</table>"+
-        				"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+        				"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:24%;border:1px solid black' colspan='2'><center>30. INCLUSIVE DATES (mm/dd/yyyy)</center></td>"+
-								"<td style='width:18%;border:1px solid black' rowspan='2'><center>POSITION TITLE (Write in full)</center></td>"+
-								"<td style='width:18%;border:1px solid black' rowspan='2'><center>DEPARTMENT/ AGENCY/ OFFICE/ COMPANY/ (Write in full)</center></td>"+
-								"<td style='width:10%;border:1px solid black' rowspan='2'><center>MONTHLY SALARY</center></td>"+
-								"<td style='width:10%;border:1px solid black' rowspan='2'><center>SALARY GRADE & STEP INCREMENT (Format 0-00)</center></td>"+
-								"<td style='width:10%;border:1px solid black' rowspan='2'><center>STATUS OF APPOINTMENT</center></td>"+
-								"<td style='width:10%;border:1px solid black' rowspan='2'><center>GOV'T SERVICE (Yes / No)</center></td>"+
+								"<td style='width:24%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' colspan='2'><center>30. INCLUSIVE DATES (mm/dd/yyyy)</center></td>"+
+								"<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>POSITION TITLE (Write in full)</center></td>"+
+								"<td style='width:18%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>DEPARTMENT/ AGENCY/ OFFICE/ COMPANY/ (Write in full)</center></td>"+
+								"<td style='width:10%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>MONTHLY SALARY</center></td>"+
+								"<td style='width:10%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>SALARY GRADE & STEP INCREMENT (Format 0-00)</center></td>"+
+								"<td style='width:10%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>STATUS OF APPOINTMENT</center></td>"+
+								"<td style='width:10%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>GOV'T SERVICE (Yes / No)</center></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:12%;border:1px solid black'><center>From</center></td>"+
-								"<td style='width:12%;border:1px solid black'><center>To</center></td>"+
+								"<td style='width:12%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>From</center></td>"+
+								"<td style='width:12%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>To</center></td>"+
 							"</tr>";
 
 				$(data).each(function(index,value){
@@ -2714,27 +2709,27 @@ employee = {
 
 				$(data).each(function(index,value){
             		print +="<tr>"+
-								"<td style='width:12%;border:1px solid black'><center>"+data[0][2]+"</center></td>"+
-								"<td style='width:12%;border:1px solid black'><center>"+data[0][3]+"</center></td>"+
-								"<td style='width:18%;border:1px solid black'><center>"+data[0][4]+"</center></td>"+
-								"<td style='width:18%;border:1px solid black'><center>"+data[0][5]+"</center></td>"+
-								"<td style='width:10%;border:1px solid black'><center>"+data[0][6]+"</center></td>"+
-								"<td style='width:10%;border:1px solid black'><center>"+data[0][7]+"</center></td>"+
-								"<td style='width:10%;border:1px solid black'><center>"+data[0][8]+"</center></td>"+
-								"<td style='width:10%;border:1px solid black'><center>"+data[0][9]+"</center></td>"+
+								"<td style='width:12%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+data[0][2]+"</center></td>"+
+								"<td style='width:12%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+data[0][3]+"</center></td>"+
+								"<td style='width:18%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+data[0][4]+"</center></td>"+
+								"<td style='width:18%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+data[0][5]+"</center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+data[0][6]+"</center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+data[0][7]+"</center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+data[0][8]+"</center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+data[0][9]+"</center></td>"+
 							"</tr>";
         		});
 
-        		for (i = 0; i < (33-data.length); i++) {
+        		for (i = 0; i < (20-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:12%;border:1px solid black'><center><br /></center></td>"+
-								"<td style='width:12%;border:1px solid black'><center></center></td>"+
-								"<td style='width:18%;border:1px solid black'><center></center></td>"+
-								"<td style='width:18%;border:1px solid black'><center></center></td>"+
-								"<td style='width:10%;border:1px solid black'><center></center></td>"+
-								"<td style='width:10%;border:1px solid black'><center></center></td>"+
-								"<td style='width:10%;border:1px solid black'><center></center></td>"+
-								"<td style='width:10%;border:1px solid black'><center></center></td>"+
+								"<td style='width:12%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center><br /></center></td>"+
+								"<td style='width:12%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:18%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:18%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:10%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
 							"</tr>";
 				}
 
@@ -2745,18 +2740,13 @@ employee = {
 						    "<td style='border: 1px solid black;word-wrap: break-word;' colspan='8'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
 						"</tr>"+
 						"</table>"+
-						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
 								"<td style='width:100%;text-align:right;'><font size='2'>CS FORM 212 (Rvised 2005), Page 2 of 4</font></td>"+
 							"</tr>"+
-        				"</table><br />";
+        				"</table><br /><br /><br /><br /><br /><br /><br /><br />";
         		
 				$("#work").html(content);
-
-				// employee.deactivate();
-				// employee.activate();
-				// employee.updateWork();
-				// employee.updatePicture();
 			}
 		});
 
@@ -2779,21 +2769,21 @@ employee = {
 							"   <div class='card-content'>"+
 							"		<h5>Voluntary Work</h5>";
 
-				print +="<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+				print +="<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;background-color:black;color:white;font-size:12px;'>Vl. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC/ OR NON-GOVERNMENT/ PEOPLE/ VOLUNTARY ORGANIZATION/S</td>"+
+								"<td style='width:100%;font-size:70%;font-family:sans-serif;background-color:black;color:white;;'>Vl. VOLUNTARY WORK OR INVOLVEMENT IN CIVIC/ OR NON-GOVERNMENT/ PEOPLE/ VOLUNTARY ORGANIZATION/S</td>"+
 							"</tr>"+
         				"</table>"+
-        				"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+        				"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:35%;border:1px solid black' rowspan='2'><center>31. NAME & ADDRESS OF ORGANIZATION (Write in full)</center></td>"+
-								"<td style='width:26%;border:1px solid black' colspan='2'><center>INCLUSIVE DATES (mm/dd/yyyy)</center></td>"+
-								"<td style='width:13%;border:1px solid black' rowspan='2'><center>NUMBER OF HOURS</center></td>"+
-								"<td style='width:26%;border:1px solid black' rowspan='2'><center>POSITION/ NATURE OF WORK</center></td>"+
+								"<td style='width:35%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>31. NAME & ADDRESS OF ORGANIZATION (Write in full)</center></td>"+
+								"<td style='width:26%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' colspan='2'><center>INCLUSIVE DATES (mm/dd/yyyy)</center></td>"+
+								"<td style='width:13%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>NUMBER OF HOURS</center></td>"+
+								"<td style='width:26%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>POSITION/ NATURE OF WORK</center></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:13%;border:1px solid black'><center>From</center></td>"+
-								"<td style='width:13%;border:1px solid black'><center>To</center></td>"+
+								"<td style='width:13%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>From</center></td>"+
+								"<td style='width:13%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>To</center></td>"+
 							"</tr>";
 
 				$(data).each(function(index,value){
@@ -2835,20 +2825,20 @@ employee = {
 
         		$(data).each(function(index,value){
             		print +="<tr>"+
-								"<td style='width:35%;border:1px solid black'><center>"+value[2]+"</center></td>"+
-								"<td style='width:13%;border:1px solid black'><center>"+value[3]+"</center></td>"+
-								"<td style='width:13%;border:1px solid black'><center>"+value[4]+"</center></td>"+
-								"<td style='width:13%;border:1px solid black'><center>"+value[5]+"</center></td>"+
-								"<td style='width:26%;border:1px solid black'><center>"+value[6]+"</center></td>"+
+								"<td style='width:35%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[2]+"</center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[3]+"</center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[4]+"</center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[5]+"</center></td>"+
+								"<td style='width:26%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[6]+"</center></td>"+
 							"</tr>";
         		});
-        		for (i = 0; i < (20-data.length); i++) {
+        		for (i = 0; i < (5-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:35%;border:1px solid black'><center><br /></center></td>"+
-								"<td style='width:13%;border:1px solid black'><center></center></td>"+
-								"<td style='width:13%;border:1px solid black'><center></center></td>"+
-								"<td style='width:13%;border:1px solid black'><center></center></td>"+
-								"<td style='width:26%;border:1px solid black'><center></center></td>"+
+								"<td style='width:35%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center><br /></center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
+								"<td style='width:26%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center></center></td>"+
 							"</tr>";
 				}
 
@@ -2857,7 +2847,7 @@ employee = {
 
         		
 				print +="<tr>"+
-						    "<td style='border: 1px solid black;word-wrap: break-word;' colspan='5'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
+						    "<td style='font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' colspan='5'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
 						"</tr>"+
 						"</table>";
 				$("#voluntary").html(content);
@@ -2888,21 +2878,21 @@ employee = {
 							"   <div class='card-content'>"+
 							"		<h5>Training Programs</h5>";
 
-				print +="<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+				print +="<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:100%;background-color:black;color:white;font-size:12px;'>Vll. TRAINING PROGRAMS (Start from the most recent training.)</td>"+
+							"<td style='width:100%;font-size:90%;font-family:sans-serif;background-color:black;color:white;'>Vll. TRAINING PROGRAMS (Start from the most recent training.)</td>"+
 						"</tr>"+
     				"</table>"+
-    				"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+    				"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:35%;border:1px solid black' rowspan='2'><center>31. NAME & ADDRESS OF ORGANIZATION (Write in full)</center></td>"+
-							"<td style='width:26%;border:1px solid black' colspan='2'><center>INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)</center></td>"+
-							"<td style='width:13%;border:1px solid black' rowspan='2'><center>NUMBER OF HOURS</center></td>"+
-							"<td style='width:26%;border:1px solid black' rowspan='2'><center>CONDUCTED/ SPONSORED BY<br />(Write in full)</center></td>"+
+							"<td style='width:35%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>31. NAME & ADDRESS OF ORGANIZATION (Write in full)</center></td>"+
+							"<td style='width:26%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' colspan='2'><center>INCLUSIVE DATES OF ATTENDANCE (mm/dd/yyyy)</center></td>"+
+							"<td style='width:13%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>NUMBER OF HOURS</center></td>"+
+							"<td style='width:26%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='2'><center>CONDUCTED/ SPONSORED BY<br />(Write in full)</center></td>"+
 						"</tr>"+
 						"<tr>"+
-							"<td style='width:13%;border:1px solid black'><center>From</center></td>"+
-							"<td style='width:13%;border:1px solid black'><center>To</center></td>"+
+							"<td style='width:13%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>From</center></td>"+
+							"<td style='width:13%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>To</center></td>"+
 						"</tr>";
 				$(data).each(function(index,value){
             		data.length;
@@ -2944,25 +2934,25 @@ employee = {
 
         		$(data).each(function(index,value){
             		print +="<tr>"+
-								"<td style='width:35%;border:1px solid black'><center>"+value[2]+"</center></td>"+
-								"<td style='width:13%;border:1px solid black'><center>"+value[3]+"</center></td>"+
-								"<td style='width:13%;border:1px solid black'><center>"+value[4]+"</center></td>"+
-								"<td style='width:13%;border:1px solid black'><center>"+value[5]+"</center></td>"+
-								"<td style='width:26%;border:1px solid black'><center>"+value[6]+"</center></td>"+
+								"<td style='width:35%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[2]+"</center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[3]+"</center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[4]+"</center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[5]+"</center></td>"+
+								"<td style='width:26%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center>"+value[6]+"</center></td>"+
 							"</tr>";
         		});
-        		for (i = 0; i < (17-data.length); i++) {
+        		for (i = 0; i < (13-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:35%;border:1px solid black'><center><br /></center></td>"+
-								"<td style='width:13%;border:1px solid black'><center></center></td>"+
-								"<td style='width:13%;border:1px solid black'><center></center></td>"+
-								"<td style='width:13%;border:1px solid black'><center></center></td>"+
-								"<td style='width:26%;border:1px solid black'><center></center></td>"+
+								"<td style='width:35%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center><br /></center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
+								"<td style='width:13%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
+								"<td style='width:26%;font-size:60%;font-family:sans-serif;border:1px solid black' height='40'><center></center></td>"+
 							"</tr>";
 				}
 
         		print +="<tr>"+
-						    "<td style='border: 1px solid black;word-wrap: break-word;' colspan='5'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
+						    "<td style='font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;' colspan='5'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
 						"</tr>"+
 						"</table>";
         		
@@ -2995,14 +2985,14 @@ employee = {
 							"		<h5>Other Information</h5>"+
 							"		<h6>Special Skills/Hobbies</h6>";
 
-				print +="<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+				print +="<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;background-color:black;color:white;font-size:12px;'>Vlll. OTHER INFORMATION</td>"+
+								"<td style='width:100%;font-size:90%;font-family:sans-serif;background-color:black;color:white;'>Vlll. OTHER INFORMATION</td>"+
 							"</tr>"+
     					"</table>"+
-    					"<table style='border-collapse:collapse;width:35%;float:left;border:3px solid black;'>"+
+    					"<table style='border-collapse:collapse;width:30%;float:left;border:2px solid black;'>"+
     					"<tr>"+
-							"<td style='width:32%;border:1px solid black;height:32px;'><center><font size='2'>33. Special Skills/Hobbies</font></center></td>"+
+							"<td style='width:30%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black;'><center>33. Special Skills/Hobbies</center></td>"+
 						"</tr>";
 				$(data).each(function(index,value){
             		data.length;
@@ -3019,12 +3009,12 @@ employee = {
         		});
         		$(data).each(function(index,value){
             		print +="<tr>"+
-								"<td style='width:32%;border:1px solid black'><center>"+value[2]+"</center></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[2]+"</center></td>"+
 							"</tr>";				
         		});
         		for (i = 0; i < (5-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:32%;border:1px solid black'><center><br /></center></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center><br /></center></td>"+
 							"</tr>";
 				}
         		print +="</table>";
@@ -3056,9 +3046,9 @@ employee = {
 							"   <div class='card-content'>"+
 							"		<h5>Other Information</h5>"+
 							"		<h6>Non-Academic Distinctions/Recognition</h6>";
-				print +="<table style='border-collapse:collapse;width:35%;float:left;border:3px solid black;'>"+
+				print +="<table style='border-collapse:collapse;width:35%;float:left;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:34%;height:32px;border:1px solid black'><center><font size='2'>34. Non-Academic Distinction<br /></font></center></td>"+
+							"<td style='width:35%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center><34. Non-Academic Distinction<br /></center></td>"+
 						"</tr>";
 				$(data).each(function(index,value){
             		data.length;
@@ -3075,13 +3065,13 @@ employee = {
         		});
         		$(data).each(function(index,value){
             		print +="<tr>"+
-								"<td style='width:34%;border:1px solid black'><center>"+value[2]+"</center></td>"+
+								"<td style='width:35%;font-size:60%;font-family:sans-serif;border:1px solid black;' height='30'><center>"+value[2]+"</center></td>"+
 							"</tr>";
 							
         		});
         		for (i = 0; i < (5-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:34%;border:1px solid black'><center><br /></center></td>"+
+								"<td style='width:35%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center><br /></center></td>"+
 							"</tr>";
 				}
 				$("#non_academic").html(content);
@@ -3112,9 +3102,9 @@ employee = {
 							"   <div class='card-content'>"+
 							"		<h5>Other Information</h5>"+
 							"		<h6>Membership in Association/Organization</h6>";
-				print += "<table style='border-collapse:collapse;width:30%;float:right;border:3px solid black;'>"+
+				print += "<table style='border-collapse:collapse;width:35%;float:right;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:34%;border:1px solid black'><center><font size='2'>35. Membership in Association/Organization (Write in full)</font></center></td>"+
+								"<td style='width:35%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>35. Membership in Association/Organization (Write in full)</center></td>"+
 							"</tr>";
 				$(data).each(function(index,value){
             		data.length;
@@ -3131,30 +3121,26 @@ employee = {
         		});
         		$(data).each(function(index,value){
             		print +="<tr>"+
-								"<td style='width:34%;border:1px solid black'><center>"+value[2]+"</center></td>"+
+								"<td style='width:35%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center>"+value[2]+"</center></td>"+
 							"</tr>";	
         		});
         		for (i = 0; i < (5-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:34%;border:1px solid black'><center><br /></center></td>"+
+								"<td style='width:35%;font-size:60%;font-family:sans-serif;border:1px solid black' height='30'><center><br /></center></td>"+
 							"</tr>";
 				}
 				$("#membership").html(content);
 				print +="</table>"+
-						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-							    "<td style='width:100%;border: 1px solid black;word-wrap: break-word;'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
+							    "<td style='width:100%;font-size:60%;font-family:sans-serif;border: 1px solid black;word-wrap: break-word;'><center style='color:red;' >(Continue on the separate sheet if necessary)</center></td>"+
 							"</tr>"+
 						"</table>"+
-						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;text-align:right;'><font size='2'>CS FORM 212 (Rvised 2005), Page 3 of 4</font></td>"+
+								"<td style='width:100%;font-size:60%;font-family:sans-serif;text-align:right;'>CS FORM 212 (Rvised 2005), Page 3 of 4</td>"+
 							"</tr>"+
-        				"</table><br /><br />";
-				// employee.deactivate();
-				// employee.activate();
-				// employee.updateMembership();
-				// employee.updatePicture();
+        				"</table><br /><br /><br /><br /><br /><br /><br /><br />";
 			}
 		});
 
@@ -3300,111 +3286,111 @@ employee = {
 						"    </div>"+
 						"</div>";
 				$("#questions").html(content);
-				print +="<table style='border-collapse:collapse;float:left;width:75%;border:3px solid black;'>"+
-						"<tr>"+
-							"<td style='width:75%;border:1px solid black'><font size='2'>36. Are you related by consanguinity or affinity to any of the following:<br /><br />a. Within the third degree(for National Government Employees):<br />appointing authority, recomendiing authority, chief of office/bureau/department or person who has immediate supervision on you in the Office, Bureau or Deaprtment where you will be apointed?<br /><br />b. Within the fourth degree(for Local Government Employees):<br />appointing authority, recommending authority where you will be apointed?<br /><br /></font></td>"+
-						"</tr>"+
-						"</table>"+
-						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
+				print +="<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][2]) == 'Yes')? 'checked=true' : '')+" >Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][2]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
-							"</tr>"+
-							"<tr>"+
-								"<td style='width:25%;height:50px;'><font size='2'><u>"+data[0][3]+"</u></font></td>"+
-							"</tr>"+
-							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][4]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][4]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
-							"</tr>"+
-							"<tr>"+
-								"<td style='width:25%;'><font size='2'><u>"+data[0][5]+"</u></font></td>"+
+								"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>36. Are you related by consanguinity or affinity to any of the following:<br /><br />a. Within the third degree(for National Government Employees):<br />appointing authority, recomendiing authority, chief of office/bureau/department or person who has immediate supervision on you in the Office, Bureau or Deaprtment where you will be apointed?<br /><br />b. Within the fourth degree(for Local Government Employees):<br />appointing authority, recommending authority where you will be apointed?<br /><br /></td>"+
 							"</tr>"+
 						"</table>"+
-
-						"<table style='border-collapse:collapse;float:left;width:75%;border:3px solid black;'>"+
-						"<tr>"+
-							"<td style='width:75%;border:1px solid black'><font size='2'>37. a. Have you ever been formally charged?<br /><br /><br /><br /><br /><br />b. Have you ever been guilty of any administrative offense?<br /><br /><br /><br /></font></td>"+
-						"</tr>"+
-						"</table>"+
-						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][6]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][6]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><font size='2'><input type='checkbox' "+((String(data[0][2]) == 'Yes')? 'checked=true' : '')+" >Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][2]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;height:50px;'><font size='2'><u>"+data[0][7]+"</u></font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:28px;'><font size='2'><u>"+data[0][3]+"</u></font></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][8]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][8]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><font size='2'><input type='checkbox' "+((String(data[0][4]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][4]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;height:32px;'><font size='2'><u>"+data[0][9]+"</u></font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><font size='2'><u>"+data[0][5]+"</u></font></td>"+
 							"</tr>"+
 						"</table>"+
 
-						"<table style='border-collapse:collapse;float:left;width:75%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:75%;border:1px solid black'><font size='2'>38. Have you ever been convicted of any crime or violation of any law, decree, ordinance or regulation by any court or tribunal?<br /><br /><br /><br /></font></td>"+
+							"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>37. a. Have you ever been formally charged?<br /><br /><br /><br /><br /><br />b. Have you ever been guilty of any administrative offense?<br /><br /><br /><br /></td>"+
 						"</tr>"+
 						"</table>"+
-						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][10]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][10]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][6]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][6]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;height:43px;'><font size='2'><u>"+data[0][11]+"</u></font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:20px;'><u>"+data[0][7]+"</u></td>"+
+							"</tr>"+
+							"<tr>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][8]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][8]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
+							"</tr>"+
+							"<tr>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:22px;'><u>"+data[0][9]+"</u></td>"+
 							"</tr>"+
 						"</table>"+
 
-						"<table style='border-collapse:collapse;float:left;width:75%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:75%;border:1px solid black'><font size='2'>39. Have you ever been separated from the service in any following modes: resignation, retirement, dropped from the rolls, dismissal, terminantion, end of term, finished contract AWOL or phase out in the public or private sector?<br /><br /><br /></font></td>"+
+							"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>38. Have you ever been convicted of any crime or violation of any law, decree, ordinance or regulation by any court or tribunal?<br /><br /><br /><br /></td>"+
 						"</tr>"+
 						"</table>"+
-						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][12]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][12]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][10]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][10]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;height:40px;'><font size='2'><u>"+data[0][13]+"</u></font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:22px;'><u>"+data[0][11]+"</u></td>"+
 							"</tr>"+
 						"</table>"+
 
-						"<table style='border-collapse:collapse;float:left;width:75%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:75%;border:1px solid black'><font size='2'>40. Have you been candidate in a national or local election(exept Brangay election)?<br /><br /><br /><br /></font></td>"+
+							"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>39. Have you ever been separated from the service in any following modes: resignation, retirement, dropped from the rolls, dismissal, terminantion, end of term, finished contract AWOL or phase out in the public or private sector?<br /><br /><br /></td>"+
 						"</tr>"+
 						"</table>"+
-						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][14]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][14]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][12]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][12]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;height:25px;'><font size='2'><u>"+data[0][15]+"</u></font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:10px;'><u>"+data[0][13]+"</u></td>"+
 							"</tr>"+
 						"</table>"+
 
-						"<table style='border-collapse:collapse;float:left;width:75%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
+						"<tr>"+
+							"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>40. Have you been candidate in a national or local election(exept Brangay election)?<br /><br /><br /><br /></td>"+
+						"</tr>"+
+						"</table>"+
+						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:75%;'><font size='2'>41. Pursuant to: (a) Indigenous People's Act(RA8371); (b) Magna Carta for Disabled Persons(RA7277); and (c) Solo Parents Welfare Act of 2000 (RA8972), please answer the following items:</font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][14]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][14]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
+							"</tr>"+
+							"<tr>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:12px;'><u>"+data[0][15]+"</u></td>"+
+							"</tr>"+
+						"</table>"+
+
+						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
+							"<tr>"+
+								"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;'>41. Pursuant to: (a) Indigenous People's Act(RA8371); (b) Magna Carta for Disabled Persons(RA7277); and (c) Solo Parents Welfare Act of 2000 (RA8972), please answer the following items:</td>"+
 							"</tr>"+
 								"<tr>"+
-								"<td style='width:75%;'><font size='2'><br />a. Are you a member of any indigenous group?<br /><br /></font></td>"+
+								"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;'><br />a. Are you a member of any indigenous group?<br /><br /></td>"+
 							"</tr>"+
 								"<tr>"+
-								"<td style='width:75%;'><font size='2'><br />b. Are you differently abled?<br /><br /></font></td>"+
+								"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;'><br />b. Are you differently abled?<br /><br /></td>"+
 							"</tr>"+
 								"<tr>"+
-								"<td style='height:40px;width:75%;'><font size='2'>c. Are you a solo parent?<br /></font></td>"+
+								"<td style='height:40px;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;width:75%;'>c. Are you a solo parent?<br /></td>"+
 							"</tr>"+
 						"</table>"+
-						"<table style='border-collapse:collapse;float:right;width:25%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><br /><br /><input type='checkbox' "+((String(data[0][16]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][16]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][15]+"</u><br /><br /></font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><br /><input type='checkbox' "+((String(data[0][16]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][16]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][15]+"</u><br /><br /></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;'><font size='2'><input type='checkbox' "+((String(data[0][18]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][18]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][17]+"</u><br /><br /></font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][18]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][18]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][17]+"</u><br /><br /></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;height:50px;'><font size='2'><input type='checkbox'"+((String(data[0][20]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox'"+((String(data[0][20]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][19]+"</u></font></td>"+
+								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:36px;'><input type='checkbox'"+((String(data[0][20]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox'"+((String(data[0][20]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][19]+"</u></td>"+
 							"</tr>"+
 						"</table>";
 			}
@@ -3430,17 +3416,17 @@ employee = {
 							"   <div class='card-content'>"+
 							"		<h5>Other Information</h5>"+
 							"		<h6>References</h6>";
-				print +="<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+				print +="<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;color:black;font-size:12px;'><font size='2'>42. REFERENCES <n style='color:red;'> (Person not related to consanguinity or affinity to applicant/apointee)</n></font></td>"+
+								"<td style='width:100%;color:black;font-size:12px;font-family:sans-serif;'><font size='2'>42. REFERENCES <n style='color:red;'> (Person not related to consanguinity or affinity to applicant/apointee)</n></td>"+
 							"</tr>"+
     					"</table>"+
-    					"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+    					"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:27%;border:1px solid black'><font size='2'><center>NAME</center></font></td>"+
-								"<td style='width:30%;border:1px solid black'><font size='2'><center>ADDRESS</center></font></td>"+
-								"<td style='width:20%;border:1px solid black'><font size='2'><center>TEL NO.</center></font></td>"+
-								"<td style='width:23%;border:1px solid black' rowspan='5'><font size='2'><center>ID picture witin the last 6 months 3.5 cm x 4.5 cm (Passport size)<br />Computer generated or xerox copy of picture is not acceptable</center></font></td>"+
+								"<td style='width:27%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black'><font size='2'><center>NAME</center></td>"+
+								"<td style='width:30%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black'><font size='2'><center>ADDRESS</center></font></td>"+
+								"<td style='width:20%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black'><font size='2'><center>TEL NO.</center></font></td>"+
+								"<td style='width:23%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black' rowspan='5'><font size='2'><center>ID picture witin the last 6 months 3.5 cm x 4.5 cm (Passport size)<br />Computer generated or xerox copy of picture is not acceptable</center></font></td>"+
 							"</tr>";
 				$(data).each(function(index,value){
             		data.length;
@@ -3467,20 +3453,20 @@ employee = {
         		});
         		$(data).each(function(index,value){
             		print +="<tr>"+
-								"<td style='width:27%;border:1px solid black'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
-								"<td style='width:30%;border:1px solid black'><font size='2'><center>"+data[0][3]+"</center></font></td>"+
-								"<td style='width:20%;border:1px solid black'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
+								"<td style='width:27%;font-family:sans-serif;border:1px solid black'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
+								"<td style='width:30%;font-family:sans-serif;border:1px solid black'><font size='2'><center>"+data[0][3]+"</center></font></td>"+
+								"<td style='width:20%;font-family:sans-serif;border:1px solid black'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
 							"</tr>";
         		});
         		for (i = 0; i < (3-data.length); i++) {
  					print +="<tr>"+
-								"<td style='width:27%;border:1px solid black'><font size='2'><center><br /></center></font></td>"+
-								"<td style='width:30%;border:1px solid black'><font size='2'><center></center></font></td>"+
-								"<td style='width:20%;border:1px solid black'><font size='2'><center></center></font></td>"+
+								"<td style='width:27%;font-family:sans-serif;border:1px solid black'><font size='2'><center><br /></center></font></td>"+
+								"<td style='width:30%;font-family:sans-serif;border:1px solid black'><font size='2'><center></center></font></td>"+
+								"<td style='width:20%;font-family:sans-serif;border:1px solid black'><font size='2'><center></center></font></td>"+
 							"</tr>";
 				}
         		print +="<tr>"+
-							"<td style='width:72%;border:1px solid black' colspan='3'><font size='2'>43. I declare under oath that this Personal Data Sheet has been accomplish by me, and is a true, correct and complete statement pursuant to the provisions of pertinent laws, rules and regulation of the Republic of the Philippines.<br /><br />I also authorized the agency head/ authorized representative to verify/ validate to contents stated herein.I trust that this information shall remain confedential.</font></td>"+
+							"<td style='width:72%;font-family:sans-serif;border:1px solid black' colspan='3'><font size='2'>43. I declare under oath that this Personal Data Sheet has been accomplish by me, and is a true, correct and complete statement pursuant to the provisions of pertinent laws, rules and regulation of the Republic of the Philippines.<br /><br />I also authorized the agency head/ authorized representative to verify/ validate to contents stated herein.I trust that this information shall remain confedential.</font></td>"+
 						"</tr>"+
 						"</table>";
 
@@ -3563,7 +3549,7 @@ employee = {
 						"</div>";
 				$("#last").html(content);
 
-				print += "<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+				print += "<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:40%;'><center><span style='color:white;'>1</span></center></td>"+
@@ -3575,7 +3561,7 @@ employee = {
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;border:1px solid black'><center>"+data[0][2]+"</center></td>"+
+								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>"+data[0][2]+"</font></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:32%;border:1px solid black' rowspan='4'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
@@ -3584,7 +3570,7 @@ employee = {
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;border:1px solid black'><center>COMMUNITY TAX CERTIFICATE NO.</center></td>"+
+								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>COMMUNITY TAX CERTIFICATE NO.</font></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
@@ -3598,16 +3584,16 @@ employee = {
 							"</tr>"+
 								"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;border:1px solid black'><center>"+data[0][3]+"</center></td>"+
+								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>"+data[0][3]+"</font></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 							"</tr>"+
 								"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;border:1px solid black'><center>ISSUED AT</center></td>"+
+								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>ISSUED AT</font></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:32%;border:1px solid black'><center> SIGNATURE<span style='color:red;'>(Sign inside the box)</span></center></td>"+
+								"<td style='width:32%;font-family:sans-serif;border:1px solid black'><center><font size='2'>SIGNATURE<span style='color:red;'>(Sign inside the box)</span></center></font></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 							"</tr>"+
@@ -3621,17 +3607,17 @@ employee = {
 							"</tr>"+
 								"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;border:1px solid black'><center>"+data[0][4]+"</center></td>"+
+								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>"+data[0][4]+"</font></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:32%;border:1px solid black'><center>"+data[0][5]+"</center></td>"+
+								"<td style='width:32%;font-family:sans-serif;border:1px solid black'><center><font size='2'>"+data[0][5]+"</font></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 							"</tr>"+
 								"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;border:1px solid black'><center>ISSUED ON (mm/dd/yyyy)</center></td>"+
+								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>ISSUED ON (mm/dd/yyyy)</font></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:32%;border:1px solid black'><center>DATE OF ACCOMPLISHED</center></td>"+
+								"<td style='width:32%;font-family:sans-serif;border:1px solid black'><center><font size='2'>DATE OF ACCOMPLISHED</font></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:21%;'><center>RIGHT THUMB</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
@@ -3646,19 +3632,19 @@ employee = {
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 							"</tr>"+
 						"</table>"+
-						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;;text-align:right;' height='2'></td>"+
+								"<td style='width:100%;;text-align:right;font-family:sans-serif;' height='20'></td>"+
 							"</tr>"+
         				"</table>"+
-						"<table style='border-collapse:collapse;width:100%;border:3px solid black;'>"+
+						"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;text-align:right;'><font size='2'>CS FORM 212 (Rvised 2005), Page 4 of 4</font></td>"+
+								"<td style='width:100%;text-align:right;font-family:sans-serif;'><font size='2'>CS FORM 212 (Rvised 2005), Page 4 of 4</font></td>"+
 							"</tr>"+
         				"</table>";
 		});
 
-		print +="</div>"
+		print +="</div>";
 		// $("#print").html(print);
 
 		$("a[data-cmd='print_pds']").on('click',function(){
@@ -4717,12 +4703,6 @@ SALN ={
 						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
 						"			</button>"+
 						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-home cyan-text text-darken-2'></i> Filing: "+data[0][18]+"</span>"+
-						"			<button disabled data-value='"+data[0][18]+"' data-cmd='updatePersonalInfo' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Office Address' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
-						"				<i class='mdi-editor-mode-edit right grey-text'></i>"+
-						"			</button>"+
-						"		 </p>"+
 						"    </div>"+
 						"</div>";
 				$("#personalInfo").html(content);
@@ -4745,7 +4725,7 @@ SALN ={
 								"</tr>"+
 							"</table><br />"+
 							"<span style='padding-left:7%;'><font size='2'><b>Note:</b> Husband and wife are both public officials and employees may file the required statements jointly or separately.</font></span><br />"+
-							"<span style=''><center><c><input type='checkbox' "+((String(data[0][18]) == 'Joint Filing')? 'checked=true' : '')+" /> Joint Filing</c><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Separate Filing')? 'checked=true' : '')+" /> Separate Filing</e><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Not Applicable')? 'checked=true' : '')+" /> Not Applicable</e></center></span><br />"+
+							"<span style=''><center><c><input type='checkbox' /> Joint Filing</c><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Separate Filing')? 'checked=true' : '')+" /> Separate Filing</e><e style='padding-left:5%;'><input type='checkbox' "+((String(data[0][18]) == 'Not Applicable')? 'checked=true' : '')+" /> Not Applicable</e></center></span><br />"+
 							"<table style='border-collapse: collapse;width:100%;height:10%;table-layout: fixed;'>"+
 								"<tr>"+
 									"<td style='width:10%;'><b>Declarant: </b></td>"+
@@ -5477,7 +5457,7 @@ SALN ={
 		var data = system.ajax('../assets/harmony/Process.php?get-other',id);
 		data.done(function(data){
 			data = JSON.parse(data);
-			// console.log(data);
+			console.log(data);
 
 				$("#display_employeeDetails").removeClass('hidden');
 				$("#display_error").addClass('hidden');
@@ -5613,7 +5593,6 @@ SALN ={
 						"<span style=''><font size='4'><center><i>Page 2 of ___</i></center></font></span>";
 		});
 		
-
 		// $("#salnPrint").html(print);
 		$("a[data-cmd='print_saln']").on('click',function(){
 			$(print).print();
@@ -6020,70 +5999,105 @@ travel = {
 				travel.update();
 
 				print = "<div id='profile-card' class=''>"+
-						"    <div class=''>"+
-							"<form id='form_me' class='formValidate' method='get' action='' novalidate='novalidate'>"+
-							"<div class='row'>"+
-								"<div class='col offset-m1 offset-l1 s12 m10 l10'>"+
-									"<div class='row'>"+
-										"<div class='input-field col s12'>"+
-											"<p style='font-size:20px;text-align: center;'><font size='5'>Republic of the Philippines</font></p>"+
-											"<p style='margin-top:-3%;text-align: center;' ><font size='5'><b>MUNICIPALITY OF MABINI</font></b></p>"+
-											"<p style='margin-top:-3%;text-align: center;' ><font size='5'>PANGASINAN</font></p>"+
-											"<p style='margin-top:5%;text-align: center;' ><font size='6'><b>TRAVEL ORDER</b></font></p><br/>"+
-										"</div>"+
-										"<font size='5'>"+
-										"<div class='row'>"+
-											"<div class='input-field col s12'>"+
-												"<label style='display:block; width:x; height:y; text-align:right;'>Date: <u>"+data[0][2]+"</u></label>"+						        
-											"</div>"+
-										"</div><br />"+
-										"<div class='row'>"+
-											"<div class='input-field col s12'>"+
-												"<label >Name: <span style='width:70%;display:inline-block;border-bottom:solid black;border-bottom-width:1px;'>"+data[0][3]+"</span></label> "+
-											"</div><br />"+
-											"<div class='input-field col s12'>"+
-												"<label for='field_position'>Position: <span style='width:67%;display:inline-block;border-bottom:solid black;border-bottom-width:1px;'>"+data[0][4]+"</span></label>"+						       
-											"</div><br />"+
-											"<div class='input-field col s12'>"+
-												"<label for='field_section'>Section: <span style='width:67.8%;display:inline-block;border-bottom:solid black;border-bottom-width:1px;'>"+data[0][5]+"</span></label>"+						         
-											"</div>"+
-										"</div><br />"+
-										"<div class='row'>"+
-											"<div class='input-field col s12'>"+
-												"<label for='field_destination'>Destination: <span style='width:62.6%;display:inline-block;border-bottom:solid black;border-bottom-width:1px;'>"+data[0][6]+"</span></label>"+						        	
-											"</div><br />"+
-											"<div class='input-field col s12'>"+
-												"<label for='field_departure'>Date/Time of Departure: <span style='width:46.3%;display:inline-block;border-bottom:solid black;border-bottom-width:1px;'>"+data[0][7]+"</span></label>"+						         	
-											"</div><br />"+
-											"<div class='input-field col s12'>"+
-												"<label for='field_arrival'>Date/Time of Arrival: <span style='width:50%;display:inline-block;border-bottom:solid black;border-bottom-width:1px;'>"+data[0][8]+"</span></label>"+				          	
-											"</div>"+
-										"</div><br />"+
-										"<div class='row'>"+
-											"<div class='input-field col s12'>"+
-												"<label for='field_purpose'>Purpose: <span style='width:67.3%;display:inline-block;border-bottom:solid black;border-bottom-width:1px;'>"+data[0][9]+"</span></label>"+					           
-											"</div><br />"+
-											"<div class='input-field col s12'>"+
-												"<label for='field_conducted'>Person(s) to be contacted: <span style='width:44.8%;display:inline-block;border-bottom:solid black;border-bottom-width:1px;'>"+data[0][10]+"</span></label>"+						            	
-											"</div>"+
-										"</div><br /><br /><br />"+
-										"</font>"+
-										"<div class='row'>"+
-											"<div class='col s4 offset-s6'>"+
-												"<span style='padding-left:50%;'><font size='5'>Approved:</font></span>"+
-											"</div><br /><br />"+
-											"<div class='col s4 offset-s7 center'>"+
-												"<font size='5'>"+
-												"<span style='padding-left:63%;'><b>ALIMAR R. BRIANA</b></span><br />"+
-												"<span style='padding-left:67%;'>Municipal Mayor</span>"+
-												"</font>"+
-											"</div>"+
-										"</div>"+
-									"</div><br /><br />"+
-								"</div>"+
-							"</div>"+
-						"</form>"+
-						"    </div>"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:100%;font-size:100%;font-family:sans-serif;'><center>Republic of the Philippines</center></td>"+
+								"</tr>"+
+								"<tr>"+
+	  								"<td style='width:100%;font-size:100%;font-family:sans-serif;'><center><b>MUNICIPALITY OF MABINI</b></center></td>"+
+								"</tr>"+
+								"<tr>"+
+	  								"<td style='width:100%;font-size:100%;font-family:sans-serif;'><center>PANGASINAN</center></td>"+
+								"</tr>"+
+							"</table><br /><br />"+
+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:100%;font-size:140%;font-family:sans-serif;font-weight:700;'><center>TRAVEL ORDER</center></td>"+
+								"</tr>"+
+							"</table><br /><br />"+
+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:100%;text-align:right;font-size:90%;font-family:sans-serif;'>Date: <u>"+data[0][2]+"</u></td>"+
+								"</tr>"+
+							"</table><br />"+
+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:25%;font-size:90%;font-family:sans-serif;'>Name:</td>"+
+	  								"<td style='border-bottom: 1px solid black;width:65%;font-size:90%;font-family:sans-serif;'>"+data[0][3]+"</td>"+
+	  								"<td style='width:10%;font-size:90%;font-family:sans-serif;'></td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:25%;font-size:90%;font-family:sans-serif;'>Position:</td>"+
+	  								"<td style='border-bottom: 1px solid black;width:65%;font-size:90%;font-family:sans-serif;'>"+data[0][4]+"</td>"+
+	  								"<td style='width:10%;font-size:90%;font-family:sans-serif;'></td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:25%;font-size:90%;font-family:sans-serif;'>Section:</td>"+
+	  								"<td style='border-bottom: 1px solid black;width:65%;font-size:90%;font-family:sans-serif;'>"+data[0][5]+"</td>"+
+	  								"<td style='width:10%;font-size:90%;font-family:sans-serif;'></td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:25%;font-size:90%;font-family:sans-serif;'>Destination:</td>"+
+	  								"<td style='border-bottom: 1px solid black;width:65%;font-size:90%;font-family:sans-serif;'>"+data[0][6]+"</td>"+
+	  								"<td style='width:10%;font-size:90%;font-family:sans-serif;'></td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:25%;font-size:90%;font-family:sans-serif;'>Date/Time of Departure:</td>"+
+	  								"<td style='border-bottom: 1px solid black;width:65%;font-size:90%;font-family:sans-serif;'>"+data[0][7]+"</td>"+
+	  								"<td style='width:10%;font-size:90%;font-family:sans-serif;'></td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:25%;font-size:90%;font-family:sans-serif;'>Date/Time of Arrival:</td>"+
+	  								"<td style='border-bottom: 1px solid black;width:65%;font-size:90%;font-family:sans-serif;'>"+data[0][8]+"</td>"+
+	  								"<td style='width:10%;font-size:90%;font-family:sans-serif;'></td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:25%;font-size:90%;font-family:sans-serif;'>Purpose:</td>"+
+	  								"<td style='border-bottom: 1px solid black;width:65%;font-size:90%;font-family:sans-serif;'>"+data[0][9]+"</td>"+
+	  								"<td style='width:10%;font-size:90%;font-family:sans-serif;'></td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:25%;font-size:90%;font-family:sans-serif;'>Person(s) to be contacted:</td>"+
+	  								"<td style='border-bottom: 1px solid black;width:65%;font-size:90%;font-family:sans-serif;'>"+data[0][10]+"</td>"+
+	  								"<td style='width:10%;font-size:90%;font-family:sans-serif;'></td>"+
+								"</tr>"+
+							"</table><br /><br /><br /><br /><br />"+
+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:71%;text-align:right;font-size:100%;font-family:sans-serif;'>Approved:</td>"+
+	  								"<td style='width:29%;font-size:110%;font-family:sans-serif;'></td>"+
+								"</tr>"+
+							"</table><br />"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:71%;text-align:right;font-size:105%;font-family:sans-serif;'></td>"+
+	  								"<td style='width:29%;font-size:105%;font-family:sans-serif;'><center>ALIMAR R. BRIANA</center></td>"+
+								"</tr>"+
+							"</table>"+
+							"<table style='border-collapse: collapse;width:100%;'>"+
+	  							"<tr>"+
+	  								"<td style='width:71%;text-align:right;font-size:105%;font-family:sans-serif;'></td>"+
+	  								"<td style='width:29%;font-size:105%;font-family:sans-serif;'><center>Municipal Mayor</center></td>"+
+								"</tr>"+
+							"</table><br />"+
 						"</div>";
 		});	
 			
@@ -6723,126 +6737,148 @@ leave = {
 				print = "<div id='profile-card' class='card'>"+
 							"<div class='card-content'>"+
 								"<div class='input-field col s12'>"+
-									"<p style='margin-top:5%;text-align: center;'><font size='5'><b>APPLICATION FOR LEAVE</b></font></p><br/>"+
+									"<p style='margin-top:5%;font-size:130%;font-family:sans-serif;text-align: center;'><b>APPLICATION FOR LEAVE</b></p><br/>"+
 								"</div>"+
-								"<font size='4'>"+
 								"<table style='border-collapse: collapse;width:100%;'>"+
-									"<tr style='border: 1px solid black;height:50px;'>"+
+									"<tr style='border: 1px solid black;height:60px;'>"+
 		    							"<td style='border: 1px solid black;width:50%;'>"+
-			    							"<span style=''>1. Office/Agency:</span><br />"+
-			    							"<span style=''><center> <b>Local Government Unit, Mabini Pangasinan</b></center></span>"+
+			    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;1. Office/Agency:</span><br />"+
+			    							"<span style='font-size:80%;font-family:sans-serif;'><center>Local Government Unit, Mabini Pangasinan</center></span>"+
 		    							"</td>"+
-		   							 	"<td style='border: 1px solid black;width:20%;'>"+
-			    							"<span style=''>2. Name (Last)</span><br />"+
-			    							"<span style=''><center>"+data[0][3]+"</center></span>"+
+		   							 	"<td style='width:20%;'>"+
+			    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;2. Name (Last)</span><br />"+
+			    							"<span style='font-size:80%;font-family:sans-serif;'><center>"+data[0][3]+"</center></span>"+
 		    							"</td>"+
-		    							"<td style='border: 1px solid black;width:18%;text-align:center;'>"+
-			    							"<span style=''>(First)</span><br />"+
-			    							"<span style=''>"+data[0][4]+"</span>"+
+		    							"<td style='width:18%;text-align:center;'>"+
+			    							"<span style='font-size:80%;font-family:sans-serif;'>(First)</span><br />"+
+			    							"<span style='font-size:80%;font-family:sans-serif;'>"+data[0][4]+"</span>"+
 		    							"</td>"+
-		    							"<td style='border: 1px solid black;width:13%;text-align:center;'>"+
-			    							"<span style=''>(Middle)</span><br />"+
-			    							"<span style=''>"+data[0][5]+"</span>"+
+		    							"<td style='width:13%;text-align:center;'>"+
+			    							"<span style='font-size:80%;font-family:sans-serif;'>(Middle)</span><br />"+
+			    							"<span style='font-size:80%;font-family:sans-serif;'>"+data[0][5]+"</span>"+
 		    							"</td>"+
-
 		  							"</tr'>"+
+
+									"<table style='border-collapse: collapse;width:100%;'>"+
+			  							"<tr style='width:100%;'>"+
+			  								"<td height='50' style='border: 1px solid black;width:16%;'>"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;3. Date of Filling</span><br />"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'><center> "+data[0][6]+"</center></span>"+
+			    							"</td>"+
+			    							"<td height='50' style='border: 1px solid black;width:18%;'>"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;4. Position</span><br />"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'><center> "+data[0][7]+"</center></span>"+
+			    							"</td>"+
+			    							"<td height='50' style='border: 1px solid black;width:16%;'>"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;5. Salary (Monthly)</span><br />"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'><center> "+data[0][8]+"</center></span>"+
+			    							"</td>"+
+										"</tr>"+
+									"</table>"+
+
+									"<table style='border-collapse: collapse;width:100%;'>"+
+			  							"<tr style='width:100%;'>"+
+			  								"<td height='60' style='border: 1px solid black;width:50%;'>"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;6. a. <b>TYPE OF LEAVE: "+data[0][9]+"</b></span><br /><br />"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;Specify: <u>"+data[0][10]+" Vacation</u></span>"+
+			    							"</td>"+
+			    							"<td height='60' style='border: 1px solid black;width:50%;word-wrap: break-word;'>"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;6. b. <b>WHERE WILL BE SPENT:</b> "+data[0][13]+"</span><br /><br />"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;Specify: <u>"+data[0][14]+"</u></span>"+
+			    							"</td>"+
+										"</tr>"+
+									"</table>"+
+
+									"<table style='border-collapse: collapse;width:100%;'>"+
+			  							"<tr style='width:100%;'>"+
+			  								"<td style='border: 1px solid black;width:50%;'>"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;6. c. <b>NUMBER OF WORKING DAYS APPLIED FOR:</b> <u>"+data[0][11]+"</u></span><br /><br />"+
+				    							"<span style=''></span><br /><br />"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;INCLUSIVE DATE: <u>"+data[0][12]+"</u></span>"+
+			    							"</td>"+
+			    							"<td style='border: 1px solid black;width:50%;'>"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'><br />&nbsp;6. d. COMMUTATION: "+data[0][15]+"</span><br /><br /><br />"+
+				    							"<table style='border-collapse: collapse;width:50%;' align='center'>"+
+						  							"<tr>"+
+						  								"<td height='20' style='border-bottom: 1px solid black;width:50%;'>"+
+						    							"</td>"+
+													"</tr>"+
+													"<tr>"+
+						  								"<td height='15' style='font-size:80%;font-family:sans-serif;'><center>(Signature of Applicant)</center>"+
+						    							"</td>"+
+													"</tr>"+
+												"</table>"+
+			    							"</td>"+
+										"</tr>"+
+									"</table>"+
+
+									"<table style='border-collapse: collapse;width:100%;'>"+
+			  							"<tr style='width:100%;'>"+
+			  								"<td height='30' style='border: 1px solid black;width:50%;'>"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'><center>7. DETAILS OF ACTION ON APPLICATION</center></span>"+
+			    							"</td>"+				    							
+										"</tr>"+
+									"</table>"+
+
 										"<table style='border-collapse: collapse;width:100%;'>"+
 				  							"<tr style='width:100%;'>"+
-				  								"<td style='border: 1px solid black;width:16%;'>"+
-					    							"<span style=''>3. Date of Filling</span><br />"+
-					    							"<span style=''><center> "+data[0][6]+"</center></span>"+
-				    							"</td>"+
-				    							"<td style='border: 1px solid black;width:18%;'>"+
-					    							"<span style=''>4. Position</span><br />"+
-					    							"<span style=''><center> "+data[0][7]+"</center></span>"+
-				    							"</td>"+
-				    							"<td style='border: 1px solid black;width:16%;'>"+
-					    							"<span style=''>5. Salary (Monthly)</span><br />"+
-					    							"<span style=''><center> "+data[0][8]+"</center></span>"+
-				    							"</td>"+
-											"</tr>"+
-										"</table>"+
-										"<table style='border-collapse: collapse;width:100%;table-layout: fixed;'>"+
-				  							"<tr style='width:100%;'>"+
 				  								"<td style='border: 1px solid black;width:50%;'>"+
-					    							"<span style=''>6.a. <b>TYPE OF LEAVE: "+data[0][9]+"</b></span><br /><br />"+
-					    							"<span style=''>&nbsp;&nbsp;Specify: <u>"+data[0][10]+" Vacation</u></span>"+
-				    							"</td>"+
-				    							"<td style='border: 1px solid black;width:50%;word-wrap: break-word;'>"+
-					    							"<span style=''>6.b. <b>WHERE WILL BE SPENT:</b> "+data[0][13]+"</span><br /><br />"+
-					    							"<span style=''>&nbsp;&nbsp;Specify: <u>"+data[0][14]+"</u></span>"+
-				    							"</td>"+
-											"</tr>"+
-										"</table>"+
-										"<table style='border-collapse: collapse;width:100%;'>"+
-				  							"<tr style='width:100%;'>"+
-				  								"<td style='border: 1px solid black;width:50%;'>"+
-					    							"<span style=''>6.c. <b>NUMBER OF WORKING DAYS APPLIED FOR:</b> <u>"+data[0][11]+"</u></span><br /><br />"+
-					    							"<span style=''>&nbsp;&nbsp;INCLUSIVE DATE: <u>"+data[0][12]+"</u></span>"+
-				    							"</td>"+
-				    							"<td style='border: 1px solid black;width:50%;'>"+
-					    							"<span style=''>6.d. COMMUTATION: "+data[0][15]+"</span><br /><br /><br />"+
-					    							"<center><hr style='background-color:black;width:50%;'></hr>"+
-													"<span>(Signature of Applicant)</span></center>"+
-				    							"</td>"+
-											"</tr>"+
-										"</table>"+
-										"<table style='border-collapse: collapse;width:100%;'>"+
-				  							"<tr style='width:100%;'>"+
-				  								"<td style='border: 1px solid black;width:50%;'>"+
-					    							"<span style=''><center>7. DETAILS OF ACTION ON APPLICATION</center></span>"+
-				    							"</td>"+				    							
-											"</tr>"+
-										"</table>"+
-										"<table style='border-collapse: collapse;width:100%;table-layout: fixed;'>"+
-				  							"<tr style='width:100%;'>"+
-				  								"<td style='border: 1px solid black;width:50%;'>"+
-					    							"<span style=''>7.a. <b>CERTIFICATION OF LEAVE CREDITS AS OF:</b> <u>"+data[0][16]+"</u></span><br /><br />"+					    							
-													"<table style='border-collapse: collapse;width:100%;'>"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;7. a. <b>CERTIFICATION OF LEAVE CREDITS<br style='' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS OF:</b> <u>"+data[0][16]+"</u></span><br /><br />"+					    							
+													"<table style='border-collapse: collapse;width:100%;border: 1px solid black;'>"+
 														"<tr>"+								
-								    							"<td style='border: 1px solid black;'><center>VACATION</center></td>"+
-								    							"<td style='border: 1px solid black;'><center>SICK</center></td>"+	
-								    							"<td style='border: 1px solid black;'><center>TOTAL</center></td>"+    
+								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>VACATION</center></td>"+
+								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>SICK</center></td>"+	
+								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>TOTAL</center></td>"+    
 							    						"</tr>"+
 							    						"<tr>"+								
-								    							"<td style='border: 1px solid black;'><center>"+data[0][17]+"</center></td>"+
-								    							"<td style='border: 1px solid black;'><center>"+data[0][18]+"</center></td>"+	
-								    							"<td style='border: 1px solid black;'><center>"+data[0][19]+"</center></td>"+    
+								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>"+data[0][17]+"</center></td>"+
+								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>"+data[0][18]+"</center></td>"+	
+								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>"+data[0][19]+"</center></td>"+    
 							    						"</tr>"+
 							    						"<tr>"+								
-								    							"<td style='border: 1px solid black;'><center>DAYS</center></td>"+
-								    							"<td style='border: 1px solid black;'><center>DAYS</center></td>"+	
-								    							"<td style='border: 1px solid black;'><center>DAYS</center></td>"+    
+								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>DAYS</center></td>"+
+								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>DAYS</center></td>"+	
+								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>DAYS</center></td>"+    
 							    						"</tr>"+
 					    							"</table>"+
-					    							"<br /><br /><span style=''><center>KEITH C. BALINTOS</center></span>"+
-					    							"<span style=''><center>OIC-HRMO</center></span>"+
+					    							"<br /><br /><span style='font-size:80%;font-family:sans-serif;'><center>KEITH C. BALINTOS</center></span>"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'><center>OIC-HRMO</center></span>"+
 					    						"</td>"+
 				    							"<td style='border: 1px solid black;width:50%;word-wrap: break-word;'>"+
-					    							"<span style=''>7.a. <b>RECOMMENDATION:</b> "+data[0][23]+"</span><br /><br /><br />"+
-					    							"<span style=''>&nbsp;&nbsp;Disapproved due to: <u>"+data[0][24]+"</u></span><br /><br /><br /><br /><br />"+
-													"<center><hr style='background-color:black;width:50%;'></hr>"+
-													"<span>(Signature of Applicant)</span></center>"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'><br />&nbsp;7.b. <b>RECOMMENDATION:</b> "+data[0][23]+"</span><br /><br /><br />"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;&nbsp;&nbsp;Disapproved Due To: <u>"+data[0][24]+"</u></span><br /><br /><br /><br /><br />"+
+													"<table style='border-collapse: collapse;width:50%;' align='center'>"+
+							  							"<tr>"+
+							  								"<td height='20' style='border-bottom: 1px solid black;width:50%;'>"+
+							    							"</td>"+
+														"</tr>"+
+														"<tr>"+
+							  								"<td height='15' style='font-size:80%;font-family:sans-serif;'><center>(Signature of Applicant)</center>"+
+							    							"</td>"+
+														"</tr>"+
+													"</table>"+
 				    							"</td>"+
 											"</tr>"+
 										"</table>"+
-										"<table style='border-collapse: collapse;width:100%;table-layout: fixed;'>"+
+
+										"<table style='border-collapse: collapse;width:100%;'>"+
 				  							"<tr style='width:100%;'>"+
 				  								"<td style='border: 1px solid black;width:50%;'>"+
-					    							"<span style=''>7.c <b>APPROVED FOR:</b></span><br /><br />"+
-					    							"<span style=''>&nbsp;<u>"+data[0][20]+"</u>&nbsp;days with pay</span><br />"+
-					    							"<span style=''>&nbsp;<u>"+data[0][21]+"</u>&nbsp;days without pay</span><br />"+
-					    							"<span style=''>&nbsp;<u>"+data[0][22]+"</u>&nbsp;other(Specify)</span><br />"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'><br />&nbsp;7. c <b>APPROVED FOR:</b></span><br /><br />"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;&nbsp;&nbsp;<u>"+data[0][20]+"</u>&nbsp;days with pay</span><br />"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;&nbsp;&nbsp;<u>"+data[0][21]+"</u>&nbsp;days without pay</span><br />"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;&nbsp;&nbsp;<u>"+data[0][22]+"</u>&nbsp;other(Specify)</span><br />"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'></span><br />"+
 				    							"</td>"+
 				    							"<td style='border: 1px solid black;width:50%;word-wrap: break-word;vertical-align:top;'>"+
-					    							"<span style=''>7.d. <b>DISAPPROVED DUE TO:</b> </span><br /><br />"+
-					    							"<span style=''>&nbsp;&nbsp;<u>The rush reports submitted on thursday</u></span>"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'><br />&nbsp;7. d. <b>DISAPPROVED DUE TO:</b> </span><br /><br />"+
+					    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<u>"+data[0][22]+"</u></span>"+
 				    							"</td>"+
 											"</tr>"+
 										"</table><br /<br />"+
-									"<p style='margin-top:5%;text-align: center;'><font size='5'><b>ALIMAR R. BRIANA</b></font></p>"+
-									"<p style='margin-top:-3%;text-align: center;'><font size='5'>Municipal Mayor</font></p>"+
-		  							"</font>"+
+
+									"<p style='font-size:100%;font-family:sans-serif;margin-top:5%;text-align: center;'><b>ALIMAR R. BRIANA</b></p>"+
+									"<p style='font-size:100%;font-family:sans-serif;margin-top:-2%;text-align: center;'>Municipal Mayor</p>"+
 								"</table>"+
 							"</div>"+
 						"</div>";

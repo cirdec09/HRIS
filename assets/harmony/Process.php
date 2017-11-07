@@ -1003,7 +1003,7 @@ $function = new DatabaseClasses;
 			$employee_id = $data[1];
 			$company_id = $data[2];
 			
-			$query = $function->PDO(false,"INSERT INTO tbl_saln_personalInfo(id,employee_id,department_id,lname,fname,minitial,address,position,agency,office_address,s_lname,s_fname,s_minitial,s_position,s_agency,s_office_address,status,as_of,filing) VALUES ('{$id}','{$employee_id}','{$company_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','1','{$data[0][13]['value']}','{$data[0][14]['value']}')");
+			$query = $function->PDO(false,"INSERT INTO tbl_saln_personalInfo(id,employee_id,department_id,lname,fname,minitial,address,position,agency,office_address,s_lname,s_fname,s_minitial,s_position,s_agency,s_office_address,status,as_of) VALUES ('{$id}','{$employee_id}','{$company_id}','{$data[0][0]['value']}','{$data[0][1]['value']}','{$data[0][2]['value']}','{$data[0][3]['value']}','{$data[0][4]['value']}','{$data[0][5]['value']}','{$data[0][6]['value']}','{$data[0][7]['value']}','{$data[0][8]['value']}','{$data[0][9]['value']}','{$data[0][10]['value']}','{$data[0][11]['value']}','{$data[0][12]['value']}','1','{$data[0][13]['value']}')");
 			if($query->execute()){
 					echo 1;
 			}

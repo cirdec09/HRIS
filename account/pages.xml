@@ -2441,19 +2441,11 @@
 								</div>
 							</div>
 							<div class='row'>
-								<div class='input-field col s6'>
+								<div class='input-field col s12'>
 									<label for='field_date'>Date (Format: December 25): </label>
 						            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
 									<div class='error_date'></div>	
 								</div>
-								<div class='input-field col s6'>
-								<label for='field_note' class='active'>Note: </label>
-								<select name='field_note'>
-									<option selected>Joint Filing</option>
-									<option>Separate Filing</option>
-									<option>Not Applicable</option>
-								</select>
-							</div>
 							</div>
 						</div>
 						<div class='divider'></div></br>

@@ -295,13 +295,13 @@ PDS = {
 
 			$("#form_addFamily").validate({
 			    rules: {
-					field_s_surename: {maxlength: 50},
-			    	field_s_firstname: {maxlength: 50},
-			    	field_s_middlename: {maxlength: 50},
-			    	field_s_occupation: {maxlength: 50},
-			    	field_s_employer: {maxlength: 50},
-			    	field_s_business: {maxlength: 50},
-			    	field_s_tele: {maxlength: 50},
+					field_s_surename: {required: true,maxlength: 50},
+			    	field_s_firstname: {required: true,maxlength: 50},
+			    	field_s_middlename: {required: true,maxlength: 50},
+			    	field_s_occupation: {required: true,maxlength: 50},
+			    	field_s_employer: {required: true,maxlength: 50},
+			    	field_s_business: {required: true,maxlength: 50},
+			    	field_s_tele: {required: true,maxlength: 50},
 
 			    	field_f_surename: {required: true,maxlength: 50},
 			    	field_f_firstname: {required: true,maxlength: 50},
@@ -359,7 +359,7 @@ PDS = {
 			$("#form_addAnak").validate({
 			    rules: {
 			    	field_child: {required: true,maxlength: 50},
-			    	field_child_dob: {required: true,maxlength: 50,checkDate:true},
+			    	field_child_dob: {required: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -657,7 +657,7 @@ PDS = {
 			    	field_doe: {required: true,checkDate:true,maxlength: 50},
 			    	field_place: {required: true,maxlength: 50},
 			    	field_licence: {required: true,maxlength: 50},
-			    	field_date: {required: true,checkDate:true,maxlength: 50},
+			    	field_date: {required: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -710,14 +710,14 @@ PDS = {
 
 			$("#form_addWork").validate({
 			    rules: {
-			    	field_to: {required: true,maxlength: 50},
-			    	field_from: {required: true,checkDate: true,maxlength: 50},
-			    	field_position: {required: true,maxlength: 50},
-			    	field_department: {required: true,maxlength: 50},
-			    	field_salary: {required: true,maxlength: 50},
-			    	field_salary_grade: {required: true,maxlength: 50},
-			    	field_status: {required: true,maxlength: 50},
-			    	field_govt: {required: true,maxlength: 50},
+			    	field_to: {maxlength: 50},
+			    	field_from: {maxlength: 50},
+			    	field_position: {maxlength: 50},
+			    	field_department: {maxlength: 50},
+			    	field_salary: {maxlength: 50},
+			    	field_salary_grade: {maxlength: 50},
+			    	field_status: {maxlength: 50},
+			    	field_govt: {maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -770,11 +770,11 @@ PDS = {
 
 			$("#form_addVoluntary").validate({
 			    rules: {
-			    	field_name: {maxlength: 50},
-			    	field_from: {checkDate: true,maxlength: 50},
-			    	field_to: {checkDate: true,maxlength: 50},
-			    	field_number: {maxlength: 50},
-			    	field_position: {maxlength: 50},
+			    	field_name: {required: true,maxlength: 50},
+			    	field_from: {required: true,maxlength: 50},
+			    	field_to: {required: true,maxlength: 50},
+			    	field_number: {required: true,maxlength: 50},
+			    	field_position: {required: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -828,8 +828,8 @@ PDS = {
 			$("#form_addTraining").validate({
 			    rules: {
 			    	field_title: {required: true,maxlength: 70},
-			    	field_from: {required: true,checkDate: true,maxlength: 50},
-			    	field_to: {required: true,checkDate: true,maxlength: 50},
+			    	field_from: {required: true,maxlength: 50},
+			    	field_to: {required: true,maxlength: 50},
 			    	field_number: {required: true,maxlength: 50},
 			    	field_conducted: {required: true,maxlength: 50},
 			    },
@@ -935,7 +935,7 @@ PDS = {
 
 			$("#form_addNonAcademic").validate({
 			    rules: {
-			    	field_non_academic: {required: true,maxlength: 50},
+			    	field_non_academic: {maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -988,7 +988,7 @@ PDS = {
 
 			$("#form_addMembership").validate({
 			    rules: {
-			    	field_association: {required: true,maxlength: 50},
+			    	field_association: {maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -1095,10 +1095,6 @@ PDS = {
 			    	field_name: {required: true,maxlength: 50},
 			    	field_address: {required: true,maxlength: 50},
 			    	field_telephone: {required: true,maxlength: 50},
-			    	field_tax: {required: true,maxlength: 50},
-			    	field_issued_at: {required: true,maxlength: 50},
-			    	field_issued_on: {required: true,maxlength: 50},
-			    	field_accomplish: {required: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -1437,7 +1433,7 @@ PDS = {
 				bago = 	"<div id='profile-card' class='card'>"+
 						"   <div class='card-content'>"+
 						"		<h5>Family Background</h5><br />"+
-						"<a class='btn waves-effect waves-light orange left' data-cmd='add_family'>Add</a></br></br>"+
+						"<a class='btn waves-effect waves-light orange left' data-cmd='add_familyDetails'>Add</a></br></br>"+
 						"</div>"+
 						"</div>";
 			
@@ -1451,7 +1447,7 @@ PDS = {
 						"    <div class='card-content'>"+
 						"		<h5>Family Background</h5>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-account-circle cyan-text text-darken-2'></i> Spouse's Surename: "+data[0][2]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-action-account-circle cyan-text text-darken-2'></i> Spouse's Surname: "+data[0][2]+"</span>"+
 						"			<a data-value='"+data[0][2]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Spouse Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surname'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
@@ -1493,7 +1489,7 @@ PDS = {
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Father's surname: "+data[0][9]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people cyan-text text-darken-2'></i> Father's Surname: "+data[0][9]+"</span>"+
 						"			<a data-value='"+data[0][9]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Father Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
@@ -1511,7 +1507,7 @@ PDS = {
 						"			</a>"+
 						"		 </p>"+
 						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Mother's surename: "+data[0][12]+"</span>"+
+						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-social-people-outline cyan-text text-darken-2'></i> Mother's Surname: "+data[0][12]+"</span>"+
 						"			<a data-value='"+data[0][12]+"' data-cmd='updateFamily' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Mother Surename' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update Surename'>"+
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
@@ -1538,7 +1534,7 @@ PDS = {
 				// employee.updatePicture();
 			}
 
-				$("a[data-cmd='add_family']").on('click',function(){
+				$("a[data-cmd='add_familyDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addFamily").each(function(i,content){
 						console.log("Family_Background");
@@ -1610,7 +1606,7 @@ PDS = {
 				content += "<div id='profile-card' class='card'>"+
 							"   <div class='card-content'>"+
 							"		<h5>Family Background</h5>"+
-							"		<h6>Siblings</h6>";
+							"		<h6>Children/s</h6>";
 
 				$(data).each(function(index,value){
             		data.length;
@@ -1632,7 +1628,7 @@ PDS = {
 							
         		});
 
-        		content += "<a class='btn waves-effect waves-light orange left' data-cmd='add_child'>Add</a></br></br>"+
+        		content += "<a class='btn waves-effect waves-light orange left' data-cmd='add_childDetails'>Add</a></br></br>"+
 							"</div>"+
 							"</div>";
         		
@@ -1643,7 +1639,7 @@ PDS = {
 				PDS.updateChild();
 				// employee.updatePicture();
 
-				$("a[data-cmd='add_child']").on('click',function(){
+				$("a[data-cmd='add_childDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addChild").each(function(i,content){
 						console.log("Child_Background");
@@ -1654,7 +1650,7 @@ PDS = {
 						$("#form_addAnak").validate({
 						    rules: {
 						    	field_child: {maxlength: 50},
-						    	field_child_dob: {maxlength: 50,checkDate:true},
+						    	field_child_dob: {maxlength: 50},
 						    },
 						    errorElement : 'div',
 						    errorPlacement: function(error, element) {
@@ -2471,8 +2467,7 @@ PDS = {
 
 						$("#form_addWorks").validate({
 						    rules: {
-						    	field_e_name: {maxlength: 50},
-						    	field_e_grades: {maxlength: 50},
+						    	
 						    },
 						    errorElement : 'div',
 						    errorPlacement: function(error, element) {
@@ -3277,7 +3272,7 @@ PDS = {
 							"		 </p><br />";
         		});
 
-        		content += "<a class='btn waves-effect waves-light orange left' data-cmd='add_references'>Add</a></br></br>"+
+        		content += "<a class='btn waves-effect waves-light orange left' data-cmd='add_referencesDetails'>Add</a></br></br>"+
 							"</div>"+
 							"</div>";
 
@@ -3289,7 +3284,7 @@ PDS = {
 				PDS.updateReferences();
 				// employee.updatePicture();
 
-				$("a[data-cmd='add_references']").on('click',function(){
+				$("a[data-cmd='add_referencesDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addReferencess").each(function(i,content){
 						console.log("References");
@@ -5055,7 +5050,7 @@ PDS = {
 								console.log(data);
 								if(data == 1){
 									system.clearForm();
-									Materialize.toast('Name Of Child updated.',4000);
+									Materialize.toast('Name Of School updated.',4000);
 									$('#modal_confirm').closeModal();
 									localStorage.removeItem('myname');	
 									App.handleLoadPage("#cmd=index;content=PDS");
@@ -9030,7 +9025,6 @@ PDS = {
 			});
 		})
 	},
-
 }
 travel = {
 	ini:function(){
@@ -9710,10 +9704,8 @@ travel = {
 			}
 
 		});
-	},
-	
+	},	
 }
-
 leave = {
 	ini:function(){
 		this.pending();
@@ -10823,7 +10815,6 @@ leave = {
 		});
 	},
 }	
-
 SALN = {
 	ini:function(){
 	},
@@ -11066,7 +11057,9 @@ SALN = {
 
 			$("#form_liabilities").validate({
 			    rules: {
-			    	
+			    	field_nature: {maxlength: 50},
+			    	field_creditors: {maxlength: 50,},
+			    	field_balance: {maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -11118,7 +11111,10 @@ SALN = {
 
 			$("#form_business").validate({
 			    rules: {
-			    	//fields here
+			    	field_entity: {maxlength: 50},
+			    	field_address: {maxlength: 50,},
+			    	field_nature: {maxlength: 50},
+			    	field_date: {checkDate: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -11170,7 +11166,10 @@ SALN = {
 
 			$("#form_relatives").validate({
 			    rules: {
-			    	//fields here
+			    	field_entity: {maxlength: 50},
+			    	field_address: {maxlength: 50,},
+			    	field_nature: {maxlength: 50},
+			    	field_date: {checkDate: true,maxlength: 50},
 			    },
 			    errorElement : 'div',
 			    errorPlacement: function(error, element) {
@@ -11284,7 +11283,7 @@ SALN = {
 
 			if(data.length<=0){
 					bago = 	"<div class='col s12 m4 l4 input-field right'>"+
-							"<a class='btn waves-effect waves-light orange right' data-cmd='add_personalInfo'>Add</a>"+
+							"<a class='btn waves-effect waves-light orange right' data-cmd='add_personalInfoDetails'>Add</a>"+
 							"</div>";
 				
 					$("#display_error").html(bago);
@@ -11415,7 +11414,7 @@ SALN = {
 			}
 		});
 
-		$("a[data-cmd='add_personalInfo']").on('click',function(){
+		$("a[data-cmd='add_personalInfoDetails']").on('click',function(){
 			SALN.addPersonalinfo();
 		});   		
 	},
@@ -11461,7 +11460,7 @@ SALN = {
 							
         		});
 
-        		content += "<a class='btn waves-effect waves-light orange left' data-cmd='add_child'>Add</a></br></br>"+
+        		content += "<a class='btn waves-effect waves-light orange left' data-cmd='add_childDetails'>Add</a></br></br>"+
 							"</div>"+
 							"</div>";
         		
@@ -11472,7 +11471,7 @@ SALN = {
 				SALN.updateUnmarried();
 				// employee.updatePicture();
 
-				$("a[data-cmd='add_child']").on('click',function(){
+				$("a[data-cmd='add_childDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addUnmarriedChilds").each(function(i,content){
 						console.log("Unmarried Child");
@@ -11600,7 +11599,7 @@ SALN = {
 				
         		content += 	"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-cake cyan-text text-darken-2'></i> Subtotal: &#8369; "+subTotalA+"</span>"+
         					"		 </p>"+
-        					"<a class='btn waves-effect waves-light orange left' data-cmd='add_real'>Add</a></br></br>"+
+        					"<a class='btn waves-effect waves-light orange left' data-cmd='add_realDetails'>Add</a></br></br>"+
 							"</div>"+
 							"</div>";
         		
@@ -11611,7 +11610,7 @@ SALN = {
 				SALN.updateReal();
 				// employee.updatePicture();
 
-				$("a[data-cmd='add_real']").on('click',function(){
+				$("a[data-cmd='add_realDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addReals").each(function(i,content){
 						console.log("Real Properties");
@@ -11715,7 +11714,7 @@ SALN = {
 							"		 </p>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-cake cyan-text text-darken-2'></i> Total Assets(a+b): &#8369; "+totalAssets+"</span>"+
 							"		 </p>"+
-        					"<a class='btn waves-effect waves-light orange left' data-cmd='add_personal'>Add</a></br></br>"+
+        					"<a class='btn waves-effect waves-light orange left' data-cmd='add_personalDetails'>Add</a></br></br>"+
 							"</div>"+
 							"</div>";
         		
@@ -11726,7 +11725,7 @@ SALN = {
 				SALN.updatePersonal();
 				// employee.updatePicture();
 
-				$("a[data-cmd='add_personal']").on('click',function(){
+				$("a[data-cmd='add_personalDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addPersonals").each(function(i,content){
 						console.log("Personal Properties");
@@ -11827,7 +11826,7 @@ SALN = {
 							"		 </p>"+
 							"        <p><span style='width:80%;display: inline-block;' class='truncate'> <i class='mdi-social-cake cyan-text text-darken-2'></i> Net Worth:Total Assets less Total Liabilities= &#8369; "+netWorth+"</span>"+
 							"		 </p>"+
-        					"<a class='btn waves-effect waves-light orange left' data-cmd='add_liabilities'>Add</a></br></br>"+
+        					"<a class='btn waves-effect waves-light orange left' data-cmd='add_liabilitiesDetails'>Add</a></br></br>"+
 							"</div>"+
 							"</div>";
         		
@@ -11838,7 +11837,7 @@ SALN = {
 				SALN.updateLiabilities();
 				// employee.updatePicture();
 
-				$("a[data-cmd='add_liabilities']").on('click',function(){
+				$("a[data-cmd='add_liabilitiesDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addLiabilitiess").each(function(i,content){
 						console.log("Liabilities");
@@ -11936,7 +11935,7 @@ SALN = {
 							"		 <div class='divider'></div></br>";
         		});
 				
-        		content += 	"<a class='btn waves-effect waves-light orange left' data-cmd='add_business'>Add</a></br></br>"+
+        		content += 	"<a class='btn waves-effect waves-light orange left' data-cmd='add_businessDetails'>Add</a></br></br>"+
 							"</div>"+
 							"</div>";
         		
@@ -11947,7 +11946,7 @@ SALN = {
 				SALN.updateBusiness();
 				// employee.updatePicture();
 
-				$("a[data-cmd='add_business']").on('click',function(){
+				$("a[data-cmd='add_businessDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addBusinesss").each(function(i,content){
 						console.log("Business");
@@ -12045,7 +12044,7 @@ SALN = {
 							"		 <div class='divider'></div></br>";
         		});
 				
-        		content += 	"<a class='btn waves-effect waves-light orange left' data-cmd='add_relatives'>Add</a></br></br>"+
+        		content += 	"<a class='btn waves-effect waves-light orange left' data-cmd='add_relativesDetails'>Add</a></br></br>"+
 							"</div>"+
 							"</div>";
         		
@@ -12056,7 +12055,7 @@ SALN = {
 				SALN.updateRelatives();
 				// employee.updatePicture();
 
-				$("a[data-cmd='add_relatives']").on('click',function(){
+				$("a[data-cmd='add_relativesDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addRelativess").each(function(i,content){
 						console.log("Relatives");
@@ -12119,7 +12118,7 @@ SALN = {
 				bago = 	"<div id='profile-card' class='card'>"+
 							"<div class='card-content'>"+
 								"<h5>Other Information</h5><br />"+
-								"<a class='btn waves-effect waves-light orange left' data-cmd='add_other'>Add</a></br></br>"+
+								"<a class='btn waves-effect waves-light orange left' data-cmd='add_otherDetails'>Add</a></br></br>"+
 							"</div>"+
 						"</div>";
 			
@@ -12130,9 +12129,6 @@ SALN = {
 				$("#display_error").addClass('hidden');
 
 				content ="<div id='profile-card' class='card'>"+
-						"    <div class='card-image waves-effect waves-block waves-light'>"+
-						"        <img class='activator' src='../assets/images/user-bg.jpg' alt='user background'>"+
-						"    </div>"+
 						"    <div class='card-content'>"+
 						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-perm-identity cyan-text text-darken-2'></i> Date(dd/mm/yyy): "+data[0][2]+"</span>"+
 						"			<a data-value='"+data[0][2]+"' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Date' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
@@ -12173,12 +12169,6 @@ SALN = {
 						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
 						"			</a>"+
 						"		 </p>"+
-						"		 <div class='divider'></div>"+
-						"        <p><span style='width:80%;display: inline-block;' class='truncate'><i class='mdi-action-accessibility cyan-text text-darken-2'></i> Date Issued: "+data[0][8]+"</span>"+
-						"			<a data-value='"+data[0][8]+"' data-cmd='updateOther' data-name='"+data[0][4]+" "+data[0][5]+" "+data[0][3]+"' data-node='"+data[0][0]+"' data-node='"+data[0][0]+"' data-prop='Co-Declarant/Spouse Date Issued' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update'>"+
-						"				<i class='mdi-editor-mode-edit right black-text'></i>"+
-						"			</a>"+
-						"		 </p>"+
 						"    </div>"+
 						"</div>";
         		
@@ -12189,7 +12179,7 @@ SALN = {
 				SALN.updateOther();
 				// employee.updatePicture();
 
-				$("a[data-cmd='add_other']").on('click',function(){
+				$("a[data-cmd='add_otherDetails']").on('click',function(){
 					var data = system.xml("pages.xml");
 					$(data.responseText).find("addOther").each(function(i,content){
 						console.log("Other");
