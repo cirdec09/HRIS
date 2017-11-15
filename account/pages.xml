@@ -164,6 +164,7 @@
 								Password must contain atleast 1 number, 1 uppercase letter, 1 lowercare letter, 1 special character* and 6 character length. <br/>
 								<u>Special characters are ! @ $ % *</u>
 							</div>
+						   <div><input type='checkbox' id='showPassword'><label for='showPassword'>Show password</label></div>
 						</div>
 						<div class='row'>
 							<div class='input-field col s12'>

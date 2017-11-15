@@ -4185,10 +4185,10 @@ employee_Account = {
 				    rules: {
 				        field_name: {required: true,maxlength: 50},
 				        field_email: {required: true,maxlength: 50,checkEmail:true},
-				        field_username: {required: true,maxlength: 50},
-				        field_password: {required: true,maxlength: 50},
-				        // field_username: {required: true,maxlength: 50,checkUsername:true,validateUsername:true},
-				        // field_password: {required: true,maxlength: 50,checkPassword:true,validatePassword:true},
+				        field_username: {required: true,maxlength: 50,checkUsername:true,},
+				        field_password: {required: true,maxlength: 50,checkPassword:true,validatePassword:true},
+				        // field_username: {required: true,maxlength: 50,validateUsername:true},
+				        // field_password: {required: true,maxlength: 50,},
 				    },
 				    errorElement : 'div',
 				    errorPlacement: function(error, element) {
