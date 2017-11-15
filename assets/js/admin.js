@@ -3102,7 +3102,7 @@ employee = {
 							"   <div class='card-content'>"+
 							"		<h5>Other Information</h5>"+
 							"		<h6>Membership in Association/Organization</h6>";
-				print += "<table style='border-collapse:collapse;width:35%;float:right;border:2px solid black;'>"+
+				print += "<table style='border-collapse:collapse;width:35%;float:left;border:2px solid black;'>"+
 							"<tr>"+
 								"<td style='width:35%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'><center>35. Membership in Association/Organization (Write in full)</center></td>"+
 							"</tr>";
@@ -3453,9 +3453,9 @@ employee = {
         		});
         		$(data).each(function(index,value){
             		print +="<tr>"+
-								"<td style='width:27%;font-family:sans-serif;border:1px solid black'><font size='2'><center>"+data[0][2]+"</center></font></td>"+
-								"<td style='width:30%;font-family:sans-serif;border:1px solid black'><font size='2'><center>"+data[0][3]+"</center></font></td>"+
-								"<td style='width:20%;font-family:sans-serif;border:1px solid black'><font size='2'><center>"+data[0][4]+"</center></font></td>"+
+								"<td style='width:27%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>"+data[0][2]+"</center></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>"+data[0][3]+"</center></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>"+data[0][4]+"</center></td>"+
 							"</tr>";
         		});
         		for (i = 0; i < (3-data.length); i++) {
@@ -3466,7 +3466,7 @@ employee = {
 							"</tr>";
 				}
         		print +="<tr>"+
-							"<td style='width:72%;font-family:sans-serif;border:1px solid black' colspan='3'><font size='2'>43. I declare under oath that this Personal Data Sheet has been accomplish by me, and is a true, correct and complete statement pursuant to the provisions of pertinent laws, rules and regulation of the Republic of the Philippines.<br /><br />I also authorized the agency head/ authorized representative to verify/ validate to contents stated herein.I trust that this information shall remain confedential.</font></td>"+
+							"<td style='width:72%;font-family:sans-serif;border:1px solid black' colspan='3'><font size='2'>43. I declare under oath that this Personal Data Sheet has been accomplish by me, and is a &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;true, correct and complete statement pursuant to the provisions of pertinent laws, rules and &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;regulation of the Republic of the Philippines.<br /><br /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;I also authorized the agency head/ authorized representative to verify/ validate to contents &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stated herein.I trust that this information shall remain confedential.</font></td>"+
 						"</tr>"+
 						"</table>";
 
@@ -4185,10 +4185,10 @@ employee_Account = {
 				    rules: {
 				        field_name: {required: true,maxlength: 50},
 				        field_email: {required: true,maxlength: 50,checkEmail:true},
-				        field_username: {required: true,maxlength: 50,checkUsername:true,},
+				        // field_username: {required: true,maxlength: 50},
+				        // field_password: {required: true,maxlength: 50},
+				        field_username: {required: true,maxlength: 50,checkUsername:true,validateUsername:true},
 				        field_password: {required: true,maxlength: 50,checkPassword:true,validatePassword:true},
-				        // field_username: {required: true,maxlength: 50,validateUsername:true},
-				        // field_password: {required: true,maxlength: 50,},
 				    },
 				    errorElement : 'div',
 				    errorPlacement: function(error, element) {
@@ -6837,7 +6837,7 @@ leave = {
 				  							"<tr style='width:100%;'>"+
 				  								"<td style='border: 1px solid black;width:50%;'>"+
 					    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;7. a. <b>CERTIFICATION OF LEAVE CREDITS<br style='' />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AS OF:</b> <u>"+data[0][16]+"</u></span><br /><br />"+					    							
-													"<table style='border-collapse: collapse;width:100%;border: 1px solid black;'>"+
+													"<table style='border-collapse: collapse;width:100.5%;padding-left:-10%;border: 1px solid black;margin:none;'>"+
 														"<tr>"+								
 								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>VACATION</center></td>"+
 								    							"<td style='font-size:80%;font-family:sans-serif;border: 1px solid black;'><center>SICK</center></td>"+	
