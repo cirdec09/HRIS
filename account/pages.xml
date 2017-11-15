@@ -618,7 +618,7 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s4'>
-								<label for='field_s_surename'>Spouse's Surename: </label>
+								<label for='field_s_surename'>Spouse's Surname: </label>
 					            <input id='field_s_surename' type='text' name='field_s_surename' data-error='.error_s_surename'>
 								<div class='error_s_surename'></div>	
 							</div>
@@ -659,7 +659,7 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s4'>
-								<label for='field_f_surename'>Father's Surename: </label>
+								<label for='field_f_surename'>Father's Surname: </label>
 					            <input id='field_f_surename' type='text' name='field_f_surename' data-error='.error_f_surename'>
 								<div class='error_f_surename'></div>	
 							</div>
@@ -676,7 +676,7 @@
 						</div>
 						<div class='row'>
 							<div class='input-field col s4'>
-								<label for='field_m_surename'>Mother's Surename: </label>
+								<label for='field_m_surename'>Mother's Surname: </label>
 					            <input id='field_m_surename' type='text' name='field_m_surename' data-error='.error_m_surename'>
 								<div class='error_m_surename'></div>	
 							</div>
@@ -2442,7 +2442,7 @@
 							</div>
 							<div class='row'>
 								<div class='input-field col s12'>
-									<label for='field_date'>Date (Format: December 25): </label>
+									<label for='field_date'>Date (Format: December 25, 2017): </label>
 						            <input id='field_date' type='text' name='field_date' data-error='.error_date'>
 									<div class='error_date'></div>	
 								</div>

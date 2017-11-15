@@ -29,7 +29,7 @@ account = {
 				    "		 	<div class='' style='margin-top:20px;'></div>"+
 				   	"        			<span class='card-title activator grey-text text-darken-4'>"+data[0][1]+" </span>"+
 					"					<a data-cmd='updateAdmin' data-value='"+data[0][1]+"' data-name='"+data[0][1]+"' data-node='"+data[0][0]+"' data-prop='Name' class='tooltipped btn-floating waves-effect black-text no-shadow white right' data-position='left' data-delay='50' data-tooltip='Update name'>"+
-					"						<i class='mdi-editor-mode-edit right black-text'></i>"+
+					"						<i class='mdi-editor-mode-edit right black-text hovers'></i>"+
 					"					</a>"+
 					"		 	<div class='divider'></div>"+
 					"		 	<div class='' style='margin-top:20px;'></div>"+
@@ -3288,109 +3288,109 @@ employee = {
 				$("#questions").html(content);
 				print +="<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>36. Are you related by consanguinity or affinity to any of the following:<br /><br />a. Within the third degree(for National Government Employees):<br />appointing authority, recomendiing authority, chief of office/bureau/department or person who has immediate supervision on you in the Office, Bureau or Deaprtment where you will be apointed?<br /><br />b. Within the fourth degree(for Local Government Employees):<br />appointing authority, recommending authority where you will be apointed?<br /><br /></td>"+
+								"<td style='width:75%;background-color: #a5aeaf;font-size:75%;font-family:sans-serif;border:1px solid black'>36. Are you related by consanguinity or affinity to any of the following:<br /><br />a. Within the third degree(for National Government Employees):<br />appointing authority, recomendiing authority, chief of office/bureau/department or person who has immediate supervision on you in the Office, Bureau or Deaprtment where you will be apointed?<br /><br />b. Within the fourth degree(for Local Government Employees):<br />appointing authority, recommending authority where you will be apointed?<br /><br /></td>"+
 							"</tr>"+
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><font size='2'><input type='checkbox' "+((String(data[0][2]) == 'Yes')? 'checked=true' : '')+" >Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][2]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;'><br /><br /><input type='checkbox' "+((String(data[0][2]) == 'Yes')? 'checked=true' : '')+" >Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][2]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:28px;'><font size='2'><u>"+data[0][3]+"</u></font></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;height:20px;'><u>"+data[0][3]+"</u></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><font size='2'><input type='checkbox' "+((String(data[0][4]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][4]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</font></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][4]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][4]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><font size='2'><u>"+data[0][5]+"</u></font></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;height:7px;'><u>"+data[0][5]+"</u></td>"+
 							"</tr>"+
 						"</table>"+
 
 						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>37. a. Have you ever been formally charged?<br /><br /><br /><br /><br /><br />b. Have you ever been guilty of any administrative offense?<br /><br /><br /><br /></td>"+
+							"<td style='width:75%;background-color: #a5aeaf;font-size:75%;font-family:sans-serif;border:1px solid black'>37. a. Have you ever been formally charged?<br /><br /><br /><br /><br /><br />b. Have you ever been guilty of any administrative offense?<br /><br /><br /><br /></td>"+
 						"</tr>"+
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][6]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][6]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][6]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][6]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:20px;'><u>"+data[0][7]+"</u></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;height:30px;'><u>"+data[0][7]+"</u></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][8]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][8]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][8]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][8]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:22px;'><u>"+data[0][9]+"</u></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;height:38px;'><u>"+data[0][9]+"</u></td>"+
 							"</tr>"+
 						"</table>"+
 
 						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>38. Have you ever been convicted of any crime or violation of any law, decree, ordinance or regulation by any court or tribunal?<br /><br /><br /><br /></td>"+
+							"<td style='width:75%;background-color: #a5aeaf;font-size:75%;font-family:sans-serif;border:1px solid black'>38. Have you ever been convicted of any crime or violation of any law, decree, ordinance or regulation by any court or tribunal?<br /><br /><br /><br /></td>"+
 						"</tr>"+
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][10]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][10]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][10]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][10]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:22px;'><u>"+data[0][11]+"</u></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;height:35px;'><u>"+data[0][11]+"</u></td>"+
 							"</tr>"+
 						"</table>"+
 
 						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>39. Have you ever been separated from the service in any following modes: resignation, retirement, dropped from the rolls, dismissal, terminantion, end of term, finished contract AWOL or phase out in the public or private sector?<br /><br /><br /></td>"+
+							"<td style='width:75%;background-color: #a5aeaf;font-size:75%;font-family:sans-serif;border:1px solid black'>39. Have you ever been separated from the service in any following modes: resignation, retirement, dropped from the rolls, dismissal, terminantion, end of term, finished contract AWOL or phase out in the public or private sector?<br /><br /><br /></td>"+
 						"</tr>"+
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][12]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][12]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][12]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][12]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:10px;'><u>"+data[0][13]+"</u></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;height:35px;'><u>"+data[0][13]+"</u></td>"+
 							"</tr>"+
 						"</table>"+
 
 						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 						"<tr>"+
-							"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;border:1px solid black'>40. Have you been candidate in a national or local election(exept Brangay election)?<br /><br /><br /><br /></td>"+
+							"<td style='width:75%;background-color: #a5aeaf;font-size:75%;font-family:sans-serif;border:1px solid black'>40. Have you been candidate in a national or local election(exept Brangay election)?<br /><br /><br /><br /></td>"+
 						"</tr>"+
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][14]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][14]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][14]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][14]) == 'No')? 'checked=true' : '')+">No<br />If Yes, give details:</td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:12px;'><u>"+data[0][15]+"</u></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;height:20px;'><u>"+data[0][15]+"</u></td>"+
 							"</tr>"+
 						"</table>"+
 
 						"<table style='border-collapse:collapse;float:left;width:75%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;'>41. Pursuant to: (a) Indigenous People's Act(RA8371); (b) Magna Carta for Disabled Persons(RA7277); and (c) Solo Parents Welfare Act of 2000 (RA8972), please answer the following items:</td>"+
+								"<td style='width:75%;background-color: #a5aeaf;font-size:75%;font-family:sans-serif;'>41. Pursuant to: (a) Indigenous People's Act(RA8371); (b) Magna Carta for Disabled Persons(RA7277); and (c) Solo Parents Welfare Act of 2000 (RA8972), please answer the following items:</td>"+
 							"</tr>"+
 								"<tr>"+
-								"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;'><br />a. Are you a member of any indigenous group?<br /><br /></td>"+
+								"<td style='width:75%;background-color: #a5aeaf;font-size:75%;font-family:sans-serif;'><br />a. Are you a member of any indigenous group?<br /><br /></td>"+
 							"</tr>"+
 								"<tr>"+
-								"<td style='width:75%;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;'><br />b. Are you differently abled?<br /><br /></td>"+
+								"<td style='width:75%;background-color: #a5aeaf;font-size:75%;font-family:sans-serif;'><br />b. Are you differently abled?<br /><br /></td>"+
 							"</tr>"+
 								"<tr>"+
-								"<td style='height:40px;background-color: #a5aeaf;font-size:60%;font-family:sans-serif;width:75%;'>c. Are you a solo parent?<br /></td>"+
+								"<td style='height:40px;background-color: #a5aeaf;font-size:75%;font-family:sans-serif;width:75%;'>c. Are you a solo parent?<br /></td>"+
 							"</tr>"+
 						"</table>"+
 						"<table style='border-collapse:collapse;float:right;width:25%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><br /><input type='checkbox' "+((String(data[0][16]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][16]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][15]+"</u><br /><br /></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;'><br /><input type='checkbox' "+((String(data[0][16]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][16]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][15]+"</u><br /><br /></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][18]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][18]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][17]+"</u><br /><br /></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;'><input type='checkbox' "+((String(data[0][18]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox' "+((String(data[0][18]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][17]+"</u><br /><br /></td>"+
 							"</tr>"+
 							"<tr>"+
-								"<td style='width:25%;font-size:60%;font-family:sans-serif;height:36px;'><input type='checkbox'"+((String(data[0][20]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox'"+((String(data[0][20]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][19]+"</u></td>"+
+								"<td style='width:25%;font-size:75%;font-family:sans-serif;height:60px;'><input type='checkbox'"+((String(data[0][20]) == 'Yes')? 'checked=true' : '')+">Yes&nbsp;&nbsp;<input type='checkbox'"+((String(data[0][20]) == 'No')? 'checked=true' : '')+">No<br />If Yes, please specify:<u>"+data[0][19]+"</u></td>"+
 							"</tr>"+
 						"</table>";
 			}
@@ -3423,10 +3423,10 @@ employee = {
     					"</table>"+
     					"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:27%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black'><font size='2'><center>NAME</center></td>"+
-								"<td style='width:30%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black'><font size='2'><center>ADDRESS</center></font></td>"+
-								"<td style='width:20%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black'><font size='2'><center>TEL NO.</center></font></td>"+
-								"<td style='width:23%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black' rowspan='5'><font size='2'><center>ID picture witin the last 6 months 3.5 cm x 4.5 cm (Passport size)<br />Computer generated or xerox copy of picture is not acceptable</center></font></td>"+
+								"<td style='width:27%;font-size:60%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black'><center>NAME</center></td>"+
+								"<td style='width:30%;font-size:60%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black'><center>ADDRESS</center></td>"+
+								"<td style='width:20%;font-size:60%;font-family:sans-serif;background-color: #a5aeaf;border:1px solid black'><center>TEL NO.</center></td>"+
+								"<td style='width:23%;font-size:60%;font-family:sans-serif;border:1px solid black' rowspan='5'><center>ID picture witin the last 6 months 3.5 cm x 4.5 cm (Passport size)<br />Computer generated or xerox copy of picture is not acceptable</center></td>"+
 							"</tr>";
 				$(data).each(function(index,value){
             		data.length;
@@ -3561,7 +3561,7 @@ employee = {
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>"+data[0][2]+"</font></center></td>"+
+								"<td style='width:40%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>"+data[0][2]+"</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:32%;border:1px solid black' rowspan='4'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
@@ -3570,7 +3570,7 @@ employee = {
 							"</tr>"+
 							"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>COMMUNITY TAX CERTIFICATE NO.</font></center></td>"+
+								"<td style='width:40%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>COMMUNITY TAX CERTIFICATE NO.</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
@@ -3584,16 +3584,16 @@ employee = {
 							"</tr>"+
 								"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>"+data[0][3]+"</font></center></td>"+
+								"<td style='width:40%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>"+data[0][3]+"</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 							"</tr>"+
 								"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>ISSUED AT</font></center></td>"+
+								"<td style='width:40%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>ISSUED AT</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:32%;font-family:sans-serif;border:1px solid black'><center><font size='2'>SIGNATURE<span style='color:red;'>(Sign inside the box)</span></center></font></td>"+
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>SIGNATURE<span style='color:red;'>(Sign inside the box)</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 							"</tr>"+
@@ -3607,19 +3607,19 @@ employee = {
 							"</tr>"+
 								"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>"+data[0][4]+"</font></center></td>"+
+								"<td style='width:40%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>"+data[0][4]+"</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:32%;font-family:sans-serif;border:1px solid black'><center><font size='2'>"+data[0][5]+"</font></center></td>"+
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>"+data[0][5]+"</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 							"</tr>"+
 								"<tr>"+
 								"<td style='width:4%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:40%;font-family:sans-serif;border:1px solid black'><center><font size='2'>ISSUED ON (mm/dd/yyyy)</font></center></td>"+
+								"<td style='width:40%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>ISSUED ON (mm/dd/yyyy)</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:32%;font-family:sans-serif;border:1px solid black'><center><font size='2'>DATE OF ACCOMPLISHED</font></center></td>"+
+								"<td style='width:32%;font-size:60%;font-family:sans-serif;border:1px solid black'><center>DATE OF ACCOMPLISHED</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
-								"<td style='width:21%;'><center>RIGHT THUMB</center></td>"+
+								"<td style='width:21%;font-size:60%;'><center>RIGHT THUMB</center></td>"+
 								"<td style='width:1%;'><center><span style='color:white;'>1</span></center></td>"+
 							"</tr>"+
 								"<tr>"+
@@ -3634,12 +3634,12 @@ employee = {
 						"</table>"+
 						"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;;text-align:right;font-family:sans-serif;' height='20'></td>"+
+								"<td style='width:100%;font-size:60%;text-align:right;font-family:sans-serif;' height='20'></td>"+
 							"</tr>"+
         				"</table>"+
 						"<table style='border-collapse:collapse;width:100%;border:2px solid black;'>"+
 							"<tr>"+
-								"<td style='width:100%;text-align:right;font-family:sans-serif;'><font size='2'>CS FORM 212 (Rvised 2005), Page 4 of 4</font></td>"+
+								"<td style='width:100%;font-size:60%;text-align:right;font-family:sans-serif;'>CS FORM 212 (Rvised 2005), Page 4 of 4</td>"+
 							"</tr>"+
         				"</table>";
 		});
@@ -4159,7 +4159,16 @@ employee_Account = {
 			$(data.responseText).find("addAccount_employee").each(function(i,content){
 				$("#modal_popUp .modal-content").html(content);
 				$('#modal_popUp').openModal('show');
+				// $("#form_addAcccount_employee").append("<p><input type='checkbox' id='showPassword'><label for='showPassword'>Show password</label></p>");
 
+				$("#showPassword").on("click",function(){
+					if($(this).is(':checked')){
+						$("#field_password").attr({"type":"text"});						
+					}
+					else{
+						$("#field_password").attr({"type":"password"});						
+					}
+				})
 				$("#field_password").on('focus',function(){
 					$("#note_password").removeClass('zoomOut hidden').addClass("zoomIn");
 				}).on('blur',function(){
@@ -6582,7 +6591,7 @@ leave = {
 		var data = system.ajax('../assets/harmony/Process.php?get-leave',id);
 		data.done(function(data){
 			data = JSON.parse(data);
-			// console.log(data);
+			console.log(data);
 
 				content = "<div id='profile-card' class='card'>"+
 						"    <div class='card-image waves-effect waves-block waves-light'>"+
@@ -6784,7 +6793,7 @@ leave = {
 			  							"<tr style='width:100%;'>"+
 			  								"<td height='60' style='border: 1px solid black;width:50%;'>"+
 				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;6. a. <b>TYPE OF LEAVE: "+data[0][9]+"</b></span><br /><br />"+
-				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;Specify: <u>"+data[0][10]+" Vacation</u></span>"+
+				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;&nbsp;Specify: <u>"+data[0][10]+"</u></span>"+
 			    							"</td>"+
 			    							"<td height='60' style='border: 1px solid black;width:50%;word-wrap: break-word;'>"+
 				    							"<span style='font-size:80%;font-family:sans-serif;'>&nbsp;6. b. <b>WHERE WILL BE SPENT:</b> "+data[0][13]+"</span><br /><br />"+
